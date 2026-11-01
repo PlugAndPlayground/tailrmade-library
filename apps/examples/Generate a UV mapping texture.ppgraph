@@ -1,0 +1,1771 @@
+{
+  "id": "Default/Generate a UV mapping texture",
+  "location": "Default",
+  "name": "Generate a UV mapping texture",
+  "access": "public",
+  "graphData": {
+    "version": 0.1,
+    "graphSettings": {
+      "showExecutionVisualisation": true,
+      "viewportCenterPosition": {
+        "x": -221,
+        "y": 1000
+      },
+      "viewportScale": 0.39391505949921224
+    },
+    "overlay": {
+      "dashboard": {
+        "visible": true,
+        "fullscreen": false,
+        "widthPercentage": 49,
+        "locked": false
+      }
+    },
+    "nodes": [
+      {
+        "id": "tidy-vampirebat-29",
+        "name": "ColorBox",
+        "type": "Macro",
+        "x": -155,
+        "y": -10,
+        "width": 1400,
+        "height": 617,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Output",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Parameter 1",
+            "dataType": "{\"class\":\"ColorType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Parameter 2",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Parameter 3",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Parameter 4",
+            "dataType": "{\"class\":\"NumberType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": false,
+          "interval": false
+        }
+      },
+      {
+        "id": "stupid-earwig-30",
+        "type": "Constant",
+        "x": 36,
+        "y": 228,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "In",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "quiet-baboon-82",
+        "type": "Constant",
+        "x": -172,
+        "y": 1156,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "In",
+            "dataType": "{\"class\":\"ArrayType\"}",
+            "data": [
+              {
+                "r": 225,
+                "g": 84,
+                "b": 125,
+                "a": 1
+              },
+              {
+                "r": 225,
+                "g": 84,
+                "b": 187,
+                "a": 1
+              },
+              {
+                "r": 171,
+                "g": 83,
+                "b": 222,
+                "a": 1
+              },
+              {
+                "r": 84,
+                "g": 155,
+                "b": 224,
+                "a": 1
+              },
+              {
+                "r": 86,
+                "g": 225,
+                "b": 204,
+                "a": 1
+              },
+              {
+                "r": 127,
+                "g": 225,
+                "b": 88,
+                "a": 1
+              },
+              {
+                "r": 212,
+                "g": 226,
+                "b": 90,
+                "a": 1
+              },
+              {
+                "r": 225,
+                "g": 151,
+                "b": 87,
+                "a": 1
+              }
+            ]
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "yellow-pig-75",
+        "name": "CreateColorGridArray",
+        "type": "CustomFunction",
+        "x": 54,
+        "y": 1149,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(ArrayIn) => {\n\tconst length = ArrayIn.length;\n\tconst offset = (arr, offset) => [...arr.slice(offset), ...arr.slice(0, offset)];\n\n\tconst wholeArray = [];\n\tArrayIn.forEach((a, index) => {\n\t\twholeArray.push(...offset(ArrayIn, -index));\n\t});\n\treturn wholeArray;\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "ArrayIn",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "proud-mule-98",
+        "name": "CreateTextArray",
+        "type": "CustomFunction",
+        "x": 55,
+        "y": 1270,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(ArrayIn) => {\n\tconst length = ArrayIn.length;\n\n\tconst wholeArray = [];\n\tfor (let step = 0; step < length * length; step++) {\n\t\twholeArray.push(`${step % length},${Math.floor(step / length)}`);\n\t}\n\treturn wholeArray;\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "ArrayIn",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "evil-grasshopper-97",
+        "name": "WidgetSlider",
+        "type": "WidgetSlider",
+        "x": 37,
+        "y": 1427,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 1024,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 256,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":0,\"maxValue\":200,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 4096,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Round",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Size in pixel",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Initial value",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 196,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Step size",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0.01,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "foolish-bird-78",
+        "type": "Label",
+        "x": -172,
+        "y": 916,
+        "width": 340,
+        "height": 69,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "UV texture generator",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 212,
+              "g": 255,
+              "b": 0,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 64,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "min-width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 128,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "shaggy-baboon-17",
+        "name": "WidgetButton",
+        "type": "WidgetButton",
+        "x": 511,
+        "y": 1508,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Save image",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "contained",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "soft-otter-64",
+        "name": "Extract_Image_From_Graphics",
+        "type": "Extract_Image_From_Graphics",
+        "x": 757,
+        "y": 1563,
+        "width": 160,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Output Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Quarter\",\"value\":0.25},{\"text\":\"Half\",\"value\":0.5},{\"text\":\"Full\",\"value\":1}],\"showAsButtons\":true}}",
+            "data": "Full",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Type",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"image/png\"},{\"text\":\"image/jpeg\"},{\"text\":\"image/webp\"}],\"showAsButtons\":false}}",
+            "data": "image/png",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Quality",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":0,\"maxValue\":1,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0.92
+          },
+          {
+            "socketType": "in",
+            "name": "Save image",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"previousData\":0,\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"saveImage\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "out",
+            "name": "Image",
+            "dataType": "{\"class\":\"ImageType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "cowardly-ape-69",
+        "name": "DRAW_COMBINE_ARRAY",
+        "type": "DRAW_COMBINE_ARRAY",
+        "x": 754,
+        "y": 1145,
+        "width": 160,
+        "height": 376,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "GraphicsArray",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Number Per Column/Row",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 8
+          },
+          {
+            "socketType": "in",
+            "name": "Adjacent Placing",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true
+          },
+          {
+            "socketType": "in",
+            "name": "Change Column/Row drawing order",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true
+          },
+          {
+            "socketType": "in",
+            "name": "Spacing X",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0
+          },
+          {
+            "socketType": "in",
+            "name": "Spacing Y",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0
+          },
+          {
+            "socketType": "in",
+            "name": "Manual Upper Left Corner",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false
+          },
+          {
+            "socketType": "in",
+            "name": "Upper Left Corner Coordinates",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Clickable objects",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Always Draw",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Injected Data",
+            "dataType": "{\"class\":\"ArrayType\"}",
+            "data": []
+          },
+          {
+            "socketType": "in",
+            "name": "Pivot",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"top left\",\"value\":{\"x\":0,\"y\":0}},{\"text\":\"top center\",\"value\":{\"x\":0.5,\"y\":0}},{\"text\":\"top right\",\"value\":{\"x\":1,\"y\":0}},{\"text\":\"center left\",\"value\":{\"x\":0,\"y\":0.5}},{\"text\":\"center center\",\"value\":{\"x\":0.5,\"y\":0.5}},{\"text\":\"center right\",\"value\":{\"x\":1,\"y\":0.5}},{\"text\":\"bottom left\",\"value\":{\"x\":0,\"y\":1}},{\"text\":\"bottom center\",\"value\":{\"x\":0.5,\"y\":1}},{\"text\":\"bottom right\",\"value\":{\"x\":1,\"y\":1}}],\"showAsButtons\":false}}",
+            "data": "top left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Number Per Column",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 2
+          },
+          {
+            "socketType": "out",
+            "name": "LastPressedIndex",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}"
+          },
+          {
+            "socketType": "out",
+            "name": "PointerDown",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "LastPressedInjected",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "nasty-duck-7",
+        "type": "Label",
+        "x": -155,
+        "y": -192,
+        "width": 377,
+        "height": 179,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Macro of a single tile\nIt exposes the tile color,\nthe tile dimensions and\nthe text to display.",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 212,
+              "g": 255,
+              "b": 0,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 24,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "min-width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 128,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "weak-donkey-45",
+        "type": "Label",
+        "x": -169,
+        "y": 1081,
+        "width": 135,
+        "height": 69,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Colors",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 212,
+              "g": 255,
+              "b": 0,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 24,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "min-width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 128,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "pink-pug-57",
+        "type": "Label",
+        "x": -171,
+        "y": 1432,
+        "width": 105,
+        "height": 69,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Size",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 212,
+              "g": 255,
+              "b": 0,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 24,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "min-width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 128,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "warm-panther-87",
+        "type": "Label",
+        "x": -170,
+        "y": 1300,
+        "width": 101,
+        "height": 69,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Text",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 212,
+              "g": 255,
+              "b": 0,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 24,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "min-width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 128,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "silly-shrimp-85",
+        "type": "Label",
+        "x": 532,
+        "y": 974,
+        "width": 520,
+        "height": 179,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 477.3811231521812,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "The Macro and all its inputs are referenced in the Map Execute Macro node\n",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 212,
+              "g": 255,
+              "b": 0,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 24,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "min-width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 128,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "brave-panther-39",
+        "name": "Divide (/)",
+        "type": "Divide",
+        "x": 322,
+        "y": 401,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Number 1",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Number 2",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 6
+          },
+          {
+            "socketType": "out",
+            "name": "Divided",
+            "dataType": "{\"class\":\"NumberType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "selfish-duck-47",
+        "type": "MapExecuteMacro",
+        "x": 523,
+        "y": 1158,
+        "width": 160,
+        "height": 184,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Array",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Macro",
+            "dataType": "{\"class\":\"DynamicEnumType\"}",
+            "data": "ColorBox"
+          },
+          {
+            "socketType": "in",
+            "name": "Parameter 1",
+            "dataType": "{\"class\":\"InputArrayKeysType\",\"type\":{\"showAsButtons\":false,\"parameterName\":\"Array\",\"allowIndex\":true,\"nodeID\":\"selfish-duck-47\",\"allowConstant\":false}}",
+            "data": "Color"
+          },
+          {
+            "socketType": "in",
+            "name": "Parameter 2",
+            "dataType": "{\"class\":\"InputArrayKeysType\",\"type\":{\"showAsButtons\":false,\"parameterName\":\"Array\",\"allowIndex\":true,\"nodeID\":\"selfish-duck-47\",\"allowConstant\":false}}",
+            "data": "Text"
+          },
+          {
+            "socketType": "in",
+            "name": "Parameter 3",
+            "dataType": "{\"class\":\"InputArrayKeysType\",\"type\":{\"showAsButtons\":false,\"parameterName\":\"Array\",\"allowIndex\":true,\"nodeID\":\"selfish-duck-47\",\"allowConstant\":false}}",
+            "data": "Size"
+          },
+          {
+            "socketType": "out",
+            "name": "Array",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "silent-falcon-28",
+        "name": "//define your  here, node will adapt to inputs automatically",
+        "type": "CustomFunction",
+        "x": 284,
+        "y": 1162,
+        "width": 160,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "//define your function here, node will adapt to inputs automatically\n(a,b,c) => {\n\treturn a.map((_, index) => {\n\t\treturn { Color: a[index], Text: b[index], Size: c/8}\n\t\t});\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "a",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "b",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "c",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "curly-husky-54",
+        "type": "DRAW_Passthrough",
+        "x": 825,
+        "y": 357,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "foolish-yak-50",
+        "type": "DRAW_Text",
+        "x": 598,
+        "y": 258,
+        "width": 160,
+        "height": 184,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Text",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}"
+          },
+          {
+            "socketType": "in",
+            "name": "Line Height",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 24
+          },
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":2000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 1000
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 245,
+              "g": 245,
+              "b": 245,
+              "a": 1
+            }
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "big-elephant-91",
+        "type": "DRAW_Combine",
+        "x": 812,
+        "y": 40,
+        "width": 160,
+        "height": 256,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Direction",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"vertical\"},{\"text\":\"horizontal\"}],\"showAsButtons\":true}}",
+            "data": "vertical",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout mode",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"manual\"},{\"text\":\"gap\"},{\"text\":\"spread\"}],\"showAsButtons\":true}}",
+            "data": "gap",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Horizontal alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\"},{\"text\":\"center\"},{\"text\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "center",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Vertical alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"top\"},{\"text\":\"center\"},{\"text\":\"bottom\"}],\"showAsButtons\":true}}",
+            "data": "center",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Gap",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-100,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 8
+          },
+          {
+            "socketType": "in",
+            "name": "Padding",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Width behaviour",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"hug\"},{\"text\":\"fill\"},{\"text\":\"fixed\"}],\"showAsButtons\":true}}",
+            "data": "fixed",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":2000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}"
+          },
+          {
+            "socketType": "in",
+            "name": "Height behaviour",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"hug\"},{\"text\":\"fill\"},{\"text\":\"fixed\"}],\"showAsButtons\":true}}",
+            "data": "fixed",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background height",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":2000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}"
+          },
+          {
+            "socketType": "in",
+            "name": "Reverse Direction",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Position",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "popular-dragon-26",
+        "type": "DRAW_Passthrough",
+        "x": 954,
+        "y": 1148,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      }
+    ],
+    "links": [
+      {
+        "sourceNodeId": "big-elephant-91",
+        "sourceSocketName": "Graphics",
+        "targetNodeId": "tidy-vampirebat-29",
+        "targetSocketName": "Output"
+      },
+      {
+        "sourceNodeId": "tidy-vampirebat-29",
+        "sourceSocketName": "Parameter 3",
+        "targetNodeId": "stupid-earwig-30",
+        "targetSocketName": "In"
+      },
+      {
+        "sourceNodeId": "quiet-baboon-82",
+        "sourceSocketName": "Out",
+        "targetNodeId": "yellow-pig-75",
+        "targetSocketName": "ArrayIn"
+      },
+      {
+        "sourceNodeId": "quiet-baboon-82",
+        "sourceSocketName": "Out",
+        "targetNodeId": "proud-mule-98",
+        "targetSocketName": "ArrayIn"
+      },
+      {
+        "sourceNodeId": "cowardly-ape-69",
+        "sourceSocketName": "Graphics",
+        "targetNodeId": "soft-otter-64",
+        "targetSocketName": "Graphics"
+      },
+      {
+        "sourceNodeId": "shaggy-baboon-17",
+        "sourceSocketName": "Out",
+        "targetNodeId": "soft-otter-64",
+        "targetSocketName": "Save image"
+      },
+      {
+        "sourceNodeId": "selfish-duck-47",
+        "sourceSocketName": "Array",
+        "targetNodeId": "cowardly-ape-69",
+        "targetSocketName": "GraphicsArray"
+      },
+      {
+        "sourceNodeId": "stupid-earwig-30",
+        "sourceSocketName": "Out",
+        "targetNodeId": "brave-panther-39",
+        "targetSocketName": "Number 1"
+      },
+      {
+        "sourceNodeId": "silent-falcon-28",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "selfish-duck-47",
+        "targetSocketName": "Array"
+      },
+      {
+        "sourceNodeId": "yellow-pig-75",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "silent-falcon-28",
+        "targetSocketName": "a"
+      },
+      {
+        "sourceNodeId": "proud-mule-98",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "silent-falcon-28",
+        "targetSocketName": "b"
+      },
+      {
+        "sourceNodeId": "evil-grasshopper-97",
+        "sourceSocketName": "Out",
+        "targetNodeId": "silent-falcon-28",
+        "targetSocketName": "c"
+      },
+      {
+        "sourceNodeId": "big-elephant-91",
+        "sourceSocketName": "Graphics",
+        "targetNodeId": "curly-husky-54",
+        "targetSocketName": "Graphics"
+      },
+      {
+        "sourceNodeId": "tidy-vampirebat-29",
+        "sourceSocketName": "Parameter 2",
+        "targetNodeId": "foolish-yak-50",
+        "targetSocketName": "Text"
+      },
+      {
+        "sourceNodeId": "brave-panther-39",
+        "sourceSocketName": "Divided",
+        "targetNodeId": "foolish-yak-50",
+        "targetSocketName": "Size"
+      },
+      {
+        "sourceNodeId": "tidy-vampirebat-29",
+        "sourceSocketName": "Parameter 1",
+        "targetNodeId": "big-elephant-91",
+        "targetSocketName": "Background color"
+      },
+      {
+        "sourceNodeId": "stupid-earwig-30",
+        "sourceSocketName": "Out",
+        "targetNodeId": "big-elephant-91",
+        "targetSocketName": "Background width"
+      },
+      {
+        "sourceNodeId": "stupid-earwig-30",
+        "sourceSocketName": "Out",
+        "targetNodeId": "big-elephant-91",
+        "targetSocketName": "Background height"
+      },
+      {
+        "sourceNodeId": "foolish-yak-50",
+        "sourceSocketName": "Graphics",
+        "targetNodeId": "big-elephant-91",
+        "targetSocketName": "Graphics"
+      },
+      {
+        "sourceNodeId": "cowardly-ape-69",
+        "sourceSocketName": "Graphics",
+        "targetNodeId": "popular-dragon-26",
+        "targetSocketName": "Graphics"
+      }
+    ],
+    "layouts": {
+      "default": "{\"ROOT\":{\"type\":{\"resolvedName\":\"Container\"},\"isCanvas\":true,\"props\":{\"flexDirection\":\"column\",\"alignItems\":\"flex-start\",\"justifyContent\":\"flex-start\",\"padding\":[0,0,0,0],\"background\":{\"r\":255,\"g\":255,\"b\":255,\"a\":0},\"color\":{\"r\":51,\"g\":51,\"b\":51,\"a\":1},\"width\":\"80%\",\"height\":\"auto\",\"minWidth\":\"48px\",\"minHeight\":\"240px\",\"maxWidth\":\"lg\",\"maxHeight\":\"unset\",\"mobileBehavior\":\"column\",\"customStyles\":{\"padding\":\"24px\",\"@media (max-width: 900px)\":{\"padding\":\"16px\",\"width\":\"90%\"},\"@media (max-width: 600px)\":{\"padding\":\"8px\",\"width\":\"100%\"}},\"gap\":8},\"displayName\":\"Container\",\"custom\":{\"displayName\":\"Root\"},\"hidden\":false,\"nodes\":[\"c4b7c7e5-bb1a-4504-9ab8-32f4162ddd4f\"],\"linkedNodes\":{}},\"7cbe1e44-5790-47e2-bb6e-3269ae4f90cd\":{\"type\":{\"resolvedName\":\"DynamicWidget\"},\"isCanvas\":false,\"props\":{\"flexDirection\":\"column\",\"alignItems\":\"stretch\",\"justifyContent\":\"flex-start\",\"padding\":[0,0,0,0],\"background\":{\"r\":245,\"g\":245,\"b\":245,\"a\":0},\"color\":{\"r\":255,\"g\":255,\"b\":255,\"a\":1},\"width\":\"auto\",\"height\":\"300px\",\"minWidth\":\"48px\",\"minHeight\":\"48px\",\"maxWidth\":\"unset\",\"maxHeight\":\"unset\",\"showLabel\":false,\"id\":\"NODE_popular-dragon-26\",\"index\":0,\"randomMainColor\":\"#3c54ab\"},\"displayName\":\"DynamicWidget\",\"custom\":{\"isCanvasItem\":true},\"parent\":\"4cde16af-bd59-4f3a-a86e-abf5d72d4da4\",\"hidden\":false,\"nodes\":[],\"linkedNodes\":{}},\"1889fd7e-14d2-4b49-873d-4b5009e4313e\":{\"type\":{\"resolvedName\":\"DynamicWidget\"},\"isCanvas\":false,\"props\":{\"flexDirection\":\"column\",\"alignItems\":\"stretch\",\"justifyContent\":\"flex-start\",\"padding\":[0,0,0,0],\"background\":{\"r\":9,\"g\":13,\"b\":26,\"a\":1},\"color\":{\"r\":255,\"g\":255,\"b\":255,\"a\":1},\"width\":\"100%\",\"height\":\"240px\",\"minWidth\":\"48px\",\"minHeight\":\"48px\",\"maxWidth\":\"unset\",\"maxHeight\":\"unset\",\"showLabel\":false,\"id\":\"SOCKET_quiet-baboon-82-in-In\",\"index\":0,\"randomMainColor\":\"#3c54ab\"},\"displayName\":\"DynamicWidget\",\"custom\":{\"isCanvasItem\":true},\"parent\":\"c621ee7f-a1df-494f-aaa9-534bb5125787\",\"hidden\":false,\"nodes\":[],\"linkedNodes\":{}},\"44f0cf83-9b6c-40f2-a93b-4a103f04ad7e\":{\"type\":{\"resolvedName\":\"DynamicWidget\"},\"isCanvas\":false,\"props\":{\"flexDirection\":\"column\",\"alignItems\":\"stretch\",\"justifyContent\":\"flex-start\",\"padding\":[0,0,0,0],\"background\":{\"r\":9,\"g\":13,\"b\":26,\"a\":0},\"color\":{\"r\":255,\"g\":255,\"b\":255,\"a\":1},\"width\":\"100%\",\"height\":\"auto\",\"minWidth\":\"48px\",\"minHeight\":\"48px\",\"maxWidth\":\"unset\",\"maxHeight\":\"unset\",\"showLabel\":false,\"id\":\"NODE_shaggy-baboon-17\",\"index\":0,\"randomMainColor\":\"#3c54ab\"},\"displayName\":\"DynamicWidget\",\"custom\":{\"isCanvasItem\":true},\"parent\":\"34ea1d5d-487d-4563-8cd9-c7c41275034c\",\"hidden\":false,\"nodes\":[],\"linkedNodes\":{}},\"1ea3d812-4e2d-479f-82f2-9d78e54df6c4\":{\"type\":{\"resolvedName\":\"DynamicWidget\"},\"isCanvas\":false,\"props\":{\"flexDirection\":\"column\",\"alignItems\":\"stretch\",\"justifyContent\":\"flex-start\",\"padding\":[0,0,0,0],\"background\":{\"r\":9,\"g\":13,\"b\":26,\"a\":0},\"color\":{\"r\":255,\"g\":255,\"b\":255,\"a\":1},\"width\":\"100%\",\"height\":\"auto\",\"minWidth\":\"48px\",\"minHeight\":\"48px\",\"maxWidth\":\"unset\",\"maxHeight\":\"unset\",\"showLabel\":false,\"id\":\"NODE_evil-grasshopper-97\",\"index\":0,\"randomMainColor\":\"#3c54ab\"},\"displayName\":\"DynamicWidget\",\"custom\":{\"isCanvasItem\":true},\"parent\":\"34ea1d5d-487d-4563-8cd9-c7c41275034c\",\"hidden\":false,\"nodes\":[],\"linkedNodes\":{}},\"c4b7c7e5-bb1a-4504-9ab8-32f4162ddd4f\":{\"type\":{\"resolvedName\":\"Container\"},\"isCanvas\":true,\"props\":{\"flexDirection\":\"column\",\"alignItems\":\"flex-start\",\"justifyContent\":\"flex-start\",\"padding\":[8,8,8,8],\"background\":{\"r\":35.999999999999986,\"g\":50.399999999999885,\"b\":102.6,\"a\":0.2},\"color\":{\"r\":51,\"g\":51,\"b\":51,\"a\":1},\"width\":\"100%\",\"height\":\"auto\",\"minWidth\":\"48px\",\"minHeight\":\"48px\",\"maxWidth\":false,\"maxHeight\":\"unset\",\"mobileBehavior\":\"column\",\"customStyles\":{},\"gap\":16},\"displayName\":\"Container\",\"custom\":{},\"parent\":\"ROOT\",\"hidden\":false,\"nodes\":[\"b19eb79c-8247-4222-a630-b5c24299ddcd\",\"c621ee7f-a1df-494f-aaa9-534bb5125787\",\"4cde16af-bd59-4f3a-a86e-abf5d72d4da4\"],\"linkedNodes\":{}},\"b19eb79c-8247-4222-a630-b5c24299ddcd\":{\"type\":{\"resolvedName\":\"Container\"},\"isCanvas\":true,\"props\":{\"flexDirection\":\"column\",\"alignItems\":\"flex-start\",\"justifyContent\":\"flex-start\",\"padding\":[8,8,8,8],\"background\":{\"r\":35.999999999999986,\"g\":50.399999999999885,\"b\":102.6,\"a\":0.2},\"color\":{\"r\":51,\"g\":51,\"b\":51,\"a\":1},\"width\":\"100%\",\"height\":\"auto\",\"minWidth\":\"48px\",\"minHeight\":\"48px\",\"maxWidth\":false,\"maxHeight\":\"unset\",\"mobileBehavior\":\"column\",\"customStyles\":{},\"gap\":8},\"displayName\":\"Container\",\"custom\":{},\"parent\":\"c4b7c7e5-bb1a-4504-9ab8-32f4162ddd4f\",\"hidden\":false,\"nodes\":[\"6ea2069b-7ce4-461d-b2fc-32a7d44127c1\",\"490b2190-6933-4d5c-afac-1e169757eb79\"],\"linkedNodes\":{}},\"6ea2069b-7ce4-461d-b2fc-32a7d44127c1\":{\"type\":{\"resolvedName\":\"Text\"},\"isCanvas\":false,\"props\":{\"fontSize\":24,\"textAlign\":\"center\",\"fontWeight\":\"normal\",\"color\":{\"r\":245,\"g\":245,\"b\":245,\"a\":1},\"text\":\"Generate a UV mapping texture\"},\"displayName\":\"Text\",\"custom\":{},\"parent\":\"b19eb79c-8247-4222-a630-b5c24299ddcd\",\"hidden\":false,\"nodes\":[],\"linkedNodes\":{}},\"490b2190-6933-4d5c-afac-1e169757eb79\":{\"type\":{\"resolvedName\":\"Text\"},\"isCanvas\":false,\"props\":{\"fontSize\":16,\"textAlign\":\"center\",\"fontWeight\":\"normal\",\"color\":{\"r\":198,\"g\":198,\"b\":198,\"a\":1},\"text\":\"Define the 8 colors, set the size and save the texture\"},\"displayName\":\"Text\",\"custom\":{},\"parent\":\"b19eb79c-8247-4222-a630-b5c24299ddcd\",\"hidden\":false,\"nodes\":[],\"linkedNodes\":{}},\"c621ee7f-a1df-494f-aaa9-534bb5125787\":{\"type\":{\"resolvedName\":\"Container\"},\"isCanvas\":true,\"props\":{\"flexDirection\":\"row\",\"alignItems\":\"center\",\"justifyContent\":\"flex-start\",\"padding\":[8,8,8,8],\"background\":{\"r\":35.999999999999986,\"g\":50.399999999999885,\"b\":102.6,\"a\":0.2},\"color\":{\"r\":51,\"g\":51,\"b\":51,\"a\":1},\"width\":\"100%\",\"height\":\"auto\",\"minWidth\":\"48px\",\"minHeight\":\"48px\",\"maxWidth\":false,\"maxHeight\":\"unset\",\"mobileBehavior\":\"column\",\"customStyles\":{},\"gap\":8},\"displayName\":\"Container\",\"custom\":{},\"parent\":\"c4b7c7e5-bb1a-4504-9ab8-32f4162ddd4f\",\"hidden\":false,\"nodes\":[\"1889fd7e-14d2-4b49-873d-4b5009e4313e\",\"34ea1d5d-487d-4563-8cd9-c7c41275034c\"],\"linkedNodes\":{}},\"34ea1d5d-487d-4563-8cd9-c7c41275034c\":{\"type\":{\"resolvedName\":\"Container\"},\"isCanvas\":true,\"props\":{\"flexDirection\":\"column\",\"alignItems\":\"flex-start\",\"justifyContent\":\"flex-start\",\"padding\":[8,8,8,8],\"background\":{\"r\":35.999999999999986,\"g\":50.399999999999885,\"b\":102.6,\"a\":0.2},\"color\":{\"r\":51,\"g\":51,\"b\":51,\"a\":1},\"width\":\"100%\",\"height\":\"auto\",\"minWidth\":\"48px\",\"minHeight\":\"48px\",\"maxWidth\":false,\"maxHeight\":\"unset\",\"mobileBehavior\":\"column\",\"customStyles\":{},\"gap\":8},\"displayName\":\"Container\",\"custom\":{},\"parent\":\"c621ee7f-a1df-494f-aaa9-534bb5125787\",\"hidden\":false,\"nodes\":[\"1ea3d812-4e2d-479f-82f2-9d78e54df6c4\",\"44f0cf83-9b6c-40f2-a93b-4a103f04ad7e\"],\"linkedNodes\":{}},\"4cde16af-bd59-4f3a-a86e-abf5d72d4da4\":{\"type\":{\"resolvedName\":\"Container\"},\"isCanvas\":true,\"props\":{\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\",\"padding\":[24,24,24,24],\"background\":{\"r\":35.999999999999986,\"g\":50.399999999999885,\"b\":102.6,\"a\":0.2},\"color\":{\"r\":51,\"g\":51,\"b\":51,\"a\":1},\"width\":\"100%\",\"height\":\"auto\",\"minWidth\":\"48px\",\"minHeight\":\"48px\",\"maxWidth\":false,\"maxHeight\":\"50vh\",\"mobileBehavior\":\"column\",\"customStyles\":{},\"gap\":8},\"displayName\":\"Container\",\"custom\":{},\"parent\":\"c4b7c7e5-bb1a-4504-9ab8-32f4162ddd4f\",\"hidden\":false,\"nodes\":[\"7cbe1e44-5790-47e2-bb6e-3269ae4f90cd\"],\"linkedNodes\":{}}}",
+      "_version": "2"
+    }
+  },
+  "date": "2025-10-18T13:38:05.375Z",
+  "owner": "publicUser",
+  "isRemote": true
+}

@@ -1,0 +1,2468 @@
+{
+  "id": "Default/Generate arrays of random colors",
+  "location": "Default",
+  "name": "Generate arrays of random colors",
+  "access": "public",
+  "graphData": {
+    "version": 3,
+    "graphSettings": {
+      "showExecutionVisualisation": true,
+      "viewportCenterPosition": {
+        "x": -1790,
+        "y": -5394
+      },
+      "viewportScale": 0.38688789963577497,
+      "defaultUISurfaceNodeId": "chilly-bobcat-71"
+    },
+    "overlay": {
+      "dashboard": {
+        "visible": true,
+        "fullscreen": false,
+        "widthPercentage": 40,
+        "locked": false
+      }
+    },
+    "nodes": [
+      {
+        "id": "swift-lion-33",
+        "name": "ColorBox0",
+        "type": "macro",
+        "x": -1390,
+        "y": -6616,
+        "width": 1403,
+        "height": 737,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Output",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Parameter 1",
+            "dataType": "{\"class\":\"ColorType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Parameter 2",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Parameter 3",
+            "dataType": "{\"class\":\"NumberType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": false,
+          "interval": false
+        }
+      },
+      {
+        "id": "rotten-chipmunk-73",
+        "name": "//define your  here, node will adapt to inputs automatically",
+        "type": "customfunction",
+        "x": -1017,
+        "y": -6332,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "//define your function here, node will adapt to inputs automatically\n(a) => {\n\tfunction componentToHex(c) {\n    var hex = c.toString(16);\n    return hex.length == 1 ? \"0\" + hex : hex;\n  }\n\n  function rgbToHex(r, g, b) {\n    return \"#\" + componentToHex(r) + componentToHex(g) + componentToHex(b);\n  }\n\n\treturn rgbToHex(a.r, a.g, a.b);\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "a",
+            "dataType": "{\"class\":\"ColorType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "cold-elephant-100",
+        "name": "generateRGBA",
+        "type": "customfunction",
+        "x": -1830,
+        "y": -4904,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "function generateRGBA(num_colors) {\n  const colors = [];\n  for (let i = 0; i < num_colors; i++) {\n    const r = Math.floor(Math.random() * 256);\n    const g = Math.floor(Math.random() * 256);\n    const b = Math.floor(Math.random() * 256);\n    const a = Math.random();\n    colors.push({ \n      r, g, b, a: 1\n    });\n  }\n  return colors;\n}\n",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "num_colors",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "trigger",
+            "name": "Trigger 1",
+            "dataType": "{\"class\":\"TriggerType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "bad-grasshopper-18",
+        "name": "WidgetSlider",
+        "type": "widgetslider",
+        "x": -2089,
+        "y": -4861,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 40,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 100,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Round",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Count",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Initial value",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 5,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Step size",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0.01,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "lovely-octopus-99",
+        "type": "label",
+        "x": -2092,
+        "y": -5117,
+        "width": 324,
+        "height": 69,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Random color array",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 212,
+              "g": 255,
+              "b": 0,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "min-width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 128,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "modern-snail-12",
+        "name": "//define your  here, node will adapt to inputs automatically",
+        "type": "customfunction",
+        "x": -1017,
+        "y": -6225,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "//define your function here, node will adapt to inputs automatically\n(a) => {\n  function isColorDark(col) {\n    // Calculate the relative luminance of the color\n    const luminance = (0.2126 * col.r + 0.7152 * col.g + 0.0722 * col.b) / 255;\n\n    // Compare the luminance value to a threshold to determine if it's dark or bright\n    return luminance < 0.5; // You can adjust the threshold as desired\n  }\n\n\treturn isColorDark(a) ? {\n    r: 255,\n    g: 255,\n    b: 255,\n    a: 1\n  } : {\n    r: 0,\n    g: 0,\n    b: 0,\n    a: 1\n  };\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "a",
+            "dataType": "{\"class\":\"ColorType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"ColorType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "jolly-bird-23",
+        "name": "WidgetSlider",
+        "type": "widgetslider",
+        "x": -2089,
+        "y": -4726,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":20,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 100,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 75,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 150,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Round",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Size",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "shaggy-cow-7",
+        "name": "WidgetSlider",
+        "type": "widgetslider",
+        "x": -2089,
+        "y": -4592,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":true,\"presetValues\":[]}}",
+            "data": 10,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 20,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Round",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Columns",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "curvy-eel-17",
+        "name": "ArrayGet",
+        "type": "arrayget",
+        "x": -1037,
+        "y": -4870,
+        "width": 115,
+        "height": 64,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Index",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Array",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Element",
+            "dataType": "{\"class\":\"ColorType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 4
+      },
+      {
+        "id": "yellow-dingo-49",
+        "name": "WriteToClipboard",
+        "type": "writetoclipboard",
+        "x": -654,
+        "y": -4809,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Stringify",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "trigger",
+            "name": "Trigger",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"change\",\"customFunctionString\":\"\",\"showDetails\":false}}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": false,
+          "interval": false
+        }
+      },
+      {
+        "id": "spotty-impala-3",
+        "name": "//define your  here, node will adapt to inputs automatically",
+        "type": "customfunction",
+        "x": -852,
+        "y": -4871,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "//define your function here, node will adapt to inputs automatically\n(a) => {\n\tfunction componentToHex(c) {\n    var hex = c.toString(16);\n    return hex.length == 1 ? \"0\" + hex : hex;\n  }\n\n  function rgbToHex(r, g, b) {\n    return \"#\" + componentToHex(r) + componentToHex(g) + componentToHex(b);\n  }\n\n\treturn rgbToHex(a.r, a.g, a.b);\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "a",
+            "dataType": "{\"class\":\"ColorType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "tiny-snake-84",
+        "type": "label",
+        "x": -467,
+        "y": -4870,
+        "width": 167,
+        "height": 69,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 84,
+              "g": 155,
+              "b": 224,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "happy-cheetah-14",
+        "type": "label",
+        "x": -1052,
+        "y": -4968,
+        "width": 914,
+        "height": 69,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Click on a color swatch to copy its color value to the clipboard",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 212,
+              "g": 255,
+              "b": 0,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "min-width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 128,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "rotten-wombat-51",
+        "type": "draw_text",
+        "x": -739,
+        "y": -6292,
+        "width": 160,
+        "height": 184,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Text",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 24
+          },
+          {
+            "socketType": "in",
+            "name": "Line Height",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 24
+          },
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":2000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 148
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"ColorType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "calm-jellyfish-72",
+        "type": "draw_combine",
+        "x": -450,
+        "y": -6513,
+        "width": 160,
+        "height": 256,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Direction",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"vertical\"},{\"text\":\"horizontal\"}],\"showAsButtons\":true}}",
+            "data": "vertical",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout mode",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"manual\"},{\"text\":\"gap\"},{\"text\":\"spread\"}],\"showAsButtons\":true}}",
+            "data": "gap",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Horizontal alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\"},{\"text\":\"center\"},{\"text\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "center",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Vertical alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"top\"},{\"text\":\"center\"},{\"text\":\"bottom\"}],\"showAsButtons\":true}}",
+            "data": "center",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Gap",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-100,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 8
+          },
+          {
+            "socketType": "in",
+            "name": "Padding",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 8
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Width behaviour",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"hug\"},{\"text\":\"fill\"},{\"text\":\"fixed\"}],\"showAsButtons\":true}}",
+            "data": "fixed",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":2000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}"
+          },
+          {
+            "socketType": "in",
+            "name": "Height behaviour",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"hug\"},{\"text\":\"fill\"},{\"text\":\"fixed\"}],\"showAsButtons\":true}}",
+            "data": "fixed",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background height",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":2000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}"
+          },
+          {
+            "socketType": "in",
+            "name": "Reverse Direction",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Position",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "tricky-monkey-18",
+        "type": "mapexecutemacro",
+        "x": -1435,
+        "y": -4692,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Array",
+            "dataType": "{\"class\":\"JSONArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Macro",
+            "dataType": "{\"class\":\"DynamicEnumType\"}",
+            "data": "ColorBox0"
+          },
+          {
+            "socketType": "in",
+            "name": "Parameter 1",
+            "dataType": "{\"class\":\"InputArrayKeysType\",\"type\":{\"showAsButtons\":false,\"parameterName\":\"Array\",\"allowIndex\":true,\"nodeID\":\"tricky-monkey-18\",\"allowConstant\":false}}",
+            "data": "Color"
+          },
+          {
+            "socketType": "in",
+            "name": "Parameter 2",
+            "dataType": "{\"class\":\"InputArrayKeysType\",\"type\":{\"showAsButtons\":false,\"parameterName\":\"Array\",\"allowIndex\":true,\"nodeID\":\"tricky-monkey-18\",\"allowConstant\":false}}",
+            "data": "Size"
+          },
+          {
+            "socketType": "out",
+            "name": "Array",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "fast-ape-82",
+        "name": "//define your  here, node will adapt to inputs automatically",
+        "type": "customfunction",
+        "x": -1645,
+        "y": -4768,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "//define your function here, node will adapt to inputs automatically\n(a,b) => {\n\treturn a.map((_, index) => {\n\t\treturn { Color: a[index], Size: b}\n\t\t});\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "a",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "b",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "quiet-donkey-58",
+        "type": "draw_combine_array",
+        "x": -1230,
+        "y": -4687,
+        "width": 160,
+        "height": 328,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "GraphicsArray",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Number Per Column/Row",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}"
+          },
+          {
+            "socketType": "in",
+            "name": "Adjacent Placing",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true
+          },
+          {
+            "socketType": "in",
+            "name": "Change Column/Row drawing order",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true
+          },
+          {
+            "socketType": "in",
+            "name": "Spacing X",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":2000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 8
+          },
+          {
+            "socketType": "in",
+            "name": "Spacing Y",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":2000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 8
+          },
+          {
+            "socketType": "in",
+            "name": "Manual Upper Left Corner",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false
+          },
+          {
+            "socketType": "in",
+            "name": "Upper Left Corner Coordinates",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Clickable objects",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "LastPressedIndex",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}"
+          },
+          {
+            "socketType": "out",
+            "name": "PointerDown",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "LastPressedInjected",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "breezy-dingo-9",
+        "type": "draw_combine",
+        "x": -842,
+        "y": -4643,
+        "width": 160,
+        "height": 232,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Direction",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"vertical\"},{\"text\":\"horizontal\"}],\"showAsButtons\":true}}",
+            "data": "vertical",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout mode",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"manual\"},{\"text\":\"gap\"},{\"text\":\"spread\"}],\"showAsButtons\":true}}",
+            "data": "gap",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Horizontal alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\"},{\"text\":\"center\"},{\"text\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Vertical alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"top\"},{\"text\":\"center\"},{\"text\":\"bottom\"}],\"showAsButtons\":true}}",
+            "data": "top",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Gap",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-100,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 8
+          },
+          {
+            "socketType": "in",
+            "name": "Padding",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0
+            }
+          },
+          {
+            "socketType": "in",
+            "name": "Width behaviour",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"hug\"},{\"text\":\"fill\"},{\"text\":\"fixed\"}],\"showAsButtons\":true}}",
+            "data": "hug",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":2000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 400,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Height behaviour",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"hug\"},{\"text\":\"fill\"},{\"text\":\"fixed\"}],\"showAsButtons\":true}}",
+            "data": "hug",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background height",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":2000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 400,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Reverse Direction",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Position",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "dependentSocketName": "Graphics"
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "clever-wolverine-40",
+        "type": "widgetbutton",
+        "x": -2089,
+        "y": -4981,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Regenerate",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "contained",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "chilly-bobcat-71",
+        "type": "uisurfacenode",
+        "x": 213,
+        "y": -5217,
+        "width": 400,
+        "height": 400,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "022941d2-d48d-4c41-a68f-5b031756fedc": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "fontSize": 24,
+                    "textAlign": "center",
+                    "fontWeight": "normal",
+                    "color": {
+                      "a": 1,
+                      "b": 245,
+                      "g": 245,
+                      "r": 245
+                    },
+                    "text": "Generate an array of random colors"
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "233afb95-be04-4156-8d2f-b2b6e1afd8da",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "10607aca-ae97-44cc-a7eb-95ec24708429": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": false,
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "a": 0,
+                      "b": 102.6,
+                      "g": 50.399999999999885,
+                      "r": 35.999999999999986
+                    },
+                    "color": {
+                      "a": 1,
+                      "b": 51,
+                      "g": 51,
+                      "r": 51
+                    },
+                    "mobileBehavior": "column",
+                    "customStyles": {}
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "ROOT",
+                  "hidden": false,
+                  "nodes": [
+                    "b1995d77-141c-44bc-a856-2acc23284d5f"
+                  ],
+                  "linkedNodes": {}
+                },
+                "233afb95-be04-4156-8d2f-b2b6e1afd8da": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": false,
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 102.6,
+                      "g": 50.399999999999885,
+                      "r": 35.999999999999986
+                    },
+                    "color": {
+                      "a": 1,
+                      "b": 51,
+                      "g": 51,
+                      "r": 51
+                    },
+                    "mobileBehavior": "column",
+                    "customStyles": {}
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "b1995d77-141c-44bc-a856-2acc23284d5f",
+                  "hidden": false,
+                  "nodes": [
+                    "022941d2-d48d-4c41-a68f-5b031756fedc",
+                    "oF8237uacZ"
+                  ],
+                  "linkedNodes": {}
+                },
+                "29e7ab29-ff01-4aab-a190-b3d62307c1d9": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 26,
+                      "g": 13,
+                      "r": 9
+                    },
+                    "color": {
+                      "a": 1,
+                      "b": 255,
+                      "g": 255,
+                      "r": 255
+                    },
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_bad-grasshopper-18",
+                    "index": 0,
+                    "randomMainColor": "#3c54ab"
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {
+                    "isCanvasItem": true
+                  },
+                  "parent": "8596e291-1cba-48f0-a29f-08fa905e9fd8",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "8596e291-1cba-48f0-a29f-08fa905e9fd8": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": false,
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 102.6,
+                      "g": 50.399999999999885,
+                      "r": 35.999999999999986
+                    },
+                    "color": {
+                      "a": 1,
+                      "b": 51,
+                      "g": 51,
+                      "r": 51
+                    },
+                    "mobileBehavior": "column",
+                    "customStyles": {}
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "b1995d77-141c-44bc-a856-2acc23284d5f",
+                  "hidden": false,
+                  "nodes": [
+                    "29e7ab29-ff01-4aab-a190-b3d62307c1d9",
+                    "ec58c991-65be-46ff-abcf-12755c2c954f"
+                  ],
+                  "linkedNodes": {}
+                },
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "background": {
+                      "a": 0,
+                      "b": 255,
+                      "g": 255,
+                      "r": 255
+                    },
+                    "color": {
+                      "a": 1,
+                      "b": 51,
+                      "g": 51,
+                      "r": 51
+                    },
+                    "width": "80%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "240px",
+                    "maxWidth": "lg",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "mobileBehavior": "column",
+                    "customStyles": {
+                      "@media (max-width: 600px)": {
+                        "padding": "8px",
+                        "width": "100%"
+                      },
+                      "@media (max-width: 900px)": {
+                        "padding": "16px",
+                        "width": "90%"
+                      },
+                      "padding": "24px"
+                    }
+                  },
+                  "displayName": "Container",
+                  "custom": {
+                    "displayName": "Root"
+                  },
+                  "hidden": false,
+                  "nodes": [
+                    "10607aca-ae97-44cc-a7eb-95ec24708429"
+                  ],
+                  "linkedNodes": {}
+                },
+                "b1995d77-141c-44bc-a856-2acc23284d5f": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      16,
+                      16,
+                      16,
+                      16
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": false,
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "a": 0.2,
+                      "b": 102.6,
+                      "g": 50.399999999999885,
+                      "r": 35.999999999999986
+                    },
+                    "color": {
+                      "a": 1,
+                      "b": 51,
+                      "g": 51,
+                      "r": 51
+                    },
+                    "mobileBehavior": "column",
+                    "customStyles": {}
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "10607aca-ae97-44cc-a7eb-95ec24708429",
+                  "hidden": false,
+                  "nodes": [
+                    "233afb95-be04-4156-8d2f-b2b6e1afd8da",
+                    "8596e291-1cba-48f0-a29f-08fa905e9fd8",
+                    "f895a307-dccb-4dac-bf60-350a92c2cec4",
+                    "a2d98e9c-ddf2-4f28-b6ef-4f74662599aa"
+                  ],
+                  "linkedNodes": {}
+                },
+                "ec58c991-65be-46ff-abcf-12755c2c954f": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 26,
+                      "g": 13,
+                      "r": 9
+                    },
+                    "color": {
+                      "a": 1,
+                      "b": 255,
+                      "g": 255,
+                      "r": 255
+                    },
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_shaggy-cow-7",
+                    "index": 0,
+                    "randomMainColor": "#3c54ab"
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {
+                    "isCanvasItem": true
+                  },
+                  "parent": "8596e291-1cba-48f0-a29f-08fa905e9fd8",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "ee0eef4c-4c4d-4a92-94ff-114ee4ea48d4": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 26,
+                      "g": 13,
+                      "r": 9
+                    },
+                    "color": {
+                      "a": 1,
+                      "b": 255,
+                      "g": 255,
+                      "r": 255
+                    },
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_clever-wolverine-40",
+                    "index": 0,
+                    "randomMainColor": "#3c54ab"
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {
+                    "isCanvasItem": true
+                  },
+                  "parent": "f895a307-dccb-4dac-bf60-350a92c2cec4",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "f895a307-dccb-4dac-bf60-350a92c2cec4": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": false,
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 102.6,
+                      "g": 50.399999999999885,
+                      "r": 35.999999999999986
+                    },
+                    "color": {
+                      "a": 1,
+                      "b": 51,
+                      "g": 51,
+                      "r": 51
+                    },
+                    "mobileBehavior": "column",
+                    "customStyles": {}
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "b1995d77-141c-44bc-a856-2acc23284d5f",
+                  "hidden": false,
+                  "nodes": [
+                    "ee0eef4c-4c4d-4a92-94ff-114ee4ea48d4"
+                  ],
+                  "linkedNodes": {}
+                },
+                "oF8237uacZ": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "fontSize": 16,
+                    "textAlign": "center",
+                    "fontWeight": "normal",
+                    "color": {
+                      "a": 1,
+                      "b": 197,
+                      "g": 197,
+                      "r": 197
+                    },
+                    "text": "Click on a color swatch to copy its color value to the clipboard"
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "233afb95-be04-4156-8d2f-b2b6e1afd8da",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "a2d98e9c-ddf2-4f28-b6ef-4f74662599aa": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 245,
+                      "g": 245,
+                      "b": 245,
+                      "a": 0
+                    },
+                    "color": {
+                      "r": 255,
+                      "g": 255,
+                      "b": 255,
+                      "a": 1
+                    },
+                    "width": "100%",
+                    "height": "240px",
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_breezy-dingo-9",
+                    "index": 0,
+                    "randomMainColor": "#3c54ab"
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {},
+                  "parent": "b1995d77-141c-44bc-a856-2acc23284d5f"
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": {
+                "r": 51,
+                "g": 51,
+                "b": 51,
+                "a": 1
+              },
+              "mobileBehavior": "row",
+              "customStyles": {}
+            }
+          },
+          {
+            "socketType": "in",
+            "name": "WidgetSlider",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "WidgetSlider visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "WidgetSlider"
+          },
+          {
+            "socketType": "in",
+            "name": "WidgetSlider layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": {
+                "r": 51,
+                "g": 51,
+                "b": 51,
+                "a": 1
+              },
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "WidgetSlider"
+          },
+          {
+            "socketType": "in",
+            "name": "WidgetSlider 2",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "WidgetSlider 2 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "WidgetSlider 2"
+          },
+          {
+            "socketType": "in",
+            "name": "WidgetSlider 2 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": {
+                "r": 51,
+                "g": 51,
+                "b": 51,
+                "a": 1
+              },
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "WidgetSlider 2"
+          },
+          {
+            "socketType": "in",
+            "name": "WidgetButton",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "WidgetButton visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "WidgetButton"
+          },
+          {
+            "socketType": "in",
+            "name": "WidgetButton layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": {
+                "r": 51,
+                "g": 51,
+                "b": 51,
+                "a": 1
+              },
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "WidgetButton"
+          },
+          {
+            "socketType": "in",
+            "name": "Combine objects",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Combine objects visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Combine objects"
+          },
+          {
+            "socketType": "in",
+            "name": "Combine objects layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": {
+                "r": 51,
+                "g": 51,
+                "b": 51,
+                "a": 1
+              },
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Combine objects"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      }
+    ],
+    "links": [
+      {
+        "sourceNodeId": "calm-jellyfish-72",
+        "sourceSocketName": "Graphics",
+        "targetNodeId": "swift-lion-33",
+        "targetSocketName": "Output"
+      },
+      {
+        "sourceNodeId": "swift-lion-33",
+        "sourceSocketName": "Parameter 1",
+        "targetNodeId": "rotten-chipmunk-73",
+        "targetSocketName": "a"
+      },
+      {
+        "sourceNodeId": "bad-grasshopper-18",
+        "sourceSocketName": "Out",
+        "targetNodeId": "cold-elephant-100",
+        "targetSocketName": "num_colors"
+      },
+      {
+        "sourceNodeId": "clever-wolverine-40",
+        "sourceSocketName": "Out",
+        "targetNodeId": "cold-elephant-100",
+        "targetSocketName": "Trigger 1"
+      },
+      {
+        "sourceNodeId": "swift-lion-33",
+        "sourceSocketName": "Parameter 1",
+        "targetNodeId": "modern-snail-12",
+        "targetSocketName": "a"
+      },
+      {
+        "sourceNodeId": "quiet-donkey-58",
+        "sourceSocketName": "LastPressedIndex",
+        "targetNodeId": "curvy-eel-17",
+        "targetSocketName": "Index"
+      },
+      {
+        "sourceNodeId": "cold-elephant-100",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "curvy-eel-17",
+        "targetSocketName": "Array"
+      },
+      {
+        "sourceNodeId": "spotty-impala-3",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "yellow-dingo-49",
+        "targetSocketName": "Input"
+      },
+      {
+        "sourceNodeId": "quiet-donkey-58",
+        "sourceSocketName": "PointerDown",
+        "targetNodeId": "yellow-dingo-49",
+        "targetSocketName": "Trigger"
+      },
+      {
+        "sourceNodeId": "curvy-eel-17",
+        "sourceSocketName": "Element",
+        "targetNodeId": "spotty-impala-3",
+        "targetSocketName": "a"
+      },
+      {
+        "sourceNodeId": "spotty-impala-3",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "tiny-snake-84",
+        "targetSocketName": "Input"
+      },
+      {
+        "sourceNodeId": "rotten-chipmunk-73",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "rotten-wombat-51",
+        "targetSocketName": "Text"
+      },
+      {
+        "sourceNodeId": "modern-snail-12",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "rotten-wombat-51",
+        "targetSocketName": "Color"
+      },
+      {
+        "sourceNodeId": "swift-lion-33",
+        "sourceSocketName": "Parameter 1",
+        "targetNodeId": "calm-jellyfish-72",
+        "targetSocketName": "Background color"
+      },
+      {
+        "sourceNodeId": "swift-lion-33",
+        "sourceSocketName": "Parameter 2",
+        "targetNodeId": "calm-jellyfish-72",
+        "targetSocketName": "Background width"
+      },
+      {
+        "sourceNodeId": "swift-lion-33",
+        "sourceSocketName": "Parameter 2",
+        "targetNodeId": "calm-jellyfish-72",
+        "targetSocketName": "Background height"
+      },
+      {
+        "sourceNodeId": "rotten-wombat-51",
+        "sourceSocketName": "Graphics",
+        "targetNodeId": "calm-jellyfish-72",
+        "targetSocketName": "Graphics"
+      },
+      {
+        "sourceNodeId": "fast-ape-82",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "tricky-monkey-18",
+        "targetSocketName": "Array"
+      },
+      {
+        "sourceNodeId": "cold-elephant-100",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "fast-ape-82",
+        "targetSocketName": "a"
+      },
+      {
+        "sourceNodeId": "jolly-bird-23",
+        "sourceSocketName": "Out",
+        "targetNodeId": "fast-ape-82",
+        "targetSocketName": "b"
+      },
+      {
+        "sourceNodeId": "tricky-monkey-18",
+        "sourceSocketName": "Array",
+        "targetNodeId": "quiet-donkey-58",
+        "targetSocketName": "GraphicsArray"
+      },
+      {
+        "sourceNodeId": "shaggy-cow-7",
+        "sourceSocketName": "Out",
+        "targetNodeId": "quiet-donkey-58",
+        "targetSocketName": "Number Per Column/Row"
+      },
+      {
+        "sourceNodeId": "quiet-donkey-58",
+        "sourceSocketName": "Graphics",
+        "targetNodeId": "breezy-dingo-9",
+        "targetSocketName": "Graphics"
+      },
+      {
+        "sourceNodeId": "bad-grasshopper-18",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "chilly-bobcat-71",
+        "targetSocketName": "WidgetSlider"
+      },
+      {
+        "sourceNodeId": "shaggy-cow-7",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "chilly-bobcat-71",
+        "targetSocketName": "WidgetSlider 2"
+      },
+      {
+        "sourceNodeId": "clever-wolverine-40",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "chilly-bobcat-71",
+        "targetSocketName": "WidgetButton"
+      },
+      {
+        "sourceNodeId": "breezy-dingo-9",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "chilly-bobcat-71",
+        "targetSocketName": "Combine objects"
+      }
+    ]
+  },
+  "date": "2026-07-17T21:35:50.133Z",
+  "owner": "publicUser",
+  "isRemote": true
+}
