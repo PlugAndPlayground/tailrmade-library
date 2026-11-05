@@ -1,0 +1,295 @@
+{
+ "ops": [
+  {
+   "tool": "add_node",
+   "input": {
+    "node_type": "WidgetSwitch",
+    "node_id": "ai-node-1"
+   }
+  },
+  {
+   "tool": "set_node_name",
+   "input": {
+    "node_id": "ai-node-1",
+    "name": "Fahrenheit switch"
+   }
+  },
+  {
+   "tool": "set_socket_value",
+   "input": {
+    "node_id": "ai-node-1",
+    "socket_name": "Label",
+    "value": "Show in °F"
+   }
+  },
+  {
+   "tool": "set_socket_value",
+   "input": {
+    "node_id": "weather-values",
+    "socket_name": "Code",
+    "value": "(place, forecast, fahrenheit) => {\n  // A non-breaking space keeps each line's height, so the centered page does not move.\n  const blank = ' ';\n  if (!place?.name) {\n    return { title: 'City not found', condition: 'Try another spelling.', temperatureLabel: blank, temperature: blank, feelsLikeLabel: blank, feelsLike: blank, wind: blank };\n  }\n  const { current, current_units: units } = forecast;\n  const degrees = (celsius) => (fahrenheit && celsius != null ? Math.round((celsius * 9 / 5 + 32) * 10) / 10 : celsius);\n  const unit = (name) => (fahrenheit ? '°F' : name ?? '');\n  // Weather codes from the Open-Meteo documentation.\n  const conditions = { 0: 'Clear sky', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast', 45: 'Fog', 48: 'Fog', 51: 'Light drizzle', 53: 'Drizzle', 55: 'Heavy drizzle', 56: 'Freezing drizzle', 57: 'Freezing drizzle', 61: 'Light rain', 63: 'Rain', 65: 'Heavy rain', 66: 'Freezing rain', 67: 'Freezing rain', 71: 'Light snow', 73: 'Snow', 75: 'Heavy snow', 77: 'Snow grains', 80: 'Light showers', 81: 'Showers', 82: 'Heavy showers', 85: 'Snow showers', 86: 'Snow showers', 95: 'Thunderstorm', 96: 'Thunderstorm with hail', 99: 'Thunderstorm with hail' };\n  return {\n    title: `${place.country} • ${place.name}`,\n    condition: conditions[current?.weather_code] ?? blank,\n    temperatureLabel: `Temperature (${unit(units?.temperature_2m)})`,\n    temperature: degrees(current?.temperature_2m) ?? blank,\n    feelsLikeLabel: `Feels like (${unit(units?.apparent_temperature)})`,\n    feelsLike: degrees(current?.apparent_temperature) ?? blank,\n    wind: current ? `Wind ${current.wind_speed_10m} ${units?.wind_speed_10m ?? ''}` : blank,\n  };\n}"
+   }
+  },
+  {
+   "tool": "connect_sockets",
+   "input": {
+    "from_node": "ai-node-1",
+    "from_socket": "Out",
+    "to_node": "weather-values",
+    "to_socket": "fahrenheit"
+   }
+  },
+  {
+   "tool": "set_surface_layout",
+   "input": {
+    "node_id": "rare-snake-35",
+    "layout": {
+     "id": "ROOT",
+     "direction": "column",
+     "children": [
+      {
+       "id": "59d2aa62-d9e5-489b-b227-9b25e960f135",
+       "direction": "column",
+       "children": [
+        {
+         "id": "city-row",
+         "direction": "row",
+         "children": [
+          {
+           "id": "city-field",
+           "widget": "swift-bulldog-65",
+           "width": "320px",
+           "props": {
+            "background": {
+             "a": 0,
+             "b": 0,
+             "g": 0,
+             "r": 0
+            },
+            "minHeight": "unset",
+            "customStyles": {}
+           }
+          }
+         ],
+         "gap": 8,
+         "padding": [
+          8,
+          8,
+          8,
+          8
+         ],
+         "background": {
+          "a": 0,
+          "b": 0,
+          "g": 0,
+          "r": 0
+         },
+         "align": "stretch",
+         "justify": "center",
+         "mobileBehavior": "row",
+         "props": {
+          "minWidth": "48px"
+         }
+        },
+        {
+         "direction": "row",
+         "justify": "center",
+         "width": "100%",
+         "mobileBehavior": "row",
+         "props": {
+          "minWidth": "48px"
+         },
+         "children": [
+          {
+           "widget": "ai-node-1",
+           "width": "auto"
+          }
+         ]
+        },
+        {
+         "id": "99d3fe25-6099-4e8c-bdcf-5f76fab38d33",
+         "widget": "dry-eagle-46",
+         "props": {
+          "background": {
+           "a": 0,
+           "b": 0,
+           "g": 0,
+           "r": 0
+          },
+          "minHeight": "24px"
+         }
+        },
+        {
+         "id": "condition-widget",
+         "widget": "condition-text",
+         "props": {
+          "background": {
+           "a": 0,
+           "b": 0,
+           "g": 0,
+           "r": 0
+          },
+          "minHeight": "unset",
+          "customStyles": {}
+         }
+        },
+        {
+         "id": "415f22e1-c49b-4291-b871-8eb50799490e",
+         "direction": "column",
+         "children": [
+          {
+           "id": "531add98-9337-4b1e-bec4-8ad55bbd2c8d",
+           "widget": "moody-fireant-19",
+           "props": {
+            "background": {
+             "a": 0,
+             "b": 0,
+             "g": 0,
+             "r": 0
+            },
+            "minHeight": "24px"
+           }
+          },
+          {
+           "id": "056fb6dd-37b9-4d6b-ae83-d95c3be453fd",
+           "widget": "curvy-monkey-25",
+           "width": "auto",
+           "props": {
+            "background": {
+             "a": 0,
+             "b": 0,
+             "g": 0,
+             "r": 0
+            },
+            "minHeight": "24px"
+           }
+          }
+         ],
+         "gap": 8,
+         "padding": [
+          8,
+          8,
+          8,
+          8
+         ],
+         "background": {
+          "a": 0,
+          "b": 0,
+          "g": 0,
+          "r": 0
+         },
+         "align": "center",
+         "mobileBehavior": "row"
+        },
+        {
+         "id": "13dfa601-7b3c-4547-a05f-0feb9fcf28f8",
+         "direction": "column",
+         "children": [
+          {
+           "id": "c5a40d98-39c3-4aa6-91b7-7424819b3e12",
+           "widget": "breezy-ladybug-74",
+           "props": {
+            "background": {
+             "a": 0,
+             "b": 0,
+             "g": 0,
+             "r": 0
+            },
+            "minHeight": "24px"
+           }
+          },
+          {
+           "id": "eda645c6-bad7-4bfd-8c5e-60ebcf2ebaca",
+           "widget": "dangerous-grasshopper-70",
+           "width": "auto",
+           "props": {
+            "background": {
+             "a": 0,
+             "b": 0,
+             "g": 0,
+             "r": 0
+            },
+            "minHeight": "24px"
+           }
+          },
+          {
+           "id": "wind-widget",
+           "widget": "wind-text",
+           "props": {
+            "background": {
+             "a": 0,
+             "b": 0,
+             "g": 0,
+             "r": 0
+            },
+            "minHeight": "unset",
+            "customStyles": {}
+           }
+          }
+         ],
+         "gap": 8,
+         "padding": [
+          8,
+          8,
+          8,
+          8
+         ],
+         "background": {
+          "a": 0,
+          "b": 0,
+          "g": 0,
+          "r": 0
+         },
+         "align": "center",
+         "mobileBehavior": "row"
+        }
+       ],
+       "gap": 16,
+       "padding": [
+        8,
+        8,
+        8,
+        8
+       ],
+       "background": {
+        "a": 0,
+        "b": 0,
+        "g": 0,
+        "r": 0
+       },
+       "height": "100%",
+       "align": "center",
+       "justify": "center",
+       "mobileBehavior": "row"
+      }
+     ],
+     "background": {
+      "a": 0,
+      "b": 0,
+      "g": 0,
+      "r": 0
+     },
+     "height": "100dvh",
+     "props": {
+      "maxWidth": false,
+      "customStyles": {}
+     }
+    }
+   }
+  },
+  {
+   "tool": "add_to_group",
+   "input": {
+    "group_id": "show",
+    "node_ids": [
+     "ai-node-1"
+    ]
+   }
+  },
+  {
+   "tool": "inspect_warnings_and_errors",
+   "input": {}
+  }
+ ],
+ "after": "c.getNodeByID('ai-node-1').setPosition(3558, 3515);"
+}

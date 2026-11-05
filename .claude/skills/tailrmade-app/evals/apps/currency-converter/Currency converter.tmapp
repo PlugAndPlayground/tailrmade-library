@@ -1,0 +1,2053 @@
+{
+  "id": "Default/Currency converter",
+  "location": "Default",
+  "name": "Currency converter",
+  "access": "private",
+  "graphData": {
+    "version": 7,
+    "graphSettings": {
+      "showExecutionVisualisation": true,
+      "viewportCenterPosition": {
+        "x": -694,
+        "y": 1918
+      },
+      "viewportScale": 0.122,
+      "defaultUISurfaceNodeId": "ai-node-13",
+      "theme": {
+        "mode": "dark"
+      }
+    },
+    "overlay": {
+      "dashboard": {
+        "visible": true,
+        "fullscreen": false,
+        "maximized": false,
+        "widthPercentage": 52,
+        "locked": false
+      }
+    },
+    "nodes": [
+      {
+        "id": "ai-node-1",
+        "name": "Start here",
+        "type": "label",
+        "x": 0,
+        "y": 0,
+        "width": 2995,
+        "height": 285,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "This page is a Tailrmade app.\nFollow the numbers: the currencies build an address, the button sends it, and the answer fills the page.\nMain page on the right shows the result."
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 64,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-2",
+        "name": "App theme",
+        "type": "theme",
+        "x": 0,
+        "y": 805,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Preset",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Keep app setting\"},{\"text\":\"tailrmade\"},{\"text\":\"cloud\"},{\"text\":\"bauhaus\"},{\"text\":\"newsprint\"},{\"text\":\"terminal\"},{\"text\":\"neon\"}],\"showAsButtons\":false}}",
+            "data": "Keep app setting"
+          },
+          {
+            "socketType": "in",
+            "name": "Mode",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Keep app setting\"},{\"text\":\"light\"},{\"text\":\"dark\"},{\"text\":\"system\"}],\"showAsButtons\":false}}",
+            "data": "Keep app setting"
+          },
+          {
+            "socketType": "in",
+            "name": "Overrides",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {}
+          },
+          {
+            "socketType": "out",
+            "name": "Theme",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Warnings",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Keeps the app's saved theme. Pick a preset and mode here to restyle the page."
+      },
+      {
+        "id": "ai-node-3",
+        "name": "Amount",
+        "type": "widgetnumberfield",
+        "x": 0,
+        "y": 1485,
+        "width": 220,
+        "height": 120,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 100,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Limit Range",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 1000000000,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 2,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Amount",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Placeholder",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Helper Text",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Step",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Show Steppers",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Required",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While typing\"},{\"text\":\"Rate limited\"},{\"text\":\"After pause\"},{\"text\":\"Enter or blur\"}],\"showAsButtons\":true}}",
+            "data": "While typing",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit Delay",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":5000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 400,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-4",
+        "name": "From currency",
+        "type": "widgetdropdown",
+        "x": 0,
+        "y": 1685,
+        "width": 250,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Fallback Option",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Options",
+            "dataType": "{\"class\":\"ArrayType\"}",
+            "data": [
+              "EUR",
+              "USD",
+              "GBP",
+              "JPY",
+              "CHF",
+              "CAD",
+              "AUD",
+              "SEK"
+            ],
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Selected Option",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "EUR",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "From",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "ai-node-5",
+        "name": "To currency",
+        "type": "widgetdropdown",
+        "x": 0,
+        "y": 1869,
+        "width": 250,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Fallback Option",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Options",
+            "dataType": "{\"class\":\"ArrayType\"}",
+            "data": [
+              "EUR",
+              "USD",
+              "GBP",
+              "JPY",
+              "CHF",
+              "CAD",
+              "AUD",
+              "SEK"
+            ],
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Selected Option",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "USD",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "To",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "ai-node-6",
+        "name": "Convert button",
+        "type": "widgetbutton",
+        "x": 850,
+        "y": 2573,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Get the latest rate",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-7",
+        "name": "Rate address",
+        "type": "customfunction",
+        "x": 390,
+        "y": 1485,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(from, to) => {\n  const target = from === to ? (from === 'USD' ? 'EUR' : 'USD') : to;\n  return `https://api.frankfurter.dev/v1/latest?base=${from}&symbols=${target}`;\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "from",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "to",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "An HTTP node always sends, so the same currency twice still gets a valid address. The page handles that case without using the answer."
+      },
+      {
+        "id": "ai-node-8",
+        "name": "Get the rate",
+        "type": "httpnode",
+        "x": 1190,
+        "y": 2573,
+        "width": 160,
+        "height": 184,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "URL",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Headers",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {}
+          },
+          {
+            "socketType": "in",
+            "name": "Method",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Get\",\"value\":\"Get\"},{\"text\":\"Post\",\"value\":\"Post\"},{\"text\":\"Put\",\"value\":\"Put\"},{\"text\":\"Patch\",\"value\":\"Patch\"},{\"text\":\"Delete\",\"value\":\"Delete\"}],\"showAsButtons\":true}}",
+            "data": "Get"
+          },
+          {
+            "socketType": "in",
+            "name": "Body",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Send Through Companion",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false
+          },
+          {
+            "socketType": "trigger",
+            "name": "Trigger 1",
+            "dataType": "{\"class\":\"TriggerType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Content",
+            "dataType": "{\"class\":\"JSONType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": false,
+          "interval": false
+        },
+        "comment": "Runs when the app opens, then only when you press the button, to stay under the API's rate limit. The address comes from the dropdowns, so it keeps its network warning."
+      },
+      {
+        "id": "ai-node-9",
+        "name": "Convert the amount",
+        "type": "customfunction",
+        "x": 1650,
+        "y": 3357,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(amount, from, to, answer) => {\n  // A non-breaking space keeps each line's height, so the card does not jump when results go.\n  const blank = ' ';\n  const value = Number(amount);\n  // The sandbox has no locale data, so toLocaleString would not round or group.\n  const format = (number) => number.toFixed(2).replace(/\\B(?=(\\d{3})+(?!\\d))/g, ',');\n  const answered = typeof answer?.rates === 'object' && answer.rates !== null;\n  if (from === to) {\n    return { result: value > 0 ? `${format(value)} ${to}` : blank, rate: `1 ${from} = 1 ${to}`, note: value > 0 ? 'Same currency on both sides.' : 'Enter an amount to convert.' };\n  }\n  // The page opens once the first request is done, so no rate here means it failed.\n  if (!answered) {\n    return { result: blank, rate: blank, note: 'Could not get the rate. Press the button to try again.' };\n  }\n  const code = Object.keys(answer.rates)[0];\n  const rate = Number(answer.rates[code]);\n  if (!(rate > 0)) {\n    return { result: blank, rate: blank, note: 'Could not get the rate. Press the button to try again.' };\n  }\n  if (answer.base !== from || code !== to) {\n    return { result: blank, rate: blank, note: `Press the button to get the rate for ${from} to ${to}.` };\n  }\n  return {\n    result: value > 0 ? `${format(value * rate)} ${to}` : blank,\n    rate: `1 ${from} = ${rate} ${to}`,\n    note: value > 0 ? `Rate from ${answer.date ?? 'the latest update'}.` : 'Enter an amount to convert.',\n  };\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "amount",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "from",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "to",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "answer",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "Reads the currency from the answer, not the dropdowns, so the page never labels an old rate with a new currency."
+      },
+      {
+        "id": "ai-node-10",
+        "name": "Converted amount",
+        "type": "text",
+        "x": 1950,
+        "y": 3357,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.result}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "h1",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "overflowWrap": "anywhere"
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-11",
+        "name": "Exchange rate",
+        "type": "text",
+        "x": 1950,
+        "y": 3517,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.rate}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "muted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-12",
+        "name": "Rate note",
+        "type": "text",
+        "x": 1950,
+        "y": 3677,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.note}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "caption",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "muted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-13",
+        "name": "Main page",
+        "type": "uisurfacenode",
+        "x": 4450.133333333333,
+        "y": 2511.0,
+        "width": 300,
+        "height": 300,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "center",
+                    "justifyContent": "flex-start",
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      24,
+                      24,
+                      24
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "50dvh",
+                    "maxWidth": "lg",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "@media (max-width: 600px)": {
+                        "padding": "8px"
+                      }
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "oIFTbOWcBK",
+                    "T2c3QuJGJA",
+                    "76zqB3kWtf"
+                  ],
+                  "linkedNodes": {}
+                },
+                "oIFTbOWcBK": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      16,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "560px",
+                    "maxHeight": "unset",
+                    "gap": 4,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "2FOzKasHkq",
+                    "g7Jop1XTva"
+                  ],
+                  "linkedNodes": {}
+                },
+                "2FOzKasHkq": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Currency converter",
+                    "variant": "h1",
+                    "tone": "default",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "oIFTbOWcBK",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "g7Jop1XTva": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Rates come from Frankfurter, which publishes European Central Bank rates once a working day.",
+                    "variant": "body",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "oIFTbOWcBK",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "T2c3QuJGJA": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      20,
+                      20
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "560px",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "strong",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "bYXbtb9lyT",
+                    "erf0rWRpgz",
+                    "cUG3miTkag"
+                  ],
+                  "linkedNodes": {}
+                },
+                "bYXbtb9lyT": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-3",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "T2c3QuJGJA",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "erf0rWRpgz": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "T2c3QuJGJA",
+                  "nodes": [
+                    "k2YgyacDm0",
+                    "bFh3XBUd7E"
+                  ],
+                  "linkedNodes": {}
+                },
+                "k2YgyacDm0": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "50%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-4",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "erf0rWRpgz",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "bFh3XBUd7E": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "50%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-5",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "erf0rWRpgz",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "cUG3miTkag": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-6",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "T2c3QuJGJA",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "76zqB3kWtf": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      20,
+                      20
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "560px",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "subtle",
+                    "tone": "primary",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "hmSBpAh7xO",
+                    "0uIEsBgP89",
+                    "ilIyEAZSub",
+                    "h2t9XJXV8I"
+                  ],
+                  "linkedNodes": {}
+                },
+                "hmSBpAh7xO": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Converted",
+                    "variant": "label",
+                    "tone": "muted",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "76zqB3kWtf",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "0uIEsBgP89": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-10",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "76zqB3kWtf",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "ilIyEAZSub": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-11",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "76zqB3kWtf",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "h2t9XJXV8I": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-12",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "76zqB3kWtf",
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            }
+          },
+          {
+            "socketType": "in",
+            "name": "Number Field",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Number Field visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Number Field"
+          },
+          {
+            "socketType": "in",
+            "name": "Number Field layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Number Field"
+          },
+          {
+            "socketType": "in",
+            "name": "Dropdown (single select)",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Dropdown (single select) visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Dropdown (single select)"
+          },
+          {
+            "socketType": "in",
+            "name": "Dropdown (single select) layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Dropdown (single select)"
+          },
+          {
+            "socketType": "in",
+            "name": "Dropdown (single select) 2",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Dropdown (single select) 2 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Dropdown (single select) 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Dropdown (single select) 2 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Dropdown (single select) 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Button",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Button visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Button layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Text",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text"
+          },
+          {
+            "socketType": "in",
+            "name": "Text layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 2",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 2 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 2 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 3",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 3 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text 3"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 3 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text 3"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "This is the page you see on the left. The inputs and the result plug in here."
+      }
+    ],
+    "links": [
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-7",
+        "targetSocketName": "from"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-7",
+        "targetSocketName": "to"
+      },
+      {
+        "sourceNodeId": "ai-node-7",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "URL"
+      },
+      {
+        "sourceNodeId": "ai-node-6",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "Trigger 1"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "amount"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "from"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "to"
+      },
+      {
+        "sourceNodeId": "ai-node-8",
+        "sourceSocketName": "Content",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "answer"
+      },
+      {
+        "sourceNodeId": "ai-node-9",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-10",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "ai-node-9",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-11",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "ai-node-9",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "Number Field"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "Dropdown (single select)"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "Dropdown (single select) 2"
+      },
+      {
+        "sourceNodeId": "ai-node-6",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "Button"
+      },
+      {
+        "sourceNodeId": "ai-node-10",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "Text"
+      },
+      {
+        "sourceNodeId": "ai-node-11",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "Text 2"
+      },
+      {
+        "sourceNodeId": "ai-node-12",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "Text 3"
+      }
+    ],
+    "groups": [
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "ai-node-1"
+        ]
+      },
+      {
+        "id": "app-theme",
+        "name": "App theme",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "ai-node-2"
+        ]
+      },
+      {
+        "id": "1-pick-the-currencies",
+        "name": "1. Pick the currencies",
+        "color": "#60D2FF",
+        "nodeIds": [
+          "ai-node-3",
+          "ai-node-4",
+          "ai-node-5",
+          "ai-node-7"
+        ]
+      },
+      {
+        "id": "2-get-the-rate",
+        "name": "2. Get the rate",
+        "color": "#E2ABFF",
+        "nodeIds": [
+          "ai-node-6",
+          "ai-node-8"
+        ]
+      },
+      {
+        "id": "3-show-the-conversion",
+        "name": "3. Show the conversion",
+        "color": "#FFAE6B",
+        "nodeIds": [
+          "ai-node-9",
+          "ai-node-10",
+          "ai-node-11",
+          "ai-node-12"
+        ]
+      },
+      {
+        "id": "main-page",
+        "name": "Main page",
+        "color": "#C0B6FF",
+        "nodeIds": [
+          "ai-node-13"
+        ]
+      }
+    ]
+  },
+  "date": "2026-11-02T22:03:53.817Z",
+  "owner": "unknown",
+  "isRemote": false
+}

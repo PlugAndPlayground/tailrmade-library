@@ -1,0 +1,50 @@
+{
+ "name": "Pattern maker",
+ "chain": true,
+ "app_theme": {
+  "mode": "dark"
+ },
+ "start": [
+  "ai-node-1"
+ ],
+ "page": "ai-node-8",
+ "overlay": {
+  "dashboard": {
+   "visible": true,
+   "fullscreen": false,
+   "maximized": false,
+   "widthPercentage": 52,
+   "locked": false
+  }
+ },
+ "sections": [
+  {
+   "name": "Read the sliders and theme",
+   "nodes": [
+    "ai-node-2",
+    "ai-node-3",
+    "ai-node-4",
+    "ai-node-5"
+   ]
+  },
+  {
+   "name": "Make the shader settings",
+   "nodes": [
+    "ai-node-6"
+   ]
+  },
+  {
+   "name": "Paint the picture",
+   "nodes": [
+    "ai-node-9",
+    "ai-node-7"
+   ],
+   "reserve": {
+    "ai-node-7": [
+     640,
+     700
+    ]
+   }
+  }
+ ]
+}

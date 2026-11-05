@@ -1,0 +1,62 @@
+{
+ "expect_risks": [],
+ "scenarios": [
+  {
+   "name": "sliders-redraw",
+   "steps": [
+    {
+     "see": "Petals: 6"
+    },
+    {
+     "shot": "before"
+    },
+    {
+     "keys": "{rightarrow}{rightarrow}{rightarrow}{rightarrow}",
+     "selector": "input[type=range]"
+    },
+    {
+     "see": "Petals: 10"
+    },
+    {
+     "wait": 1500
+    },
+    {
+     "shot": "after"
+    },
+    {
+     "eval": "return c.getNodeOutputValue('ai-node-6','OutData').petals.value",
+     "expect": 10
+    },
+    {
+     "requests": ".",
+     "count": 0
+    }
+   ]
+  },
+  {
+   "name": "phone-sliders",
+   "viewport": [
+    390,
+    844
+   ],
+   "steps": [
+    {
+     "see": "Petals: 6"
+    },
+    {
+     "keys": "{leftarrow}",
+     "selector": "input[type=range]"
+    },
+    {
+     "see": "Petals: 5"
+    },
+    {
+     "check_page": "phone"
+    },
+    {
+     "shot": "phone"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,748 @@
+[
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Label",
+   "node_id": "ai-node-1"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-1",
+   "name": "Start here"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-1",
+   "socket_name": "Input",
+   "value": "This page is a Tailrmade app.\nFollow the numbers: the currencies build an address, the button sends it, and the answer fills the page.\nMain page on the right shows the result."
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-1",
+   "socket_name": "Font size",
+   "value": 64
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-1",
+   "socket_name": "Background color",
+   "value": {
+    "r": 255,
+    "g": 255,
+    "b": 255,
+    "a": 1
+   }
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "theme",
+   "node_id": "ai-node-2"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-2",
+   "name": "App theme"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-2",
+   "comment": "Keeps the app's saved theme. Pick a preset and mode here to restyle the page."
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "WidgetNumberField",
+   "node_id": "ai-node-3"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-3",
+   "name": "Amount"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Initial Value",
+   "value": 100
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Limit Range",
+   "value": true
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Min",
+   "value": 0
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Max",
+   "value": 1000000000
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Decimals",
+   "value": 2
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Label",
+   "value": "Amount"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "WidgetDropdown",
+   "node_id": "ai-node-4"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-4",
+   "name": "From currency"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Options",
+   "value": [
+    "EUR",
+    "USD",
+    "GBP",
+    "JPY",
+    "CHF",
+    "CAD",
+    "AUD",
+    "SEK"
+   ]
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Selected Option",
+   "value": "EUR"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Label",
+   "value": "From"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "WidgetDropdown",
+   "node_id": "ai-node-5"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-5",
+   "name": "To currency"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Options",
+   "value": [
+    "EUR",
+    "USD",
+    "GBP",
+    "JPY",
+    "CHF",
+    "CAD",
+    "AUD",
+    "SEK"
+   ]
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Selected Option",
+   "value": "USD"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Label",
+   "value": "To"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "WidgetButton",
+   "node_id": "ai-node-6"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-6",
+   "name": "Convert button"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-6",
+   "socket_name": "Label",
+   "value": "Get the latest rate"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-6",
+   "socket_name": "Variant",
+   "value": "Inherit"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "CustomFunction",
+   "node_id": "ai-node-7"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-7",
+   "name": "Rate address"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-7",
+   "comment": "An HTTP node always sends, so the same currency twice still gets a valid address. The page handles that case without using the answer."
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-7",
+   "socket_name": "Code",
+   "value": "(from, to) => {\n  const target = from === to ? (from === 'USD' ? 'EUR' : 'USD') : to;\n  return `https://api.frankfurter.dev/v1/latest?base=${from}&symbols=${target}`;\n}"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-4",
+   "from_socket": "Out",
+   "to_node": "ai-node-7",
+   "to_socket": "from"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-5",
+   "from_socket": "Out",
+   "to_node": "ai-node-7",
+   "to_socket": "to"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "HTTPNode",
+   "node_id": "ai-node-8"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-8",
+   "name": "Get the rate"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-8",
+   "comment": "Runs when the app opens, then only when you press the button, to stay under the API's rate limit. The address comes from the dropdowns, so it keeps its network warning."
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-7",
+   "from_socket": "OutData",
+   "to_node": "ai-node-8",
+   "to_socket": "URL"
+  }
+ },
+ {
+  "tool": "set_update_behaviour",
+  "input": {
+   "node_id": "ai-node-8",
+   "load": true,
+   "update": false,
+   "interval": false
+  }
+ },
+ {
+  "tool": "add_trigger_input",
+  "input": {
+   "node_id": "ai-node-8",
+   "trigger_type": "positiveFlank"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-6",
+   "from_socket": "Out",
+   "to_node": "ai-node-8",
+   "to_socket": "Trigger 1"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "CustomFunction",
+   "node_id": "ai-node-9"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-9",
+   "name": "Convert the amount"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-9",
+   "comment": "Reads the currency from the answer, not the dropdowns, so the page never labels an old rate with a new currency."
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-9",
+   "socket_name": "Code",
+   "value": "(amount, from, to, answer) => {\n  // A non-breaking space keeps each line's height, so the card does not jump when results go.\n  const blank = ' ';\n  const value = Number(amount);\n  // The sandbox has no locale data, so toLocaleString would not round or group.\n  const format = (number) => number.toFixed(2).replace(/\\B(?=(\\d{3})+(?!\\d))/g, ',');\n  const answered = typeof answer?.rates === 'object' && answer.rates !== null;\n  if (from === to) {\n    return { result: value > 0 ? `${format(value)} ${to}` : blank, rate: `1 ${from} = 1 ${to}`, note: value > 0 ? 'Same currency on both sides.' : 'Enter an amount to convert.' };\n  }\n  // The page opens once the first request is done, so no rate here means it failed.\n  if (!answered) {\n    return { result: blank, rate: blank, note: 'Could not get the rate. Press the button to try again.' };\n  }\n  const code = Object.keys(answer.rates)[0];\n  const rate = Number(answer.rates[code]);\n  if (!(rate > 0)) {\n    return { result: blank, rate: blank, note: 'Could not get the rate. Press the button to try again.' };\n  }\n  if (answer.base !== from || code !== to) {\n    return { result: blank, rate: blank, note: `Press the button to get the rate for ${from} to ${to}.` };\n  }\n  return {\n    result: value > 0 ? `${format(value * rate)} ${to}` : blank,\n    rate: `1 ${from} = ${rate} ${to}`,\n    note: value > 0 ? `Rate from ${answer.date ?? 'the latest update'}.` : 'Enter an amount to convert.',\n  };\n}"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-3",
+   "from_socket": "Out",
+   "to_node": "ai-node-9",
+   "to_socket": "amount"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-4",
+   "from_socket": "Out",
+   "to_node": "ai-node-9",
+   "to_socket": "from"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-5",
+   "from_socket": "Out",
+   "to_node": "ai-node-9",
+   "to_socket": "to"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-8",
+   "from_socket": "Content",
+   "to_node": "ai-node-9",
+   "to_socket": "answer"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Text",
+   "node_id": "ai-node-10"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-10",
+   "name": "Converted amount"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-10",
+   "socket_name": "Content",
+   "value": "{{r.result}}"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-10",
+   "socket_name": "Variant",
+   "value": "h1"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-10",
+   "socket_name": "Tone",
+   "value": "primary"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-10",
+   "socket_name": "Alignment",
+   "value": "left"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-10",
+   "socket_name": "Custom styles",
+   "value": {
+    "overflowWrap": "anywhere"
+   }
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-9",
+   "from_socket": "OutData",
+   "to_node": "ai-node-10",
+   "to_socket": "r"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Text",
+   "node_id": "ai-node-11"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-11",
+   "name": "Exchange rate"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-11",
+   "socket_name": "Content",
+   "value": "{{r.rate}}"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-11",
+   "socket_name": "Variant",
+   "value": "body"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-11",
+   "socket_name": "Tone",
+   "value": "muted"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-11",
+   "socket_name": "Alignment",
+   "value": "left"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-9",
+   "from_socket": "OutData",
+   "to_node": "ai-node-11",
+   "to_socket": "r"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Text",
+   "node_id": "ai-node-12"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-12",
+   "name": "Rate note"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-12",
+   "socket_name": "Content",
+   "value": "{{r.note}}"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-12",
+   "socket_name": "Variant",
+   "value": "caption"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-12",
+   "socket_name": "Tone",
+   "value": "muted"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-12",
+   "socket_name": "Alignment",
+   "value": "left"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-9",
+   "from_socket": "OutData",
+   "to_node": "ai-node-12",
+   "to_socket": "r"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "UISurfaceNode",
+   "node_id": "ai-node-13"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-13",
+   "name": "Main page"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-13",
+   "comment": "This is the page you see on the left. The inputs and the result plug in here."
+  }
+ },
+ {
+  "tool": "set_surface_layout",
+  "input": {
+   "node_id": "ai-node-13",
+   "layout": {
+    "direction": "column",
+    "gap": 16,
+    "padding": 24,
+    "align": "center",
+    "props": {
+     "customStyles": {
+      "@media (max-width: 600px)": {
+       "padding": "8px"
+      }
+     }
+    },
+    "children": [
+     {
+      "direction": "column",
+      "gap": 4,
+      "width": "100%",
+      "padding": [
+       16,
+       8,
+       8,
+       8
+      ],
+      "props": {
+       "maxWidth": "560px"
+      },
+      "children": [
+       {
+        "text": "Currency converter",
+        "variant": "h1",
+        "tone": "default",
+        "alignment": "center"
+       },
+       {
+        "text": "Rates come from Frankfurter, which publishes European Central Bank rates once a working day.",
+        "variant": "body",
+        "tone": "muted",
+        "alignment": "center"
+       }
+      ]
+     },
+     {
+      "direction": "column",
+      "gap": 16,
+      "padding": 20,
+      "emphasis": "strong",
+      "width": "100%",
+      "align": "stretch",
+      "props": {
+       "maxWidth": "560px",
+       "minWidth": "48px"
+      },
+      "children": [
+       {
+        "widget": "ai-node-3",
+        "width": "100%"
+       },
+       {
+        "direction": "row",
+        "gap": 16,
+        "width": "100%",
+        "align": "stretch",
+        "mobileBehavior": "row",
+        "props": {
+         "minWidth": "48px"
+        },
+        "children": [
+         {
+          "widget": "ai-node-4",
+          "width": "50%"
+         },
+         {
+          "widget": "ai-node-5",
+          "width": "50%"
+         }
+        ]
+       },
+       {
+        "widget": "ai-node-6",
+        "width": "100%"
+       }
+      ]
+     },
+     {
+      "direction": "column",
+      "gap": 8,
+      "padding": 20,
+      "emphasis": "subtle",
+      "tone": "primary",
+      "width": "100%",
+      "align": "stretch",
+      "props": {
+       "maxWidth": "560px",
+       "minWidth": "48px"
+      },
+      "children": [
+       {
+        "text": "Converted",
+        "variant": "label",
+        "tone": "muted"
+       },
+       {
+        "widget": "ai-node-10",
+        "width": "100%"
+       },
+       {
+        "widget": "ai-node-11",
+        "width": "100%"
+       },
+       {
+        "widget": "ai-node-12",
+        "width": "100%"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ },
+ {
+  "tool": "set_default_surface",
+  "input": {
+   "node_id": "ai-node-13"
+  }
+ },
+ {
+  "tool": "inspect_warnings_and_errors",
+  "input": {}
+ }
+]

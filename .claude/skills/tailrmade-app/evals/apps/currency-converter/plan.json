@@ -1,0 +1,50 @@
+{
+ "name": "Currency converter",
+ "chain": true,
+ "app_theme": {
+  "mode": "dark"
+ },
+ "start": [
+  "ai-node-1"
+ ],
+ "theme": [
+  "ai-node-2"
+ ],
+ "page": "ai-node-13",
+ "overlay": {
+  "dashboard": {
+   "visible": true,
+   "fullscreen": false,
+   "maximized": false,
+   "widthPercentage": 52,
+   "locked": false
+  }
+ },
+ "sections": [
+  {
+   "name": "Pick the currencies",
+   "nodes": [
+    "ai-node-3",
+    "ai-node-4",
+    "ai-node-5",
+    "ai-node-7"
+   ]
+  },
+  {
+   "name": "Get the rate",
+   "nodes": [
+    "ai-node-6",
+    "ai-node-8"
+   ]
+  },
+  {
+   "name": "Show the conversion",
+   "nodes": [
+    "ai-node-9",
+    "ai-node-10",
+    "ai-node-11",
+    "ai-node-12"
+   ]
+  }
+ ]
+}
