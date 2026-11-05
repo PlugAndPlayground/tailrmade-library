@@ -4,27 +4,31 @@
   "name": "Node Update Behaviour",
   "access": "public",
   "graphData": {
-    "version": 0.1,
+    "version": 7,
     "graphSettings": {
       "showExecutionVisualisation": true,
       "viewportCenterPosition": {
-        "x": 205,
-        "y": 351
+        "x": 150,
+        "y": 100
       },
-      "viewportScale": 0.5194705044816399
+      "viewportScale": 0.32,
+      "theme": {
+        "mode": "dark"
+      }
     },
     "overlay": {
       "dashboard": {
         "visible": false,
         "fullscreen": false,
-        "widthPercentage": 50,
+        "maximized": false,
+        "widthPercentage": 52,
         "locked": false
       }
     },
     "nodes": [
       {
         "id": "green-dragonfly-23",
-        "type": "Mouse",
+        "type": "mouse",
         "x": 116,
         "y": 44,
         "width": 160,
@@ -62,17 +66,18 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": true
-        }
+        },
+        "name": "Mouse every 1s"
       },
       {
         "id": "cold-eagle-90",
-        "type": "Label",
+        "type": "label",
         "x": 360,
         "y": -57,
-        "width": 96,
+        "width": 60,
         "height": 69,
         "socketArray": [
           {
@@ -151,20 +156,27 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Screen x (1s)"
       },
       {
         "id": "tricky-snail-97",
-        "type": "Label",
+        "type": "label",
         "x": 362,
         "y": 18,
-        "width": 96,
+        "width": 60,
         "height": 69,
         "socketArray": [
           {
@@ -243,20 +255,27 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Screen y (1s)"
       },
       {
         "id": "silent-cheetah-94",
-        "type": "Label",
+        "type": "label",
         "x": 362,
         "y": 106,
-        "width": 365,
+        "width": 345,
         "height": 69,
         "socketArray": [
           {
@@ -335,20 +354,27 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "World x (1s)"
       },
       {
         "id": "wise-cobra-86",
-        "type": "Label",
+        "type": "label",
         "x": 365,
         "y": 178,
-        "width": 354,
+        "width": 311,
         "height": 69,
         "socketArray": [
           {
@@ -427,17 +453,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "World y (1s)"
       },
       {
         "id": "fresh-yak-48",
-        "type": "Label",
+        "type": "label",
         "x": 366,
         "y": 264,
         "width": 354,
@@ -519,17 +552,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Scale (1s)"
       },
       {
         "id": "hungry-bullfrog-85",
-        "type": "Label",
+        "type": "label",
         "x": 366,
         "y": 340,
         "width": 60,
@@ -611,17 +651,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Buttons (1s)"
       },
       {
         "id": "selfish-quail-14",
-        "type": "Mouse",
+        "type": "mouse",
         "x": 794,
         "y": 46,
         "width": 160,
@@ -659,18 +706,19 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": true,
           "intervalFrequency": 10
-        }
+        },
+        "name": "Mouse every 10ms"
       },
       {
         "id": "yellow-rat-76",
-        "type": "Label",
+        "type": "label",
         "x": 1037,
         "y": -56,
-        "width": 96,
+        "width": 60,
         "height": 69,
         "socketArray": [
           {
@@ -749,20 +797,27 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Screen x (10ms)"
       },
       {
         "id": "tricky-goat-10",
-        "type": "Label",
+        "type": "label",
         "x": 1039,
         "y": 19,
-        "width": 96,
+        "width": 60,
         "height": 69,
         "socketArray": [
           {
@@ -841,20 +896,27 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Screen y (10ms)"
       },
       {
         "id": "calm-penguin-53",
-        "type": "Label",
+        "type": "label",
         "x": 1039,
         "y": 107,
-        "width": 352,
+        "width": 345,
         "height": 69,
         "socketArray": [
           {
@@ -933,20 +995,27 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "World x (10ms)"
       },
       {
         "id": "strong-shrimp-37",
-        "type": "Label",
+        "type": "label",
         "x": 1041,
         "y": 179,
-        "width": 352,
+        "width": 311,
         "height": 69,
         "socketArray": [
           {
@@ -1025,17 +1094,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "World y (10ms)"
       },
       {
         "id": "jolly-robin-52",
-        "type": "Label",
+        "type": "label",
         "x": 1043,
         "y": 264,
         "width": 354,
@@ -1117,17 +1193,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Scale (10ms)"
       },
       {
         "id": "odd-squid-16",
-        "type": "Label",
+        "type": "label",
         "x": 1043,
         "y": 341,
         "width": 60,
@@ -1209,18 +1292,25 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Buttons (10ms)"
       },
       {
         "id": "green-bat-16",
-        "name": "Extract first name",
-        "type": "JSONGet",
+        "name": "First name (Update now)",
+        "type": "jsonget",
         "x": 602,
         "y": 628,
         "width": 160,
@@ -1244,16 +1334,147 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
         }
       },
       {
         "id": "tough-jellyfish-3",
-        "type": "Label",
+        "type": "label",
         "x": 839,
         "y": 659,
+        "width": 151,
+        "height": 69,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 86,
+              "g": 225,
+              "b": 204,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "min-width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 128,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Name (Update now)"
+      },
+      {
+        "id": "chatty-rattlesnake-28",
+        "name": "First name (trigger)",
+        "type": "jsonget",
+        "x": 600,
+        "y": 890,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "JSON",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Path",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "results.[0].name.first"
+          },
+          {
+            "socketType": "out",
+            "name": "Value",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "plastic-octopus-3",
+        "type": "label",
+        "x": 842,
+        "y": 921,
         "width": 128,
         "height": 69,
         "socketArray": [
@@ -1333,141 +1554,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        }
-      },
-      {
-        "id": "chatty-rattlesnake-28",
-        "name": "Extract first name",
-        "type": "JSONGet",
-        "x": 600,
-        "y": 890,
-        "width": 160,
-        "height": 112,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "JSON",
-            "dataType": "{\"class\":\"JSONType\"}"
-          },
-          {
-            "socketType": "in",
-            "name": "Path",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "results.[0].name.first"
           },
           {
             "socketType": "out",
-            "name": "Value",
-            "dataType": "{\"class\":\"StringType\"}"
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        }
-      },
-      {
-        "id": "plastic-octopus-3",
-        "type": "Label",
-        "x": 842,
-        "y": 921,
-        "width": 153,
-        "height": 69,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Input",
-            "dataType": "{\"class\":\"StringType\"}"
-          },
-          {
-            "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 12,
-              "g": 12,
-              "b": 12,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 86,
-              "g": 225,
-              "b": 204,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "min-width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 128,
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Output",
-            "dataType": "{\"class\":\"StringType\"}",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
             "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Name (trigger)"
       },
       {
         "id": "blue-fox-77",
-        "type": "WidgetButton",
+        "type": "widgetbutton",
         "x": 99,
         "y": 885,
         "width": 200,
@@ -1475,14 +1579,14 @@
         "socketArray": [
           {
             "socketType": "in",
-            "name": "Off",
+            "name": "Off value",
             "dataType": "{\"class\":\"AnyType\"}",
             "data": "0",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "On",
+            "name": "On value",
             "dataType": "{\"class\":\"AnyType\"}",
             "data": "1",
             "visible": false
@@ -1516,6 +1620,13 @@
             "visible": false
           },
           {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
             "socketType": "out",
             "name": "Out",
             "dataType": "{\"class\":\"AnyType\"}"
@@ -1528,18 +1639,19 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
         },
-        "version": 2
+        "version": 3,
+        "name": "Trigger button"
       },
       {
         "id": "hot-starfish-46",
-        "name": "WidgetSlider",
-        "type": "WidgetSlider",
+        "name": "Slider",
+        "type": "widgetslider",
         "x": 77,
-        "y": -340,
+        "y": -560,
         "width": 200,
         "height": 104,
         "socketArray": [
@@ -1566,16 +1678,37 @@
           },
           {
             "socketType": "in",
-            "name": "Round",
-            "dataType": "{\"class\":\"BooleanType\"}",
-            "data": true,
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
             "visible": false
           },
           {
             "socketType": "in",
             "name": "Label",
             "dataType": "{\"class\":\"StringType\"}",
-            "data": "Slider",
+            "data": "Slider: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
             "visible": false
           },
           {
@@ -1598,16 +1731,17 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "version": 3
       },
       {
         "id": "quiet-fireant-80",
-        "type": "Label",
+        "type": "label",
         "x": 537,
-        "y": -323,
+        "y": -543,
         "width": 60,
         "height": 69,
         "socketArray": [
@@ -1686,19 +1820,26 @@
             "socketType": "out",
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Result"
       },
       {
         "id": "popular-bird-23",
-        "type": "Multiply",
+        "type": "multiply",
         "x": 328,
-        "y": -355,
+        "y": -575,
         "width": 160,
         "height": 184,
         "socketArray": [
@@ -1743,15 +1884,16 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Multiply"
       },
       {
         "id": "curvy-termite-48",
-        "name": "Get random user",
-        "type": "HTTPNode",
+        "name": "Get random user (Update now)",
+        "type": "httpnode",
         "x": 377,
         "y": 633,
         "width": 160,
@@ -1814,8 +1956,8 @@
       },
       {
         "id": "bright-cow-50",
-        "name": "Get random user",
-        "type": "HTTPNode",
+        "name": "Get random user (trigger)",
+        "type": "httpnode",
         "x": 373,
         "y": 874,
         "width": 160,
@@ -1866,7 +2008,7 @@
           {
             "socketType": "trigger",
             "name": "Trigger 1",
-            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"previousData\":0,\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"\",\"showDetails\":false}}"
+            "dataType": "{\"class\":\"TriggerType\"}"
           },
           {
             "socketType": "out",
@@ -1883,9 +2025,9 @@
       },
       {
         "id": "purple-emu-92",
-        "name": "Draw Image",
-        "type": "Image",
-        "x": -915,
+        "name": "Example image",
+        "type": "image",
+        "x": -1235,
         "y": 431,
         "width": 676,
         "height": 300,
@@ -1907,7 +2049,7 @@
           {
             "socketType": "in",
             "name": "Reset size",
-            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"previousData\":0,\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"resetNodeSize\",\"showDetails\":false}}",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"resetNodeSize\",\"showDetails\":false}}",
             "data": 0,
             "visible": false
           },
@@ -1935,86 +2077,66 @@
             "name": "Exif",
             "dataType": "{\"class\":\"JSONType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
         }
       },
       {
         "id": "popular-crab-65",
-        "type": "Text",
+        "type": "text",
         "x": -207,
-        "y": -348,
+        "y": -568,
         "width": 244,
         "height": 142,
         "socketArray": [
           {
             "socketType": "in",
-            "name": "Input",
+            "name": "Content",
             "dataType": "{\"class\":\"StringType\"}",
             "data": "Node updated\non change\n(default)",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "body",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "default",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "left",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
             "data": {
-              "r": 245,
-              "g": 245,
-              "b": 245,
-              "a": 1
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "lineHeight": 1.15,
+              "color": "rgb(245, 245, 245)"
             },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 212,
-              "g": 255,
-              "b": 0,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
             "visible": false
           },
           {
@@ -2022,86 +2144,67 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Note: update on change"
       },
       {
         "id": "great-duck-62",
-        "type": "Text",
-        "x": -915,
+        "type": "text",
+        "x": -1235,
         "y": 259,
         "width": 290,
         "height": 142,
         "socketArray": [
           {
             "socketType": "in",
-            "name": "Input",
+            "name": "Content",
             "dataType": "{\"class\":\"StringType\"}",
             "data": "Select a node\nand change its\nupdate behaviour",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "body",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "default",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "left",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
             "data": {
-              "r": 245,
-              "g": 245,
-              "b": 245,
-              "a": 1
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "lineHeight": 1.15,
+              "color": "rgb(245, 245, 245)"
             },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 225,
-              "g": 151,
-              "b": 87,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
             "visible": false
           },
           {
@@ -2109,17 +2212,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Note: change a node"
       },
       {
         "id": "swift-mole-40",
-        "type": "Text",
+        "type": "text",
         "x": -196,
         "y": 254,
         "width": 226,
@@ -2127,68 +2237,42 @@
         "socketArray": [
           {
             "socketType": "in",
-            "name": "Input",
+            "name": "Content",
             "dataType": "{\"class\":\"StringType\"}",
             "data": "Node update\non interval",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "body",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "default",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "left",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
             "data": {
-              "r": 245,
-              "g": 245,
-              "b": 245,
-              "a": 1
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "lineHeight": 1.15,
+              "color": "rgb(245, 245, 245)"
             },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 85,
-              "g": 225,
-              "b": 121,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
             "visible": false
           },
           {
@@ -2196,17 +2280,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Note: update on interval"
       },
       {
         "id": "dangerous-skunk-87",
-        "type": "Text",
+        "type": "text",
         "x": 71,
         "y": 256,
         "width": 244,
@@ -2214,68 +2305,42 @@
         "socketArray": [
           {
             "socketType": "in",
-            "name": "Input",
+            "name": "Content",
             "dataType": "{\"class\":\"StringType\"}",
             "data": "Node updated\nevery 1s",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "body",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "default",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "left",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
             "data": {
-              "r": 245,
-              "g": 245,
-              "b": 245,
-              "a": 1
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "lineHeight": 1.15,
+              "color": "rgb(245, 245, 245)"
             },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 85,
-              "g": 225,
-              "b": 121,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
             "visible": false
           },
           {
@@ -2283,17 +2348,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Note: every 1s"
       },
       {
         "id": "honest-ladybug-66",
-        "type": "Text",
+        "type": "text",
         "x": 742,
         "y": 268,
         "width": 244,
@@ -2301,68 +2373,42 @@
         "socketArray": [
           {
             "socketType": "in",
-            "name": "Input",
+            "name": "Content",
             "dataType": "{\"class\":\"StringType\"}",
             "data": "Node updated\nevery 10ms",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "body",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "default",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "left",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
             "data": {
-              "r": 245,
-              "g": 245,
-              "b": 245,
-              "a": 1
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "lineHeight": 1.15,
+              "color": "rgb(245, 245, 245)"
             },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 85,
-              "g": 225,
-              "b": 121,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
             "visible": false
           },
           {
@@ -2370,17 +2416,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Note: every 10ms"
       },
       {
         "id": "spotty-snail-59",
-        "type": "Text",
+        "type": "text",
         "x": 41,
         "y": 626,
         "width": 308,
@@ -2388,68 +2441,42 @@
         "socketArray": [
           {
             "socketType": "in",
-            "name": "Input",
+            "name": "Content",
             "dataType": "{\"class\":\"StringType\"}",
             "data": "with Update now \nbutton above node",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "body",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "default",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "left",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
             "data": {
-              "r": 245,
-              "g": 245,
-              "b": 245,
-              "a": 1
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "lineHeight": 1.15,
+              "color": "rgb(245, 245, 245)"
             },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 84,
-              "g": 155,
-              "b": 224,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
             "visible": false
           },
           {
@@ -2457,17 +2484,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Note: Update now button"
       },
       {
         "id": "blue-kangaroo-4",
-        "type": "Text",
+        "type": "text",
         "x": 65,
         "y": 1012,
         "width": 277,
@@ -2475,68 +2509,42 @@
         "socketArray": [
           {
             "socketType": "in",
-            "name": "Input",
+            "name": "Content",
             "dataType": "{\"class\":\"StringType\"}",
             "data": "with trigger input",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "body",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "default",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "left",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
             "data": {
-              "r": 245,
-              "g": 245,
-              "b": 245,
-              "a": 1
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "lineHeight": 1.15,
+              "color": "rgb(245, 245, 245)"
             },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 84,
-              "g": 155,
-              "b": 224,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
             "visible": false
           },
           {
@@ -2544,17 +2552,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Note: trigger input"
       },
       {
         "id": "lovely-parrot-61",
-        "type": "Text",
+        "type": "text",
         "x": -234,
         "y": 874,
         "width": 292,
@@ -2562,68 +2577,42 @@
         "socketArray": [
           {
             "socketType": "in",
-            "name": "Input",
+            "name": "Content",
             "dataType": "{\"class\":\"StringType\"}",
             "data": "Node update\non manual trigger",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "body",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "default",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "left",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
             "data": {
-              "r": 245,
-              "g": 245,
-              "b": 245,
-              "a": 1
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "lineHeight": 1.15,
+              "color": "rgb(245, 245, 245)"
             },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 84,
-              "g": 155,
-              "b": 224,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
             "visible": false
           },
           {
@@ -2631,17 +2620,24 @@
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}",
             "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Note: manual update"
       },
       {
         "id": "neat-cougar-8",
-        "type": "Text",
+        "type": "text",
         "x": 605,
         "y": 760,
         "width": 334,
@@ -2649,23 +2645,91 @@
         "socketArray": [
           {
             "socketType": "in",
-            "name": "Input",
+            "name": "Content",
             "dataType": "{\"class\":\"StringType\"}",
             "data": "Nodes updated\non upstream change",
             "visible": false
           },
           {
             "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "body",
             "visible": false
           },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\"}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "fontSize": "32px",
+              "fontWeight": "400",
+              "lineHeight": 1.15,
+              "color": "rgb(245, 245, 245)"
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Note: upstream change"
+      },
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "type": "label",
+        "x": -1235,
+        "y": -1100,
+        "width": 1760,
+        "height": 280,
+        "socketArray": [
           {
             "socketType": "in",
             "name": "Width",
             "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
             "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "This app teaches on the canvas, so it has no page.\nSelect a node and open its update behaviour.\nEach group shows one way a node can update."
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 64,
             "visible": false
           },
           {
@@ -2687,9 +2751,9 @@
             "name": "Text color",
             "dataType": "{\"class\":\"ColorType\"}",
             "data": {
-              "r": 245,
-              "g": 245,
-              "b": 245,
+              "r": 12,
+              "g": 12,
+              "b": 12,
               "a": 1
             },
             "visible": false
@@ -2699,29 +2763,27 @@
             "name": "Background color",
             "dataType": "{\"class\":\"ColorType\"}",
             "data": {
-              "r": 84,
-              "g": 155,
-              "b": 224,
+              "r": 255,
+              "g": 255,
+              "b": 255,
               "a": 1
             },
             "visible": false
           },
           {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
-            "visible": false
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
           },
           {
             "socketType": "out",
-            "name": "Output",
-            "dataType": "{\"class\":\"StringType\"}",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
             "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
         }
@@ -2849,12 +2911,80 @@
         "targetSocketName": "Trigger 1"
       }
     ],
-    "layouts": {
-      "default": "{\"ROOT\":{\"type\":{\"resolvedName\":\"Container\"},\"isCanvas\":true,\"props\":{\"flexDirection\":\"column\",\"alignItems\":\"flex-start\",\"justifyContent\":\"flex-start\",\"padding\":[0,0,0,0],\"background\":{\"r\":255,\"g\":255,\"b\":255,\"a\":0},\"color\":{\"r\":51,\"g\":51,\"b\":51,\"a\":1},\"width\":\"80%\",\"height\":\"auto\",\"minWidth\":\"48px\",\"minHeight\":\"240px\",\"maxWidth\":false,\"maxHeight\":\"unset\",\"mobileBehavior\":\"column\",\"customStyles\":{\"padding\":\"24px\",\"@media (max-width: 900px)\":{\"padding\":\"16px\",\"width\":\"90%\"},\"@media (max-width: 600px)\":{\"padding\":\"8px\",\"width\":\"100%\"}},\"gap\":8},\"displayName\":\"Container\",\"custom\":{\"displayName\":\"Root\"},\"hidden\":false,\"nodes\":[],\"linkedNodes\":{}}}",
-      "_version": "2"
-    }
+    "groups": [
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "start-here"
+        ]
+      },
+      {
+        "id": "select",
+        "name": "Try it",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "great-duck-62",
+          "purple-emu-92"
+        ]
+      },
+      {
+        "id": "change",
+        "name": "1. Update on change",
+        "color": "#60D2FF",
+        "nodeIds": [
+          "popular-crab-65",
+          "hot-starfish-46",
+          "popular-bird-23",
+          "quiet-fireant-80"
+        ]
+      },
+      {
+        "id": "interval",
+        "name": "2. Update on interval",
+        "color": "#E2ABFF",
+        "nodeIds": [
+          "swift-mole-40",
+          "dangerous-skunk-87",
+          "honest-ladybug-66",
+          "green-dragonfly-23",
+          "selfish-quail-14",
+          "cold-eagle-90",
+          "tricky-snail-97",
+          "silent-cheetah-94",
+          "wise-cobra-86",
+          "fresh-yak-48",
+          "hungry-bullfrog-85",
+          "yellow-rat-76",
+          "tricky-goat-10",
+          "calm-penguin-53",
+          "strong-shrimp-37",
+          "jolly-robin-52",
+          "odd-squid-16"
+        ]
+      },
+      {
+        "id": "manual",
+        "name": "3. Update manually",
+        "color": "#FFAE6B",
+        "nodeIds": [
+          "lovely-parrot-61",
+          "spotty-snail-59",
+          "blue-kangaroo-4",
+          "neat-cougar-8",
+          "curvy-termite-48",
+          "bright-cow-50",
+          "blue-fox-77",
+          "green-bat-16",
+          "chatty-rattlesnake-28",
+          "tough-jellyfish-3",
+          "plastic-octopus-3"
+        ]
+      }
+    ]
   },
-  "date": "2025-10-18T13:23:41.120Z",
+  "date": "2026-11-02T08:00:00.000Z",
   "owner": "publicUser",
   "isRemote": true
 }

@@ -4,31 +4,36 @@
   "name": "Shaders",
   "access": "public",
   "graphData": {
-    "version": 0.1,
+    "version": 7,
     "graphSettings": {
       "showExecutionVisualisation": true,
       "viewportCenterPosition": {
-        "x": -5523,
-        "y": -13206
+        "x": -695,
+        "y": 2296
       },
-      "viewportScale": 0.3086625682227763
+      "viewportScale": 0.116,
+      "defaultUISurfaceNodeId": "shaders-page",
+      "theme": {
+        "mode": "dark"
+      }
     },
     "overlay": {
       "dashboard": {
-        "visible": false,
+        "visible": true,
         "fullscreen": false,
-        "widthPercentage": 33,
+        "maximized": false,
+        "widthPercentage": 52,
         "locked": false
       }
     },
     "nodes": [
       {
         "id": "bad-lionfish-90",
-        "type": "Image",
-        "x": -8194,
-        "y": -14634,
-        "width": 1028,
-        "height": 974,
+        "type": "image",
+        "x": 0,
+        "y": 840,
+        "width": 320,
+        "height": 300,
         "socketArray": [
           {
             "socketType": "in",
@@ -40,7 +45,7 @@
             "socketType": "in",
             "name": "Object fit",
             "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"contain\"},{\"text\":\"cover\"},{\"text\":\"fill\"},{\"text\":\"scale-down\"},{\"text\":\"none\"}],\"showAsButtons\":true}}",
-            "data": "cover",
+            "data": "contain",
             "visible": false
           },
           {
@@ -66,19 +71,26 @@
             "socketType": "out",
             "name": "Details",
             "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Source image"
       },
       {
         "id": "good-cheetah-47",
-        "type": "ImageShader",
-        "x": -5800,
-        "y": -14700,
+        "type": "imageshader",
+        "x": 1125,
+        "y": 840,
         "width": 160,
         "height": 208,
         "socketArray": [
@@ -153,6 +165,12 @@
             "socketType": "out",
             "name": "Graphics",
             "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
@@ -161,13 +179,14 @@
           "interval": false,
           "intervalFrequency": 16
         },
-        "version": 2
+        "version": 2,
+        "name": "Gamma and gain shader"
       },
       {
         "id": "e601b9b0-04b8-4b3f-936c-66f021355f94",
-        "type": "Make",
-        "x": -6684,
-        "y": -14629,
+        "type": "make",
+        "x": 460,
+        "y": 840,
         "width": 160,
         "height": 136,
         "socketArray": [
@@ -190,18 +209,19 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Image map"
       },
       {
         "id": "new-wasp-58",
-        "type": "WidgetSlider",
-        "x": -7016,
-        "y": -14272,
-        "width": 348,
-        "height": 196,
+        "type": "widgetslider",
+        "x": 0,
+        "y": 1220,
+        "width": 200,
+        "height": 104,
         "socketArray": [
           {
             "socketType": "in",
@@ -226,16 +246,37 @@
           },
           {
             "socketType": "in",
-            "name": "Round",
-            "dataType": "{\"class\":\"BooleanType\"}",
-            "data": false,
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 2,
             "visible": false
           },
           {
             "socketType": "in",
             "name": "Label",
             "dataType": "{\"class\":\"StringType\"}",
-            "data": "Gamma",
+            "data": "Gamma: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "XS",
             "visible": false
           },
           {
@@ -251,16 +292,18 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "version": 3,
+        "name": "Gamma slider"
       },
       {
         "id": "quiet-baboon-53",
-        "type": "Make",
-        "x": -6193,
-        "y": -14314,
+        "type": "make",
+        "x": 460,
+        "y": 1056,
         "width": 160,
         "height": 184,
         "socketArray": [
@@ -295,16 +338,17 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Gamma uniform"
       },
       {
         "id": "selfish-snail-74",
-        "type": "Label",
-        "x": -6466,
-        "y": -14122,
+        "type": "label",
+        "x": 0,
+        "y": 1588,
         "width": 135,
         "height": 69,
         "socketArray": [
@@ -377,19 +421,26 @@
             "socketType": "out",
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Uniform type"
       },
       {
         "id": "lovely-zebra-87",
-        "type": "Make",
-        "x": -5873,
-        "y": -14112,
+        "type": "make",
+        "x": 825,
+        "y": 840,
         "width": 160,
         "height": 184,
         "socketArray": [
@@ -424,18 +475,19 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Gamma and gain uniforms"
       },
       {
         "id": "smooth-husky-0",
-        "type": "WidgetSlider",
-        "x": -7017,
-        "y": -13996,
-        "width": 340,
-        "height": 182,
+        "type": "widgetslider",
+        "x": 0,
+        "y": 1404,
+        "width": 200,
+        "height": 104,
         "socketArray": [
           {
             "socketType": "in",
@@ -460,16 +512,37 @@
           },
           {
             "socketType": "in",
-            "name": "Round",
-            "dataType": "{\"class\":\"BooleanType\"}",
-            "data": false,
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 2,
             "visible": false
           },
           {
             "socketType": "in",
             "name": "Label",
             "dataType": "{\"class\":\"StringType\"}",
-            "data": "Gain",
+            "data": "Gain: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "XS",
             "visible": false
           },
           {
@@ -485,16 +558,18 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "version": 3,
+        "name": "Gain slider"
       },
       {
         "id": "loud-grasshopper-92",
-        "type": "Make",
-        "x": -6193,
-        "y": -13947,
+        "type": "make",
+        "x": 460,
+        "y": 1320,
         "width": 160,
         "height": 184,
         "socketArray": [
@@ -529,16 +604,17 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Gain uniform"
       },
       {
         "id": "serious-lizard-51",
-        "type": "ImageShader",
-        "x": -5331,
-        "y": -12790,
+        "type": "imageshader",
+        "x": 1280,
+        "y": 2809,
         "width": 160,
         "height": 208,
         "socketArray": [
@@ -613,6 +689,12 @@
             "socketType": "out",
             "name": "Graphics",
             "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
@@ -621,15 +703,16 @@
           "interval": false,
           "intervalFrequency": 16
         },
-        "version": 2
+        "version": 2,
+        "name": "Blur shader"
       },
       {
         "id": "giant-dolphin-76",
-        "type": "WidgetSlider",
-        "x": -7016,
-        "y": -12698,
-        "width": 340,
-        "height": 182,
+        "type": "widgetslider",
+        "x": 0,
+        "y": 2937,
+        "width": 200,
+        "height": 104,
         "socketArray": [
           {
             "socketType": "in",
@@ -654,16 +737,37 @@
           },
           {
             "socketType": "in",
-            "name": "Round",
-            "dataType": "{\"class\":\"BooleanType\"}",
-            "data": true,
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
             "visible": false
           },
           {
             "socketType": "in",
             "name": "Label",
             "dataType": "{\"class\":\"StringType\"}",
-            "data": "Blur",
+            "data": "Blur: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "XS",
             "visible": false
           },
           {
@@ -679,274 +783,18 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
-      },
-      {
-        "id": "brave-seahorse-8",
-        "type": "Label",
-        "x": -8188,
-        "y": -14747,
-        "width": 242,
-        "height": 69,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Input",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "Source Image"
-          },
-          {
-            "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 12,
-              "g": 12,
-              "b": 12,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 84,
-              "g": 155,
-              "b": 224,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Output",
-            "dataType": "{\"class\":\"StringType\"}",
-            "visible": false
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        }
-      },
-      {
-        "id": "stupid-yak-89",
-        "type": "Label",
-        "x": -5599,
-        "y": -14795,
-        "width": 261,
-        "height": 69,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Input",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "Gamma + Gain"
-          },
-          {
-            "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 12,
-              "g": 12,
-              "b": 12,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 84,
-              "g": 155,
-              "b": 224,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Output",
-            "dataType": "{\"class\":\"StringType\"}",
-            "visible": false
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        }
-      },
-      {
-        "id": "tame-squid-87",
-        "type": "Label",
-        "x": -5134,
-        "y": -12900,
-        "width": 100,
-        "height": 69,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Input",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "Blur"
-          },
-          {
-            "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 12,
-              "g": 12,
-              "b": 12,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 84,
-              "g": 155,
-              "b": 224,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Output",
-            "dataType": "{\"class\":\"StringType\"}",
-            "visible": false
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        }
+        },
+        "version": 3,
+        "name": "Blur slider"
       },
       {
         "id": "calm-penguin-63",
-        "type": "ImageShader",
-        "x": -5331,
-        "y": -12139,
+        "type": "imageshader",
+        "x": 340,
+        "y": 3051,
         "width": 160,
         "height": 208,
         "socketArray": [
@@ -1031,6 +879,12 @@
             "socketType": "out",
             "name": "Graphics",
             "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
@@ -1039,99 +893,14 @@
           "interval": false,
           "intervalFrequency": 16
         },
-        "version": 2
-      },
-      {
-        "id": "smart-yak-68",
-        "type": "Label",
-        "x": -5134,
-        "y": -12240,
-        "width": 261,
-        "height": 69,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Input",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "Edge Detection"
-          },
-          {
-            "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 12,
-              "g": 12,
-              "b": 12,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 84,
-              "g": 155,
-              "b": 224,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Output",
-            "dataType": "{\"class\":\"StringType\"}",
-            "visible": false
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        }
+        "version": 2,
+        "name": "Edge detection shader"
       },
       {
         "id": "friendly-sloth-88",
-        "type": "ImageShader",
-        "x": -5066,
-        "y": -14699,
+        "type": "imageshader",
+        "x": 2065,
+        "y": 840,
         "width": 160,
         "height": 208,
         "socketArray": [
@@ -1206,6 +975,12 @@
             "socketType": "out",
             "name": "Graphics",
             "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
@@ -1214,15 +989,16 @@
           "interval": false,
           "intervalFrequency": 16
         },
-        "version": 2
+        "version": 2,
+        "name": "Saturation shader"
       },
       {
         "id": "kind-badger-42",
-        "type": "WidgetSlider",
-        "x": -7016,
-        "y": -13702,
-        "width": 340,
-        "height": 182,
+        "type": "widgetslider",
+        "x": 0,
+        "y": 1737,
+        "width": 200,
+        "height": 104,
         "socketArray": [
           {
             "socketType": "in",
@@ -1247,16 +1023,37 @@
           },
           {
             "socketType": "in",
-            "name": "Round",
-            "dataType": "{\"class\":\"BooleanType\"}",
-            "data": false,
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 2,
             "visible": false
           },
           {
             "socketType": "in",
             "name": "Label",
             "dataType": "{\"class\":\"StringType\"}",
-            "data": "Saturation",
+            "data": "Saturation: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "XS",
             "visible": false
           },
           {
@@ -1272,17 +1069,19 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "version": 3,
+        "name": "Saturation slider"
       },
       {
         "id": "tidy-sloth-38",
         "name": "Create Single f32 param",
-        "type": "Macro",
-        "x": -5645,
-        "y": -15864,
+        "type": "macro",
+        "x": 0,
+        "y": 4211,
         "width": 1000,
         "height": 300,
         "socketArray": [
@@ -1308,16 +1107,17 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "comment": "Builds one shader uniform from a value and a name. The uniform nodes run it."
       },
       {
         "id": "average-octopus-60",
-        "type": "Make",
-        "x": -5160,
-        "y": -15792,
+        "type": "make",
+        "x": 485,
+        "y": 4283,
         "width": 160,
         "height": 184,
         "socketArray": [
@@ -1352,16 +1152,17 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Value and type"
       },
       {
         "id": "afraid-rattlesnake-32",
-        "type": "Label",
-        "x": -5464,
-        "y": -15666,
+        "type": "label",
+        "x": 181,
+        "y": 4409,
         "width": 135,
         "height": 69,
         "socketArray": [
@@ -1434,19 +1235,26 @@
             "socketType": "out",
             "name": "Output",
             "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Type"
       },
       {
         "id": "evil-turkey-23",
-        "type": "Make",
-        "x": -4916,
-        "y": -15797,
+        "type": "make",
+        "x": 729,
+        "y": 4278,
         "width": 160,
         "height": 136,
         "socketArray": [
@@ -1468,16 +1276,17 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Named uniform"
       },
       {
         "id": "fresh-sheep-51",
-        "type": "ExecuteMacro",
-        "x": -6542,
-        "y": -13743,
+        "type": "executemacro",
+        "x": 460,
+        "y": 1584,
         "width": 225,
         "height": 162,
         "socketArray": [
@@ -1505,16 +1314,17 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Saturation uniform"
       },
       {
         "id": "terrible-crab-95",
-        "type": "ExecuteMacro",
-        "x": -5681,
-        "y": -12729,
+        "type": "executemacro",
+        "x": 340,
+        "y": 2809,
         "width": 225,
         "height": 162,
         "socketArray": [
@@ -1542,16 +1352,17 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
+        },
+        "name": "Blur uniform"
       },
       {
         "id": "white-snake-31",
-        "type": "Reroute",
-        "x": -5597,
-        "y": -12909,
+        "type": "reroute",
+        "x": 0,
+        "y": 2809,
         "width": 48,
         "height": 48,
         "socketArray": [
@@ -1567,102 +1378,17 @@
           }
         ],
         "updateBehaviour": {
-          "load": false,
+          "load": true,
           "update": true,
           "interval": false
-        }
-      },
-      {
-        "id": "nice-snake-29",
-        "type": "Label",
-        "x": -4864,
-        "y": -14780,
-        "width": 189,
-        "height": 69,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Width",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Input",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "Saturation"
-          },
-          {
-            "socketType": "in",
-            "name": "Font size",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
-            "data": "Left",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Font weight",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
-            "data": "Regular",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Text color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 12,
-              "g": 12,
-              "b": 12,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Background color",
-            "dataType": "{\"class\":\"ColorType\"}",
-            "data": {
-              "r": 84,
-              "g": 155,
-              "b": 224,
-              "a": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Output",
-            "dataType": "{\"class\":\"StringType\"}",
-            "visible": false
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        }
+        },
+        "name": "Gamma and gain output"
       },
       {
         "id": "green-octopus-47",
-        "type": "ImageShader",
-        "x": -4327,
-        "y": -14698,
+        "type": "imageshader",
+        "x": 3005,
+        "y": 840,
         "width": 160,
         "height": 208,
         "socketArray": [
@@ -1737,6 +1463,12 @@
             "socketType": "out",
             "name": "Graphics",
             "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
           }
         ],
         "updateBehaviour": {
@@ -1745,15 +1477,2413 @@
           "interval": false,
           "intervalFrequency": 16
         },
-        "version": 2
+        "version": 2,
+        "name": "Contrast shader"
       },
       {
-        "id": "sharp-eel-98",
-        "type": "Label",
-        "x": -4112,
-        "y": -14823,
-        "width": 164,
-        "height": 69,
+        "id": "honest-lionfish-49",
+        "type": "executemacro",
+        "x": 460,
+        "y": 1826,
+        "width": 225,
+        "height": 162,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Macro",
+            "dataType": "{\"class\":\"DynamicEnumType\"}",
+            "data": "Create Single f32 param"
+          },
+          {
+            "socketType": "in",
+            "name": "Parameter 1",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Parameter 2",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "contrast"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"JSONType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Contrast uniform"
+      },
+      {
+        "id": "tall-bird-81",
+        "type": "widgetslider",
+        "x": 0,
+        "y": 1921,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0.1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 2,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 2,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Contrast: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "XS",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "name": "Contrast slider"
+      },
+      {
+        "id": "black-snail-65",
+        "type": "extract_image_from_graphics",
+        "x": 3945,
+        "y": 840,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Output Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Quarter\",\"value\":0.25},{\"text\":\"Half\",\"value\":0.5},{\"text\":\"Full\",\"value\":1}],\"showAsButtons\":true}}",
+            "data": "Full",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Type",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"jpg\",\"value\":\"image/jpeg\"},{\"text\":\"png\",\"value\":\"image/png\"}],\"showAsButtons\":true}}",
+            "data": "png",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Quality",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":0,\"maxValue\":1,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Save image",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"saveImage\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "out",
+            "name": "Image",
+            "dataType": "{\"class\":\"ImageType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": false,
+          "interval": false
+        },
+        "name": "Save image"
+      },
+      {
+        "id": "cowardly-goose-56",
+        "type": "widgetbutton",
+        "x": 0,
+        "y": 2105,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Save image",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "name": "Save button"
+      },
+      {
+        "id": "adjust-section",
+        "name": "Adjust the image",
+        "type": "uisurfacenode",
+        "x": 3945,
+        "y": 1032,
+        "width": 320,
+        "height": 300,
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      16,
+                      24,
+                      16
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "subtle",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "adjust-head",
+                    "adjust-row0",
+                    "adjust-row1"
+                  ],
+                  "linkedNodes": {}
+                },
+                "adjust-head": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      8,
+                      24,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "adjust-title",
+                    "adjust-body"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "ROOT"
+                },
+                "adjust-title": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Adjust the image",
+                    "variant": "h1",
+                    "tone": "default",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "adjust-head",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "adjust-body": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Each slider feeds a uniform into a shader. The shaders run one after the other.",
+                    "variant": "body",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "adjust-head",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "adjust-row0": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "adjust-row0-card0",
+                    "adjust-row0-card1"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "ROOT"
+                },
+                "adjust-row0-card0": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      24,
+                      20
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "strong",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "adjust-row0-card0-label",
+                    "s-image"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "adjust-row0"
+                },
+                "adjust-row0-card0-label": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Source image",
+                    "variant": "label",
+                    "tone": "primary",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "adjust-row0-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "s-image": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "240px",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_bad-lionfish-90",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "adjust-row0-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "adjust-row0-card1": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      24,
+                      20
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "strong",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "adjust-row0-card1-label",
+                    "s-gamma",
+                    "s-gain",
+                    "s-sat",
+                    "s-con",
+                    "s-save"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "adjust-row0"
+                },
+                "adjust-row0-card1-label": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Controls",
+                    "variant": "label",
+                    "tone": "secondary",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "adjust-row0-card1",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "s-gamma": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_new-wasp-58",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "adjust-row0-card1",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "s-gain": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_smooth-husky-0",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "adjust-row0-card1",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "s-sat": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_kind-badger-42",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "adjust-row0-card1",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "s-con": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_tall-bird-81",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "adjust-row0-card1",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "s-save": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_cowardly-goose-56",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "adjust-row0-card1",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "adjust-row1": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "adjust-row1-card0"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "ROOT"
+                },
+                "adjust-row1-card0": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      24,
+                      20
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "strong",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "adjust-row1-card0-label",
+                    "s-result"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "adjust-row1"
+                },
+                "adjust-row1-card0-label": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Result",
+                    "variant": "label",
+                    "tone": "primary",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "adjust-row1-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "s-result": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_green-octopus-47",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "adjust-row1-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Source image",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Source image visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Source image"
+          },
+          {
+            "socketType": "in",
+            "name": "Source image layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Source image"
+          },
+          {
+            "socketType": "in",
+            "name": "Gamma slider",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Gamma slider visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Gamma slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Gamma slider layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Gamma slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Gain slider",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Gain slider visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Gain slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Gain slider layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Gain slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Saturation slider",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Saturation slider visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Saturation slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Saturation slider layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Saturation slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Contrast slider",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Contrast slider visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Contrast slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Contrast slider layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Contrast slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Save button",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Save button visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Save button"
+          },
+          {
+            "socketType": "in",
+            "name": "Save button layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Save button"
+          },
+          {
+            "socketType": "in",
+            "name": "Result",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Result visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Result"
+          },
+          {
+            "socketType": "in",
+            "name": "Result layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Result"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ]
+      },
+      {
+        "id": "more-section",
+        "name": "More shaders",
+        "type": "uisurfacenode",
+        "x": 2220,
+        "y": 2809,
+        "width": 320,
+        "height": 300,
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      16,
+                      24,
+                      16
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "subtle",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "more-head",
+                    "more-row0"
+                  ],
+                  "linkedNodes": {}
+                },
+                "more-head": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      8,
+                      24,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "more-title",
+                    "more-body"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "ROOT"
+                },
+                "more-title": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "More shaders",
+                    "variant": "h1",
+                    "tone": "default",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "more-head",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "more-body": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Two more shaders use the same adjusted image as their input.",
+                    "variant": "body",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "more-head",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "more-row0": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "more-row0-card0",
+                    "more-row0-card1"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "ROOT"
+                },
+                "more-row0-card0": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      24,
+                      20
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "strong",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "more-row0-card0-label",
+                    "m-blur-slider",
+                    "m-blur"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "more-row0"
+                },
+                "more-row0-card0-label": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Blur",
+                    "variant": "label",
+                    "tone": "primary",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "more-row0-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "m-blur-slider": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_giant-dolphin-76",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "more-row0-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "m-blur": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_serious-lizard-51",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "more-row0-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "more-row0-card1": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      24,
+                      20
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "strong",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "more-row0-card1-label",
+                    "m-edge"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "more-row0"
+                },
+                "more-row0-card1-label": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Edge detection",
+                    "variant": "label",
+                    "tone": "secondary",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "more-row0-card1",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "m-edge": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_calm-penguin-63",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "more-row0-card1",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Blur slider",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Blur slider visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Blur slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Blur slider layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Blur slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Blur shader",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Blur shader visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Blur shader"
+          },
+          {
+            "socketType": "in",
+            "name": "Blur shader layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Blur shader"
+          },
+          {
+            "socketType": "in",
+            "name": "Edge detection shader",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Edge detection shader visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Edge detection shader"
+          },
+          {
+            "socketType": "in",
+            "name": "Edge detection shader layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Edge detection shader"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ]
+      },
+      {
+        "id": "shaders-page",
+        "name": "Main page",
+        "type": "uisurfacenode",
+        "x": 4665,
+        "y": 2415.5,
+        "width": 400,
+        "height": 600,
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "240px",
+                    "maxWidth": "lg",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {
+                      "@media (max-width: 600px)": {
+                        "padding": "8px"
+                      },
+                      "@media (min-width: 601px) and (max-width: 900px)": {
+                        "padding": "16px"
+                      }
+                    },
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "page-head",
+                    "page-0",
+                    "page-1"
+                  ],
+                  "linkedNodes": {}
+                },
+                "page-head": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      32,
+                      16,
+                      32,
+                      16
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "page-title",
+                    "page-lead"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "ROOT"
+                },
+                "page-title": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Shaders",
+                    "variant": "display",
+                    "tone": "default",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "page-head",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "page-lead": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Process an image with a chain of WebGL shaders. Open the graph to see how.",
+                    "variant": "body",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "page-head",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "page-0": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_adjust-section",
+                    "index": 0,
+                    "gap": 0,
+                    "mobileBehavior": "column"
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "ROOT",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "page-1": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_more-section",
+                    "index": 0,
+                    "gap": 0,
+                    "mobileBehavior": "column"
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "ROOT",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Adjust the image",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Adjust the image visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Adjust the image"
+          },
+          {
+            "socketType": "in",
+            "name": "Adjust the image layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Adjust the image"
+          },
+          {
+            "socketType": "in",
+            "name": "More shaders",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "More shaders visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "More shaders"
+          },
+          {
+            "socketType": "in",
+            "name": "More shaders layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "More shaders"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "comment": "This is the page you see on the left. Every numbered section plugs in here, in page order."
+      },
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "type": "label",
+        "x": 0,
+        "y": 0,
+        "width": 1760,
+        "height": 280,
         "socketArray": [
           {
             "socketType": "in",
@@ -1766,13 +3896,13 @@
             "socketType": "in",
             "name": "Input",
             "dataType": "{\"class\":\"StringType\"}",
-            "data": "Contrast"
+            "data": "This page is a Tailrmade app.\nEach numbered group is one section of the page, top to bottom.\nThey all plug into Main page on the right."
           },
           {
             "socketType": "in",
             "name": "Font size",
             "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
-            "data": 32,
+            "data": 64,
             "visible": false
           },
           {
@@ -1806,308 +3936,30 @@
             "name": "Background color",
             "dataType": "{\"class\":\"ColorType\"}",
             "data": {
-              "r": 84,
-              "g": 155,
-              "b": 224,
+              "r": 255,
+              "g": 255,
+              "b": 255,
               "a": 1
             },
             "visible": false
           },
           {
-            "socketType": "in",
-            "name": "fontSize",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 32,
-            "visible": false
-          },
-          {
             "socketType": "out",
             "name": "Output",
-            "dataType": "{\"class\":\"StringType\"}",
-            "visible": false
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        }
-      },
-      {
-        "id": "honest-lionfish-49",
-        "type": "ExecuteMacro",
-        "x": -6548,
-        "y": -13471,
-        "width": 225,
-        "height": 162,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Macro",
-            "dataType": "{\"class\":\"DynamicEnumType\"}",
-            "data": "Create Single f32 param"
-          },
-          {
-            "socketType": "in",
-            "name": "Parameter 1",
-            "dataType": "{\"class\":\"NumberType\"}"
-          },
-          {
-            "socketType": "in",
-            "name": "Parameter 2",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "contrast"
-          },
-          {
-            "socketType": "out",
-            "name": "Output",
-            "dataType": "{\"class\":\"JSONType\"}"
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        }
-      },
-      {
-        "id": "tall-bird-81",
-        "type": "WidgetSlider",
-        "x": -7016,
-        "y": -13462,
-        "width": 340,
-        "height": 182,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Initial Value",
-            "dataType": "{\"class\":\"NumberType\"}",
-            "data": 1,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Min",
-            "dataType": "{\"class\":\"NumberType\"}",
-            "data": 0.1,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Max",
-            "dataType": "{\"class\":\"NumberType\"}",
-            "data": 2,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Round",
-            "dataType": "{\"class\":\"BooleanType\"}",
-            "data": false,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Label",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "Contrast",
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Out",
-            "dataType": "{\"class\":\"NumberType\"}"
+            "dataType": "{\"class\":\"StringType\"}"
           },
           {
             "socketType": "out",
             "name": "ReactUI",
             "dataType": "{\"class\":\"DeferredReactType\"}",
             "visible": false
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        }
-      },
-      {
-        "id": "black-snail-65",
-        "type": "Extract_Image_From_Graphics",
-        "x": -3962,
-        "y": -13936,
-        "width": 160,
-        "height": 112,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Graphics",
-            "dataType": "{\"class\":\"DeferredPixiType\"}"
-          },
-          {
-            "socketType": "in",
-            "name": "Output Size",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Quarter\",\"value\":0.25},{\"text\":\"Half\",\"value\":0.5},{\"text\":\"Full\",\"value\":1}],\"showAsButtons\":true}}",
-            "data": "Full",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Type",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"jpg\",\"value\":\"image/jpeg\"},{\"text\":\"png\",\"value\":\"image/png\"}],\"showAsButtons\":true}}",
-            "data": "png",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Quality",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":0,\"maxValue\":1,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 1,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Save image",
-            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"previousData\":0,\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"saveImage\",\"showDetails\":false}}"
-          },
-          {
-            "socketType": "out",
-            "name": "Image",
-            "dataType": "{\"class\":\"ImageType\"}"
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": false,
-          "interval": false
-        }
-      },
-      {
-        "id": "cowardly-goose-56",
-        "type": "WidgetButton",
-        "x": -4484,
-        "y": -14022,
-        "width": 300,
-        "height": 157,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Off",
-            "dataType": "{\"class\":\"AnyType\"}",
-            "data": 0,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "On",
-            "dataType": "{\"class\":\"AnyType\"}",
-            "data": 1,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Label",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "Save Image To Disk",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Variant",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
-            "data": "contained",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Color",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
-            "data": "primary",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Disabled",
-            "dataType": "{\"class\":\"BooleanType\"}",
-            "data": false,
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Out",
-            "dataType": "{\"class\":\"AnyType\"}"
-          },
-          {
-            "socketType": "out",
-            "name": "ReactUI",
-            "dataType": "{\"class\":\"DeferredReactType\"}",
-            "visible": false
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": true,
-          "interval": false
-        },
-        "version": 2
-      },
-      {
-        "id": "tricky-bat-23",
-        "type": "DRAW_Passthrough",
-        "x": -4112,
-        "y": -14696,
-        "width": 160,
-        "height": 88,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Graphics",
-            "dataType": "{\"class\":\"DeferredPixiType\"}"
-          },
-          {
-            "socketType": "in",
-            "name": "Angle",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Scale",
-            "dataType": "{\"class\":\"TwoDVectorType\"}",
-            "data": {
-              "x": 1,
-              "y": 1
-            },
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Offset",
-            "dataType": "{\"class\":\"TwoDVectorType\"}",
-            "data": {
-              "x": 0,
-              "y": 0
-            },
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Graphics",
-            "dataType": "{\"class\":\"DeferredPixiType\"}"
-          },
-          {
-            "socketType": "out",
-            "name": "ReactUI",
-            "dataType": "{\"class\":\"DeferredReactType\"}"
           }
         ],
         "updateBehaviour": {
           "load": true,
           "update": true,
           "interval": false
-        },
-        "version": 2
+        }
       }
     ],
     "links": [
@@ -2274,17 +4126,147 @@
         "targetSocketName": "Save image"
       },
       {
+        "sourceNodeId": "bad-lionfish-90",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "adjust-section",
+        "targetSocketName": "Source image"
+      },
+      {
+        "sourceNodeId": "new-wasp-58",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "adjust-section",
+        "targetSocketName": "Gamma slider"
+      },
+      {
+        "sourceNodeId": "smooth-husky-0",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "adjust-section",
+        "targetSocketName": "Gain slider"
+      },
+      {
+        "sourceNodeId": "kind-badger-42",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "adjust-section",
+        "targetSocketName": "Saturation slider"
+      },
+      {
+        "sourceNodeId": "tall-bird-81",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "adjust-section",
+        "targetSocketName": "Contrast slider"
+      },
+      {
+        "sourceNodeId": "cowardly-goose-56",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "adjust-section",
+        "targetSocketName": "Save button"
+      },
+      {
         "sourceNodeId": "green-octopus-47",
-        "sourceSocketName": "Graphics",
-        "targetNodeId": "tricky-bat-23",
-        "targetSocketName": "Graphics"
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "adjust-section",
+        "targetSocketName": "Result"
+      },
+      {
+        "sourceNodeId": "giant-dolphin-76",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "more-section",
+        "targetSocketName": "Blur slider"
+      },
+      {
+        "sourceNodeId": "serious-lizard-51",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "more-section",
+        "targetSocketName": "Blur shader"
+      },
+      {
+        "sourceNodeId": "calm-penguin-63",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "more-section",
+        "targetSocketName": "Edge detection shader"
+      },
+      {
+        "sourceNodeId": "adjust-section",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "shaders-page",
+        "targetSocketName": "Adjust the image"
+      },
+      {
+        "sourceNodeId": "more-section",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "shaders-page",
+        "targetSocketName": "More shaders"
       }
     ],
-    "layouts": {
-      "default": ""
-    }
+    "groups": [
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "start-here"
+        ]
+      },
+      {
+        "id": "adjust",
+        "name": "1. Adjust the image",
+        "color": "#60D2FF",
+        "nodeIds": [
+          "bad-lionfish-90",
+          "e601b9b0-04b8-4b3f-936c-66f021355f94",
+          "new-wasp-58",
+          "smooth-husky-0",
+          "selfish-snail-74",
+          "quiet-baboon-53",
+          "loud-grasshopper-92",
+          "lovely-zebra-87",
+          "good-cheetah-47",
+          "kind-badger-42",
+          "fresh-sheep-51",
+          "friendly-sloth-88",
+          "tall-bird-81",
+          "honest-lionfish-49",
+          "green-octopus-47",
+          "cowardly-goose-56",
+          "black-snail-65",
+          "adjust-section"
+        ]
+      },
+      {
+        "id": "more",
+        "name": "2. More shaders",
+        "color": "#E2ABFF",
+        "nodeIds": [
+          "white-snake-31",
+          "giant-dolphin-76",
+          "terrible-crab-95",
+          "serious-lizard-51",
+          "calm-penguin-63",
+          "more-section"
+        ]
+      },
+      {
+        "id": "uniform",
+        "name": "Uniform macro",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "tidy-sloth-38",
+          "average-octopus-60",
+          "afraid-rattlesnake-32",
+          "evil-turkey-23"
+        ]
+      },
+      {
+        "id": "main-page",
+        "name": "Main page",
+        "color": "#C0B6FF",
+        "nodeIds": [
+          "shaders-page"
+        ]
+      }
+    ]
   },
-  "date": "2025-10-18T13:24:33.238Z",
+  "date": "2026-11-02T08:00:00.000Z",
   "owner": "publicUser",
   "isRemote": true
 }

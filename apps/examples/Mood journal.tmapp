@@ -1,0 +1,2904 @@
+{
+  "id": "Default/Mood journal",
+  "location": "Default",
+  "name": "Mood journal",
+  "access": "private",
+  "graphData": {
+    "version": 7,
+    "graphSettings": {
+      "showExecutionVisualisation": true,
+      "viewportCenterPosition": {
+        "x": -731,
+        "y": 2270
+      },
+      "viewportScale": 0.104,
+      "defaultUISurfaceNodeId": "ai-node-21",
+      "theme": {
+        "mode": "dark"
+      }
+    },
+    "overlay": {
+      "dashboard": {
+        "visible": true,
+        "fullscreen": false,
+        "maximized": false,
+        "widthPercentage": 52,
+        "locked": false
+      }
+    },
+    "nodes": [
+      {
+        "id": "ai-node-1",
+        "name": "Start here",
+        "type": "label",
+        "x": 0,
+        "y": 0,
+        "width": 3761,
+        "height": 285,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "This page is a Tailrmade app.\nFollow the numbers: the journal is read from this browser's storage, a check-in is written back, and the page shows what is stored.\nMain page on the right shows the result."
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 64,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-2",
+        "name": "Moods",
+        "type": "customfunction",
+        "x": 0,
+        "y": 805,
+        "width": 160,
+        "height": 64,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "() => ['😞 Low', '😐 Meh', '🙂 Okay', '😄 Good', '🤩 Great']",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "The five moods, shared by the buttons and every text that shows a mood. Entries store the position, so renaming a mood keeps old days."
+      },
+      {
+        "id": "ai-node-3",
+        "name": "Today",
+        "type": "customfunction",
+        "x": 0,
+        "y": 949,
+        "width": 160,
+        "height": 64,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "() => {\n  // Local calendar date, so a late-evening check-in counts for the right day.\n  const now = new Date();\n  const pad = (n) => String(n).padStart(2, '0');\n  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-4",
+        "name": "Read journal",
+        "type": "storageread",
+        "x": 0,
+        "y": 1093,
+        "width": 160,
+        "height": 208,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Storage type",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Cloud\",\"disabled\":true},{\"text\":\"IndexedDB\"},{\"text\":\"Local storage\"}],\"showAsButtons\":true}}",
+            "data": "IndexedDB",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Location",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Mood journal example"
+          },
+          {
+            "socketType": "in",
+            "name": "Key",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "journal"
+          },
+          {
+            "socketType": "in",
+            "name": "Fallback value",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {}
+          },
+          {
+            "socketType": "in",
+            "name": "Show Toast Notification",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "trigger",
+            "name": "Trigger 1",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"always\",\"customFunctionString\":\"\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "trigger",
+            "name": "Trigger 2",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"always\",\"customFunctionString\":\"\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "out",
+            "name": "Value",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Error",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Reads the whole journal from IndexedDB, which stays in this browser between visits. Its triggers re-read it after every save or delete, so the page always shows what is stored."
+      },
+      {
+        "id": "ai-node-5",
+        "name": "Mood buttons",
+        "type": "widgetbuttongroup",
+        "x": 820,
+        "y": 1901,
+        "width": 340,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Button Options",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Toggle Mode",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Selected Button",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}"
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Vertical",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Index",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-6",
+        "name": "Note field",
+        "type": "widgettextfield",
+        "x": 460,
+        "y": 2093,
+        "width": 220,
+        "height": 120,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "A few words (optional)",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Placeholder",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "What made today?",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Helper Text",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Type",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"text\"},{\"text\":\"password\"}],\"showAsButtons\":true}}",
+            "data": "text",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Multiline",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Rows",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 3,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max Length",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 140,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Required",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While typing\"},{\"text\":\"Rate limited\"},{\"text\":\"After pause\"},{\"text\":\"Enter or blur\"}],\"showAsButtons\":true}}",
+            "data": "While typing",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit Delay",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":5000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 400,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-7",
+        "name": "Save button",
+        "type": "widgetbutton",
+        "x": 460,
+        "y": 2293,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Save today",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-8",
+        "name": "Journal with today",
+        "type": "customfunction",
+        "x": 1300,
+        "y": 1901,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(stored, mood, note, today) => {\n  // The whole journal is one stored object, one entry per day; saving again replaces today.\n  const journal = stored && typeof stored === 'object' && !Array.isArray(stored) ? stored : {};\n  return { ...journal, [today]: { mood: Number(mood) || 0, note: String(note ?? '').trim() } };\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "stored",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "mood",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "note",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "today",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-9",
+        "name": "Save journal",
+        "type": "storagewrite",
+        "x": 1600,
+        "y": 1901,
+        "width": 160,
+        "height": 184,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Storage type",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Cloud\",\"disabled\":true},{\"text\":\"IndexedDB\"},{\"text\":\"Local storage\"}],\"showAsButtons\":true}}",
+            "data": "IndexedDB",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Location",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Mood journal example"
+          },
+          {
+            "socketType": "in",
+            "name": "Key",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "journal"
+          },
+          {
+            "socketType": "in",
+            "name": "Value",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Non-empty only",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Insert only",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Show Toast Notification",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "trigger",
+            "name": "Execute",
+            "dataType": "{\"class\":\"TriggerType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Success",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Error",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": false,
+          "interval": false
+        },
+        "comment": "Writes only when Save today is pressed. Non-empty only is off, so an empty journal could be written too."
+      },
+      {
+        "id": "ai-node-10",
+        "name": "Journal or sample",
+        "type": "customfunction",
+        "x": 2060,
+        "y": 2997,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(stored, today) => {\n  const days = stored && typeof stored === 'object' && !Array.isArray(stored) ? stored : {};\n  if (Object.keys(days).length > 0) return { sample: false, days };\n  // Nothing saved yet: show three weeks of made-up days so the page has something to show.\n  const [y, m, d] = String(today).split('-').map(Number);\n  const notes = ['Long walk by the river', 'Too many meetings', '', 'Pizza with friends', '', 'Slept badly', 'Finished the book'];\n  const sample = {};\n  for (let back = 1; back <= 21; back += 1) {\n    if (back % 5 === 3) continue;\n    const day = new Date(y, m - 1, d - back);\n    const pad = (n) => String(n).padStart(2, '0');\n    const key = `${day.getFullYear()}-${pad(day.getMonth() + 1)}-${pad(day.getDate())}`;\n    sample[key] = { mood: [3, 2, 4, 1, 3, 3, 2][back % 7], note: notes[back % 7] };\n  }\n  return { sample: true, days: sample };\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "stored",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "today",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "With nothing saved yet, this makes up three weeks of days so the page is not empty. They are never stored."
+      },
+      {
+        "id": "ai-node-11",
+        "name": "Calendar text",
+        "type": "customfunction",
+        "x": 2360,
+        "y": 2997,
+        "width": 160,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(journal, moods, today) => {\n  const days = journal?.days ?? {};\n  const emoji = (i) => String((moods ?? [])[i] ?? '').split(' ')[0];\n  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];\n  const pad = (n) => String(n).padStart(2, '0');\n  const key = (day) => `${day.getFullYear()}-${pad(day.getMonth() + 1)}-${pad(day.getDate())}`;\n  const [y, m, d] = String(today).split('-').map(Number);\n  const now = new Date(y, m - 1, d);\n  // Four rows of Monday to Sunday, ending with this week.\n  const monday = new Date(y, m - 1, d - ((now.getDay() + 6) % 7) - 21);\n  const rows = [];\n  for (let week = 0; week < 4; week += 1) {\n    const start = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + week * 7);\n    const cells = [];\n    for (let i = 0; i < 7; i += 1) {\n      const day = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);\n      const entry = days[key(day)];\n      if (day > now) break;\n      cells.push(entry ? emoji(entry.mood) : '⬜');\n    }\n    rows.push(`[${pad(start.getDate())} ${months[start.getMonth()]}]{.muted} ${cells.join(' ')}`);\n  }\n  return rows.join('\\n');\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "journal",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "moods",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "today",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-12",
+        "name": "Calendar",
+        "type": "text",
+        "x": 2740,
+        "y": 2997,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "h3",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-13",
+        "name": "Summary text",
+        "type": "customfunction",
+        "x": 2360,
+        "y": 3213,
+        "width": 160,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(journal, moods, today) => {\n  const days = journal?.days ?? {};\n  const dates = Object.keys(days).sort();\n  if (dates.length === 0) return 'No check-ins yet.';\n  // Current streak: consecutive days with an entry, counting back from today or yesterday.\n  const [y, m, d] = String(today).split('-').map(Number);\n  const pad = (n) => String(n).padStart(2, '0');\n  const key = (day) => `${day.getFullYear()}-${pad(day.getMonth() + 1)}-${pad(day.getDate())}`;\n  let back = days[today] ? 0 : 1;\n  let streak = 0;\n  while (days[key(new Date(y, m - 1, d - back - streak))]) streak += 1;\n  const counts = {};\n  for (const date of dates) counts[days[date].mood] = (counts[days[date].mood] ?? 0) + 1;\n  const top = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0];\n  const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;\n  const lead = journal.sample ? '[Sample days]{.secondary}: save your first check-in and they disappear.\\n' : '';\n  return `${lead}**${plural(dates.length, 'day')}** checked in · streak **${plural(streak, 'day')}** · most often **${(moods ?? [])[top] ?? ''}**`;\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "journal",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "moods",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "today",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-14",
+        "name": "Summary",
+        "type": "text",
+        "x": 2740,
+        "y": 3157,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-15",
+        "name": "Notes text",
+        "type": "customfunction",
+        "x": 2360,
+        "y": 3429,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(journal, moods) => {\n  const days = journal?.days ?? {};\n  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];\n  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];\n  // Notes are typed by the user and read as Markdown, so escape them.\n  const escape = (text) => text.replace(/\\s+/g, ' ').replace(/([\\\\`*_{}[\\]()#+\\-.!|<>~])/g, '\\\\$1');\n  const lines = Object.keys(days)\n    .sort()\n    .reverse()\n    .slice(0, 7)\n    .map((date) => {\n      const [y, m, d] = date.split('-').map(Number);\n      const day = new Date(y, m - 1, d);\n      const entry = days[date];\n      const note = entry.note ? ` · ${escape(entry.note)}` : '';\n      return `**${weekdays[day.getDay()]} ${d} ${months[m - 1]}** ${(moods ?? [])[entry.mood] ?? ''}${note}`;\n    });\n  return lines.length ? lines.join('\\n') : 'Nothing written yet.';\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "journal",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "moods",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "Notes are typed by the user and read as Markdown, so they are escaped first."
+      },
+      {
+        "id": "ai-node-16",
+        "name": "Notes",
+        "type": "text",
+        "x": 2740,
+        "y": 3317,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-17",
+        "name": "Today text",
+        "type": "customfunction",
+        "x": 2060,
+        "y": 3189,
+        "width": 160,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(stored, moods, today) => {\n  const entry = stored && typeof stored === 'object' ? stored[today] : undefined;\n  if (!entry) return 'Not checked in today yet.';\n  return `[Saved]{.success} · today you felt ${(moods ?? [])[entry.mood] ?? ''}. Saving again replaces it.`;\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "stored",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "moods",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "today",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-18",
+        "name": "Today status",
+        "type": "text",
+        "x": 2360,
+        "y": 3621,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "muted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-19",
+        "name": "Forget button",
+        "type": "widgetbutton",
+        "x": 3280,
+        "y": 4301,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Forget everything",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-20",
+        "name": "Delete journal",
+        "type": "storagedelete",
+        "x": 3620,
+        "y": 4301,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Storage type",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Cloud\",\"disabled\":true},{\"text\":\"IndexedDB\"},{\"text\":\"Local storage\"}],\"showAsButtons\":true}}",
+            "data": "IndexedDB",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Location",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Mood journal example"
+          },
+          {
+            "socketType": "in",
+            "name": "Key",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "journal"
+          },
+          {
+            "socketType": "in",
+            "name": "Show Toast Notification",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "trigger",
+            "name": "Execute",
+            "dataType": "{\"class\":\"TriggerType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Success",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Error",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": false,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-21",
+        "name": "Main page",
+        "type": "uisurfacenode",
+        "x": 5438.511111111111,
+        "y": 2523.0,
+        "width": 300,
+        "height": 300,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      24,
+                      24,
+                      24
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "50dvh",
+                    "maxWidth": "md",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "@media (max-width: 600px)": {
+                        "padding": "8px"
+                      }
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "pdMZJzo8qv",
+                    "TdyJUuT5mO",
+                    "38sy4MDkOd"
+                  ],
+                  "linkedNodes": {}
+                },
+                "pdMZJzo8qv": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      16,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 4,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "6R0kstodMM",
+                    "LMN992fS0N"
+                  ],
+                  "linkedNodes": {}
+                },
+                "6R0kstodMM": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Mood journal",
+                    "variant": "display",
+                    "tone": "default",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "pdMZJzo8qv",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "LMN992fS0N": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Check in once a day. The journal is saved in this browser, so it is still here the next time you open the app. Open the graph to see how.",
+                    "variant": "body",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "pdMZJzo8qv",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "TdyJUuT5mO": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "F34aY2Bgdh",
+                    "VyUEK5VvhI"
+                  ],
+                  "linkedNodes": {}
+                },
+                "F34aY2Bgdh": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      20,
+                      20
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 12,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "strong",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "overflow": "hidden"
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "TdyJUuT5mO",
+                  "nodes": [
+                    "Nz0Tw1A9V0",
+                    "iUbzSFf2po",
+                    "xWwP4g4DFz",
+                    "lxBDuAE4ux",
+                    "W3hitkMN6E"
+                  ],
+                  "linkedNodes": {}
+                },
+                "Nz0Tw1A9V0": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Today",
+                    "variant": "label",
+                    "tone": "primary",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "F34aY2Bgdh",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "iUbzSFf2po": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-5",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "F34aY2Bgdh",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "xWwP4g4DFz": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-6",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "F34aY2Bgdh",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "lxBDuAE4ux": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-7",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "F34aY2Bgdh",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "W3hitkMN6E": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-18",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "F34aY2Bgdh",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "VyUEK5VvhI": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      20,
+                      20
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 12,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "strong",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "overflow": "hidden"
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "TdyJUuT5mO",
+                  "nodes": [
+                    "b1YieRoa4m",
+                    "XbaHNTlGZz",
+                    "QVZUAf2Lsv",
+                    "qcdkggNNto"
+                  ],
+                  "linkedNodes": {}
+                },
+                "b1YieRoa4m": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Last four weeks",
+                    "variant": "label",
+                    "tone": "secondary",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "VyUEK5VvhI",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "XbaHNTlGZz": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-12",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "VyUEK5VvhI",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "QVZUAf2Lsv": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "One row per week, Monday to Sunday.",
+                    "variant": "caption",
+                    "tone": "muted",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "VyUEK5VvhI",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "qcdkggNNto": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-14",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "VyUEK5VvhI",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "38sy4MDkOd": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "k5d3IBvPXB"
+                  ],
+                  "linkedNodes": {}
+                },
+                "k5d3IBvPXB": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      20,
+                      20
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 12,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "strong",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "overflow": "hidden"
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "38sy4MDkOd",
+                  "nodes": [
+                    "MnuuJGkauN",
+                    "gShHlwNBLu",
+                    "eEkZP3rjvt"
+                  ],
+                  "linkedNodes": {}
+                },
+                "MnuuJGkauN": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Recent days",
+                    "variant": "label",
+                    "tone": "primary",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "k5d3IBvPXB",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "gShHlwNBLu": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-16",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "k5d3IBvPXB",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "eEkZP3rjvt": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "200px",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-19",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "k5d3IBvPXB",
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            }
+          },
+          {
+            "socketType": "in",
+            "name": "Button Group",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Button Group visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Button Group"
+          },
+          {
+            "socketType": "in",
+            "name": "Button Group layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Button Group"
+          },
+          {
+            "socketType": "in",
+            "name": "Text Field",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text Field visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text Field"
+          },
+          {
+            "socketType": "in",
+            "name": "Text Field layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text Field"
+          },
+          {
+            "socketType": "in",
+            "name": "Button",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Button visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Button layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Text",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text"
+          },
+          {
+            "socketType": "in",
+            "name": "Text layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 2",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 2 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 2 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 3",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 3 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text 3"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 3 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text 3"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 4",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 4 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text 4"
+          },
+          {
+            "socketType": "in",
+            "name": "Text 4 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text 4"
+          },
+          {
+            "socketType": "in",
+            "name": "Button 2",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Button 2 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Button 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Button 2 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Button 2"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "This is the page you see on the left."
+      },
+      {
+        "id": "ai-node-22",
+        "name": "Selected mood",
+        "type": "customfunction",
+        "x": 460,
+        "y": 1901,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(stored, today) => stored?.[today]?.mood ?? 3",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "stored",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "today",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "Shows today's saved mood when you come back, Good otherwise."
+      }
+    ],
+    "links": [
+      {
+        "sourceNodeId": "ai-node-9",
+        "sourceSocketName": "Success",
+        "targetNodeId": "ai-node-4",
+        "targetSocketName": "Trigger 1"
+      },
+      {
+        "sourceNodeId": "ai-node-20",
+        "sourceSocketName": "Success",
+        "targetNodeId": "ai-node-4",
+        "targetSocketName": "Trigger 2"
+      },
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-5",
+        "targetSocketName": "Button Options"
+      },
+      {
+        "sourceNodeId": "ai-node-22",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-5",
+        "targetSocketName": "Selected Button"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "Value",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "stored"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "Index",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "mood"
+      },
+      {
+        "sourceNodeId": "ai-node-6",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "note"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "today"
+      },
+      {
+        "sourceNodeId": "ai-node-8",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "Value"
+      },
+      {
+        "sourceNodeId": "ai-node-7",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "Execute"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "Value",
+        "targetNodeId": "ai-node-10",
+        "targetSocketName": "stored"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-10",
+        "targetSocketName": "today"
+      },
+      {
+        "sourceNodeId": "ai-node-10",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-11",
+        "targetSocketName": "journal"
+      },
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-11",
+        "targetSocketName": "moods"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-11",
+        "targetSocketName": "today"
+      },
+      {
+        "sourceNodeId": "ai-node-11",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "Content"
+      },
+      {
+        "sourceNodeId": "ai-node-10",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "journal"
+      },
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "moods"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "today"
+      },
+      {
+        "sourceNodeId": "ai-node-13",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-14",
+        "targetSocketName": "Content"
+      },
+      {
+        "sourceNodeId": "ai-node-10",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-15",
+        "targetSocketName": "journal"
+      },
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-15",
+        "targetSocketName": "moods"
+      },
+      {
+        "sourceNodeId": "ai-node-15",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-16",
+        "targetSocketName": "Content"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "Value",
+        "targetNodeId": "ai-node-17",
+        "targetSocketName": "stored"
+      },
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-17",
+        "targetSocketName": "moods"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-17",
+        "targetSocketName": "today"
+      },
+      {
+        "sourceNodeId": "ai-node-17",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-18",
+        "targetSocketName": "Content"
+      },
+      {
+        "sourceNodeId": "ai-node-19",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-20",
+        "targetSocketName": "Execute"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-21",
+        "targetSocketName": "Button Group"
+      },
+      {
+        "sourceNodeId": "ai-node-6",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-21",
+        "targetSocketName": "Text Field"
+      },
+      {
+        "sourceNodeId": "ai-node-7",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-21",
+        "targetSocketName": "Button"
+      },
+      {
+        "sourceNodeId": "ai-node-18",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-21",
+        "targetSocketName": "Text"
+      },
+      {
+        "sourceNodeId": "ai-node-12",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-21",
+        "targetSocketName": "Text 2"
+      },
+      {
+        "sourceNodeId": "ai-node-14",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-21",
+        "targetSocketName": "Text 3"
+      },
+      {
+        "sourceNodeId": "ai-node-16",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-21",
+        "targetSocketName": "Text 4"
+      },
+      {
+        "sourceNodeId": "ai-node-19",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-21",
+        "targetSocketName": "Button 2"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "Value",
+        "targetNodeId": "ai-node-22",
+        "targetSocketName": "stored"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-22",
+        "targetSocketName": "today"
+      }
+    ],
+    "groups": [
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "ai-node-1"
+        ]
+      },
+      {
+        "id": "1-read-what-you-saved",
+        "name": "1. Read what you saved",
+        "color": "#60D2FF",
+        "nodeIds": [
+          "ai-node-2",
+          "ai-node-3",
+          "ai-node-4"
+        ]
+      },
+      {
+        "id": "2-check-in",
+        "name": "2. Check in",
+        "color": "#E2ABFF",
+        "nodeIds": [
+          "ai-node-22",
+          "ai-node-5",
+          "ai-node-6",
+          "ai-node-7",
+          "ai-node-8",
+          "ai-node-9"
+        ]
+      },
+      {
+        "id": "3-show-the-journal",
+        "name": "3. Show the journal",
+        "color": "#FFAE6B",
+        "nodeIds": [
+          "ai-node-10",
+          "ai-node-11",
+          "ai-node-12",
+          "ai-node-13",
+          "ai-node-14",
+          "ai-node-15",
+          "ai-node-16",
+          "ai-node-17",
+          "ai-node-18"
+        ]
+      },
+      {
+        "id": "4-forget-everything",
+        "name": "4. Forget everything",
+        "color": "#7DDD9C",
+        "nodeIds": [
+          "ai-node-19",
+          "ai-node-20"
+        ]
+      },
+      {
+        "id": "main-page",
+        "name": "Main page",
+        "color": "#C0B6FF",
+        "nodeIds": [
+          "ai-node-21"
+        ]
+      }
+    ]
+  },
+  "date": "2026-11-03T08:00:00.000Z",
+  "owner": "publicUser",
+  "isRemote": true
+}

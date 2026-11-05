@@ -1,0 +1,2342 @@
+{
+  "id": "Default/Simple weather app",
+  "location": "Default",
+  "name": "Simple weather app",
+  "access": "private",
+  "graphData": {
+    "version": 7,
+    "graphSettings": {
+      "showExecutionVisualisation": true,
+      "viewportCenterPosition": {
+        "x": -718,
+        "y": 1908
+      },
+      "viewportScale": 0.108,
+      "defaultUISurfaceNodeId": "rare-snake-35",
+      "theme": {
+        "mode": "dark"
+      }
+    },
+    "overlay": {
+      "dashboard": {
+        "visible": true,
+        "fullscreen": false,
+        "maximized": false,
+        "widthPercentage": 52,
+        "locked": false
+      }
+    },
+    "nodes": [
+      {
+        "id": "unlucky-firefox-77",
+        "type": "httpnode",
+        "x": 3098,
+        "y": 1826,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "URL",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Headers",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {}
+          },
+          {
+            "socketType": "in",
+            "name": "Method",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Get\",\"value\":\"Get\"},{\"text\":\"Post\",\"value\":\"Post\"},{\"text\":\"Put\",\"value\":\"Put\"},{\"text\":\"Patch\",\"value\":\"Patch\"},{\"text\":\"Delete\",\"value\":\"Delete\"}],\"showAsButtons\":true}}",
+            "data": "Get"
+          },
+          {
+            "socketType": "in",
+            "name": "Body",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Send Through Companion",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false
+          },
+          {
+            "socketType": "out",
+            "name": "Content",
+            "dataType": "{\"class\":\"JSONType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "The address holds the coordinates from the first request, so it is only known at run time and keeps its network warning.",
+        "name": "Get forecast"
+      },
+      {
+        "id": "swift-bulldog-65",
+        "type": "widgettextfield",
+        "x": 0,
+        "y": 973,
+        "width": 220,
+        "height": 120,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Vienna",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "City",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Placeholder",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Enter a city",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Helper Text",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Type",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"text\"},{\"text\":\"password\"}],\"showAsButtons\":true}}",
+            "data": "text",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Multiline",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Rows",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 3,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max Length",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Required",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While typing\"},{\"text\":\"Rate limited\"},{\"text\":\"After pause\"},{\"text\":\"Enter or blur\"}],\"showAsButtons\":true}}",
+            "data": "While typing",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit Delay",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":5000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 400,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "City"
+      },
+      {
+        "id": "clever-dragon-64",
+        "type": "httpnode",
+        "x": 1590,
+        "y": 840,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "URL",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Headers",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {}
+          },
+          {
+            "socketType": "in",
+            "name": "Method",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Get\",\"value\":\"Get\"},{\"text\":\"Post\",\"value\":\"Post\"},{\"text\":\"Put\",\"value\":\"Put\"},{\"text\":\"Patch\",\"value\":\"Patch\"},{\"text\":\"Delete\",\"value\":\"Delete\"}],\"showAsButtons\":true}}",
+            "data": "Get"
+          },
+          {
+            "socketType": "in",
+            "name": "Body",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Send Through Companion",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false
+          },
+          {
+            "socketType": "out",
+            "name": "Content",
+            "dataType": "{\"class\":\"JSONType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "The address holds the city you type, so it is only known at run time and keeps its network warning.",
+        "name": "Find coordinates"
+      },
+      {
+        "id": "angry-skunk-5",
+        "type": "concatenate",
+        "x": 950,
+        "y": 840,
+        "width": 200,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "New Input",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Out",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "New Input 2",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Concatenated",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Geocoding URL"
+      },
+      {
+        "id": "short-lionfish-94",
+        "type": "constant_string",
+        "x": 0,
+        "y": 840,
+        "width": 810,
+        "height": 53,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "String",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "https://geocoding-api.open-meteo.com/v1/search?name="
+          },
+          {
+            "socketType": "out",
+            "name": "String",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Geocoding URL start"
+      },
+      {
+        "id": "dangerous-robin-54",
+        "type": "constant_string",
+        "x": 0,
+        "y": 1173,
+        "width": 178,
+        "height": 53,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "String",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "&count=1"
+          },
+          {
+            "socketType": "out",
+            "name": "String",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Geocoding URL end"
+      },
+      {
+        "id": "dry-eagle-46",
+        "type": "text",
+        "x": 3858,
+        "y": 2603,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.title}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "h1",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "center",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Place"
+      },
+      {
+        "id": "rare-snake-35",
+        "type": "uisurfacenode",
+        "x": 5098,
+        "y": 2027.5,
+        "width": 400,
+        "height": 600,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "056fb6dd-37b9-4d6b-ae83-d95c3be453fd": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "auto",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_curvy-monkey-25",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "415f22e1-c49b-4291-b871-8eb50799490e",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "13dfa601-7b3c-4547-a05f-0feb9fcf28f8": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "center",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "59d2aa62-d9e5-489b-b227-9b25e960f135",
+                  "hidden": false,
+                  "nodes": [
+                    "c5a40d98-39c3-4aa6-91b7-7424819b3e12",
+                    "eda645c6-bad7-4bfd-8c5e-60ebcf2ebaca",
+                    "wind-widget"
+                  ],
+                  "linkedNodes": {}
+                },
+                "415f22e1-c49b-4291-b871-8eb50799490e": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "center",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "59d2aa62-d9e5-489b-b227-9b25e960f135",
+                  "hidden": false,
+                  "nodes": [
+                    "531add98-9337-4b1e-bec4-8ad55bbd2c8d",
+                    "056fb6dd-37b9-4d6b-ae83-d95c3be453fd"
+                  ],
+                  "linkedNodes": {}
+                },
+                "531add98-9337-4b1e-bec4-8ad55bbd2c8d": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_moody-fireant-19",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "415f22e1-c49b-4291-b871-8eb50799490e",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "59d2aa62-d9e5-489b-b227-9b25e960f135": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "width": "100%",
+                    "height": "100%",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "ROOT",
+                  "hidden": false,
+                  "nodes": [
+                    "city-row",
+                    "99d3fe25-6099-4e8c-bdcf-5f76fab38d33",
+                    "condition-widget",
+                    "415f22e1-c49b-4291-b871-8eb50799490e",
+                    "13dfa601-7b3c-4547-a05f-0feb9fcf28f8"
+                  ],
+                  "linkedNodes": {}
+                },
+                "99d3fe25-6099-4e8c-bdcf-5f76fab38d33": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_dry-eagle-46",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "59d2aa62-d9e5-489b-b227-9b25e960f135",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "100dvh",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "50dvh",
+                    "maxWidth": false,
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "59d2aa62-d9e5-489b-b227-9b25e960f135"
+                  ],
+                  "linkedNodes": {}
+                },
+                "c5a40d98-39c3-4aa6-91b7-7424819b3e12": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_breezy-ladybug-74",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "13dfa601-7b3c-4547-a05f-0feb9fcf28f8",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "eda645c6-bad7-4bfd-8c5e-60ebcf2ebaca": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "auto",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_dangerous-grasshopper-70",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "13dfa601-7b3c-4547-a05f-0feb9fcf28f8",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "city-row": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "stretch",
+                    "justifyContent": "center",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "city-field"
+                  ],
+                  "linkedNodes": {},
+                  "parent": "59d2aa62-d9e5-489b-b227-9b25e960f135"
+                },
+                "city-field": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "320px",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_swift-bulldog-65",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "city-row",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "condition-widget": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_condition-text",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "59d2aa62-d9e5-489b-b227-9b25e960f135",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "wind-widget": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_wind-text",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "13dfa601-7b3c-4547-a05f-0feb9fcf28f8",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "City",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "City visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "City"
+          },
+          {
+            "socketType": "in",
+            "name": "City layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "City"
+          },
+          {
+            "socketType": "in",
+            "name": "Place",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Place visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Place"
+          },
+          {
+            "socketType": "in",
+            "name": "Place layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Place"
+          },
+          {
+            "socketType": "in",
+            "name": "Condition",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Condition visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Condition"
+          },
+          {
+            "socketType": "in",
+            "name": "Condition layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Condition"
+          },
+          {
+            "socketType": "in",
+            "name": "Temperature label",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Temperature label visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Temperature label"
+          },
+          {
+            "socketType": "in",
+            "name": "Temperature label layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Temperature label"
+          },
+          {
+            "socketType": "in",
+            "name": "Temperature",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Temperature visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Temperature"
+          },
+          {
+            "socketType": "in",
+            "name": "Temperature layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Temperature"
+          },
+          {
+            "socketType": "in",
+            "name": "Feels like label",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Feels like label visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Feels like label"
+          },
+          {
+            "socketType": "in",
+            "name": "Feels like label layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Feels like label"
+          },
+          {
+            "socketType": "in",
+            "name": "Feels like",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Feels like visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Feels like"
+          },
+          {
+            "socketType": "in",
+            "name": "Feels like layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Feels like"
+          },
+          {
+            "socketType": "in",
+            "name": "Wind",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Wind visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Wind"
+          },
+          {
+            "socketType": "in",
+            "name": "Wind layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Wind"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Main page",
+        "comment": "This is the page you see on the left."
+      },
+      {
+        "id": "heavy-treefrog-92",
+        "type": "text",
+        "x": 2350,
+        "y": 1826,
+        "width": 608,
+        "height": 177,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "https://api.open-meteo.com/v1/forecast?latitude={{place.latitude}}&longitude={{place.longitude}}&current=temperature\\_2m,apparent\\_temperature,weather\\_code,wind\\_speed\\_10m&timezone=auto",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "place",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Forecast URL"
+      },
+      {
+        "id": "curvy-monkey-25",
+        "type": "text",
+        "x": 3858,
+        "y": 3083,
+        "width": 433,
+        "height": 157,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.temperature}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "display",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "fontSize": "30cqw",
+              "lineHeight": "30cqw"
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Temperature"
+      },
+      {
+        "id": "smooth-rattlesnake-71",
+        "type": "throttledebounce",
+        "x": 1290,
+        "y": 840,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "In",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Update",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"updateDebounceFunction\",\"showDetails\":false}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Wait",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 1000,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max Wait",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Leading",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Trailing",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Wait for typing to stop"
+      },
+      {
+        "id": "moody-fireant-19",
+        "type": "text",
+        "x": 3858,
+        "y": 2923,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.temperatureLabel}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "muted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "center",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Temperature label"
+      },
+      {
+        "id": "dangerous-grasshopper-70",
+        "type": "text",
+        "x": 3858,
+        "y": 3480,
+        "width": 440,
+        "height": 95,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.feelsLike}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "display",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "secondary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "fontSize": "20cqw",
+              "lineHeight": "20cqw"
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Feels like"
+      },
+      {
+        "id": "breezy-ladybug-74",
+        "type": "text",
+        "x": 3858,
+        "y": 3320,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.feelsLikeLabel}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "muted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "center",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "name": "Feels like label"
+      },
+      {
+        "id": "best-match",
+        "name": "Best match",
+        "type": "customfunction",
+        "x": 1890,
+        "y": 840,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(geo) => geo?.results?.[0] ?? { latitude: 0, longitude: 0 }",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "geo",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "The forecast node always sends its request, so a city without a match gets valid coordinates. Weather values then shows \"City not found\" instead of that answer."
+      },
+      {
+        "id": "weather-values",
+        "name": "Weather values",
+        "type": "customfunction",
+        "x": 3558,
+        "y": 2603,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(place, forecast) => {\n  // A non-breaking space keeps each line's height, so the centered page does not move.\n  const blank = ' ';\n  if (!place?.name) {\n    return { title: 'City not found', condition: 'Try another spelling.', temperatureLabel: blank, temperature: blank, feelsLikeLabel: blank, feelsLike: blank, wind: blank };\n  }\n  const { current, current_units: units } = forecast;\n  // Weather codes from the Open-Meteo documentation.\n  const conditions = { 0: 'Clear sky', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast', 45: 'Fog', 48: 'Fog', 51: 'Light drizzle', 53: 'Drizzle', 55: 'Heavy drizzle', 56: 'Freezing drizzle', 57: 'Freezing drizzle', 61: 'Light rain', 63: 'Rain', 65: 'Heavy rain', 66: 'Freezing rain', 67: 'Freezing rain', 71: 'Light snow', 73: 'Snow', 75: 'Heavy snow', 77: 'Snow grains', 80: 'Light showers', 81: 'Showers', 82: 'Heavy showers', 85: 'Snow showers', 86: 'Snow showers', 95: 'Thunderstorm', 96: 'Thunderstorm with hail', 99: 'Thunderstorm with hail' };\n  return {\n    title: `${place.country} • ${place.name}`,\n    condition: conditions[current?.weather_code] ?? blank,\n    temperatureLabel: `Temperature (${units?.temperature_2m ?? ''})`,\n    temperature: current?.temperature_2m ?? blank,\n    feelsLikeLabel: `Feels like (${units?.apparent_temperature ?? ''})`,\n    feelsLike: current?.apparent_temperature ?? blank,\n    wind: current ? `Wind ${current.wind_speed_10m} ${units?.wind_speed_10m ?? ''}` : blank,\n  };\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "place",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "forecast",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "condition-text",
+        "name": "Condition",
+        "type": "text",
+        "x": 3858,
+        "y": 2763,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.condition}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "muted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "center",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "wind-text",
+        "name": "Wind",
+        "type": "text",
+        "x": 3858,
+        "y": 3655,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.wind}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "muted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "center",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "type": "label",
+        "x": 0,
+        "y": 0,
+        "width": 1760,
+        "height": 280,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "This page is a Tailrmade app.\nFollow the numbers: the city finds its coordinates, the coordinates get the forecast.\nMain page on the right shows the result."
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 64,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      }
+    ],
+    "links": [
+      {
+        "sourceNodeId": "heavy-treefrog-92",
+        "sourceSocketName": "Output",
+        "targetNodeId": "unlucky-firefox-77",
+        "targetSocketName": "URL"
+      },
+      {
+        "sourceNodeId": "smooth-rattlesnake-71",
+        "sourceSocketName": "Out",
+        "targetNodeId": "clever-dragon-64",
+        "targetSocketName": "URL"
+      },
+      {
+        "sourceNodeId": "short-lionfish-94",
+        "sourceSocketName": "String",
+        "targetNodeId": "angry-skunk-5",
+        "targetSocketName": "New Input"
+      },
+      {
+        "sourceNodeId": "swift-bulldog-65",
+        "sourceSocketName": "Out",
+        "targetNodeId": "angry-skunk-5",
+        "targetSocketName": "Out"
+      },
+      {
+        "sourceNodeId": "dangerous-robin-54",
+        "sourceSocketName": "String",
+        "targetNodeId": "angry-skunk-5",
+        "targetSocketName": "New Input 2"
+      },
+      {
+        "sourceNodeId": "angry-skunk-5",
+        "sourceSocketName": "Concatenated",
+        "targetNodeId": "smooth-rattlesnake-71",
+        "targetSocketName": "In"
+      },
+      {
+        "sourceNodeId": "clever-dragon-64",
+        "sourceSocketName": "Content",
+        "targetNodeId": "best-match",
+        "targetSocketName": "geo"
+      },
+      {
+        "sourceNodeId": "best-match",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "heavy-treefrog-92",
+        "targetSocketName": "place"
+      },
+      {
+        "sourceNodeId": "best-match",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "weather-values",
+        "targetSocketName": "place"
+      },
+      {
+        "sourceNodeId": "unlucky-firefox-77",
+        "sourceSocketName": "Content",
+        "targetNodeId": "weather-values",
+        "targetSocketName": "forecast"
+      },
+      {
+        "sourceNodeId": "weather-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "dry-eagle-46",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "weather-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "moody-fireant-19",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "weather-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "curvy-monkey-25",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "weather-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "breezy-ladybug-74",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "weather-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "dangerous-grasshopper-70",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "weather-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "condition-text",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "weather-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "wind-text",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "swift-bulldog-65",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "rare-snake-35",
+        "targetSocketName": "City"
+      },
+      {
+        "sourceNodeId": "dry-eagle-46",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "rare-snake-35",
+        "targetSocketName": "Place"
+      },
+      {
+        "sourceNodeId": "condition-text",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "rare-snake-35",
+        "targetSocketName": "Condition"
+      },
+      {
+        "sourceNodeId": "moody-fireant-19",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "rare-snake-35",
+        "targetSocketName": "Temperature label"
+      },
+      {
+        "sourceNodeId": "curvy-monkey-25",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "rare-snake-35",
+        "targetSocketName": "Temperature"
+      },
+      {
+        "sourceNodeId": "breezy-ladybug-74",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "rare-snake-35",
+        "targetSocketName": "Feels like label"
+      },
+      {
+        "sourceNodeId": "dangerous-grasshopper-70",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "rare-snake-35",
+        "targetSocketName": "Feels like"
+      },
+      {
+        "sourceNodeId": "wind-text",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "rare-snake-35",
+        "targetSocketName": "Wind"
+      }
+    ],
+    "groups": [
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "start-here"
+        ]
+      },
+      {
+        "id": "find",
+        "name": "1. Find the coordinates",
+        "color": "#60D2FF",
+        "nodeIds": [
+          "short-lionfish-94",
+          "swift-bulldog-65",
+          "dangerous-robin-54",
+          "angry-skunk-5",
+          "smooth-rattlesnake-71",
+          "clever-dragon-64",
+          "best-match"
+        ]
+      },
+      {
+        "id": "forecast",
+        "name": "2. Get the forecast",
+        "color": "#E2ABFF",
+        "nodeIds": [
+          "heavy-treefrog-92",
+          "unlucky-firefox-77"
+        ]
+      },
+      {
+        "id": "show",
+        "name": "3. Show the weather",
+        "color": "#FFAE6B",
+        "nodeIds": [
+          "weather-values",
+          "dry-eagle-46",
+          "condition-text",
+          "moody-fireant-19",
+          "curvy-monkey-25",
+          "breezy-ladybug-74",
+          "dangerous-grasshopper-70",
+          "wind-text"
+        ]
+      },
+      {
+        "id": "main-page",
+        "name": "Main page",
+        "color": "#C0B6FF",
+        "nodeIds": [
+          "rare-snake-35"
+        ]
+      }
+    ]
+  },
+  "date": "2026-11-02T08:00:00.000Z",
+  "owner": "publicUser",
+  "isRemote": true
+}
