@@ -1,0 +1,496 @@
+[
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Label",
+   "node_id": "ai-node-1"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-1",
+   "name": "Start here"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-1",
+   "socket_name": "Input",
+   "value": "This page is a Tailrmade app.\nFollow the numbers: the sliders and the theme become shader settings, and the shader paints the picture.\nMain page on the right shows the result."
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-1",
+   "socket_name": "Font size",
+   "value": 64
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-1",
+   "socket_name": "Background color",
+   "value": {
+    "r": 255,
+    "g": 255,
+    "b": 255,
+    "a": 1
+   }
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "theme",
+   "node_id": "ai-node-2"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-2",
+   "name": "App theme"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-2",
+   "comment": "Gives the picture its colours. It keeps the app's saved theme; pick a preset and mode here to restyle the page and the picture."
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "WidgetSlider",
+   "node_id": "ai-node-3"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-3",
+   "name": "Petals slider"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Initial Value",
+   "value": 6
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Min",
+   "value": 2
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Max",
+   "value": 16
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Decimals",
+   "value": 0
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Label",
+   "value": "Petals: {{value}}"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "WidgetSlider",
+   "node_id": "ai-node-4"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-4",
+   "name": "Rings slider"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Initial Value",
+   "value": 5
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Min",
+   "value": 1
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Max",
+   "value": 16
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Decimals",
+   "value": 0
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Label",
+   "value": "Rings: {{value}}"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "WidgetSlider",
+   "node_id": "ai-node-5"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-5",
+   "name": "Twist slider"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Initial Value",
+   "value": 2
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Min",
+   "value": 0
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Max",
+   "value": 8
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Decimals",
+   "value": 1
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Label",
+   "value": "Twist: {{value}}"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "CustomFunction",
+   "node_id": "ai-node-6"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-6",
+   "name": "Shader settings"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-6",
+   "comment": "Turns the sliders and the theme's colours into the values the shader reads. The colours update on load, not on a live preset switch."
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-6",
+   "socket_name": "Code",
+   "value": "(petals, rings, twist, theme) => {\n  const rgb = (color, fallback) => {\n    const hex = /^#([0-9a-f]{6})/i.exec(String(color ?? ''));\n    const digits = hex ? hex[1] : fallback;\n    return [0, 2, 4].map((at) => parseInt(digits.slice(at, at + 2), 16) / 255);\n  };\n  const tokens = theme?.tokens ?? {};\n  return {\n    petals: { value: Number(petals) || 2, type: 'f32' },\n    rings: { value: Number(rings) || 1, type: 'f32' },\n    twist: { value: Number(twist) || 0, type: 'f32' },\n    ink: { value: rgb(tokens.primary, '888888'), type: 'vec3<f32>' },\n    accent: { value: rgb(tokens.secondary, 'bbbbbb'), type: 'vec3<f32>' },\n    paper: { value: rgb(tokens['background.paper'], '222222'), type: 'vec3<f32>' },\n  };\n}"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-3",
+   "from_socket": "Out",
+   "to_node": "ai-node-6",
+   "to_socket": "petals"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-4",
+   "from_socket": "Out",
+   "to_node": "ai-node-6",
+   "to_socket": "rings"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-5",
+   "from_socket": "Out",
+   "to_node": "ai-node-6",
+   "to_socket": "twist"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-2",
+   "from_socket": "Theme",
+   "to_node": "ai-node-6",
+   "to_socket": "theme"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Shader",
+   "node_id": "ai-node-7"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-7",
+   "name": "Pattern picture"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-7",
+   "comment": "Draws on the GPU, so the app needs no main-thread code and has no risk warning."
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-7",
+   "socket_name": "Width",
+   "value": 640
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-7",
+   "socket_name": "Height",
+   "value": 640
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-7",
+   "socket_name": "WebGL Fragment",
+   "value": "in vec2 UV;\nuniform float petals;\nuniform float rings;\nuniform float twist;\nuniform vec3 ink;\nuniform vec3 accent;\nuniform vec3 paper;\n\nvoid main() {\n    vec2 p = UV * 2.0 - 1.0;\n    float radius = length(p);\n    float angle = atan(p.y, p.x) + twist * radius;\n    float wave = sin(angle * petals) * 0.5 + 0.5;\n    float band = sin(radius * rings * 6.2832 + wave * 3.1416) * 0.5 + 0.5;\n    vec3 color = mix(ink, accent, wave);\n    color = mix(paper, color, smoothstep(0.35, 0.65, band));\n    color = mix(color, paper, smoothstep(0.96, 1.0, radius));\n    gl_FragColor = vec4(color, 1.0);\n}\n"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "CustomFunction",
+   "node_id": "ai-node-9"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-9",
+   "name": "No images"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-9",
+   "comment": "A shader's Images input is never saved, so left unwired it warns on every load. This fills it with an empty set."
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-9",
+   "socket_name": "Code",
+   "value": "() => ({})"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-9",
+   "from_socket": "OutData",
+   "to_node": "ai-node-7",
+   "to_socket": "Images"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-6",
+   "from_socket": "OutData",
+   "to_node": "ai-node-7",
+   "to_socket": "Uniforms"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "UISurfaceNode",
+   "node_id": "ai-node-8"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-8",
+   "name": "Main page"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-8",
+   "comment": "This is the page you see on the left. The sliders and the picture plug in here."
+  }
+ },
+ {
+  "tool": "set_surface_layout",
+  "input": {
+   "node_id": "ai-node-8",
+   "layout": {
+    "direction": "column",
+    "gap": 16,
+    "padding": 24,
+    "align": "center",
+    "props": {
+     "customStyles": {
+      "@media (max-width: 600px)": {
+       "padding": "8px"
+      }
+     }
+    },
+    "children": [
+     {
+      "direction": "column",
+      "gap": 4,
+      "width": "100%",
+      "padding": [
+       16,
+       8,
+       8,
+       8
+      ],
+      "props": {
+       "maxWidth": "640px"
+      },
+      "children": [
+       {
+        "text": "Pattern maker",
+        "variant": "h1",
+        "tone": "default",
+        "alignment": "center"
+       },
+       {
+        "text": "Move the sliders to redraw the picture. Its colours come from the app's theme.",
+        "variant": "body",
+        "tone": "muted",
+        "alignment": "center"
+       }
+      ]
+     },
+     {
+      "direction": "column",
+      "gap": 16,
+      "padding": 20,
+      "emphasis": "strong",
+      "width": "100%",
+      "align": "stretch",
+      "props": {
+       "maxWidth": "640px",
+       "minWidth": "48px"
+      },
+      "children": [
+       {
+        "widget": "ai-node-7",
+        "width": "100%",
+        "height": "auto"
+       },
+       {
+        "widget": "ai-node-3",
+        "width": "100%"
+       },
+       {
+        "widget": "ai-node-4",
+        "width": "100%"
+       },
+       {
+        "widget": "ai-node-5",
+        "width": "100%"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ },
+ {
+  "tool": "set_default_surface",
+  "input": {
+   "node_id": "ai-node-8"
+  }
+ },
+ {
+  "tool": "inspect_warnings_and_errors",
+  "input": {}
+ }
+]

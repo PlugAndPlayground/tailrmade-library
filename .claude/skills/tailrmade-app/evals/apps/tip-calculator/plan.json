@@ -1,0 +1,48 @@
+{
+ "name": "Tip calculator",
+ "chain": true,
+ "app_theme": {
+  "mode": "dark"
+ },
+ "start": [
+  "ai-node-1"
+ ],
+ "theme": [
+  "ai-node-2"
+ ],
+ "page": "ai-node-11",
+ "overlay": {
+  "dashboard": {
+   "visible": true,
+   "fullscreen": false,
+   "maximized": false,
+   "widthPercentage": 52,
+   "locked": false
+  }
+ },
+ "sections": [
+  {
+   "name": "Read the inputs",
+   "nodes": [
+    "ai-node-3",
+    "ai-node-4",
+    "ai-node-5"
+   ]
+  },
+  {
+   "name": "Split the bill",
+   "nodes": [
+    "ai-node-6"
+   ]
+  },
+  {
+   "name": "Show the result",
+   "nodes": [
+    "ai-node-7",
+    "ai-node-8",
+    "ai-node-9",
+    "ai-node-10"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,212 @@
+{
+ "expect_risks": [
+  "warning/network/Find coordinates",
+  "warning/network/Get forecast"
+ ],
+ "scenarios": [
+  {
+   "name": "switch-converts-without-a-request",
+   "stub": [
+    {
+     "match": "geocoding-api",
+     "body": {
+      "results": [
+       {
+        "name": "Vienna",
+        "country": "Austria",
+        "latitude": 48.2,
+        "longitude": 16.37
+       }
+      ]
+     }
+    },
+    {
+     "match": "api.open-meteo.com",
+     "body": {
+      "current": {
+       "temperature_2m": 10,
+       "apparent_temperature": 5,
+       "wind_speed_10m": 3,
+       "weather_code": 3
+      },
+      "current_units": {
+       "temperature_2m": "°C",
+       "apparent_temperature": "°C",
+       "wind_speed_10m": "km/h"
+      }
+     }
+    }
+   ],
+   "steps": [
+    {
+     "see": "Temperature (°C)"
+    },
+    {
+     "see": "Feels like (°C)"
+    },
+    {
+     "see": "Austria • Vienna"
+    },
+    {
+     "remember": "Austria"
+    },
+    {
+     "reset_requests": true
+    },
+    {
+     "click": "input[type=checkbox], [role=switch]"
+    },
+    {
+     "see": "Temperature (°F)"
+    },
+    {
+     "see": "50"
+    },
+    {
+     "see": "41"
+    },
+    {
+     "see": "Wind 3 km/h"
+    },
+    {
+     "same_place": "Austria"
+    },
+    {
+     "requests": "open-meteo",
+     "count": 0
+    },
+    {
+     "shot": "fahrenheit"
+    },
+    {
+     "click": "input[type=checkbox], [role=switch]"
+    },
+    {
+     "see": "Temperature (°C)"
+    },
+    {
+     "requests": "open-meteo",
+     "count": 0
+    }
+   ]
+  },
+  {
+   "name": "old-behaviour-city-not-found",
+   "stub": [
+    {
+     "match": "geocoding-api",
+     "body": {}
+    },
+    {
+     "match": "api.open-meteo.com",
+     "body": {
+      "current": {
+       "temperature_2m": 10,
+       "apparent_temperature": 5,
+       "wind_speed_10m": 3,
+       "weather_code": 3
+      },
+      "current_units": {
+       "temperature_2m": "°C",
+       "apparent_temperature": "°C",
+       "wind_speed_10m": "km/h"
+      }
+     }
+    }
+   ],
+   "steps": [
+    {
+     "see": "City not found"
+    },
+    {
+     "see": "Try another spelling"
+    },
+    {
+     "click": "input[type=checkbox], [role=switch]"
+    },
+    {
+     "see": "City not found"
+    },
+    {
+     "shot": "not-found"
+    }
+   ]
+  },
+  {
+   "name": "old-behaviour-typing-searches",
+   "steps": [
+    {
+     "see": "Temperature (°C)"
+    },
+    {
+     "reset_requests": true
+    },
+    {
+     "type": "City",
+     "text": "Lima"
+    },
+    {
+     "see": "Peru"
+    },
+    {
+     "not_see": "Austria"
+    },
+    {
+     "check_page": "lima"
+    }
+   ]
+  },
+  {
+   "name": "phone-fahrenheit",
+   "viewport": [
+    390,
+    844
+   ],
+   "stub": [
+    {
+     "match": "geocoding-api",
+     "body": {
+      "results": [
+       {
+        "name": "Vienna",
+        "country": "Austria",
+        "latitude": 48.2,
+        "longitude": 16.37
+       }
+      ]
+     }
+    },
+    {
+     "match": "api.open-meteo.com",
+     "body": {
+      "current": {
+       "temperature_2m": 10,
+       "apparent_temperature": 5,
+       "wind_speed_10m": 3,
+       "weather_code": 3
+      },
+      "current_units": {
+       "temperature_2m": "°C",
+       "apparent_temperature": "°C",
+       "wind_speed_10m": "km/h"
+      }
+     }
+    }
+   ],
+   "steps": [
+    {
+     "click": "input[type=checkbox], [role=switch]"
+    },
+    {
+     "see": "Temperature (°F)"
+    },
+    {
+     "check_page": "phone"
+    },
+    {
+     "shot": "phone"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,690 @@
+[
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Label",
+   "node_id": "ai-node-1"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-1",
+   "name": "Start here"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-1",
+   "socket_name": "Input",
+   "value": "This page is a Tailrmade app.\nFollow the numbers: the three inputs feed one calculation, and its answer fills the result card.\nMain page on the right shows the result."
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-1",
+   "socket_name": "Font size",
+   "value": 64
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-1",
+   "socket_name": "Background color",
+   "value": {
+    "r": 255,
+    "g": 255,
+    "b": 255,
+    "a": 1
+   }
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "theme",
+   "node_id": "ai-node-2"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-2",
+   "name": "App theme"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-2",
+   "comment": "Keeps the app's saved theme. Pick a preset and mode here to restyle the page."
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "WidgetNumberField",
+   "node_id": "ai-node-3"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-3",
+   "name": "Bill"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Initial Value",
+   "value": 48.5
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Limit Range",
+   "value": true
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Min",
+   "value": 0
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Max",
+   "value": 1000000
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Decimals",
+   "value": 2
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Label",
+   "value": "Bill"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-3",
+   "socket_name": "Placeholder",
+   "value": "0.00"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "WidgetSlider",
+   "node_id": "ai-node-4"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-4",
+   "name": "Tip percent"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Initial Value",
+   "value": 18
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Min",
+   "value": 0
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Max",
+   "value": 30
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Decimals",
+   "value": 0
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-4",
+   "socket_name": "Label",
+   "value": "Tip: {{value}}%"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "WidgetNumberField",
+   "node_id": "ai-node-5"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-5",
+   "name": "People"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Initial Value",
+   "value": 2
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Limit Range",
+   "value": true
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Min",
+   "value": 1
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Max",
+   "value": 50
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Decimals",
+   "value": 0
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-5",
+   "socket_name": "Label",
+   "value": "People"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "CustomFunction",
+   "node_id": "ai-node-6"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-6",
+   "name": "Split the bill"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-6",
+   "comment": "Rounds each share up to the cent so the group never comes up short."
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-6",
+   "socket_name": "Code",
+   "value": "(bill, tipPercent, people) => {\n  // A non-breaking space keeps each line's height, so the card does not jump when results go.\n  const blank = ' ';\n  const amount = Number(bill);\n  const count = Math.floor(Number(people));\n  if (!(amount > 0)) {\n    return { each: blank, tip: blank, total: blank, note: 'Enter the bill to see the split.' };\n  }\n  if (!(count >= 1)) {\n    return { each: blank, tip: blank, total: blank, note: 'Split it between at least one person.' };\n  }\n  const tip = amount * (Number(tipPercent) || 0) / 100;\n  const total = amount + tip;\n  const each = Math.ceil(Math.round(total / count * 1e6) / 1e4) / 100;\n  const exact = Math.abs(each * count - total) < 0.005;\n  return {\n    each: each.toFixed(2),\n    tip: tip.toFixed(2),\n    total: total.toFixed(2),\n    note: exact ? blank : 'Rounded up to the cent, so everyone pays the same.',\n  };\n}"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-3",
+   "from_socket": "Out",
+   "to_node": "ai-node-6",
+   "to_socket": "bill"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-4",
+   "from_socket": "Out",
+   "to_node": "ai-node-6",
+   "to_socket": "tipPercent"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-5",
+   "from_socket": "Out",
+   "to_node": "ai-node-6",
+   "to_socket": "people"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Text",
+   "node_id": "ai-node-7"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-7",
+   "name": "Each person pays"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-7",
+   "socket_name": "Content",
+   "value": "{{r.each}}"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-7",
+   "socket_name": "Variant",
+   "value": "display"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-7",
+   "socket_name": "Tone",
+   "value": "primary"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-7",
+   "socket_name": "Alignment",
+   "value": "left"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-7",
+   "socket_name": "Custom styles",
+   "value": {
+    "overflowWrap": "anywhere"
+   }
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-6",
+   "from_socket": "OutData",
+   "to_node": "ai-node-7",
+   "to_socket": "r"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Text",
+   "node_id": "ai-node-8"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-8",
+   "name": "Tip amount"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-8",
+   "socket_name": "Content",
+   "value": "Tip {{r.tip}}"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-8",
+   "socket_name": "Variant",
+   "value": "body"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-8",
+   "socket_name": "Tone",
+   "value": "muted"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-8",
+   "socket_name": "Alignment",
+   "value": "left"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-6",
+   "from_socket": "OutData",
+   "to_node": "ai-node-8",
+   "to_socket": "r"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Text",
+   "node_id": "ai-node-9"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-9",
+   "name": "Total amount"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-9",
+   "socket_name": "Content",
+   "value": "Total {{r.total}}"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-9",
+   "socket_name": "Variant",
+   "value": "body"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-9",
+   "socket_name": "Tone",
+   "value": "muted"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-9",
+   "socket_name": "Alignment",
+   "value": "left"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-6",
+   "from_socket": "OutData",
+   "to_node": "ai-node-9",
+   "to_socket": "r"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "Text",
+   "node_id": "ai-node-10"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-10",
+   "name": "Split note"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-10",
+   "socket_name": "Content",
+   "value": "{{r.note}}"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-10",
+   "socket_name": "Variant",
+   "value": "caption"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-10",
+   "socket_name": "Tone",
+   "value": "muted"
+  }
+ },
+ {
+  "tool": "set_socket_value",
+  "input": {
+   "node_id": "ai-node-10",
+   "socket_name": "Alignment",
+   "value": "left"
+  }
+ },
+ {
+  "tool": "connect_sockets",
+  "input": {
+   "from_node": "ai-node-6",
+   "from_socket": "OutData",
+   "to_node": "ai-node-10",
+   "to_socket": "r"
+  }
+ },
+ {
+  "tool": "add_node",
+  "input": {
+   "node_type": "UISurfaceNode",
+   "node_id": "ai-node-11"
+  }
+ },
+ {
+  "tool": "set_node_name",
+  "input": {
+   "node_id": "ai-node-11",
+   "name": "Main page"
+  }
+ },
+ {
+  "tool": "set_node_comment",
+  "input": {
+   "node_id": "ai-node-11",
+   "comment": "This is the page you see on the left. The inputs and the result plug in here."
+  }
+ },
+ {
+  "tool": "set_surface_layout",
+  "input": {
+   "node_id": "ai-node-11",
+   "layout": {
+    "direction": "column",
+    "gap": 16,
+    "padding": 24,
+    "align": "center",
+    "props": {
+     "customStyles": {
+      "@media (max-width: 600px)": {
+       "padding": "8px"
+      }
+     }
+    },
+    "children": [
+     {
+      "direction": "column",
+      "gap": 4,
+      "width": "100%",
+      "padding": [
+       16,
+       8,
+       8,
+       8
+      ],
+      "props": {
+       "maxWidth": "720px"
+      },
+      "children": [
+       {
+        "text": "Tip calculator",
+        "variant": "h1",
+        "tone": "default",
+        "alignment": "center"
+       },
+       {
+        "text": "Enter the bill, pick a tip and see what each person pays.",
+        "variant": "body",
+        "tone": "muted",
+        "alignment": "center"
+       }
+      ]
+     },
+     {
+      "direction": "row",
+      "gap": 16,
+      "width": "100%",
+      "align": "stretch",
+      "mobileBehavior": "column",
+      "props": {
+       "maxWidth": "720px"
+      },
+      "children": [
+       {
+        "direction": "column",
+        "gap": 16,
+        "padding": 20,
+        "emphasis": "strong",
+        "width": "100%",
+        "align": "stretch",
+        "props": {
+         "minWidth": "48px"
+        },
+        "children": [
+         {
+          "widget": "ai-node-3",
+          "width": "100%"
+         },
+         {
+          "widget": "ai-node-4",
+          "width": "100%"
+         },
+         {
+          "widget": "ai-node-5",
+          "width": "100%"
+         }
+        ]
+       },
+       {
+        "direction": "column",
+        "gap": 8,
+        "padding": 20,
+        "emphasis": "subtle",
+        "tone": "primary",
+        "width": "100%",
+        "align": "stretch",
+        "props": {
+         "minWidth": "48px"
+        },
+        "children": [
+         {
+          "text": "Each person pays",
+          "variant": "label",
+          "tone": "muted"
+         },
+         {
+          "widget": "ai-node-7",
+          "width": "100%"
+         },
+         {
+          "widget": "ai-node-8",
+          "width": "100%"
+         },
+         {
+          "widget": "ai-node-9",
+          "width": "100%"
+         },
+         {
+          "widget": "ai-node-10",
+          "width": "100%"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  }
+ },
+ {
+  "tool": "set_default_surface",
+  "input": {
+   "node_id": "ai-node-11"
+  }
+ },
+ {
+  "tool": "inspect_warnings_and_errors",
+  "input": {}
+ }
+]

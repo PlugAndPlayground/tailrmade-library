@@ -1,0 +1,422 @@
+{
+ "expect_risks": [
+  "warning/network/Get the rate"
+ ],
+ "scenarios": [
+  {
+   "name": "live-api-from-chrome",
+   "steps": [
+    {
+     "see": "1 EUR ="
+    },
+    {
+     "see": "USD"
+    },
+    {
+     "requests": "frankfurter",
+     "count": 1
+    },
+    {
+     "reset_requests": true
+    },
+    {
+     "press": "Get the latest rate"
+    },
+    {
+     "wait": 3000
+    },
+    {
+     "requests": "frankfurter",
+     "count": 1
+    },
+    {
+     "see": "Rate from"
+    },
+    {
+     "check_page": "live"
+    },
+    {
+     "shot": "live"
+    }
+   ]
+  },
+  {
+   "name": "amount-does-not-send",
+   "stub": [
+    {
+     "match": "frankfurter",
+     "body": {
+      "amount": 1,
+      "base": "EUR",
+      "date": "2026-11-02",
+      "rates": {
+       "USD": 1.1
+      }
+     }
+    }
+   ],
+   "steps": [
+    {
+     "see": "110.00 USD"
+    },
+    {
+     "reset_requests": true
+    },
+    {
+     "remember": "Converted"
+    },
+    {
+     "type": "Amount",
+     "text": "200"
+    },
+    {
+     "see": "220.00 USD"
+    },
+    {
+     "type": "Amount",
+     "text": "0"
+    },
+    {
+     "see": "Enter an amount"
+    },
+    {
+     "same_place": "Converted"
+    },
+    {
+     "requests": "frankfurter",
+     "count": 0
+    }
+   ]
+  },
+  {
+   "name": "new-currency-needs-press",
+   "stub": [
+    {
+     "match": "symbols=GBP",
+     "body": {
+      "amount": 1,
+      "base": "EUR",
+      "date": "2026-11-02",
+      "rates": {
+       "GBP": 0.9
+      }
+     }
+    },
+    {
+     "match": "frankfurter",
+     "body": {
+      "amount": 1,
+      "base": "EUR",
+      "date": "2026-11-02",
+      "rates": {
+       "USD": 1.1
+      }
+     }
+    }
+   ],
+   "steps": [
+    {
+     "see": "110.00 USD"
+    },
+    {
+     "reset_requests": true
+    },
+    {
+     "choose": "To",
+     "option": "GBP"
+    },
+    {
+     "see": "Press the button"
+    },
+    {
+     "not_see": "110.00"
+    },
+    {
+     "requests": "frankfurter",
+     "count": 0
+    },
+    {
+     "press": "Get the latest rate"
+    },
+    {
+     "see": "90.00 GBP"
+    },
+    {
+     "requests": "symbols=GBP",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "name": "same-currency",
+   "stub": [
+    {
+     "match": "frankfurter",
+     "body": {
+      "amount": 1,
+      "base": "EUR",
+      "date": "2026-11-02",
+      "rates": {
+       "USD": 1.1
+      }
+     }
+    }
+   ],
+   "steps": [
+    {
+     "choose": "To",
+     "option": "EUR"
+    },
+    {
+     "see": "Same currency"
+    },
+    {
+     "see": "100.00 EUR"
+    }
+   ]
+  },
+  {
+   "name": "slow-opening",
+   "stub": [
+    {
+     "match": "frankfurter",
+     "body": {
+      "amount": 1,
+      "base": "EUR",
+      "date": "2026-11-02",
+      "rates": {
+       "USD": 1.1
+      }
+     },
+     "delay": 9000
+    }
+   ],
+   "wait": 500,
+   "steps": [
+    {
+     "see": "Loading user interface"
+    },
+    {
+     "shot": "opening"
+    },
+    {
+     "see": "110.00 USD",
+     "timeout": 25000
+    },
+    {
+     "not_see": "Could not"
+    }
+   ]
+  },
+  {
+   "name": "slow-press",
+   "stub": [
+    {
+     "match": "frankfurter",
+     "body": {
+      "amount": 1,
+      "base": "EUR",
+      "date": "2026-11-02",
+      "rates": {
+       "USD": 1.1
+      }
+     }
+    }
+   ],
+   "steps": [
+    {
+     "see": "110.00 USD"
+    },
+    {
+     "remember": "Converted"
+    },
+    {
+     "set_stub": [
+      {
+       "match": "frankfurter",
+       "body": {
+        "amount": 1,
+        "base": "EUR",
+        "date": "2026-11-03",
+        "rates": {
+         "USD": 1.2
+        }
+       },
+       "delay": 3000
+      }
+     ]
+    },
+    {
+     "reset_requests": true
+    },
+    {
+     "press": "Get the latest rate"
+    },
+    {
+     "wait": 800
+    },
+    {
+     "see": "110.00 USD"
+    },
+    {
+     "shot": "waiting"
+    },
+    {
+     "same_place": "Converted"
+    },
+    {
+     "see": "120.00 USD"
+    },
+    {
+     "requests": "frankfurter",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "name": "server-error",
+   "stub": [
+    {
+     "match": "frankfurter",
+     "status": 500,
+     "body": {
+      "message": "nope"
+     }
+    }
+   ],
+   "allow_problems": [
+    "Get the rate"
+   ],
+   "allow_logs": [
+    "frankfurter",
+    "Failed to fetch",
+    "500",
+    "404",
+    "HTTP"
+   ],
+   "steps": [
+    {
+     "see": "Could not get the rate"
+    },
+    {
+     "check_page": "failed"
+    },
+    {
+     "shot": "failed"
+    }
+   ]
+  },
+  {
+   "name": "not-found",
+   "stub": [
+    {
+     "match": "frankfurter",
+     "status": 404,
+     "body": {
+      "message": "not found"
+     }
+    }
+   ],
+   "allow_problems": [
+    "Get the rate"
+   ],
+   "allow_logs": [
+    "frankfurter",
+    "Failed to fetch",
+    "500",
+    "404",
+    "HTTP"
+   ],
+   "steps": [
+    {
+     "see": "Could not get the rate"
+    }
+   ]
+  },
+  {
+   "name": "offline-phone",
+   "viewport": [
+    390,
+    844
+   ],
+   "stub": [
+    {
+     "match": "frankfurter",
+     "network_error": true
+    }
+   ],
+   "allow_problems": [
+    "Get the rate"
+   ],
+   "allow_logs": [
+    "frankfurter",
+    "Failed to fetch",
+    "500",
+    "404",
+    "HTTP"
+   ],
+   "steps": [
+    {
+     "see": "Could not get the rate"
+    },
+    {
+     "check_page": "offline"
+    },
+    {
+     "shot": "offline"
+    }
+   ]
+  },
+  {
+   "name": "recovers-after-failure",
+   "stub": [
+    {
+     "match": "frankfurter",
+     "network_error": true
+    }
+   ],
+   "allow_problems": [
+    "Get the rate"
+   ],
+   "allow_logs": [
+    "frankfurter",
+    "Failed to fetch",
+    "500",
+    "404",
+    "HTTP"
+   ],
+   "steps": [
+    {
+     "see": "Could not get the rate"
+    },
+    {
+     "remember": "Converted"
+    },
+    {
+     "set_stub": [
+      {
+       "match": "frankfurter",
+       "body": {
+        "amount": 1,
+        "base": "EUR",
+        "date": "2026-11-02",
+        "rates": {
+         "USD": 1.1
+        }
+       }
+      }
+     ]
+    },
+    {
+     "press": "Get the latest rate"
+    },
+    {
+     "see": "110.00 USD"
+    },
+    {
+     "same_place": "Converted"
+    }
+   ]
+  }
+ ]
+}

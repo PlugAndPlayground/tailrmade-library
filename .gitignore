@@ -9,3 +9,6 @@
 .TemporaryItems
 .VolumeIcon.icns
 .DocumentRevisions-V100
+
+# Python
+__pycache__/

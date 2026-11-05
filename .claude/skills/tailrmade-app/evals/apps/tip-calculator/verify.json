@@ -1,0 +1,138 @@
+{
+ "expect_risks": [],
+ "scenarios": [
+  {
+   "name": "splits-and-rounds",
+   "steps": [
+    {
+     "see": "28.62"
+    },
+    {
+     "see": "Tip 8.73"
+    },
+    {
+     "see": "Total 57.23"
+    },
+    {
+     "see": "Rounded up"
+    },
+    {
+     "remember": "Each person pays"
+    },
+    {
+     "type": "Bill",
+     "text": "100"
+    },
+    {
+     "see": "59.00"
+    },
+    {
+     "see": "Total 118.00"
+    },
+    {
+     "not_see": "Rounded up"
+    },
+    {
+     "type": "People",
+     "text": "3"
+    },
+    {
+     "see": "39.34"
+    },
+    {
+     "see": "Rounded up"
+    },
+    {
+     "keys": "{rightarrow}{rightarrow}",
+     "selector": "input[type=range]"
+    },
+    {
+     "see": "Tip: 20%"
+    },
+    {
+     "see": "Total 120.00"
+    },
+    {
+     "see": "40.00"
+    },
+    {
+     "same_place": "Each person pays"
+    },
+    {
+     "requests": ".",
+     "count": 0
+    }
+   ]
+  },
+  {
+   "name": "zero-bill",
+   "steps": [
+    {
+     "see": "28.62"
+    },
+    {
+     "remember": "Each person pays"
+    },
+    {
+     "type": "Bill",
+     "text": "0"
+    },
+    {
+     "see": "Enter the bill"
+    },
+    {
+     "not_see": "28.62"
+    },
+    {
+     "same_place": "Each person pays"
+    },
+    {
+     "check_page": "empty"
+    },
+    {
+     "shot": "empty"
+    }
+   ]
+  },
+  {
+   "name": "zero-people",
+   "steps": [
+    {
+     "type": "People",
+     "text": "0"
+    },
+    {
+     "wait": 1500
+    },
+    {
+     "check_page": "zero"
+    },
+    {
+     "shot": "zero"
+    }
+   ]
+  },
+  {
+   "name": "huge-bill-phone",
+   "viewport": [
+    390,
+    844
+   ],
+   "steps": [
+    {
+     "type": "Bill",
+     "text": "1000000"
+    },
+    {
+     "see": "590000.00"
+    },
+    {
+     "check_page": "huge"
+    },
+    {
+     "shot": "huge"
+    }
+   ]
+  }
+ ]
+}

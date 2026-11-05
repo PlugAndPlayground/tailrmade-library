@@ -1,0 +1,1335 @@
+{
+  "id": "Default/Pattern maker",
+  "location": "Default",
+  "name": "Pattern maker",
+  "access": "private",
+  "graphData": {
+    "version": 7,
+    "graphSettings": {
+      "showExecutionVisualisation": true,
+      "viewportCenterPosition": {
+        "x": -677,
+        "y": 1828
+      },
+      "viewportScale": 0.122,
+      "defaultUISurfaceNodeId": "ai-node-8",
+      "theme": {
+        "mode": "dark"
+      }
+    },
+    "overlay": {
+      "dashboard": {
+        "visible": true,
+        "fullscreen": false,
+        "maximized": false,
+        "widthPercentage": 52,
+        "locked": false
+      }
+    },
+    "nodes": [
+      {
+        "id": "ai-node-1",
+        "name": "Start here",
+        "type": "label",
+        "x": 0,
+        "y": 0,
+        "width": 3081,
+        "height": 285,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "This page is a Tailrmade app.\nFollow the numbers: the sliders and the theme become shader settings, and the shader paints the picture.\nMain page on the right shows the result."
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 64,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-2",
+        "name": "App theme",
+        "type": "theme",
+        "x": 0,
+        "y": 805,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Preset",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Keep app setting\"},{\"text\":\"tailrmade\"},{\"text\":\"cloud\"},{\"text\":\"bauhaus\"},{\"text\":\"newsprint\"},{\"text\":\"terminal\"},{\"text\":\"neon\"}],\"showAsButtons\":false}}",
+            "data": "Keep app setting"
+          },
+          {
+            "socketType": "in",
+            "name": "Mode",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Keep app setting\"},{\"text\":\"light\"},{\"text\":\"dark\"},{\"text\":\"system\"}],\"showAsButtons\":false}}",
+            "data": "Keep app setting"
+          },
+          {
+            "socketType": "in",
+            "name": "Overrides",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {}
+          },
+          {
+            "socketType": "out",
+            "name": "Theme",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Warnings",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Gives the picture its colours. It keeps the app's saved theme; pick a preset and mode here to restyle the page and the picture."
+      },
+      {
+        "id": "ai-node-3",
+        "name": "Petals slider",
+        "type": "widgetslider",
+        "x": 0,
+        "y": 1045,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 6,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 2,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 16,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Petals: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-4",
+        "name": "Rings slider",
+        "type": "widgetslider",
+        "x": 0,
+        "y": 1229,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 5,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 16,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Rings: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-5",
+        "name": "Twist slider",
+        "type": "widgetslider",
+        "x": 0,
+        "y": 1413,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 2,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 8,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Twist: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-6",
+        "name": "Shader settings",
+        "type": "customfunction",
+        "x": 500,
+        "y": 2117,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(petals, rings, twist, theme) => {\n  const rgb = (color, fallback) => {\n    const hex = /^#([0-9a-f]{6})/i.exec(String(color ?? ''));\n    const digits = hex ? hex[1] : fallback;\n    return [0, 2, 4].map((at) => parseInt(digits.slice(at, at + 2), 16) / 255);\n  };\n  const tokens = theme?.tokens ?? {};\n  return {\n    petals: { value: Number(petals) || 2, type: 'f32' },\n    rings: { value: Number(rings) || 1, type: 'f32' },\n    twist: { value: Number(twist) || 0, type: 'f32' },\n    ink: { value: rgb(tokens.primary, '888888'), type: 'vec3<f32>' },\n    accent: { value: rgb(tokens.secondary, 'bbbbbb'), type: 'vec3<f32>' },\n    paper: { value: rgb(tokens['background.paper'], '222222'), type: 'vec3<f32>' },\n  };\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "petals",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "rings",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "twist",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "theme",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "Turns the sliders and the theme's colours into the values the shader reads. The colours update on load, not on a live preset switch."
+      },
+      {
+        "id": "ai-node-7",
+        "name": "Pattern picture",
+        "type": "shader",
+        "x": 1260,
+        "y": 2877,
+        "width": 160,
+        "height": 232,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Uniforms",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Images",
+            "dataType": "{\"class\":\"ImageResourceMapType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "WebGL Vertex",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "\nin vec2 aPosition;\nin vec2 aUV;\nout vec2 UV;\n\nuniform mat3 uProjectionMatrix;\nuniform mat3 uWorldTransformMatrix;\n\nuniform mat3 uTransformMatrix;\n\n\nvoid main() {\n    mat3 mvp = uProjectionMatrix * uWorldTransformMatrix * uTransformMatrix;\n    gl_Position = vec4((mvp * vec3(aPosition, 1.0)).xy, 0.0, 1.0);\n\n    UV = aUV;\n}\n",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "WebGL Fragment",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "in vec2 UV;\nuniform float petals;\nuniform float rings;\nuniform float twist;\nuniform vec3 ink;\nuniform vec3 accent;\nuniform vec3 paper;\n\nvoid main() {\n    vec2 p = UV * 2.0 - 1.0;\n    float radius = length(p);\n    float angle = atan(p.y, p.x) + twist * radius;\n    float wave = sin(angle * petals) * 0.5 + 0.5;\n    float band = sin(radius * rings * 6.2832 + wave * 3.1416) * 0.5 + 0.5;\n    vec3 color = mix(ink, accent, wave);\n    color = mix(paper, color, smoothstep(0.35, 0.65, band));\n    color = mix(color, paper, smoothstep(0.96, 1.0, radius));\n    gl_FragColor = vec4(color, 1.0);\n}\n"
+          },
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":1,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 640
+          },
+          {
+            "socketType": "in",
+            "name": "Height",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":1,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 640
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Texture",
+            "dataType": "{\"class\":\"ImageResourceMapType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false,
+          "intervalFrequency": 16
+        },
+        "version": 2,
+        "comment": "Draws on the GPU, so the app needs no main-thread code and has no risk warning."
+      },
+      {
+        "id": "ai-node-9",
+        "name": "No images",
+        "type": "customfunction",
+        "x": 960,
+        "y": 2877,
+        "width": 160,
+        "height": 64,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "() => ({})",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "A shader's Images input is never saved, so left unwired it warns on every load. This fills it with an empty set."
+      },
+      {
+        "id": "ai-node-8",
+        "name": "Main page",
+        "type": "uisurfacenode",
+        "x": 4484.133333333333,
+        "y": 2081.0,
+        "width": 300,
+        "height": 300,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "center",
+                    "justifyContent": "flex-start",
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      24,
+                      24,
+                      24
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "50dvh",
+                    "maxWidth": "lg",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "@media (max-width: 600px)": {
+                        "padding": "8px"
+                      }
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "K9yJTSrhRa",
+                    "0LOT0qSyhH"
+                  ],
+                  "linkedNodes": {}
+                },
+                "K9yJTSrhRa": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      16,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "640px",
+                    "maxHeight": "unset",
+                    "gap": 4,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "ZB1eLzwhio",
+                    "vbXBhtDlOJ"
+                  ],
+                  "linkedNodes": {}
+                },
+                "ZB1eLzwhio": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Pattern maker",
+                    "variant": "h1",
+                    "tone": "default",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "K9yJTSrhRa",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "vbXBhtDlOJ": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Move the sliders to redraw the picture. Its colours come from the app's theme.",
+                    "variant": "body",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "K9yJTSrhRa",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "0LOT0qSyhH": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      20,
+                      20
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "640px",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "strong",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "MYTxjTFQ6y",
+                    "N5RKw50rWv",
+                    "gt6P1PxcSm",
+                    "oouNOAq8y3"
+                  ],
+                  "linkedNodes": {}
+                },
+                "MYTxjTFQ6y": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 245,
+                      "g": 245,
+                      "b": 245,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-7",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "0LOT0qSyhH",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "N5RKw50rWv": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-3",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "0LOT0qSyhH",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "gt6P1PxcSm": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-4",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "0LOT0qSyhH",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "oouNOAq8y3": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-5",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "0LOT0qSyhH",
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            }
+          },
+          {
+            "socketType": "in",
+            "name": "Draw shader",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Draw shader visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Draw shader"
+          },
+          {
+            "socketType": "in",
+            "name": "Draw shader layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Draw shader"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider 2",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider 2 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Slider 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider 2 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Slider 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider 3",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider 3 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Slider 3"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider 3 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Slider 3"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "This is the page you see on the left. The sliders and the picture plug in here."
+      }
+    ],
+    "links": [
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-6",
+        "targetSocketName": "petals"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-6",
+        "targetSocketName": "rings"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-6",
+        "targetSocketName": "twist"
+      },
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "Theme",
+        "targetNodeId": "ai-node-6",
+        "targetSocketName": "theme"
+      },
+      {
+        "sourceNodeId": "ai-node-6",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-7",
+        "targetSocketName": "Uniforms"
+      },
+      {
+        "sourceNodeId": "ai-node-9",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-7",
+        "targetSocketName": "Images"
+      },
+      {
+        "sourceNodeId": "ai-node-7",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "Draw shader"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "Slider"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "Slider 2"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "Slider 3"
+      }
+    ],
+    "groups": [
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "ai-node-1"
+        ]
+      },
+      {
+        "id": "1-read-the-sliders-and-theme",
+        "name": "1. Read the sliders and theme",
+        "color": "#60D2FF",
+        "nodeIds": [
+          "ai-node-2",
+          "ai-node-3",
+          "ai-node-4",
+          "ai-node-5"
+        ]
+      },
+      {
+        "id": "2-make-the-shader-settings",
+        "name": "2. Make the shader settings",
+        "color": "#E2ABFF",
+        "nodeIds": [
+          "ai-node-6"
+        ]
+      },
+      {
+        "id": "3-paint-the-picture",
+        "name": "3. Paint the picture",
+        "color": "#FFAE6B",
+        "nodeIds": [
+          "ai-node-9",
+          "ai-node-7"
+        ]
+      },
+      {
+        "id": "main-page",
+        "name": "Main page",
+        "color": "#C0B6FF",
+        "nodeIds": [
+          "ai-node-8"
+        ]
+      }
+    ]
+  },
+  "date": "2026-11-02T22:00:19.907Z",
+  "owner": "unknown",
+  "isRemote": false
+}
