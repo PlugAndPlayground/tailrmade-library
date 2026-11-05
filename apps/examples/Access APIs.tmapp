@@ -1,0 +1,2604 @@
+{
+  "id": "Default/Access APIs",
+  "location": "Default",
+  "name": "Access APIs",
+  "access": "public",
+  "graphData": {
+    "version": 7,
+    "graphSettings": {
+      "showExecutionVisualisation": true,
+      "viewportCenterPosition": {
+        "x": 163,
+        "y": 1579
+      },
+      "viewportScale": 0.25615710973620626,
+      "defaultUISurfaceNodeId": "spotty-octopus-51",
+      "theme": {
+        "mode": "dark"
+      }
+    },
+    "overlay": {
+      "dashboard": {
+        "visible": true,
+        "fullscreen": false,
+        "maximized": false,
+        "widthPercentage": 38,
+        "locked": false
+      }
+    },
+    "nodes": [
+      {
+        "id": "brown-cougar-55",
+        "name": "Cat fact URL",
+        "type": "label",
+        "x": 12,
+        "y": 691,
+        "width": 370,
+        "height": 69,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "https://catfact.ninja/fact",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 86,
+              "g": 225,
+              "b": 204,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fontSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 32,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "min-width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 128,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "short-elephant-91",
+        "name": "Fact",
+        "type": "jsonget",
+        "x": 822,
+        "y": 691,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "JSON",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Path",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "fact"
+          },
+          {
+            "socketType": "out",
+            "name": "Value",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "modern-cat-65",
+        "name": "Get cat fact",
+        "type": "httpnode",
+        "x": 522,
+        "y": 691,
+        "width": 160,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "URL",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Headers",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "Content-Type": "application/json"
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Method",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Get\",\"value\":\"Get\"},{\"text\":\"Post\",\"value\":\"Post\"},{\"text\":\"Put\",\"value\":\"Put\"},{\"text\":\"Patch\",\"value\":\"Patch\"},{\"text\":\"Delete\",\"value\":\"Delete\"}],\"showAsButtons\":false}}",
+            "data": "Get",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Body",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Send Through Companion",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Companion Location",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "http://localhost:6655"
+          },
+          {
+            "socketType": "trigger",
+            "name": "Trigger 1",
+            "dataType": "{\"class\":\"TriggerType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Content",
+            "dataType": "{\"class\":\"JSONType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": false,
+          "interval": false
+        },
+        "comment": "Runs once when the app opens, then only when you press Get a cat fact. The two requests after it follow this answer."
+      },
+      {
+        "id": "spotty-octopus-51",
+        "name": "Main page",
+        "type": "uisurfacenode",
+        "x": 3082,
+        "y": 2066,
+        "width": 400,
+        "height": 600,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      16,
+                      0,
+                      16,
+                      0
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "240px",
+                    "maxWidth": "lg",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {
+                      "@media (max-width: 600px)": {
+                        "padding": "8px"
+                      },
+                      "@media (min-width: 601px) and (max-width: 900px)": {
+                        "padding": "16px"
+                      }
+                    },
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "page-head",
+                    "page-0"
+                  ],
+                  "linkedNodes": {}
+                },
+                "page-0": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "gap": 0,
+                    "id": "NODE_art-section",
+                    "index": 0,
+                    "mobileBehavior": "column"
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "ROOT",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "page-head": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      16,
+                      0,
+                      16
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "ROOT",
+                  "hidden": false,
+                  "nodes": [
+                    "page-title",
+                    "page-lead"
+                  ],
+                  "linkedNodes": {}
+                },
+                "page-lead": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "One button starts a chain of requests to public APIs, each using the answer before it. Open the graph to see how.",
+                    "variant": "body",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "page-head",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "page-title": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Access APIs",
+                    "variant": "display",
+                    "tone": "default",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "page-head",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "From cat fact to artwork",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "From cat fact to artwork visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "From cat fact to artwork"
+          },
+          {
+            "socketType": "in",
+            "name": "From cat fact to artwork layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "From cat fact to artwork"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "This is the page you see on the left. Every numbered section plugs in here, in page order."
+      },
+      {
+        "id": "fact-button",
+        "name": "Fact button",
+        "type": "widgetbutton",
+        "x": 12,
+        "y": 840,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Get a cat fact",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "search-http",
+        "name": "Search the collection",
+        "type": "httpnode",
+        "x": 1160,
+        "y": 1537,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "URL",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Headers",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Method",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Get\",\"value\":\"Get\"},{\"text\":\"Post\",\"value\":\"Post\"},{\"text\":\"Put\",\"value\":\"Put\"},{\"text\":\"Patch\",\"value\":\"Patch\"},{\"text\":\"Delete\",\"value\":\"Delete\"}],\"showAsButtons\":false}}",
+            "data": "Get",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Body",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Send Through Companion",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Companion Location",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "http://localhost:6655"
+          },
+          {
+            "socketType": "out",
+            "name": "Content",
+            "dataType": "{\"class\":\"JSONType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        },
+        "comment": "The address holds a word from the cat fact, so it is only known at run time and keeps its network warning."
+      },
+      {
+        "id": "artwork-http",
+        "name": "Get the artwork",
+        "type": "httpnode",
+        "x": 1334,
+        "y": 2084,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "URL",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Headers",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Method",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Get\",\"value\":\"Get\"},{\"text\":\"Post\",\"value\":\"Post\"},{\"text\":\"Put\",\"value\":\"Put\"},{\"text\":\"Patch\",\"value\":\"Patch\"},{\"text\":\"Delete\",\"value\":\"Delete\"}],\"showAsButtons\":false}}",
+            "data": "Get",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Body",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Send Through Companion",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Companion Location",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "http://localhost:6655"
+          },
+          {
+            "socketType": "out",
+            "name": "Content",
+            "dataType": "{\"class\":\"JSONType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": true,
+          "interval": false
+        },
+        "comment": "The address holds the ID from the search answer, so it is only known at run time and keeps its network warning."
+      },
+      {
+        "id": "longest-word",
+        "name": "Longest word",
+        "type": "customfunction",
+        "x": 560,
+        "y": 1377,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(fact) => {\n  const words = String(fact ?? '').match(/[A-Za-z]+/g) ?? ['cat'];\n  return words.reduce((longest, word) => (word.length > longest.length ? word : longest));\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fact",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "mark-word",
+        "name": "Mark the word",
+        "type": "customfunction",
+        "x": 860,
+        "y": 1377,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(fact, word) => {\n  // A few facts hold stray backslashes and quotes, and this text is read as Markdown.\n  const text = String(fact ?? '').replace(/\\\\+\"*/g, '\"').replace(/\"{2,}/g, '\"');\n  return text.replace(new RegExp(`\\\\b${word}\\\\b`), `[${word}]{.secondary}`);\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "fact",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "word",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "fact-text",
+        "name": "Cat fact text",
+        "type": "text",
+        "x": 1160,
+        "y": 1377,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "search-url",
+        "name": "Search URL",
+        "type": "customfunction",
+        "x": 860,
+        "y": 1569,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(query) =>\n  `https://collectionapi.metmuseum.org/public/collection/v1.1/search?q=${encodeURIComponent(query)}&hasImages=true&limit=12`",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "query",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "artwork-url",
+        "name": "Pick a result",
+        "type": "customfunction",
+        "x": 1034,
+        "y": 2084,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(search) => {\n  const ids = search?.objectIDs ?? [];\n  // Van Gogh's Sunflowers, so a search without results still shows something.\n  const id = ids[Math.floor(Math.random() * ids.length)] ?? 436524;\n  return `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`;\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "search",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "artwork-values",
+        "name": "Artwork values",
+        "type": "customfunction",
+        "x": 1634,
+        "y": 2084,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(search, artwork) => {\n  const image = artwork?.primaryImageSmall ?? '';\n  const notes = [];\n  if (!search?.total) notes.push('Nothing found for that word, so here is one from the collection.');\n  if (!image) notes.push('The Met has no open image of this one. Press the button for another.');\n  return {\n    image,\n    title: artwork?.title ?? '',\n    artist: [artwork?.artistDisplayName, artwork?.objectDate].filter(Boolean).join(', '),\n    note: notes.join(' '),\n  };\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "search",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "artwork",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "artwork-picture",
+        "name": "Artwork picture",
+        "type": "htmlrenderer",
+        "x": 1934,
+        "y": 2084,
+        "width": 320,
+        "height": 240,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Html",
+            "dataType": "{\"class\":\"HtmlType\"}",
+            "data": "{{#if image}}<img src=\"{{image}}\" alt=\"{{title}}\" class=\"block w-full max-h-[480px] object-contain rounded-theme\" />{{/if}}"
+          },
+          {
+            "socketType": "in",
+            "name": "Data",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Sanitize input",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Template Passthrough",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Templates",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Parsed Html",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "HtmlElement",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "The Met decides the address of the image, so this node keeps its network warning. A plain image tag loads it without asking the server for permission to read the pixels, which the Met does not give."
+      },
+      {
+        "id": "artwork-title",
+        "name": "Artwork title",
+        "type": "text",
+        "x": 1934,
+        "y": 2404,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.title}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "h2",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "artwork-artist",
+        "name": "Artwork artist",
+        "type": "text",
+        "x": 1934,
+        "y": 2564,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.artist}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "muted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "artwork-note",
+        "name": "Artwork note",
+        "type": "text",
+        "x": 1934,
+        "y": 2724,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "{{r.note}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "muted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "r",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "art-section",
+        "name": "From cat fact to artwork",
+        "type": "uisurfacenode",
+        "x": 2394,
+        "y": 2084,
+        "width": 320,
+        "height": 300,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "014c484e-c11f-456a-adf0-cd26ae85175b": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "ROOT",
+                  "hidden": false,
+                  "nodes": [
+                    "art-row1-card0-label"
+                  ],
+                  "linkedNodes": {}
+                },
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      16,
+                      0,
+                      16
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "subtle",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "art-head",
+                    "art-row0",
+                    "014c484e-c11f-456a-adf0-cd26ae85175b",
+                    "art-row1"
+                  ],
+                  "linkedNodes": {}
+                },
+                "a-artist": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_artwork-artist",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "art-row1-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "a-button": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_fact-button",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "art-row0-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "a-fact": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_fact-text",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "art-row0-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "a-note": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_artwork-note",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "art-row1-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "a-picture": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_artwork-picture",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "art-row1-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "a-title": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_artwork-title",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "art-row1-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "art-body": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Get a cat fact from catfact.ninja. Its longest word searches the Metropolitan Museum of Art, and an ID from that answer requests a random artwork. One press, three requests.",
+                    "variant": "body",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "art-head",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "art-head": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      8,
+                      24,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "ROOT",
+                  "hidden": false,
+                  "nodes": [
+                    "art-title",
+                    "art-body"
+                  ],
+                  "linkedNodes": {}
+                },
+                "art-row0": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "ROOT",
+                  "hidden": false,
+                  "nodes": [
+                    "art-row0-card0"
+                  ],
+                  "linkedNodes": {}
+                },
+                "art-row0-card0": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      24,
+                      20
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "strong",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "art-row0",
+                  "hidden": false,
+                  "nodes": [
+                    "art-row0-card0-label",
+                    "a-button",
+                    "a-fact"
+                  ],
+                  "linkedNodes": {}
+                },
+                "art-row0-card0-label": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Cat fact",
+                    "variant": "label",
+                    "tone": "primary",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "art-row0-card0",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "art-row1": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      8,
+                      8,
+                      8
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "none",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "ROOT",
+                  "hidden": false,
+                  "nodes": [
+                    "art-row1-card0"
+                  ],
+                  "linkedNodes": {}
+                },
+                "art-row1-card0": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      24,
+                      20
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "customStyles": {},
+                    "emphasis": "strong",
+                    "tone": "neutral"
+                  },
+                  "displayName": "Container",
+                  "custom": {},
+                  "parent": "art-row1",
+                  "hidden": false,
+                  "nodes": [
+                    "a-picture",
+                    "a-title",
+                    "a-artist",
+                    "a-note"
+                  ],
+                  "linkedNodes": {}
+                },
+                "art-row1-card0-label": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "THen Search for an artwork\nusing the longest word found in the cat fact",
+                    "variant": "label",
+                    "tone": "secondary",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "014c484e-c11f-456a-adf0-cd26ae85175b",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "art-title": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "content": "From cat fact to artwork",
+                    "variant": "h1",
+                    "tone": "default",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "displayName": "Text",
+                  "custom": {},
+                  "parent": "art-head",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Fact button",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Fact button visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Fact button"
+          },
+          {
+            "socketType": "in",
+            "name": "Fact button layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Fact button"
+          },
+          {
+            "socketType": "in",
+            "name": "Cat fact text",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Cat fact text visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Cat fact text"
+          },
+          {
+            "socketType": "in",
+            "name": "Cat fact text layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Cat fact text"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork picture",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork picture visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Artwork picture"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork picture layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Artwork picture"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork title",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork title visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Artwork title"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork title layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Artwork title"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork artist",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork artist visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Artwork artist"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork artist layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Artwork artist"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork note",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork note visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Artwork note"
+          },
+          {
+            "socketType": "in",
+            "name": "Artwork note layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Artwork note"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "type": "label",
+        "x": 7,
+        "y": 76,
+        "width": 2035,
+        "height": 285,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "This page is a Tailrmade app.\nFollow the numbers: the fact gives a word, the word finds an artwork.\nMain page on the right shows the result."
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 64,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      }
+    ],
+    "links": [
+      {
+        "sourceNodeId": "modern-cat-65",
+        "sourceSocketName": "Content",
+        "targetNodeId": "short-elephant-91",
+        "targetSocketName": "JSON"
+      },
+      {
+        "sourceNodeId": "brown-cougar-55",
+        "sourceSocketName": "Output",
+        "targetNodeId": "modern-cat-65",
+        "targetSocketName": "URL"
+      },
+      {
+        "sourceNodeId": "fact-button",
+        "sourceSocketName": "Out",
+        "targetNodeId": "modern-cat-65",
+        "targetSocketName": "Trigger 1"
+      },
+      {
+        "sourceNodeId": "art-section",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "spotty-octopus-51",
+        "targetSocketName": "From cat fact to artwork"
+      },
+      {
+        "sourceNodeId": "search-url",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "search-http",
+        "targetSocketName": "URL"
+      },
+      {
+        "sourceNodeId": "artwork-url",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "artwork-http",
+        "targetSocketName": "URL"
+      },
+      {
+        "sourceNodeId": "short-elephant-91",
+        "sourceSocketName": "Value",
+        "targetNodeId": "longest-word",
+        "targetSocketName": "fact"
+      },
+      {
+        "sourceNodeId": "short-elephant-91",
+        "sourceSocketName": "Value",
+        "targetNodeId": "mark-word",
+        "targetSocketName": "fact"
+      },
+      {
+        "sourceNodeId": "longest-word",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "mark-word",
+        "targetSocketName": "word"
+      },
+      {
+        "sourceNodeId": "mark-word",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "fact-text",
+        "targetSocketName": "Content"
+      },
+      {
+        "sourceNodeId": "longest-word",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "search-url",
+        "targetSocketName": "query"
+      },
+      {
+        "sourceNodeId": "search-http",
+        "sourceSocketName": "Content",
+        "targetNodeId": "artwork-url",
+        "targetSocketName": "search"
+      },
+      {
+        "sourceNodeId": "search-http",
+        "sourceSocketName": "Content",
+        "targetNodeId": "artwork-values",
+        "targetSocketName": "search"
+      },
+      {
+        "sourceNodeId": "artwork-http",
+        "sourceSocketName": "Content",
+        "targetNodeId": "artwork-values",
+        "targetSocketName": "artwork"
+      },
+      {
+        "sourceNodeId": "artwork-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "artwork-picture",
+        "targetSocketName": "Data"
+      },
+      {
+        "sourceNodeId": "artwork-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "artwork-title",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "artwork-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "artwork-artist",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "artwork-values",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "artwork-note",
+        "targetSocketName": "r"
+      },
+      {
+        "sourceNodeId": "fact-button",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "art-section",
+        "targetSocketName": "Fact button"
+      },
+      {
+        "sourceNodeId": "fact-text",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "art-section",
+        "targetSocketName": "Cat fact text"
+      },
+      {
+        "sourceNodeId": "artwork-picture",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "art-section",
+        "targetSocketName": "Artwork picture"
+      },
+      {
+        "sourceNodeId": "artwork-title",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "art-section",
+        "targetSocketName": "Artwork title"
+      },
+      {
+        "sourceNodeId": "artwork-artist",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "art-section",
+        "targetSocketName": "Artwork artist"
+      },
+      {
+        "sourceNodeId": "artwork-note",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "art-section",
+        "targetSocketName": "Artwork note"
+      }
+    ],
+    "groups": [
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "start-here"
+        ]
+      },
+      {
+        "id": "fact",
+        "name": "1. Get a cat fact",
+        "color": "#60D2FF",
+        "nodeIds": [
+          "brown-cougar-55",
+          "fact-button",
+          "modern-cat-65",
+          "short-elephant-91"
+        ]
+      },
+      {
+        "id": "search",
+        "name": "2. Search with its longest word",
+        "color": "#E2ABFF",
+        "nodeIds": [
+          "longest-word",
+          "mark-word",
+          "fact-text",
+          "search-url",
+          "search-http"
+        ]
+      },
+      {
+        "id": "art",
+        "name": "3. Get the artwork",
+        "color": "#FFAE6B",
+        "nodeIds": [
+          "artwork-url",
+          "artwork-http",
+          "artwork-values",
+          "artwork-picture",
+          "artwork-title",
+          "artwork-artist",
+          "artwork-note",
+          "art-section"
+        ]
+      },
+      {
+        "id": "main-page",
+        "name": "Main page",
+        "color": "#C0B6FF",
+        "nodeIds": [
+          "spotty-octopus-51"
+        ]
+      }
+    ]
+  },
+  "date": "2026-11-03T19:47:41.762Z",
+  "owner": "publicUser",
+  "isRemote": true
+}
