@@ -6786,101 +6786,19 @@
         "version": 4
       },
       {
-        "id": "ai-node-2",
-        "name": "Idea position",
-        "type": "widgetslider",
-        "x": 1300,
-        "y": 1372,
-        "width": 200,
-        "height": 104,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Initial Value",
-            "dataType": "{\"class\":\"NumberType\"}"
-          },
-          {
-            "socketType": "in",
-            "name": "Min",
-            "dataType": "{\"class\":\"NumberType\"}",
-            "data": 0,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Max",
-            "dataType": "{\"class\":\"NumberType\"}",
-            "data": 999,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Decimals",
-            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
-            "data": 0,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Label",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "Idea: {{value}}",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Commit",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
-            "data": "While dragging",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Color",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
-            "data": "primary",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Size",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
-            "data": "Inherit",
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Out",
-            "dataType": "{\"class\":\"NumberType\"}"
-          },
-          {
-            "socketType": "out",
-            "name": "ReactUI",
-            "dataType": "{\"class\":\"DeferredReactType\"}"
-          }
-        ],
-        "updateBehaviour": {
-          "load": true,
-          "update": true,
-          "interval": false
-        },
-        "version": 3,
-        "comment": "Not on the page. It holds the position in the idea pool. Drag it here to jump to another word."
-      },
-      {
         "id": "curvy-quail-27",
         "name": "Rotating word",
         "type": "customfunction",
         "x": 1560,
         "y": 1970,
         "width": 160,
-        "height": 184,
+        "height": 112,
         "socketArray": [
           {
             "socketType": "in",
             "name": "Code",
             "dataType": "{\"class\":\"CodeType\"}",
-            "data": "(ideas, index) => {\n\t// The word at the current position in the pool.\n\tconst pool = Array.isArray(ideas) && ideas.length ? ideas : [\"app\"];\n\tconst idx = Math.max(0, Math.round(Number(index) || 0)) % pool.length;\n\tconst word = String(pool[idx] ?? \"app\");\n\t// A CSS animation only restarts when its name changes, so the name follows the word.\n\tconst hash = [...word].reduce((h, c) => (h * 31 + c.charCodeAt(0)) | 0, 0);\n\tconst name = `heroDrop${Math.abs(hash)}`;\n\treturn {\n\t\tword,\n\t\tanimation: {\n\t\t\t[`@keyframes ${name}`]: {\n\t\t\t\tfrom: { opacity: 0.25, transform: \"translateY(-0.3em)\" },\n\t\t\t\tto: { opacity: 1, transform: \"translateY(0)\" }\n\t\t\t},\n\t\t\tanimation: `${name} 340ms cubic-bezier(0.2,0.8,0.2,1)`\n\t\t}\n\t};\n}",
+            "data": "(ideas, tick) => {\n\t// The word at the current step in the shuffled pool.\n\tconst pool = Array.isArray(ideas) && ideas.length ? ideas : [\"app\"];\n\tconst idx = Math.max(0, Math.round(Number(tick) || 0)) % pool.length;\n\tconst word = String(pool[idx] ?? \"app\");\n\t// A CSS animation only restarts when its name changes, so the name follows the word.\n\tconst hash = [...word].reduce((h, c) => (h * 31 + c.charCodeAt(0)) | 0, 0);\n\tconst name = `heroDrop${Math.abs(hash)}`;\n\treturn {\n\t\tword,\n\t\tanimation: {\n\t\t\t[`@keyframes ${name}`]: {\n\t\t\t\tfrom: { opacity: 0.25, transform: \"translateY(-0.3em)\" },\n\t\t\t\tto: { opacity: 1, transform: \"translateY(0)\" }\n\t\t\t},\n\t\t\tanimation: `${name} 340ms cubic-bezier(0.2,0.8,0.2,1)`\n\t\t}\n\t};\n}",
             "visible": false
           },
           {
@@ -6897,7 +6815,7 @@
           },
           {
             "socketType": "in",
-            "name": "index",
+            "name": "tick",
             "dataType": "{\"class\":\"NumberType\"}"
           },
           {
@@ -7900,99 +7818,6 @@
         }
       },
       {
-        "id": "ai-node-15",
-        "name": "Next index",
-        "type": "customfunction",
-        "x": 1560,
-        "y": 1372,
-        "width": 160,
-        "height": 112,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Code",
-            "dataType": "{\"class\":\"CodeType\"}",
-            "data": "(current, max) => {\n\t// The index one step after the slider's current position, wrapping around.\n\tconst m = Math.max(0, Math.round(Number(max) || 0));\n\treturn (Math.round(Number(current) || 0) + 1) % (m + 1);\n}",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Main Thread",
-            "dataType": "{\"class\":\"BooleanType\"}",
-            "data": false,
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "current",
-            "dataType": "{\"class\":\"NumberType\"}"
-          },
-          {
-            "socketType": "in",
-            "name": "max",
-            "dataType": "{\"class\":\"NumberType\"}",
-            "data": 999
-          },
-          {
-            "socketType": "out",
-            "name": "OutData",
-            "dataType": "{\"class\":\"NumberType\"}"
-          },
-          {
-            "socketType": "out",
-            "name": "Code",
-            "dataType": "{\"class\":\"CodeType\"}",
-            "visible": false
-          }
-        ],
-        "updateBehaviour": {
-          "load": true,
-          "update": true,
-          "interval": false
-        },
-        "version": 3
-      },
-      {
-        "id": "ai-node-16",
-        "name": "Auto advance tick",
-        "type": "copysocketvalue",
-        "x": 1820,
-        "y": 1360,
-        "width": 160,
-        "height": 136,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Value",
-            "dataType": "{\"class\":\"AnyType\"}"
-          },
-          {
-            "socketType": "in",
-            "name": "Input Socket",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": "Initial Value"
-          },
-          {
-            "socketType": "trigger",
-            "name": "Execute",
-            "dataType": "{\"class\":\"TriggerType\"}",
-            "data": 0
-          },
-          {
-            "socketType": "out",
-            "name": "Value",
-            "dataType": "{\"class\":\"AnyType\"}"
-          }
-        ],
-        "updateBehaviour": {
-          "load": false,
-          "update": false,
-          "interval": true,
-          "intervalFrequency": 1200
-        },
-        "comment": "Every 1.2 s it writes the next index back into Idea position, so the headline auto-advances."
-      },
-      {
         "id": "ai-node-17",
         "name": "Idea pool (shuffled)",
         "type": "customfunction",
@@ -8794,6 +8619,50 @@
           "update": true,
           "interval": false
         }
+      },
+      {
+        "id": "ai-node-43",
+        "name": "Auto advance tick",
+        "type": "customfunction",
+        "x": 1300,
+        "y": 1372,
+        "width": 160,
+        "height": 64,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "() => {\n\t// A step number that goes up every 1.2 s. It comes from the clock, so the\n\t// headline advances without writing to storage.\n\treturn Math.floor(Date.now() / 1200);\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": true,
+          "intervalFrequency": 1200
+        },
+        "version": 3,
+        "comment": "Every 1.2 s it outputs the next step from the clock, so the headline auto-advances with no storage and no risk."
       }
     ],
     "links": [
@@ -8960,22 +8829,16 @@
         "targetSocketName": "Trigger 1"
       },
       {
-        "sourceNodeId": "ai-node-16",
-        "sourceSocketName": "Value",
-        "targetNodeId": "ai-node-2",
-        "targetSocketName": "Initial Value"
-      },
-      {
         "sourceNodeId": "ai-node-17",
         "sourceSocketName": "OutData",
         "targetNodeId": "curvy-quail-27",
         "targetSocketName": "ideas"
       },
       {
-        "sourceNodeId": "ai-node-2",
-        "sourceSocketName": "Out",
+        "sourceNodeId": "ai-node-43",
+        "sourceSocketName": "OutData",
         "targetNodeId": "curvy-quail-27",
-        "targetSocketName": "index"
+        "targetSocketName": "tick"
       },
       {
         "sourceNodeId": "ai-node-41",
@@ -9006,18 +8869,6 @@
         "sourceSocketName": "ReactUI",
         "targetNodeId": "ai-node-14",
         "targetSocketName": "Learn the basics button"
-      },
-      {
-        "sourceNodeId": "ai-node-2",
-        "sourceSocketName": "Out",
-        "targetNodeId": "ai-node-15",
-        "targetSocketName": "current"
-      },
-      {
-        "sourceNodeId": "ai-node-15",
-        "sourceSocketName": "OutData",
-        "targetNodeId": "ai-node-16",
-        "targetSocketName": "Value"
       },
       {
         "sourceNodeId": "ai-node-42",
@@ -9145,9 +8996,7 @@
         "name": "1c. Idea looping",
         "color": "#60D2FF",
         "nodeIds": [
-          "ai-node-15",
-          "ai-node-16",
-          "ai-node-2"
+          "ai-node-43"
         ]
       },
       {
@@ -9245,7 +9094,7 @@
       }
     ]
   },
-  "date": "2026-11-04T22:04:55.262Z",
+  "date": "2026-11-07T23:40:55.174Z",
   "owner": "publicUser",
   "isRemote": false
 }
