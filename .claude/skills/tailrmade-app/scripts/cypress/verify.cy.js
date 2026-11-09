@@ -144,8 +144,17 @@ const startApp = (r, wait) => {
     r.problemsOnLoad = statuses(c);
   });
   // Files from outside open paused behind the risk review, as a user would meet them.
-  cy.get('body').then(($b) => { if ($b.find('[data-cy="start-app"]').length) { cy.get('[data-cy="start-app"]').click({ force: true }); cy.wait(1000); } });
-  cy.get('body').then(($b) => { if ($b.find('[data-cy="run-reviewed-app"]').length) cy.get('[data-cy="run-reviewed-app"]').click({ force: true }); });
+  // The sheet can take several seconds to open on a big graph, so wait for Run app.
+  // The banner can also show up after the first check, so a paused app waits for it.
+  // It shows either the banner or the sheet itself.
+  const gate = '[data-cy="start-app"], [data-cy="run-reviewed-app"]';
+  cy.get('body').then(($b) => {
+    if (!r.pausedOnLoad && !$b.find(gate).length) return;
+    cy.get(gate, { timeout: 20000 }).first().then(($el) => {
+      if ($el.attr('data-cy') === 'start-app') cy.wrap($el).click({ force: true });
+      cy.get('[data-cy="run-reviewed-app"]', { timeout: 20000 }).click({ force: true });
+    });
+  });
   cy.wait(wait ?? 6000);
   ctl((c) => { r.running = c.isLoadedAppRunning(); r.problems = statuses(c); });
 };

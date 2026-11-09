@@ -1,0 +1,1629 @@
+{
+  "id": "Default/Tixy",
+  "location": "Default",
+  "name": "Tixy",
+  "access": "private",
+  "graphData": {
+    "version": 12,
+    "graphSettings": {
+      "showExecutionVisualisation": true,
+      "viewportCenterPosition": {
+        "x": -732,
+        "y": 2288
+      },
+      "viewportScale": 0.099,
+      "defaultUISurfaceNodeId": "ai-node-12",
+      "theme": {
+        "mode": "dark"
+      }
+    },
+    "overlay": {
+      "dashboard": {
+        "visible": true,
+        "fullscreen": false,
+        "maximized": false,
+        "widthPercentage": 52,
+        "locked": false
+      }
+    },
+    "nodes": [
+      {
+        "id": "ai-node-1",
+        "name": "Start here",
+        "type": "label",
+        "x": 0,
+        "y": 0,
+        "width": 2277,
+        "height": 285,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1280,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "A remake of tixy.land by Martin Kleppe.\nFollow the numbers: the code you pick or type is checked, run for all 256 dots\n30 times a second, and a shader draws the result."
+          },
+          {
+            "socketType": "in",
+            "name": "Font size",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":100,\"stepSize\":1,\"showDetails\":false,\"presetValues\":[{\"text\":\"Small\",\"value\":12},{\"text\":\"Normal\",\"value\":16},{\"text\":\"H5\",\"value\":20},{\"text\":\"H4\",\"value\":24},{\"text\":\"H3\",\"value\":28},{\"text\":\"H2\",\"value\":32},{\"text\":\"H1\",\"value\":40}]}}",
+            "data": 64,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Left\",\"value\":\"left\"},{\"text\":\"Center\",\"value\":\"center\"},{\"text\":\"Right\",\"value\":\"right\"}],\"showAsButtons\":true}}",
+            "data": "Left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Font weight",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Regular\",\"value\":\"400\"},{\"text\":\"Bold\",\"value\":\"700\"}],\"showAsButtons\":true}}",
+            "data": "Regular",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Text color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-3",
+        "name": "Examples",
+        "type": "widgetdropdown",
+        "x": 0,
+        "y": 805,
+        "width": 250,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Fallback Option",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Options",
+            "dataType": "{\"class\":\"ArrayType\"}",
+            "data": [
+              "Basics: 0 or 1",
+              "Basics: size from 0 to 1",
+              "Basics: t is time",
+              "Basics: i is the index",
+              "Basics: x is the column",
+              "Basics: y is the row",
+              "Basics: negative is red",
+              "Basics: animate with t",
+              "Basics: speed up time",
+              "Basics: colour patterns",
+              "Basics: skip Math.",
+              "Sine scroll",
+              "Simple triangle",
+              "Quarter triangle",
+              "Pattern",
+              "Grid",
+              "Square",
+              "Animated square",
+              "Mondrian squares",
+              "Moving cross",
+              "Sierpinski",
+              "Binary clock",
+              "Random noise",
+              "Static smooth noise",
+              "Animated smooth noise",
+              "Waves",
+              "Bloop bloop bloop",
+              "Fireworks",
+              "Ripples",
+              "Scrolling TIXY font",
+              "3D checker board",
+              "Sticky blood",
+              "3D starfield",
+              "Dialogue with an alien",
+              "Space invader",
+              "Hungry pac man",
+              "Spectrum analyser",
+              "Diagonals",
+              "Frame",
+              "Drop",
+              "Rotation",
+              "Wipe",
+              "Soft wipe",
+              "Disco",
+              "The 32 character limit",
+              "Your own"
+            ],
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Selected Option",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Basics: skip Math.",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Examples",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 2
+      },
+      {
+        "id": "ai-node-4",
+        "name": "Example code",
+        "type": "customfunction",
+        "x": 390,
+        "y": 805,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(choice) => {\n  // [name, tixy's comment, code], in tixy's order\n  const examples = [\n   [\n    \"Basics: 0 or 1\",\n    \"for every dot return 0 or 1 to change the visibility\",\n    \"Math.random() < 0.1\"\n   ],\n   [\n    \"Basics: size from 0 to 1\",\n    \"use a float between 0 and 1 to define the size\",\n    \"Math.random()\"\n   ],\n   [\n    \"Basics: t is time\",\n    \"parameter `t` is the time in seconds\",\n    \"Math.sin(t)\"\n   ],\n   [\n    \"Basics: i is the index\",\n    \"param `i` is the index of the dot (0..255)\",\n    \"i / 256\"\n   ],\n   [\n    \"Basics: x is the column\",\n    \"`x` is the column index from 0 to 15\",\n    \"x / 16\"\n   ],\n   [\n    \"Basics: y is the row\",\n    \"`y` is the row also from 0 to 15\",\n    \"y / 16\"\n   ],\n   [\n    \"Basics: negative is red\",\n    \"positive numbers are white, negatives are red\",\n    \"y - 7.5\"\n   ],\n   [\n    \"Basics: animate with t\",\n    \"use the time to animate values\",\n    \"y - t\"\n   ],\n   [\n    \"Basics: speed up time\",\n    \"multiply the time to change the speed\",\n    \"y - t*4\"\n   ],\n   [\n    \"Basics: colour patterns\",\n    \"create patterns using different color\",\n    \"[1, 0, -1][i%3]\"\n   ],\n   [\n    \"Basics: skip Math.\",\n    \"skip `Math.` to use methods and props like `sin` or `PI`\",\n    \"sin(t-sqrt((x-7.5)**2+(y-6)**2))\"\n   ],\n   [\n    \"Sine scroll\",\n    \"more examples ...\",\n    \"sin(y/8 + t)\"\n   ],\n   [\n    \"Simple triangle\",\n    \"simple triangle\",\n    \"y - x\"\n   ],\n   [\n    \"Quarter triangle\",\n    \"quarter triangle\",\n    \"(y > x) && (14-x < y)\"\n   ],\n   [\n    \"Pattern\",\n    \"pattern\",\n    \"i%4 - y%4\"\n   ],\n   [\n    \"Grid\",\n    \"grid\",\n    \"x%4 && y%4\"\n   ],\n   [\n    \"Square\",\n    \"square\",\n    \"x>3 & y>3 & x<12 & y<12\"\n   ],\n   [\n    \"Animated square\",\n    \"animated square\",\n    \"-(x>t & y>t & x<15-t & y<15-t)\"\n   ],\n   [\n    \"Mondrian squares\",\n    \"mondrian squares\",\n    \"(y-6) * (x-6)\"\n   ],\n   [\n    \"Moving cross\",\n    \"moving cross\",\n    \"(y-4*t|0) * (x-2-t|0)\"\n   ],\n   [\n    \"Sierpinski\",\n    \"sierpinski\",\n    \"4 * t & i & x & y\"\n   ],\n   [\n    \"Binary clock\",\n    \"binary clock\",\n    \"(t*10) & (1<<x) && y==8\"\n   ],\n   [\n    \"Random noise\",\n    \"random noise\",\n    \"random() * 2 - 1\"\n   ],\n   [\n    \"Static smooth noise\",\n    \"static smooth noise\",\n    \"sin(i ** 2)\"\n   ],\n   [\n    \"Animated smooth noise\",\n    \"animated smooth noise\",\n    \"cos(t + i + x * y)\"\n   ],\n   [\n    \"Waves\",\n    \"waves\",\n    \"sin(x/2) - sin(x-t) - y+6\"\n   ],\n   [\n    \"Bloop bloop bloop\",\n    \"bloop bloop bloop by @v21\",\n    \"(x-8)*(y-8) - sin(t)*64\"\n   ],\n   [\n    \"Fireworks\",\n    \"fireworks by @p_malin and @aemkei\",\n    \"-.4/(hypot(x-t%10,y-t%8)-t%2*9)\"\n   ],\n   [\n    \"Ripples\",\n    \"ripples by @thespite\",\n    \"Math.sin(t-Math.sqrt(x*x+y*y))\"\n   ],\n   [\n    \"Scrolling TIXY font\",\n    \"scrolling TIXY font by @atesgoral\",\n    \"[5463,2194,2386][y+t*9&7]&1<<x-1\"\n   ],\n   [\n    \"3D checker board\",\n    \"3d checker board by @p_malin\",\n    \"(((x-8)/y+t*5)&1^1/y*8&1)*y/5\"\n   ],\n   [\n    \"Sticky blood\",\n    \"sticky blood by @joeytwiddle\",\n    \"y-t*3+9+3*cos(x*3-t)-5*sin(x*7)\"\n   ],\n   [\n    \"3D starfield\",\n    \"3d starfield by @p_malin\",\n    \"d=y*y%5.9+1,!((x+t*50/d)&15)/d\"\n   ],\n   [\n    \"Dialogue with an alien\",\n    \"dialogue with an alien by @chiptune\",\n    \"1/32*tan(t/64*x*tan(i-x))\"\n   ],\n   [\n    \"Space invader\",\n    \"space invader by @keithclarkcouk + @zozuar\",\n    \"'p}¶¼<¼¶}p'.charCodeAt(x)&2**y\"\n   ],\n   [\n    \"Hungry pac man\",\n    \"hungry pac man by @p_malin and @aemkei\",\n    \"hypot(x-=t%4*5,y-=8)<6&&x<y|y<-x\"\n   ],\n   [\n    \"Spectrum analyser\",\n    \"spectrum analyser by @joeytwiddle\",\n    \"x&y<9&y>4+sin(8*t+x*x)+x/4\"\n   ],\n   [\n    \"Diagonals\",\n    \"diagonals\",\n    \"y == x || -(15-x == y)\"\n   ],\n   [\n    \"Frame\",\n    \"frame\",\n    \"x==0 | x==15 | y==0 | y==15\"\n   ],\n   [\n    \"Drop\",\n    \"drop\",\n    \"8*t%13 - hypot(x-7.5, y-7.5)\"\n   ],\n   [\n    \"Rotation\",\n    \"rotation\",\n    \"sin(2*atan((y-7.5)/(x-7.5))+5*t)\"\n   ],\n   [\n    \"Wipe\",\n    \"wipe\",\n    \"(x-y) - sin(t) * 16\"\n   ],\n   [\n    \"Soft wipe\",\n    \"soft wipe\",\n    \"(x-y)/24 - sin(t)\"\n   ],\n   [\n    \"Disco\",\n    \"disco\",\n    \"sin(t*5) * tan(t*7)\"\n   ],\n   [\n    \"The 32 character limit\",\n    \"input is limited to 32 characters!\",\n    \"(x-5)**2 + (y-5)**2 - 99*sin(t)\"\n   ],\n   [\n    \"Your own\",\n    \"now type your own\",\n    \"'HAVE FUN!'\"\n   ]\n  ];\n  const [name, comment, code] = examples.find(([n]) => n === choice) ?? examples[0];\n  return { name, comment, code };\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "choice",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "The examples from tixy.land. The names must match the Examples dropdown's options."
+      },
+      {
+        "id": "ai-node-5",
+        "name": "Code field",
+        "type": "widgettextfield",
+        "x": 1150,
+        "y": 1517,
+        "width": 220,
+        "height": 120,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "(t,i,x,y) =>",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Placeholder",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "sin(t+x/4)",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Helper Text",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Type",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"text\"},{\"text\":\"password\"}],\"showAsButtons\":true}}",
+            "data": "text",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Multiline",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Rows",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":1,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 3,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max Length",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Required",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While typing\"},{\"text\":\"Rate limited\"},{\"text\":\"After pause\"},{\"text\":\"Enter or blur\"}],\"showAsButtons\":true}}",
+            "data": "While typing",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit Delay",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":5000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 300,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Shows the picked example; typing replaces it until another example is picked."
+      },
+      {
+        "id": "ai-node-13",
+        "name": "Get the code",
+        "type": "jsonget",
+        "x": 690,
+        "y": 805,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "JSON",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Path",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "code"
+          },
+          {
+            "socketType": "out",
+            "name": "Value",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-7",
+        "name": "Check the code",
+        "type": "customfunction",
+        "x": 1670,
+        "y": 2237,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(code, example) => {\n  const text = String(code ?? '');\n  // the message is Markdown, so escape what the user typed\n  const esc = (s) => s.replace(/[\\\\`*_{}\\[\\]()#+\\-.!|<>~]/g, '\\\\$&');\n  const line = (s, tone) => (tone ? '[' + esc(s) + ']{.' + tone + '}' : esc(s));\n  if (!text.trim()) return line('// type a function of t, i, x and y');\n  let fn;\n  try {\n    fn = new Function('t', 'i', 'x', 'y', 'with (Math) { return ' + text + '; }');\n    for (let i = 0; i < 256; i++) fn(0, i, i % 16, Math.floor(i / 16));\n  } catch (error) {\n    return line('// ' + error.name + ': ' + error.message, 'error');\n  }\n  if (text.length > 32) return line('// ' + text.length + ' characters: tixy asks for 32 or less', 'warning');\n  if (text === example?.code) return line('// ' + example.comment);\n  return line('// your own function. Pick an example for ideas');\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "code",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "example",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "Runs the code once for every dot at t = 0, so typos and unknown names show here instead of a blank grid."
+      },
+      {
+        "id": "ai-node-8",
+        "name": "Comment line",
+        "type": "text",
+        "x": 1970,
+        "y": 2237,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "muted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "fontFamily": "monospace"
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-2",
+        "name": "App theme",
+        "type": "theme",
+        "x": 2510,
+        "y": 2949,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Preset",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Keep app setting\"},{\"text\":\"tailrmade\"},{\"text\":\"cloud\"},{\"text\":\"bauhaus\"},{\"text\":\"newsprint\"},{\"text\":\"terminal\"},{\"text\":\"neon\"}],\"showAsButtons\":false}}",
+            "data": "Keep app setting"
+          },
+          {
+            "socketType": "in",
+            "name": "Mode",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Keep app setting\"},{\"text\":\"light\"},{\"text\":\"dark\"},{\"text\":\"system\"}],\"showAsButtons\":false}}",
+            "data": "Keep app setting"
+          },
+          {
+            "socketType": "in",
+            "name": "Overrides",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {}
+          },
+          {
+            "socketType": "out",
+            "name": "Theme",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Warnings",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Gives the dots their colours: background paper, text colour for positive values, the theme's error red for negative ones."
+      },
+      {
+        "id": "ai-node-6",
+        "name": "Restart the clock",
+        "type": "customfunction",
+        "x": 2510,
+        "y": 3189,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(code) => {\n  return Date.now();\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "code",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "Like tixy, t counts the seconds since the code last changed."
+      },
+      {
+        "id": "ai-node-9",
+        "name": "Work out every dot",
+        "type": "customfunction",
+        "x": 2810,
+        "y": 2949,
+        "width": 160,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(code, startedAt, theme) => {\n  const rgb = (color, fallback) => {\n    const text = String(color ?? '');\n    let hex = /^#([0-9a-f]{3}|[0-9a-f]{6})\\b/i.exec(text)?.[1];\n    if (hex && hex.length === 3) hex = hex.replace(/./g, '$&$&');\n    if (hex) return [0, 2, 4].map((at) => parseInt(hex.slice(at, at + 2), 16) / 255);\n    const parts = /rgba?\\(([^)]*)\\)/i.exec(text)?.[1].split(',').map(Number);\n    return parts?.length >= 3 ? parts.slice(0, 3).map((v) => v / 255) : fallback;\n  };\n  const tokens = theme?.tokens ?? {};\n\n  // the same function tixy builds: Math is in scope, and a throw draws nothing\n  let fn = () => 0;\n  try {\n    fn = new Function('t', 'i', 'x', 'y',\n      'try { with (Math) { return ' + String(code ?? '') + '; } } catch (error) { return 0; }');\n  } catch (error) {}\n\n  const t = (Date.now() - (Number(startedAt) || Date.now())) / 1000;\n  const cells = [];\n  for (let i = 0; i < 256; i++) {\n    const value = Number(fn(t, i, i % 16, Math.floor(i / 16)));\n    cells.push(Number.isFinite(value) ? Math.max(-1, Math.min(1, value)) : 0);\n  }\n  return {\n    // 64 vec4s hold 256 values and fit any GPU's uniform limit\n    cells: { value: cells, type: 'vec4<f32>', size: 64 },\n    paper: { value: rgb(tokens['background.paper'], [0, 0, 0]), type: 'vec3<f32>' },\n    ink: { value: rgb(tokens['text.primary'], [1, 1, 1]), type: 'vec3<f32>' },\n    negative: { value: rgb(tokens.error, [1, 0.13, 0.27]), type: 'vec3<f32>' },\n  };\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "code",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "startedAt",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "theme",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": true,
+          "intervalFrequency": 33
+        },
+        "version": 3,
+        "comment": "Runs every 33 ms (about 30 frames a second) in the sandbox, so typed code never touches the page. Values are clamped to -1..1."
+      },
+      {
+        "id": "ai-node-10",
+        "name": "No images",
+        "type": "customfunction",
+        "x": 3270,
+        "y": 3877,
+        "width": 160,
+        "height": 64,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "() => ({})",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "A shader's Images input is never saved, so left unwired it warns on every load. This fills it with an empty set."
+      },
+      {
+        "id": "ai-node-11",
+        "name": "Dot grid",
+        "type": "shader",
+        "x": 3570,
+        "y": 3877,
+        "width": 160,
+        "height": 232,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Uniforms",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Images",
+            "dataType": "{\"class\":\"ImageResourceMapType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "WebGL Vertex",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "\nin vec2 aPosition;\nin vec2 aUV;\nout vec2 UV;\n\nuniform mat3 uProjectionMatrix;\nuniform mat3 uWorldTransformMatrix;\n\nuniform mat3 uTransformMatrix;\n\n\nvoid main() {\n    mat3 mvp = uProjectionMatrix * uWorldTransformMatrix * uTransformMatrix;\n    gl_Position = vec4((mvp * vec3(aPosition, 1.0)).xy, 0.0, 1.0);\n\n    UV = aUV;\n}\n",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "WebGL Fragment",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "in vec2 UV;\nuniform vec4 cells[64];\nuniform vec3 paper;\nuniform vec3 ink;\nuniform vec3 negative;\nuniform float width;\n\n// tixy's grid: 16 dots of 16 units with 1 unit between them\nconst float CELL = 17.0;\nconst float SIZE = 271.0;\n\nvoid main() {\n    vec2 p = UV * SIZE;\n    vec2 cell = min(floor(p / CELL), vec2(15.0));\n    vec2 local = p - cell * CELL - 8.0;\n    int index = int(cell.y) * 16 + int(cell.x);\n    // WebGL1 shaders can only index arrays by a loop counter\n    vec4 group = vec4(0.0);\n    for (int k = 0; k < 64; k++) {\n        if (k == index / 4) group = cells[k];\n    }\n    int lane = index - (index / 4) * 4;\n    float value = dot(group, vec4(equal(ivec4(lane), ivec4(0, 1, 2, 3))));\n    float radius = abs(value) * 8.0;\n    float edge = SIZE / width;\n    float inside = 1.0 - smoothstep(radius - edge, radius + edge * 0.5, length(local));\n    inside *= step(0.001, radius);\n    vec3 dotColor = value < 0.0 ? negative : ink;\n    gl_FragColor = vec4(mix(paper, dotColor, inside), 1.0);\n}\n"
+          },
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":1,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 542
+          },
+          {
+            "socketType": "in",
+            "name": "Height",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":1,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 542
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Texture",
+            "dataType": "{\"class\":\"ImageResourceMapType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false,
+          "intervalFrequency": 16
+        },
+        "version": 2,
+        "comment": "Draws all 256 dots on the GPU from the values; no main-thread code, so no risk warning."
+      },
+      {
+        "id": "ai-node-12",
+        "name": "Main page",
+        "type": "uisurfacenode",
+        "x": 5798.9111111111115,
+        "y": 2541.0,
+        "width": 300,
+        "height": 300,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "center",
+                    "justifyContent": "flex-start",
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      24,
+                      24,
+                      24
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "50dvh",
+                    "maxWidth": "sm",
+                    "maxHeight": "unset",
+                    "gap": 16,
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "@media (max-width: 600px)": {
+                        "padding": "8px"
+                      }
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "lSgYXi5Qad",
+                    "laMOGybnDt",
+                    "hZJ4IrAyQb"
+                  ],
+                  "linkedNodes": {}
+                },
+                "lSgYXi5Qad": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      16,
+                      8,
+                      0,
+                      8
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 4,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "VXn2CdDpNq",
+                    "4JcGGTTc5u"
+                  ],
+                  "linkedNodes": {}
+                },
+                "VXn2CdDpNq": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Tixy",
+                    "variant": "h1",
+                    "tone": "default",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "lSgYXi5Qad",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "4JcGGTTc5u": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Control 16×16 dots with one line of JavaScript. A dot's size is the value, and red means it is negative.",
+                    "variant": "body",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "lSgYXi5Qad",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "laMOGybnDt": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      20,
+                      20,
+                      20,
+                      20
+                    ],
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 12,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "strong",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "hmJsR9Hkg1",
+                    "jbUwbgZBIH",
+                    "auJN2IwLvU",
+                    "0KAXDqbUUj"
+                  ],
+                  "linkedNodes": {}
+                },
+                "hmJsR9Hkg1": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 245,
+                      "g": 245,
+                      "b": 245,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-11",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "laMOGybnDt",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "jbUwbgZBIH": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-8",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "laMOGybnDt",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "auJN2IwLvU": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-5",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "laMOGybnDt",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "0KAXDqbUUj": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-3",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "laMOGybnDt",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "hZJ4IrAyQb": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "`t` time in seconds · `i` index, 0 to 255 · `x` column, 0 to 15 · `y` row, 0 to 15\nMath is built in: `sin`, `cos`, `hypot`, `PI`, `random` and the rest.\nAfter [tixy.land](https://tixy.land) by Martin Kleppe; examples by the tixy community.",
+                    "variant": "caption",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            }
+          },
+          {
+            "socketType": "in",
+            "name": "Draw shader",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Draw shader visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Draw shader"
+          },
+          {
+            "socketType": "in",
+            "name": "Draw shader layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Draw shader"
+          },
+          {
+            "socketType": "in",
+            "name": "Text",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text"
+          },
+          {
+            "socketType": "in",
+            "name": "Text layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text"
+          },
+          {
+            "socketType": "in",
+            "name": "Text Field",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text Field visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text Field"
+          },
+          {
+            "socketType": "in",
+            "name": "Text Field layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text Field"
+          },
+          {
+            "socketType": "in",
+            "name": "Dropdown (single select)",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Dropdown (single select) visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Dropdown (single select)"
+          },
+          {
+            "socketType": "in",
+            "name": "Dropdown (single select) layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Dropdown (single select)"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "This is the page you see. The dot grid, the comment line, the code field and the examples plug in here."
+      }
+    ],
+    "links": [
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-4",
+        "targetSocketName": "choice"
+      },
+      {
+        "sourceNodeId": "ai-node-13",
+        "sourceSocketName": "Value",
+        "targetNodeId": "ai-node-5",
+        "targetSocketName": "Initial Value"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "JSON"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-7",
+        "targetSocketName": "code"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-7",
+        "targetSocketName": "example"
+      },
+      {
+        "sourceNodeId": "ai-node-7",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "Content"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-6",
+        "targetSocketName": "code"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "code"
+      },
+      {
+        "sourceNodeId": "ai-node-6",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "startedAt"
+      },
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "Theme",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "theme"
+      },
+      {
+        "sourceNodeId": "ai-node-9",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-11",
+        "targetSocketName": "Uniforms"
+      },
+      {
+        "sourceNodeId": "ai-node-10",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-11",
+        "targetSocketName": "Images"
+      },
+      {
+        "sourceNodeId": "ai-node-11",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "Draw shader"
+      },
+      {
+        "sourceNodeId": "ai-node-8",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "Text"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "Text Field"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "Dropdown (single select)"
+      }
+    ],
+    "groups": [
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "ai-node-1"
+        ]
+      },
+      {
+        "id": "1-pick-an-example",
+        "name": "1. Pick an example",
+        "color": "#60D2FF",
+        "nodeIds": [
+          "ai-node-3",
+          "ai-node-4",
+          "ai-node-13"
+        ]
+      },
+      {
+        "id": "2-type-the-code",
+        "name": "2. Type the code",
+        "color": "#E2ABFF",
+        "nodeIds": [
+          "ai-node-5"
+        ]
+      },
+      {
+        "id": "3-check-the-code",
+        "name": "3. Check the code",
+        "color": "#FFAE6B",
+        "nodeIds": [
+          "ai-node-7",
+          "ai-node-8"
+        ]
+      },
+      {
+        "id": "4-work-out-every-dot-30-times-a-second",
+        "name": "4. Work out every dot, 30 times a second",
+        "color": "#7DDD9C",
+        "nodeIds": [
+          "ai-node-2",
+          "ai-node-6",
+          "ai-node-9"
+        ]
+      },
+      {
+        "id": "5-draw-the-dots",
+        "name": "5. Draw the dots",
+        "color": "#FF9EC4",
+        "nodeIds": [
+          "ai-node-10",
+          "ai-node-11"
+        ]
+      },
+      {
+        "id": "main-page",
+        "name": "Main page",
+        "color": "#C0B6FF",
+        "nodeIds": [
+          "ai-node-12"
+        ]
+      }
+    ]
+  },
+  "date": "2026-11-09T23:02:30.295Z",
+  "owner": "unknown",
+  "isRemote": false
+}
