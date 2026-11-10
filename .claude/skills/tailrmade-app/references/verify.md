@@ -36,6 +36,8 @@ Do this every time, at least one per theme and width, plus the graph. Passing te
   }]
 }
 ```
+A scenario's `"hash": "santa=abc"` opens the app as if from a shared link ending in `#santa=abc`, so a URL Parameter node sees it on load. Use it for every page an app shows only when its link carries a parameter, and for a damaged value.
+
 `expect_risks` entries are `severity/kind/node name`. `allow_problems` lists nodes that may show a status in that scenario, such as an HTTP node on a forced failure. Keep it narrow: everything else fails the run.
 
 A stub has `match` (regular expression on the URL) and any of `status`, `body`, `delay`, `network_error`, `content_type`. The first match wins. Unstubbed requests go to the real server, so one scenario should always use the real API from Chrome.

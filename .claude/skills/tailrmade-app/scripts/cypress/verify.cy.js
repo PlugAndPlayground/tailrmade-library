@@ -124,10 +124,11 @@ const measure = (win) => {
   return r;
 };
 
-const openApp = (theme, width, height, wait, scenarioStubs) => {
+const openApp = (theme, width, height, wait, scenarioStubs, hash) => {
   cy.then(() => { logs = []; stubs = scenarioStubs ?? []; requests = []; });
   cy.viewport(width, height);
-  cy.visit(`${Cypress.expose('base')}/?new=true&toastEverything=true`, { timeout: 120000 });
+  // A scenario's hash opens the app as if from a shared link (#key=value), for the URL Parameter node.
+  cy.visit(`${Cypress.expose('base')}/?new=true&toastEverything=true${hash ? `#${hash}` : ''}`, { timeout: 120000 });
   cy.wait(2500);
   ctl((c) => {
     const graph = JSON.parse(job.text);
@@ -277,7 +278,7 @@ if (!job.quick) {
   it(`scenario ${scenario.name}`, () => {
     const r = { name: `scenario-${scenario.name}`, kind: 'scenario', failures: [], positions: {}, pages: [], allowProblems: scenario.allow_problems ?? [], allowLogs: scenario.allow_logs ?? [] };
     const [width, height] = scenario.viewport ?? [1440, 900];
-    openApp(scenario.theme, width, height, undefined, scenario.stub);
+    openApp(scenario.theme, width, height, undefined, scenario.stub, scenario.hash);
     startApp(r, scenario.wait);
     (scenario.steps ?? []).forEach((step) => {
       const kind = Object.keys(STEPS).find((k) => k in step);

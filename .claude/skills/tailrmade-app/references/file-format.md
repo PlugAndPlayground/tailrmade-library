@@ -9,7 +9,7 @@ A file (`.tmapp` or `.ppgraph`) is plain JSON, or URL-safe base64 of zlib-compre
 `id` (`Default/<name>`), `location`, `name`, `access`, `graphData`, `date`, `owner`, `isRemote`.
 
 ## graphData
-- `version`: 7 is current (`GRAPH_DATA_VERSION`). Older files, such as 0.1, migrate when loaded and can have `layouts` instead of surfaces.
+- `version`: the app's `GRAPH_DATA_VERSION` (`src/utils/graphMigrations.ts`) is current, 12 as of November 2026. `tmapp.py` reads it from the app repo. Older files, such as 0.1, migrate when loaded and can have `layouts` instead of surfaces.
 - `nodes`, `links`, `groups`.
 - `graphSettings`: `showExecutionVisualisation`, `viewportCenterPosition`, `viewportScale`, `defaultUISurfaceNodeId`, `theme` (for example `{"mode": "dark"}` or `{"presetId": "newsprint", "mode": "light"}`; absent means untouched).
 - `overlay.dashboard`: `visible`, `fullscreen`, `maximized`, `widthPercentage`, `locked`.

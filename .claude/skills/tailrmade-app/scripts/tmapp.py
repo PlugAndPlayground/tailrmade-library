@@ -12,11 +12,30 @@
 import argparse
 import base64
 import json
+import os
 import re
 import sys
 import zlib
+from pathlib import Path
 
-CURRENT_VERSION = 7
+
+
+def app_graph_version(fallback=12):
+    """The app's GRAPH_DATA_VERSION, read from the app repo so the checker follows its migrations."""
+    here = Path(__file__).resolve()
+    repos = [Path(os.environ['TM_APP_REPO']).expanduser()] if os.environ.get('TM_APP_REPO') else []
+    repos += [here.parents[4], here.parents[5] / 'tailrmade']
+    for repo in repos:
+        try:
+            m = re.search(r'GRAPH_DATA_VERSION\s*=\s*(\d+)', (repo / 'src/utils/graphMigrations.ts').read_text())
+        except OSError:
+            continue
+        if m:
+            return int(m.group(1))
+    return fallback
+
+
+CURRENT_VERSION = app_graph_version()
 NEUTRAL, PAGE = '#BBC5D4', '#C0B6FF'
 SECTION_COLORS = ['#60D2FF', '#E2ABFF', '#FFAE6B', '#7DDD9C', '#FF9EC4', '#F4D35E', '#8FB8FF']
 HTML_TYPES = {'htmlrenderer', 'iframerenderer', 'iframerenderercanvas', 'iframerendererdiv', 'embedwebsite'}

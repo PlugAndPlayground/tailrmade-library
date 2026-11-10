@@ -24,7 +24,7 @@ Worked examples are in `evals/apps/`.
 5. Read the screenshots. Fix and repeat until it passes and looks right.
 
 ## Explain
-`tmapp.py explain FILE`. For a file whose version isn't 7, run `app.py export` first and explain the export. Lead with what the app does for its user.
+`tmapp.py explain FILE`. For a file whose version isn't the app's current one (`GRAPH_DATA_VERSION` in the app repo; `tmapp.py` reads it), run `app.py export` first and explain the export. Lead with what the app does for its user.
 
 ## Update
 Start from the user's latest copy, say what will change before changing it, keep the diff small, and write a new file. Follow the update steps in build.md: baseline, ops, `merge`, then `diff` to prove the rest is unchanged, then `verify`.
