@@ -5,6 +5,9 @@
   ops JOB.json OUTDIR [--from F]  run MCP tool calls in order, save the result to OUTDIR/export.json
   export FILE OUT.json            load a file and save the migrated export
   verify FILE OUTDIR [--scenarios S.json] [--tag T] [--quick]
+  session start FILE DIR [--viewport 390x844] [--theme T] [--hash H] [--stub S.json]
+  session do DIR STEP...          take steps in the open app and print what is on screen
+  session stop DIR                close Chrome
 
 Exit codes: 0 pass, 1 fail, 3 no dev server, so the result is UNVERIFIED.
 Set TM_BASE_URL to use another dev server than http://127.0.0.1:8080.
@@ -14,9 +17,11 @@ import glob
 import json
 import os
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
+import time
 import urllib.request
 from pathlib import Path
 
@@ -65,10 +70,15 @@ def repo_state():
     return {'branch': run('branch', '--show-current'), 'uncommitted_files': len(changed)}
 
 
-def cypress(spec, out, job_file=None, job_inline=None):
+def cypress_command(spec, out, job_file=None, job_inline=None):
     env = {k: v for k, v in os.environ.items() if k != 'ELECTRON_RUN_AS_NODE'}
     env.update(TM_OUT=str(out), TM_SPEC=spec, TM_BASE_URL=BASE, TM_JOB=str(job_file or ''), TM_JOB_INLINE=str(job_inline or ''))
     cmd = [str(REPO / 'node_modules/.bin/cypress'), 'run', '--project', '.', '--config-file', str(HERE / 'cypress/config.js'), '--browser', 'chrome', '--spec', str(HERE / f'cypress/{spec}.cy.js')]
+    return cmd, env
+
+
+def cypress(spec, out, job_file=None, job_inline=None):
+    cmd, env = cypress_command(spec, out, job_file, job_inline)
     r = subprocess.run(cmd, cwd=REPO, env=env, capture_output=True, text=True)
     return r.returncode, r.stdout + r.stderr
 
@@ -222,6 +232,129 @@ def judge(report, res, data, scenarios, tag, quick, out):
     return failures
 
 
+# ---- User test sessions: Chrome stays open on one fresh load and takes steps one command at a time.
+# The files live in DIR/session: cmd-N.json from here, state-N.json and shots/**/session-N.png from Cypress.
+
+def session_dir(d):
+    return Path(d).resolve() / 'session'
+
+
+def session_alive(sd):
+    try:
+        os.kill(int((sd / 'pid').read_text()), 0)
+        return True
+    except (OSError, ValueError):
+        return False
+
+
+def wait_state(sd, n, timeout):
+    path = sd / f'state-{n}.json'
+    started = time.time()
+    while time.time() - started < timeout:
+        if path.exists():
+            try:
+                return json.loads(path.read_text())
+            except json.JSONDecodeError:
+                pass  # still being written
+        if not session_alive(sd):
+            log = (sd / 'cypress.log').read_text() if (sd / 'cypress.log').exists() else ''
+            print(f'SESSION ENDED: Chrome is no longer running.\n{tail(log)}')
+            sys.exit(1)
+        time.sleep(0.3)
+    print(f'TIMEOUT: no screen after {timeout}s. The session is still open; try `session do {sd.parent} \'{{"look": true}}\'` or stop it.')
+    sys.exit(1)
+
+
+def print_state(sd, state):
+    n = state['n']
+    shots = sorted(glob.glob(str(sd / f'shots/**/session-{n}.png'), recursive=True))
+    screen = state.get('screen') or {}
+    print(f'== Screen {n}' + (f' after {json.dumps(state["steps"], ensure_ascii=False)}' if state.get('steps') else ' (just opened)'))
+    for f in state.get('failures') or []:
+        print(f'  could not: {f}')
+    print(f'  screenshot: {shots[-1] if shots else "missing"}')
+    if screen.get('view') == 'graph':
+        print(f'  view: graph, {screen["size"][0]}x{screen["size"][1]}. Read the screenshot; `{{"view": "app"}}` goes back.')
+        return
+    if screen.get('noPage'):
+        print('  view: app, but no page is on screen')
+        return
+    sc = screen.get('scroll') or {}
+    more = f', scrolled {sc["top"]} of {sc["max"]}px' + (' (more below)' if sc['top'] < sc['max'] - 4 else '') if sc.get('max') else ''
+    print(f'  view: app, {screen["size"][0]}x{screen["size"][1]}{more}')
+    print(f'  text on screen: {screen.get("text") or "(none)"}')
+    print('  controls on screen:' + ('' if screen.get('controls') else ' none'))
+    for c in screen.get('controls') or []:
+        print(f'    {c}')
+
+
+def session_start(file, d, viewport, theme, hash_, stub_file, wait):
+    require_server()
+    sd = session_dir(d)
+    if sd.exists() and session_alive(sd):
+        print(f'A session is already open in {sd}. Stop it first: app.py session stop {d}')
+        sys.exit(1)
+    if sd.exists():
+        shutil.rmtree(sd)
+    sd.mkdir(parents=True)
+    data = tmapp.read_app(file)
+    themes = {t['name']: t['theme'] for t in THEMES}
+    if theme not in themes:
+        print(f'--theme takes one of {", ".join(themes)}')
+        sys.exit(2)
+    w, h = (int(x) for x in viewport.lower().split('x'))
+    stub = json.loads(Path(stub_file).read_text()) if stub_file else []
+    job = {'text': json.dumps(data, ensure_ascii=False), 'out': str(sd), 'tag': 'session', 'session': {'viewport': [w, h], 'theme': themes[theme], 'hash': hash_, 'stub': stub, 'wait': wait}}
+    job_file = sd / 'job.json'
+    job_file.write_text(json.dumps(job, ensure_ascii=False))
+    cmd, env = cypress_command('verify', sd, job_inline=job_file)
+    log = open(sd / 'cypress.log', 'w')
+    proc = subprocess.Popen(cmd, cwd=REPO, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+    (sd / 'pid').write_text(str(proc.pid))
+    (sd / 'next').write_text('1')
+    print(f'Opening {Path(file).name} at {w}x{h} in {theme} (repo {repo_state()})...')
+    print_state(sd, wait_state(sd, 0, 300))
+
+
+def session_do(d, steps_json, settle):
+    sd = session_dir(d)
+    if not session_alive(sd):
+        print(f'No open session in {sd}. Start one with `app.py session start FILE {d}`.')
+        sys.exit(1)
+    steps = []
+    for text in steps_json:
+        value = json.loads(text)
+        steps += value if isinstance(value, list) else [value]
+    n = int((sd / 'next').read_text())
+    tmp = sd / f'cmd-{n}.tmp'
+    tmp.write_text(json.dumps({'steps': steps, 'settle': settle}, ensure_ascii=False))
+    tmp.rename(sd / f'cmd-{n}.json')
+    (sd / 'next').write_text(str(n + 1))
+    print_state(sd, wait_state(sd, n, 180))
+
+
+def session_stop(d):
+    sd = session_dir(d)
+    if session_alive(sd):
+        n = int((sd / 'next').read_text())
+        (sd / f'cmd-{n}.json').write_text('{"stop": true}')
+        pid = int((sd / 'pid').read_text())
+        for _ in range(60):
+            if not session_alive(sd):
+                break
+            time.sleep(1)
+        else:
+            os.killpg(pid, signal.SIGTERM)
+    states = sorted(sd.glob('state-*.json'), key=lambda p: int(p.stem.split('-')[1]))
+    print(f'Session closed after {max(len(states) - 1, 0)} commands. States and screenshots are in {sd}.')
+    for p in states:
+        s = json.loads(p.read_text())
+        notes = [f'{len(s.get("problems") or [])} node problems' if s.get('problems') else '', f'{len(s.get("logs") or [])} console lines' if s.get('logs') else '', f'{len(s.get("requests") or [])} requests' if s.get('requests') else '']
+        notes = ', '.join(x for x in notes if x)
+        if notes:
+            print(f'  screen {s["n"]}: {notes}')
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest='cmd', required=True)
@@ -229,7 +362,19 @@ def main():
     c = sub.add_parser('ops'); c.add_argument('job'); c.add_argument('out'); c.add_argument('--from', dest='source')
     c = sub.add_parser('export'); c.add_argument('file'); c.add_argument('out')
     c = sub.add_parser('verify'); c.add_argument('file'); c.add_argument('out'); c.add_argument('--scenarios'); c.add_argument('--tag', default='app'); c.add_argument('--quick', action='store_true')
+    c = sub.add_parser('session'); ss = c.add_subparsers(dest='action', required=True)
+    c = ss.add_parser('start'); c.add_argument('file'); c.add_argument('dir'); c.add_argument('--viewport', default='390x844'); c.add_argument('--theme', default='tailrmade-dark'); c.add_argument('--hash'); c.add_argument('--stub', help='JSON file with a list of stubs, as in verify'); c.add_argument('--wait', type=int, default=6000)
+    c = ss.add_parser('do'); c.add_argument('dir'); c.add_argument('steps', nargs='+', help='one or more steps as JSON, as in verify'); c.add_argument('--settle', type=int, default=1500, help='ms to wait after the steps')
+    c = ss.add_parser('stop'); c.add_argument('dir')
     a = p.parse_args()
+    if a.cmd == 'session':
+        if a.action == 'start':
+            session_start(a.file, a.dir, a.viewport, a.theme, a.hash, a.stub, a.wait)
+        elif a.action == 'do':
+            session_do(a.dir, a.steps, a.settle)
+        else:
+            session_stop(a.dir)
+        return
     if a.cmd == 'catalog':
         extra = "const tools = await c.getAIToolDefinitions(); const nodes = JSON.parse((await c.callMCPTool('list_available_nodes', {})).content); return { prompt: await c.getAISystemPrompt(), tools, nodes };"
         run_ops([], a.out, extra=extra)

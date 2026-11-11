@@ -1,5 +1,6 @@
 // Loads an app in the real app across themes and widths, then runs its scenarios.
 // Findings go in JSON files; app.py decides pass or fail, so one bad cell does not hide the rest.
+// With job.session it instead opens the app once and takes steps one at a time from app.py, for a user test.
 const D = '[data-cy="dashboard"]';
 const WIDTHS = [[1440, 900, 'desktop'], [390, 844, 'phone']];
 const AsyncFunction = (async () => {}).constructor;
@@ -251,7 +252,7 @@ const finish = (r) => {
   cy.then(() => cy.writeFile(`${job.out}/res/${r.name}.json`, r));
 };
 
-if (!job.quick) {
+if (!job.session && !job.quick) {
   job.themes.forEach(({ name, theme }) => {
     WIDTHS.forEach(([width, height, label]) => {
       it(`${name} ${label}`, () => {
@@ -292,7 +293,7 @@ if (!job.quick) {
   });
 });
 
-it('graph and reload', () => {
+if (!job.session) it('graph and reload', () => {
   const r = { name: 'graph', kind: 'graph' };
   openApp(null, 1440, 900);
   startApp(r);
@@ -311,3 +312,190 @@ it('graph and reload', () => {
   cy.screenshot(`${job.tag}-graph`, { capture: 'viewport', overwrite: true });
   finish(r);
 });
+
+// ---- User test session: one fresh load, then steps from app.py one command file at a time.
+// The tester sees what a person would: the screenshot, the text on screen and the controls in reach.
+const REF = 'data-ut';
+const visibleBox = (win, e) => {
+  // MUI hides the real input of a switch or slider in a 1px box; its parent is what a person sees.
+  let b = e.getBoundingClientRect();
+  if ((b.width < 2 || b.height < 2) && e.parentElement) b = e.parentElement.getBoundingClientRect();
+  return b;
+};
+const onScreen = (win, b) => b.width > 1 && b.height > 1 && b.bottom > 0 && b.right > 0 && b.top < win.innerHeight && b.left < win.innerWidth;
+const textOf = (e) => (e?.textContent ?? '').replace(/\s+/g, ' ').trim();
+const labelOf = (e) => {
+  const doc = e.ownerDocument;
+  if (e.getAttribute('aria-label')) return e.getAttribute('aria-label');
+  const by = (e.getAttribute('aria-labelledby') ?? '').split(' ').filter((id) => id && id !== e.id).map((id) => textOf(doc.getElementById(id))).join(' ').trim();
+  if (by) return by;
+  if (e.id) { const l = doc.querySelector(`label[for="${CSS.escape(e.id)}"]`); if (l) return textOf(l); }
+  if (e.closest('label')) return textOf(e.closest('label'));
+  for (let p = e.parentElement, i = 0; p && i < 4; p = p.parentElement, i += 1) {
+    const l = p.querySelector('label');
+    if (l) return textOf(l);
+  }
+  // A switch whose name sits beside it, in a box with nothing else to say.
+  for (let p = e.parentElement, i = 0; p && i < 3; p = p.parentElement, i += 1) {
+    const t = textOf(p);
+    if (t && t.length <= 60) return t;
+  }
+  return e.getAttribute('placeholder') || e.getAttribute('title') || '';
+};
+// The field a button belongs to, such as the Bill box around a stepper's Increase button.
+const fieldOf = (e) => {
+  for (let p = e.parentElement, i = 0; p && i < 4; p = p.parentElement, i += 1) {
+    const l = p.querySelector('label');
+    if (l) return textOf(l);
+  }
+  return '';
+};
+const KINDS = [
+  ['tab', '[role=tab]', (e) => (e.getAttribute('aria-selected') === 'true' ? 'selected' : '')],
+  ['switch', 'input[type=checkbox], [role=switch], [role=checkbox]', (e) => ((e.checked ?? e.getAttribute('aria-checked') === 'true') ? 'on' : 'off')],
+  ['slider', 'input[type=range], [role=slider]', (e) => `= ${e.value ?? e.getAttribute('aria-valuenow')} (${e.min ?? e.getAttribute('aria-valuemin')}..${e.max ?? e.getAttribute('aria-valuemax')})`],
+  ['dropdown', '[role=combobox], select', (e) => `= "${e.tagName === 'SELECT' ? e.value : textOf(e)}"`],
+  ['input', 'input:not([type=checkbox]):not([type=range]):not([type=radio]):not([type=hidden]), textarea', (e) => `= "${e.value.replace(/\n/g, '\\n')}"`],
+  ['radio', 'input[type=radio], [role=radio]', (e) => ((e.checked ?? e.getAttribute('aria-checked') === 'true') ? 'chosen' : '')],
+  ['button', 'button, [role=button]', () => ''],
+  // In full: a person can long-press a link to copy it, so the tester may need all of it.
+  ['link', 'a[href]', (e) => `-> ${e.getAttribute('href').slice(0, 1500)}`],
+];
+const describeScreen = (win, view) => {
+  const doc = win.document;
+  doc.querySelectorAll(`[${REF}]`).forEach((e) => e.removeAttribute(REF));
+  if (view === 'graph') return { view, size: [win.innerWidth, win.innerHeight] };
+  const dash = doc.querySelector(D);
+  if (!dash) return { view, noPage: true };
+  const found = [];
+  KINDS.forEach(([kind, selector, state]) => {
+    dash.querySelectorAll(selector).forEach((e) => {
+      if (found.some((f) => f.e === e || f.e.contains(e) || e.contains(f.e))) return;
+      if (e.closest('[aria-hidden=true]') || win.getComputedStyle(e).visibility === 'hidden') return;
+      const box = visibleBox(win, e);
+      if (!onScreen(win, box)) return;
+      const named = kind === 'button' || kind === 'tab' || kind === 'link';
+      found.push({ e, kind, state, box, label: (named ? (textOf(e) || labelOf(e)) : labelOf(e)).slice(0, 60), context: named ? fieldOf(e) : '' });
+    });
+  });
+  // Reading order, and two "Increase" buttons become "Increase (Bill)" and "Increase (People)".
+  found.sort((a, b) => Math.round(a.box.top) - Math.round(b.box.top) || a.box.left - b.box.left);
+  const controls = found.map((f, i) => {
+    const ref = `u${i + 1}`;
+    f.e.setAttribute(REF, ref);
+    const twin = found.filter((g) => g.label === f.label).length > 1 && f.context && f.context !== f.label;
+    const disabled = f.e.disabled || f.e.getAttribute('aria-disabled') === 'true';
+    return `${ref} ${f.kind} "${f.label}"${twin ? ` (${f.context.slice(0, 40)})` : ''} ${f.state(f.e)}${disabled ? ' disabled' : ''}`.trim();
+  });
+  const lines = [];
+  dash.querySelectorAll('*').forEach((e) => {
+    const own = [...e.childNodes].filter((c) => c.nodeType === 3).map((c) => c.textContent).join(' ').replace(/\s+/g, ' ').trim();
+    if (!own || win.getComputedStyle(e).visibility === 'hidden' || !onScreen(win, e.getBoundingClientRect())) return;
+    if (lines[lines.length - 1] !== own) lines.push(own);
+  });
+  const s = scroller(win);
+  const scroll = { top: Math.round(s.scrollTop), max: Math.max(0, Math.round(s.scrollHeight - s.clientHeight)) };
+  return { view, size: [win.innerWidth, win.innerHeight], text: lines.join(' · ').slice(0, 3000), controls, scroll };
+};
+const scroller = (win) => {
+  const dash = win.document.querySelector(D);
+  const scrolls = (e) => /auto|scroll/.test(win.getComputedStyle(e).overflowY) && e.scrollHeight > e.clientHeight + 1;
+  for (let e = dash; e; e = e.parentElement) if (scrolls(e)) return e;
+  const inner = dash && [...dash.querySelectorAll('*')].find((e) => scrolls(e) && e.clientHeight > win.innerHeight * 0.5);
+  return inner ?? win.document.scrollingElement;
+};
+let view = 'app';
+const SESSION_STEPS = {
+  scroll: (r, s) => cy.window().then((win) => {
+    const e = scroller(win);
+    const to = { down: e.scrollTop + e.clientHeight * 0.8, up: e.scrollTop - e.clientHeight * 0.8, top: 0, bottom: e.scrollHeight }[s.scroll];
+    if (to === undefined) r.failures.push('scroll takes "down", "up", "top" or "bottom"');
+    else e.scrollTo({ top: to });
+  }),
+  // The graph as a person opening it would see it, fitted, or zoomed to the nodes whose name contains `node`.
+  // It goes the way a person would. Phone: the logo opens the bottom bar, then Graph or UI.
+  // Desktop: the logo leaves app view, then the page is hidden. The phone graph is view only.
+  view: (r, s) => {
+    view = s.view === 'app' ? 'app' : 'graph';
+    const target = view === 'app' ? 'bottom-bar-ui' : 'bottom-bar-graph';
+    cy.get('body').then(($b) => {
+      // Commands only, no return value: Cypress refuses a value from a callback that queued commands.
+      if ($b.find('[data-cy="bottom-bar"]').length) {
+        if (!$b.find(`[data-cy="${target}"]`).length) cy.get('[data-cy="bottom-bar-toggle"]').click({ force: true });
+        cy.get(`[data-cy="${target}"]`).click({ force: true });
+      } else if (view === 'app') {
+        ctl((c) => { c.toggleDashboard('OPEN'); });
+        const enter = $b.find('[data-cy="toggle-app-button"]');
+        if (enter.length) cy.wrap(enter.first()).click({ force: true });
+      } else {
+        const exit = $b.find('[data-cy="app-view-exit-button"]');
+        if (exit.length) cy.wrap(exit.first()).click({ force: true });
+        cy.wait(800);
+        ctl((c) => { c.toggleDashboard('CLOSE'); });
+      }
+    });
+    if (view === 'app') return cy.wait(800);
+    cy.wait(1500);
+    return ctl((c) => {
+      const want = s.node && String(s.node).toLowerCase();
+      const ids = want ? c.getNodes().filter((n) => n.name.toLowerCase().includes(want)).map((n) => n.id) : undefined;
+      if (want && !ids.length) { r.failures.push(`no node named like "${s.node}"`); return; }
+      c.zoomToFitNodesById(ids, want ? 2 : 1);
+    });
+  },
+  // A missing selector would stall Cypress for a minute and end the session, so look first.
+  click: (r, s) => cy.get(D).then(($d) => {
+    const found = $d.find(s.click);
+    if (!found.length) { r.failures.push(`nothing matches ${s.click} on screen`); return null; }
+    return cy.wrap(found.first()).click({ force: true });
+  }),
+  keys: (r, s) => cy.get(D).then(($d) => {
+    const found = $d.find(s.selector);
+    if (!found.length) { r.failures.push(`nothing matches ${s.selector} on screen`); return null; }
+    return cy.wrap(found.first()).focus().type(s.keys, { force: true });
+  }),
+  // As in verify, plus aria-labels and the names the screen gave, such as "Decrease (People)".
+  press: (r, s) => cy.get(D).then(($d) => {
+    const all = $d.find('button, [role=button], [role=tab]').toArray();
+    const name = (e) => textOf(e) || e.getAttribute('aria-label') || '';
+    let hits = all.filter((e) => name(e) === s.press || `${name(e)} (${fieldOf(e)})` === s.press);
+    if (!hits.length) hits = $d.find(`[data-cy="button-${s.press}"]`).toArray();
+    if (hits.length > 1) { r.failures.push(`${hits.length} buttons called "${s.press}": add the field in brackets, as the screen lists them, or click by ref`); return null; }
+    if (!hits.length) { r.failures.push(`no button "${s.press}"`); return null; }
+    return cy.wrap(hits[0]).click({ force: true });
+  }),
+  look: () => cy.then(() => null),
+};
+const snapshot = (n, r) => {
+  cy.window().then((win) => { r.screen = describeScreen(win, view); });
+  cy.screenshot(`session-${n}`, { capture: 'viewport', overwrite: true });
+  ctl((c) => { r.problems = statuses(c); r.running = c.isLoadedAppRunning(); });
+  cy.then(() => { r.logs = [...new Set(logs)]; r.requests = [...requests]; logs = []; requests = []; });
+  cy.then(() => cy.writeFile(`${job.out}/state-${n}.json`, r));
+};
+
+if (job.session) {
+  it('session', () => {
+    const { viewport = [390, 844], theme, hash, stub, wait } = job.session;
+    const positions = {};
+    const first = { name: 'session', n: 0, failures: [], positions, pages: [] };
+    openApp(theme, viewport[0], viewport[1], undefined, stub, hash);
+    startApp(first, wait);
+    snapshot(0, first);
+    const loop = (n) => {
+      cy.task('sessionNext', { dir: job.out, n }, { timeout: 2 * 60 * 60 * 1000, log: false }).then((cmd) => {
+        if (cmd.stop) return;
+        const r = { name: 'session', n, steps: cmd.steps, failures: [], positions, pages: [] };
+        (cmd.steps ?? []).forEach((step) => {
+          const kind = Object.keys(SESSION_STEPS).find((k) => k in step) ?? Object.keys(STEPS).find((k) => k in step);
+          if (!kind) r.failures.push(`unknown step ${JSON.stringify(step)}`);
+          else (SESSION_STEPS[kind] ?? STEPS[kind])(r, step);
+        });
+        cy.wait(cmd.settle ?? 1500);
+        snapshot(n, r);
+        loop(n + 1);
+      });
+    };
+    loop(1);
+  });
+}

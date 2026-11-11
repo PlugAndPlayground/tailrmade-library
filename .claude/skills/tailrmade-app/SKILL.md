@@ -1,6 +1,6 @@
 ---
 name: tailrmade-app
-description: Create, explain, update and verify Tailrmade apps (.tmapp and .ppgraph files). Use whenever someone asks to build a Tailrmade app or graph from a description, asks how an existing .tmapp or .ppgraph works, wants a change to one, or wants to test one in the real app across themes and phone width, even if they just say "make me an app that..." in this repo or name a file from the examples library.
+description: Create, explain, update and verify Tailrmade apps (.tmapp and .ppgraph files). Use whenever someone asks to build a Tailrmade app or graph from a description, asks how an existing .tmapp or .ppgraph works, wants a change to one, or wants to test one in the real app across themes and phone width or user-test it as a persona, even if they just say "make me an app that..." in this repo or name a file from the examples library.
 ---
 
 # Tailrmade apps
@@ -12,6 +12,7 @@ Scripts are in `scripts/`; run them from anywhere. Read a reference when its ste
 - [references/build.md](references/build.md): tools, ops, layout, explaining, updating
 - [references/app-rules.md](references/app-rules.md): native nodes, theme, mobile, states, APIs, graph readability. Read before you design an app.
 - [references/verify.md](references/verify.md): checks and the scenarios file
+- [references/user-test.md](references/user-test.md): a persona tests the running app, when you offer it or the user asks
 - [references/file-format.md](references/file-format.md): only when you need the JSON itself
 
 Worked examples are in `evals/apps/`.
@@ -28,6 +29,9 @@ Worked examples are in `evals/apps/`.
 
 ## Update
 Start from the user's latest copy, say what will change before changing it, keep the diff small, and write a new file. Follow the update steps in build.md: baseline, ops, `merge`, then `diff` to prove the rest is unchanged, then `verify`.
+
+## User test
+After a PASS, offer one in a line: a fresh subagent uses the running app as a persona with goals and reports where it got stuck. Follow user-test.md. Report findings ranked, with screenshots, and change nothing until the user picks.
 
 ## Reporting
 State the verdict from `verify`, in plain words:
