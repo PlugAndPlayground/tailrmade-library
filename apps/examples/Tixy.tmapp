@@ -8,10 +8,10 @@
     "graphSettings": {
       "showExecutionVisualisation": true,
       "viewportCenterPosition": {
-        "x": -953,
-        "y": 4428
+        "x": -1168,
+        "y": 5084
       },
-      "viewportScale": 0.056,
+      "viewportScale": 0.045,
       "defaultUISurfaceNodeId": "ai-node-12",
       "theme": {
         "mode": "dark"
@@ -120,7 +120,7 @@
         "x": 0,
         "y": 805,
         "width": 160,
-        "height": 160,
+        "height": 136,
         "socketArray": [
           {
             "socketType": "in",
@@ -143,11 +143,6 @@
             "socketType": "out",
             "name": "Found",
             "dataType": "{\"class\":\"BooleanType\"}"
-          },
-          {
-            "socketType": "out",
-            "name": "App link",
-            "dataType": "{\"class\":\"StringType\"}"
           }
         ],
         "updateBehaviour": {
@@ -1624,11 +1619,11 @@
                   "custom": {},
                   "hidden": false,
                   "nodes": [
-                    "YT2JhnozAm"
+                    "3hPVjb3LgW"
                   ],
                   "linkedNodes": {}
                 },
-                "YT2JhnozAm": {
+                "3hPVjb3LgW": {
                   "type": {
                     "resolvedName": "Container"
                   },
@@ -1667,13 +1662,13 @@
                   "hidden": false,
                   "parent": "ROOT",
                   "nodes": [
-                    "niTMmCoNlb",
-                    "MozqgquPqi",
-                    "dai263jUXZ"
+                    "enzZgEnP3x",
+                    "nU2WRDMnno",
+                    "TBuxEXcgg5"
                   ],
                   "linkedNodes": {}
                 },
-                "niTMmCoNlb": {
+                "enzZgEnP3x": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -1711,11 +1706,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "YT2JhnozAm",
+                  "parent": "3hPVjb3LgW",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "MozqgquPqi": {
+                "nU2WRDMnno": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -1753,11 +1748,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "YT2JhnozAm",
+                  "parent": "3hPVjb3LgW",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "dai263jUXZ": {
+                "TBuxEXcgg5": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -1795,7 +1790,7 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "YT2JhnozAm",
+                  "parent": "3hPVjb3LgW",
                   "nodes": [],
                   "linkedNodes": {}
                 }
@@ -2008,8 +2003,8 @@
         "id": "ai-node-6",
         "name": "Restart the clock",
         "type": "customfunction",
-        "x": 6640,
-        "y": 7421,
+        "x": 9100,
+        "y": 8661,
         "width": 160,
         "height": 88,
         "socketArray": [
@@ -2053,19 +2048,1269 @@
         "comment": "Like tixy, t counts the seconds since the code last changed."
       },
       {
-        "id": "ai-node-9",
-        "name": "Work out every dot",
+        "id": "ai-node-38",
+        "name": "Inspect a dot",
+        "type": "widgetswitch",
+        "x": 6640,
+        "y": 7421,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Inspect a dot",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-34",
+        "name": "Dot x",
+        "type": "widgetslider",
+        "x": 6640,
+        "y": 7605,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 5,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 15,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "x: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-35",
+        "name": "Dot y",
+        "type": "widgetslider",
+        "x": 6640,
+        "y": 7789,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Initial Value",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 3,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Min",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 15,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Decimals",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":10,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "y: {{value}}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Commit",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"While dragging\"},{\"text\":\"On release\"}],\"showAsButtons\":true}}",
+            "data": "While dragging",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-36",
+        "name": "Explain the dot",
         "type": "customfunction",
-        "x": 6940,
+        "x": 6980,
         "y": 7421,
         "width": 160,
-        "height": 136,
+        "height": 184,
         "socketArray": [
           {
             "socketType": "in",
             "name": "Code",
             "dataType": "{\"class\":\"CodeType\"}",
-            "data": "(code, startedAt, colours) => {\n\n  // the same function tixy builds: Math is in scope, and a throw draws nothing\n  let fn = () => 0;\n  try {\n    fn = new Function('t', 'i', 'x', 'y',\n      'try { with (Math) { return ' + String(code ?? '') + '; } } catch (error) { return 0; }');\n  } catch (error) {}\n\n  const t = (Date.now() - (Number(startedAt) || Date.now())) / 1000;\n  const cells = [];\n  for (let i = 0; i < 256; i++) {\n    const value = Number(fn(t, i, i % 16, Math.floor(i / 16)));\n    cells.push(Number.isFinite(value) ? Math.max(-1, Math.min(1, value)) : 0);\n  }\n  return {\n    // 64 vec4s hold 256 values and fit any GPU's uniform limit\n    cells: { value: cells, type: 'vec4<f32>', size: 64 },\n    paper: { value: colours?.paper ?? [0, 0, 0], type: 'vec3<f32>' },\n    ink: { value: colours?.ink ?? [1, 1, 1], type: 'vec3<f32>' },\n    negative: { value: colours?.negative ?? [1, 0.13, 0.27], type: 'vec3<f32>' },\n    shape: { value: colours?.shape ?? 0, type: 'f32' },\n  };\n}",
+            "data": "(code, startedAt, x, y, inspect) => {\n  if (!inspect) return ' ';\n  const X = Math.min(15, Math.max(0, Math.round(Number(x) || 0)));\n  const Y = Math.min(15, Math.max(0, Math.round(Number(y) || 0)));\n  const i = Y * 16 + X;\n  const t = (Date.now() - (Number(startedAt) || Date.now())) / 1000;\n  const round = (v) => String(Math.round(v * 100) / 100);\n  const esc = (s) => String(s).replace(/[\\\\`*_{}\\[\\]()#+\\-.!|<>~]/g, '\\\\$&');\n  const text = String(code ?? '').trim();\n  const lines = [\n    '**t** = ' + round(t) + ' s, the same for every dot',\n    '[**x** = ' + X + ']{.nowrap} · [**y** = ' + Y + ']{.nowrap} · [**i** = ' + Y + '·16 + ' + X + ' = ' + i + ']{.nowrap}',\n  ];\n  if (!text) return lines.join('\\n');\n\n  // the code with this dot's numbers in place of t, i, x and y, unless the code assigns to them\n  const assigns = /\\b[tixy]\\s*([-+*/%&|^]|\\*\\*|<<|>>>?)?=(?!=)|\\+\\+|--/.test(text);\n  if (!assigns && !text.includes('`')) {\n    const values = { t: round(t), i: String(i), x: String(X), y: String(Y) };\n    lines.push('`' + text.replace(/\\b[tixy]\\b/g, (v) => values[v]) + '`');\n  }\n\n  let result;\n  try {\n    result = new Function('t', 'i', 'x', 'y', 'with (Math) { return ' + text + '; }')(t, i, X, Y);\n  } catch (error) {\n    lines.push('[' + esc('= ' + error.name + ': ' + error.message) + ']{.error}');\n    return lines.join('\\n');\n  }\n  const value = Number(result);\n  const shown = typeof result === 'number' ? round(result)\n    : typeof result === 'boolean' ? result + ' (counts as ' + value + ')' : esc(JSON.stringify(result) ?? String(result));\n  let effect;\n  if (!Number.isFinite(value)) effect = 'not a number, so no dot';\n  else if (value === 0) effect = 'zero, so no dot';\n  else {\n    const size = Math.min(1, Math.abs(value));\n    effect = Math.round(size * 100) + ' % of full size' + (Math.abs(value) > 1 ? ' (capped at 1)' : '') +\n      (value > 0 ? ', positive: main colour' : ', [negative: second colour]{.error}');\n  }\n  lines.push('= **' + shown + '** → ' + effect);\n  return lines.join('\\n');\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "code",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "startedAt",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "x",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "y",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "inspect",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": true,
+          "intervalFrequency": 250
+        },
+        "version": 3,
+        "comment": "Runs the code for the picked dot only, 4 times a second, and spells out t, i, x, y and the result. It's the same sum the grid does 256 times a frame."
+      },
+      {
+        "id": "ai-node-37",
+        "name": "Dot breakdown",
+        "type": "text",
+        "x": 8120,
+        "y": 7421,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {},
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-39",
+        "name": "Dot inspector",
+        "type": "uisurfacenode",
+        "x": 8500,
+        "y": 7421,
+        "width": 300,
+        "height": 300,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "50dvh",
+                    "maxWidth": "lg",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "@media (min-width: 601px) and (max-width: 900px)": {
+                        "padding": "0px 16px"
+                      },
+                      "@media (max-width: 600px)": {
+                        "padding": "0px 8px"
+                      }
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "Iz0bFNWDjp",
+                    "O0rf6yNCMk",
+                    "EVCHZeMvIZ"
+                  ],
+                  "linkedNodes": {}
+                },
+                "Iz0bFNWDjp": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 12,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "x2Sasi2nM1",
+                    "qfE5AkF8kH"
+                  ],
+                  "linkedNodes": {}
+                },
+                "x2Sasi2nM1": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "50%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-34",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "Iz0bFNWDjp",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "qfE5AkF8kH": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "50%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-35",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "Iz0bFNWDjp",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "O0rf6yNCMk": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-37",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "EVCHZeMvIZ": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      8,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 4,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "3axzlVy76q",
+                    "rnBtqbsk3o",
+                    "HMlmvcElgN"
+                  ],
+                  "linkedNodes": {}
+                },
+                "3axzlVy76q": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Key: each letter as dot sizes, from 0 (no dot) to the largest value",
+                    "variant": "caption",
+                    "tone": "muted",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "EVCHZeMvIZ",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "rnBtqbsk3o": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 245,
+                      "g": 245,
+                      "b": 245,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "48px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-41",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "EVCHZeMvIZ",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "HMlmvcElgN": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "0px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 0,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "EVCHZeMvIZ",
+                  "nodes": [
+                    "EZebp1v7Lq",
+                    "y9n311Yqkk",
+                    "qL7GTvGUHX",
+                    "4iNlDpNqWG"
+                  ],
+                  "linkedNodes": {}
+                },
+                "EZebp1v7Lq": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "25%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "0px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 0,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "HMlmvcElgN",
+                  "nodes": [
+                    "YFkd0nt0nP"
+                  ],
+                  "linkedNodes": {}
+                },
+                "YFkd0nt0nP": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "**t** same for all",
+                    "variant": "caption",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "EZebp1v7Lq",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "y9n311Yqkk": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "25%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "0px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 0,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "HMlmvcElgN",
+                  "nodes": [
+                    "Wzo9ID5855"
+                  ],
+                  "linkedNodes": {}
+                },
+                "Wzo9ID5855": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "**x** column",
+                    "variant": "caption",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "y9n311Yqkk",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "qL7GTvGUHX": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "25%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "0px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 0,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "HMlmvcElgN",
+                  "nodes": [
+                    "ipX5GHhB3k"
+                  ],
+                  "linkedNodes": {}
+                },
+                "ipX5GHhB3k": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "**y** row",
+                    "variant": "caption",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "qL7GTvGUHX",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "4iNlDpNqWG": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "25%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "0px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 0,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "HMlmvcElgN",
+                  "nodes": [
+                    "EnPzVwUI63"
+                  ],
+                  "linkedNodes": {}
+                },
+                "EnPzVwUI63": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "**i** index",
+                    "variant": "caption",
+                    "tone": "muted",
+                    "alignment": "center",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "4iNlDpNqWG",
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Slider",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Slider"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider 2",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider 2 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Slider 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Slider 2 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Slider 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Text",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Text visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Text"
+          },
+          {
+            "socketType": "in",
+            "name": "Text layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Text"
+          },
+          {
+            "socketType": "in",
+            "name": "Draw shader",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Draw shader visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Draw shader"
+          },
+          {
+            "socketType": "in",
+            "name": "Draw shader layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Draw shader"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Shown while \"Inspect a dot\" is on: the two sliders pick the dot, the text explains it."
+      },
+      {
+        "id": "ai-node-9",
+        "name": "Work out every dot",
+        "type": "customfunction",
+        "x": 9400,
+        "y": 8661,
+        "width": 160,
+        "height": 208,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(code, startedAt, colours, inspect, dotX, dotY) => {\n\n  // the same function tixy builds: Math is in scope, and a throw draws nothing\n  let fn = () => 0;\n  try {\n    fn = new Function('t', 'i', 'x', 'y',\n      'try { with (Math) { return ' + String(code ?? '') + '; } } catch (error) { return 0; }');\n  } catch (error) {}\n\n  const t = (Date.now() - (Number(startedAt) || Date.now())) / 1000;\n  const cells = [];\n  for (let i = 0; i < 256; i++) {\n    const value = Number(fn(t, i, i % 16, Math.floor(i / 16)));\n    cells.push(Number.isFinite(value) ? Math.max(-1, Math.min(1, value)) : 0);\n  }\n  return {\n    // 64 vec4s hold 256 values and fit any GPU's uniform limit\n    cells: { value: cells, type: 'vec4<f32>', size: 64 },\n    paper: { value: colours?.paper ?? [0, 0, 0], type: 'vec3<f32>' },\n    ink: { value: colours?.ink ?? [1, 1, 1], type: 'vec3<f32>' },\n    negative: { value: colours?.negative ?? [1, 0.13, 0.27], type: 'vec3<f32>' },\n    shape: { value: colours?.shape ?? 0, type: 'f32' },\n    // the inspected dot's index, or -1 when inspecting is off\n    pick: { value: inspect ? Math.round(Number(dotY) || 0) * 16 + Math.round(Number(dotX) || 0) : -1, type: 'f32' },\n  };\n}",
             "visible": false
           },
           {
@@ -2089,6 +3334,21 @@
             "socketType": "in",
             "name": "colours",
             "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "inspect",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "dotX",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "dotY",
+            "dataType": "{\"class\":\"NumberType\"}"
           },
           {
             "socketType": "out",
@@ -2253,8 +3513,8 @@
         "id": "ai-node-10",
         "name": "No images",
         "type": "customfunction",
-        "x": 7400,
-        "y": 8157,
+        "x": 9860,
+        "y": 9469,
         "width": 160,
         "height": 64,
         "socketArray": [
@@ -2296,8 +3556,8 @@
         "id": "ai-node-11",
         "name": "Dot grid",
         "type": "shader",
-        "x": 7700,
-        "y": 8157,
+        "x": 10160,
+        "y": 9469,
         "width": 160,
         "height": 232,
         "socketArray": [
@@ -2322,7 +3582,7 @@
             "socketType": "in",
             "name": "WebGL Fragment",
             "dataType": "{\"class\":\"CodeType\"}",
-            "data": "in vec2 UV;\nuniform vec4 cells[64];\nuniform vec3 paper;\nuniform vec3 ink;\nuniform vec3 negative;\nuniform float width;\nuniform float shape;\n\n// 0 circle, 1 square, 2 diamond, 3 ring: distance from the dot's centre in that shape\nfloat shapeDistance(vec2 p) {\n    vec2 a = abs(p);\n    if (shape > 2.5) return length(p);\n    if (shape > 1.5) return a.x + a.y;\n    if (shape > 0.5) return max(a.x, a.y);\n    return length(p);\n}\n\n// tixy's grid: 16 dots of 16 units with 1 unit between them\nconst float CELL = 17.0;\nconst float SIZE = 271.0;\n\nvoid main() {\n    vec2 p = UV * SIZE;\n    vec2 cell = min(floor(p / CELL), vec2(15.0));\n    vec2 local = p - cell * CELL - 8.0;\n    int index = int(cell.y) * 16 + int(cell.x);\n    // WebGL1 shaders can only index arrays by a loop counter\n    vec4 group = vec4(0.0);\n    for (int k = 0; k < 64; k++) {\n        if (k == index / 4) group = cells[k];\n    }\n    int lane = index - (index / 4) * 4;\n    float value = dot(group, vec4(equal(ivec4(lane), ivec4(0, 1, 2, 3))));\n    float radius = abs(value) * 8.0;\n    float edge = SIZE / width;\n    float d = shapeDistance(local);\n    float inside = 1.0 - smoothstep(radius - edge, radius + edge * 0.5, d);\n    // a ring is a circle with its middle cut out\n    if (shape > 2.5) inside -= 1.0 - smoothstep(radius * 0.6 - edge, radius * 0.6 + edge * 0.5, d);\n    inside *= step(0.001, radius);\n    vec3 dotColor = value < 0.0 ? negative : ink;\n    gl_FragColor = vec4(mix(paper, dotColor, inside), 1.0);\n}\n"
+            "data": "in vec2 UV;\nuniform vec4 cells[64];\nuniform vec3 paper;\nuniform vec3 ink;\nuniform vec3 negative;\nuniform float width;\nuniform float shape;\nuniform float pick;\n\n// 0 circle, 1 square, 2 diamond, 3 ring: distance from the dot's centre in that shape\nfloat shapeDistance(vec2 p) {\n    vec2 a = abs(p);\n    if (shape > 2.5) return length(p);\n    if (shape > 1.5) return a.x + a.y;\n    if (shape > 0.5) return max(a.x, a.y);\n    return length(p);\n}\n\n// tixy's grid: 16 dots of 16 units with 1 unit between them\nconst float CELL = 17.0;\nconst float SIZE = 271.0;\n\nvoid main() {\n    vec2 p = UV * SIZE;\n    vec2 cell = min(floor(p / CELL), vec2(15.0));\n    vec2 local = p - cell * CELL - 8.0;\n    int index = int(cell.y) * 16 + int(cell.x);\n    // WebGL1 shaders can only index arrays by a loop counter\n    vec4 group = vec4(0.0);\n    for (int k = 0; k < 64; k++) {\n        if (k == index / 4) group = cells[k];\n    }\n    int lane = index - (index / 4) * 4;\n    float value = dot(group, vec4(equal(ivec4(lane), ivec4(0, 1, 2, 3))));\n    float radius = abs(value) * 8.0;\n    float edge = SIZE / width;\n    float d = shapeDistance(local);\n    float inside = 1.0 - smoothstep(radius - edge, radius + edge * 0.5, d);\n    // a ring is a circle with its middle cut out\n    if (shape > 2.5) inside -= 1.0 - smoothstep(radius * 0.6 - edge, radius * 0.6 + edge * 0.5, d);\n    inside *= step(0.001, radius);\n    vec3 dotColor = value < 0.0 ? negative : ink;\n    vec3 color = mix(paper, dotColor, inside);\n    // while inspecting, fade the other dots and frame the picked one\n    if (pick > -0.5) {\n        float b = max(abs(local.x), abs(local.y));\n        if (abs(float(index) - pick) < 0.5) {\n            float frame = smoothstep(7.6 - edge, 7.6, b) * (1.0 - smoothstep(8.6, 8.6 + edge, b));\n            color = mix(color, ink, frame);\n        } else {\n            color = mix(paper, color, 0.3);\n        }\n    }\n    gl_FragColor = vec4(color, 1.0);\n}\n"
           },
           {
             "socketType": "in",
@@ -2389,13 +3649,157 @@
         "comment": "Draws all 256 dots on the GPU from the values; no main-thread code, so no risk warning."
       },
       {
+        "id": "ai-node-40",
+        "name": "Key colours",
+        "type": "customfunction",
+        "x": 6640,
+        "y": 7973,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(look) => {\n  return {\n    paper: { value: look?.paper ?? [0, 0, 0], type: 'vec3<f32>' },\n    ink: { value: look?.ink ?? [1, 1, 1], type: 'vec3<f32>' },\n    shape: { value: look?.shape ?? 0, type: 'f32' },\n  };\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "look",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "The key uses the same colours and shape as the grid."
+      },
+      {
+        "id": "ai-node-41",
+        "name": "Key grids",
+        "type": "shader",
+        "x": 6980,
+        "y": 7685,
+        "width": 160,
+        "height": 232,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Uniforms",
+            "dataType": "{\"class\":\"JSONType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Images",
+            "dataType": "{\"class\":\"ImageResourceMapType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "WebGL Vertex",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "\nin vec2 aPosition;\nin vec2 aUV;\nout vec2 UV;\n\nuniform mat3 uProjectionMatrix;\nuniform mat3 uWorldTransformMatrix;\n\nuniform mat3 uTransformMatrix;\n\n\nvoid main() {\n    mat3 mvp = uProjectionMatrix * uWorldTransformMatrix * uTransformMatrix;\n    gl_Position = vec4((mvp * vec3(aPosition, 1.0)).xy, 0.0, 1.0);\n\n    UV = aUV;\n}\n",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "WebGL Fragment",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "in vec2 UV;\nuniform vec3 paper;\nuniform vec3 ink;\nuniform float shape;\nuniform float width;\n\n// four 16x16 grids in a row: t, x, y, i, each drawn the way the main grid is\nconst float CELL = 17.0;\nconst float GRID = 271.0;\nconst float GAP = 40.0;\nconst float TOTAL = 1204.0;\n\nfloat shapeDistance(vec2 p) {\n    vec2 a = abs(p);\n    if (shape > 2.5) return length(p);\n    if (shape > 1.5) return a.x + a.y;\n    if (shape > 0.5) return max(a.x, a.y);\n    return length(p);\n}\n\nvoid main() {\n    vec2 p = vec2(UV.x * TOTAL, UV.y * GRID);\n    float panel = floor(p.x / (GRID + GAP));\n    float px = p.x - panel * (GRID + GAP);\n    vec3 color = paper;\n    if (px < GRID && panel < 3.5) {\n        vec2 cell = min(floor(vec2(px, p.y) / CELL), vec2(15.0));\n        vec2 local = vec2(px, p.y) - cell * CELL - 8.0;\n        float value = 0.6;                                         // t: one value for all\n        if (panel > 0.5) value = cell.x / 15.0;                    // x: column\n        if (panel > 1.5) value = cell.y / 15.0;                    // y: row\n        if (panel > 2.5) value = (cell.y * 16.0 + cell.x) / 255.0; // i: index\n        float radius = value * 8.0;\n        float edge = TOTAL / width;\n        float d = shapeDistance(local);\n        float inside = 1.0 - smoothstep(radius - edge, radius + edge * 0.5, d);\n        if (shape > 2.5) inside -= 1.0 - smoothstep(radius * 0.6 - edge, radius * 0.6 + edge * 0.5, d);\n        inside *= step(0.001, radius);\n        color = mix(paper, ink, inside);\n    }\n    gl_FragColor = vec4(color, 1.0);\n}\n"
+          },
+          {
+            "socketType": "in",
+            "name": "Width",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":1,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 1000
+          },
+          {
+            "socketType": "in",
+            "name": "Height",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":1,\"maxValue\":1000,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 225
+          },
+          {
+            "socketType": "in",
+            "name": "Angle",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":-180,\"maxValue\":180,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Scale",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 1,
+              "y": 1
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Offset",
+            "dataType": "{\"class\":\"TwoDVectorType\"}",
+            "data": {
+              "x": 0,
+              "y": 0
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Texture",
+            "dataType": "{\"class\":\"ImageResourceMapType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false,
+          "intervalFrequency": 16
+        },
+        "version": 2,
+        "comment": "Draws t, x, y and i as dot sizes, scaled to 0..1. It only redraws when the colours or shape change."
+      },
+      {
         "id": "ai-node-12",
         "name": "Main page",
         "type": "uisurfacenode",
-        "x": 11165.355555555556,
-        "y": 4681.0,
+        "x": 14004.377777777778,
+        "y": 5323.0,
         "width": 300,
-        "height": 300,
+        "height": 328,
         "socketArray": [
           {
             "socketType": "in",
@@ -2446,13 +3850,13 @@
                   "custom": {},
                   "hidden": false,
                   "nodes": [
-                    "gqGegxQzkl",
-                    "qkDV4uD6TU",
-                    "bkY4J18BjR"
+                    "3vqyBqhgmZ",
+                    "GPKHYZuJ3S",
+                    "qeqxVq2JwH"
                   ],
                   "linkedNodes": {}
                 },
-                "gqGegxQzkl": {
+                "3vqyBqhgmZ": {
                   "type": {
                     "resolvedName": "Container"
                   },
@@ -2491,12 +3895,12 @@
                   "hidden": false,
                   "parent": "ROOT",
                   "nodes": [
-                    "udq94q8I04",
-                    "IWSvRyk2P4"
+                    "fUbOPszBmx",
+                    "GBVPf63s0X"
                   ],
                   "linkedNodes": {}
                 },
-                "udq94q8I04": {
+                "fUbOPszBmx": {
                   "type": {
                     "resolvedName": "Text"
                   },
@@ -2511,11 +3915,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "gqGegxQzkl",
+                  "parent": "3vqyBqhgmZ",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "IWSvRyk2P4": {
+                "GBVPf63s0X": {
                   "type": {
                     "resolvedName": "Text"
                   },
@@ -2530,11 +3934,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "gqGegxQzkl",
+                  "parent": "3vqyBqhgmZ",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "qkDV4uD6TU": {
+                "GPKHYZuJ3S": {
                   "type": {
                     "resolvedName": "Container"
                   },
@@ -2573,17 +3977,19 @@
                   "hidden": false,
                   "parent": "ROOT",
                   "nodes": [
-                    "5wS9auEXAP",
-                    "nva2T3Yq1r",
-                    "wtVXuHV2La",
-                    "dU2R7O9ms4",
-                    "6TsZ8GdSg9",
-                    "k7iMHsQTxX",
-                    "aFnVbPIrbD"
+                    "3SwV5KihYz",
+                    "Iow2QCoWdo",
+                    "gLPHZ7Q1I0",
+                    "Q2iOyxuOKD",
+                    "plly0T2XwD",
+                    "evj4BQDPN8",
+                    "nup27qgGQV",
+                    "8cwKOJ6UyM",
+                    "Krt7HKZ9R3"
                   ],
                   "linkedNodes": {}
                 },
-                "5wS9auEXAP": {
+                "3SwV5KihYz": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -2620,11 +4026,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "qkDV4uD6TU",
+                  "parent": "GPKHYZuJ3S",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "nva2T3Yq1r": {
+                "Iow2QCoWdo": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -2661,11 +4067,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "qkDV4uD6TU",
+                  "parent": "GPKHYZuJ3S",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "wtVXuHV2La": {
+                "gLPHZ7Q1I0": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -2703,11 +4109,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "qkDV4uD6TU",
+                  "parent": "GPKHYZuJ3S",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "dU2R7O9ms4": {
+                "Q2iOyxuOKD": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -2745,11 +4151,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "qkDV4uD6TU",
+                  "parent": "GPKHYZuJ3S",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "6TsZ8GdSg9": {
+                "plly0T2XwD": {
                   "type": {
                     "resolvedName": "Container"
                   },
@@ -2786,14 +4192,14 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "qkDV4uD6TU",
+                  "parent": "GPKHYZuJ3S",
                   "nodes": [
-                    "np8sF9uHMg",
-                    "l2DaM5F2nk"
+                    "NdXN9vljEB",
+                    "TrA7B3PF8Q"
                   ],
                   "linkedNodes": {}
                 },
-                "np8sF9uHMg": {
+                "NdXN9vljEB": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -2831,11 +4237,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "6TsZ8GdSg9",
+                  "parent": "plly0T2XwD",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "l2DaM5F2nk": {
+                "TrA7B3PF8Q": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -2873,11 +4279,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "6TsZ8GdSg9",
+                  "parent": "plly0T2XwD",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "k7iMHsQTxX": {
+                "evj4BQDPN8": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -2917,11 +4323,97 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "qkDV4uD6TU",
+                  "parent": "GPKHYZuJ3S",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "aFnVbPIrbD": {
+                "nup27qgGQV": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-38",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "GPKHYZuJ3S",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "8cwKOJ6UyM": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "80px",
+                    "minHeight": "0px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "gap": 0,
+                    "mobileBehavior": "row",
+                    "customStyles": {},
+                    "id": "NODE_ai-node-39",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "GPKHYZuJ3S",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "Krt7HKZ9R3": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -2958,11 +4450,11 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "qkDV4uD6TU",
+                  "parent": "GPKHYZuJ3S",
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "bkY4J18BjR": {
+                "qeqxVq2JwH": {
                   "type": {
                     "resolvedName": "Text"
                   },
@@ -3360,6 +4852,98 @@
           },
           {
             "socketType": "in",
+            "name": "Switch",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Switch visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Switch"
+          },
+          {
+            "socketType": "in",
+            "name": "Switch layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Switch"
+          },
+          {
+            "socketType": "in",
+            "name": "UI surface 2",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "UI surface 2 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "dependentSocketName": "UI surface 2"
+          },
+          {
+            "socketType": "in",
+            "name": "UI surface 2 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "UI surface 2"
+          },
+          {
+            "socketType": "in",
             "name": "Text 2",
             "dataType": "{\"class\":\"DeferredReactType\"}"
           },
@@ -3634,6 +5218,66 @@
       {
         "sourceNodeId": "ai-node-5",
         "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-36",
+        "targetSocketName": "code"
+      },
+      {
+        "sourceNodeId": "ai-node-6",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-36",
+        "targetSocketName": "startedAt"
+      },
+      {
+        "sourceNodeId": "ai-node-34",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-36",
+        "targetSocketName": "x"
+      },
+      {
+        "sourceNodeId": "ai-node-35",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-36",
+        "targetSocketName": "y"
+      },
+      {
+        "sourceNodeId": "ai-node-38",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-36",
+        "targetSocketName": "inspect"
+      },
+      {
+        "sourceNodeId": "ai-node-36",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-37",
+        "targetSocketName": "Content"
+      },
+      {
+        "sourceNodeId": "ai-node-34",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-39",
+        "targetSocketName": "Slider"
+      },
+      {
+        "sourceNodeId": "ai-node-35",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-39",
+        "targetSocketName": "Slider 2"
+      },
+      {
+        "sourceNodeId": "ai-node-37",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-39",
+        "targetSocketName": "Text"
+      },
+      {
+        "sourceNodeId": "ai-node-41",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-39",
+        "targetSocketName": "Draw shader"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "Out",
         "targetNodeId": "ai-node-9",
         "targetSocketName": "code"
       },
@@ -3648,6 +5292,24 @@
         "sourceSocketName": "OutData",
         "targetNodeId": "ai-node-9",
         "targetSocketName": "colours"
+      },
+      {
+        "sourceNodeId": "ai-node-38",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "inspect"
+      },
+      {
+        "sourceNodeId": "ai-node-34",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "dotX"
+      },
+      {
+        "sourceNodeId": "ai-node-35",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-9",
+        "targetSocketName": "dotY"
       },
       {
         "sourceNodeId": "ai-node-5",
@@ -3704,6 +5366,24 @@
         "targetSocketName": "Images"
       },
       {
+        "sourceNodeId": "ai-node-20",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-40",
+        "targetSocketName": "look"
+      },
+      {
+        "sourceNodeId": "ai-node-40",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-41",
+        "targetSocketName": "Uniforms"
+      },
+      {
+        "sourceNodeId": "ai-node-10",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-41",
+        "targetSocketName": "Images"
+      },
+      {
         "sourceNodeId": "ai-node-11",
         "sourceSocketName": "ReactUI",
         "targetNodeId": "ai-node-12",
@@ -3750,6 +5430,24 @@
         "sourceSocketName": "OutData",
         "targetNodeId": "ai-node-12",
         "targetSocketName": "UI surface visible"
+      },
+      {
+        "sourceNodeId": "ai-node-38",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "Switch"
+      },
+      {
+        "sourceNodeId": "ai-node-39",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "UI surface 2"
+      },
+      {
+        "sourceNodeId": "ai-node-38",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "UI surface 2 visible"
       },
       {
         "sourceNodeId": "ai-node-33",
@@ -3837,18 +5535,33 @@
         ]
       },
       {
-        "id": "7-work-out-every-dot-30-times-a-second",
-        "name": "7. Work out every dot, 30 times a second",
+        "id": "7-inspect-a-dot",
+        "name": "7. Inspect a dot",
         "color": "#8FB8FF",
+        "nodeIds": [
+          "ai-node-38",
+          "ai-node-34",
+          "ai-node-35",
+          "ai-node-36",
+          "ai-node-37",
+          "ai-node-39",
+          "ai-node-40",
+          "ai-node-41"
+        ]
+      },
+      {
+        "id": "8-work-out-every-dot-30-times-a-second",
+        "name": "8. Work out every dot, 30 times a second",
+        "color": "#60D2FF",
         "nodeIds": [
           "ai-node-6",
           "ai-node-9"
         ]
       },
       {
-        "id": "8-draw-the-dots",
-        "name": "8. Draw the dots",
-        "color": "#60D2FF",
+        "id": "9-draw-the-dots",
+        "name": "9. Draw the dots",
+        "color": "#E2ABFF",
         "nodeIds": [
           "ai-node-10",
           "ai-node-11"
@@ -3864,7 +5577,7 @@
       }
     ]
   },
-  "date": "2026-11-10T21:24:24.807Z",
+  "date": "2026-11-11T06:32:51.824Z",
   "owner": "unknown",
   "isRemote": false
 }
