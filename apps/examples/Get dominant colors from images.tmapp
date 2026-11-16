@@ -4,7 +4,7 @@
   "name": "Get dominant colors from images",
   "access": "public",
   "graphData": {
-    "version": 7,
+    "version": 12,
     "graphSettings": {
       "showExecutionVisualisation": true,
       "viewportCenterPosition": {
@@ -655,7 +655,7 @@
           {
             "socketType": "in",
             "name": "palette",
-            "dataType": "{\"class\":\"JSONType\"}"
+            "dataType": "{\"class\":\"NumberType\"}"
           },
           {
             "socketType": "out",
@@ -775,7 +775,7 @@
           {
             "socketType": "in",
             "name": "palette",
-            "dataType": "{\"class\":\"JSONType\"}"
+            "dataType": "{\"class\":\"NumberType\"}"
           },
           {
             "socketType": "out",
@@ -993,7 +993,7 @@
           {
             "socketType": "in",
             "name": "palette",
-            "dataType": "{\"class\":\"JSONType\"}"
+            "dataType": "{\"class\":\"NumberType\"}"
           },
           {
             "socketType": "in",
@@ -1068,8 +1068,8 @@
         "id": "ai-node-18",
         "name": "Main page",
         "type": "uisurfacenode",
-        "x": 6063.088888888889,
-        "y": 2254.0,
+        "x": 6063,
+        "y": 2254,
         "width": 300,
         "height": 300,
         "socketArray": [
@@ -1484,7 +1484,7 @@
                     "8yobtAeT9t",
                     "4eBsy70Ojf",
                     "BJP0JZ6lXU",
-                    "kikwTGQTnh"
+                    "goSYhqQBSw"
                   ],
                   "linkedNodes": {}
                 },
@@ -1590,6 +1590,50 @@
                   "nodes": [],
                   "linkedNodes": {}
                 },
+                "goSYhqQBSw": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "GfxA2NR9fw",
+                  "nodes": [
+                    "kikwTGQTnh",
+                    "1lWri63kT4"
+                  ],
+                  "linkedNodes": {}
+                },
                 "kikwTGQTnh": {
                   "type": {
                     "resolvedName": "DynamicWidget"
@@ -1628,7 +1672,49 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "GfxA2NR9fw",
+                  "parent": "goSYhqQBSw",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "1lWri63kT4": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-21",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "goSYhqQBSw",
                   "nodes": [],
                   "linkedNodes": {}
                 },
@@ -2182,6 +2268,53 @@
             "dependentSocketName": "Switch"
           },
           {
+            "socketType": "in",
+            "name": "Share Button",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Share Button visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Share Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Share Button layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Share Button"
+          },
+          {
             "socketType": "out",
             "name": "ReactUI",
             "dataType": "{\"class\":\"DeferredReactType\"}",
@@ -2194,6 +2327,192 @@
           "interval": false
         },
         "comment": "This is the page you see on the left."
+      },
+      {
+        "id": "ai-node-19",
+        "name": "Palette picture",
+        "type": "customfunction",
+        "x": 2840,
+        "y": 3260,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(palette) => {\n  // The palette as a PNG to share: one stripe per color, as wide as its share\n  // of the image, labelled with its hex code. Needs a canvas, so Main Thread is on.\n  const colors = palette?.colors ?? [];\n  if (colors.length === 0) return '';\n  const W = 1200, H = 630;\n  const canvas = document.createElement('canvas');\n  canvas.width = W;\n  canvas.height = H;\n  const ctx = canvas.getContext('2d');\n  const total = colors.reduce((sum, c) => sum + Number(c.weight), 0);\n  let x = 0;\n  colors.forEach((c, i) => {\n    const right = i === colors.length - 1 ? W : Math.round(x + (Number(c.weight) / total) * W);\n    ctx.fillStyle = c.hex;\n    ctx.fillRect(x, 0, right - x, H);\n    // label only stripes wide enough to hold it\n    if (right - x >= 110) {\n      ctx.fillStyle = c.ink;\n      ctx.font = '600 28px system-ui, sans-serif';\n      ctx.fillText(c.hex.toUpperCase(), x + 20, H - 56);\n      ctx.font = '24px system-ui, sans-serif';\n      ctx.fillText(c.percent, x + 20, H - 24);\n    }\n    x = right;\n  });\n  return canvas.toDataURL('image/png');\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "palette",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "Draws the palette as a PNG for the share sheet. Main Thread is on for the canvas, which the sandbox does not have."
+      },
+      {
+        "id": "ai-node-20",
+        "name": "Palette as text",
+        "type": "customfunction",
+        "x": 2840,
+        "y": 3420,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(palette) => {\n  // What the share sheet sends along with the picture: each color with its share.\n  const colors = palette?.colors ?? [];\n  if (colors.length === 0) return '';\n  return 'Dominant colors: ' + colors.map((c) => c.hex + ' (' + c.percent + ')').join(', ');\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "palette",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-21",
+        "name": "Share palette button",
+        "type": "widgetsharebutton",
+        "x": 3300,
+        "y": 3260,
+        "width": 200,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Text",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "URL",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": ""
+          },
+          {
+            "socketType": "in",
+            "name": "Files",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Title",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Dominant colors",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "File name",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "palette",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Share palette",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Result",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
       }
     ],
     "links": [
@@ -2328,6 +2647,36 @@
         "sourceSocketName": "ReactUI",
         "targetNodeId": "ai-node-18",
         "targetSocketName": "Switch"
+      },
+      {
+        "sourceNodeId": "ai-node-21",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-18",
+        "targetSocketName": "Share Button"
+      },
+      {
+        "sourceNodeId": "ai-node-10",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-19",
+        "targetSocketName": "palette"
+      },
+      {
+        "sourceNodeId": "ai-node-10",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-20",
+        "targetSocketName": "palette"
+      },
+      {
+        "sourceNodeId": "ai-node-20",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-21",
+        "targetSocketName": "Text"
+      },
+      {
+        "sourceNodeId": "ai-node-19",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-21",
+        "targetSocketName": "Files"
       }
     ],
     "groups": [
@@ -2370,7 +2719,10 @@
           "ai-node-11",
           "ai-node-12",
           "ai-node-13",
-          "ai-node-14"
+          "ai-node-14",
+          "ai-node-19",
+          "ai-node-20",
+          "ai-node-21"
         ]
       },
       {
@@ -2393,7 +2745,7 @@
       }
     ]
   },
-  "date": "2026-11-02T08:00:00.000Z",
+  "date": "2026-11-16T18:39:00.039Z",
   "owner": "publicUser",
   "isRemote": true
 }

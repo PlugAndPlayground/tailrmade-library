@@ -11,7 +11,7 @@
         "x": -1168,
         "y": 5084
       },
-      "viewportScale": 0.045,
+      "viewportScale": 0.05,
       "defaultUISurfaceNodeId": "ai-node-12",
       "theme": {
         "mode": "dark"
@@ -120,7 +120,7 @@
         "x": 0,
         "y": 805,
         "width": 160,
-        "height": 136,
+        "height": 160,
         "socketArray": [
           {
             "socketType": "in",
@@ -143,6 +143,11 @@
             "socketType": "out",
             "name": "Found",
             "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "App link",
+            "dataType": "{\"class\":\"StringType\"}"
           }
         ],
         "updateBehaviour": {
@@ -3384,7 +3389,7 @@
             "socketType": "in",
             "name": "Code",
             "dataType": "{\"class\":\"CodeType\"}",
-            "data": "(code, shape, colours, background, positive, negative, appLink) => {\n  // appLink is for the app link the URL Parameter node will offer; until then links point\n  // to the published example. Change APP if you share your own copy of the app.\n  const APP = String(appLink ?? '').trim().split('#')[0] || 'https://tailrmade.app/?loadGraph=publicUser;;Tixy;;Default';\n  // percent-encode everything but letters and digits, so the link survives Markdown and chat apps\n  const enc = (s) => Array.from(String(s)).map((ch) => /[A-Za-z0-9_.~-]/.test(ch) ? ch\n    : encodeURIComponent(ch).replace(/[!'()*]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase())).join('');\n  const hex = (c) => [c?.r, c?.g, c?.b].map((v) => Math.round(Number(v) || 0).toString(16).padStart(2, '0')).join('');\n  const text = String(code ?? '').trim();\n  if (!text) return '\\u00a0';\n  const parts = ['code=' + enc(text)];\n  if (shape && shape !== 'Circle') parts.push('shape=' + enc(shape));\n  if (colours && colours !== 'Theme') parts.push('colours=' + enc(colours));\n  if (colours === 'Custom') parts.push('palette=' + [background, positive, negative].map(hex).join('-'));\n  return '[Share link to this pattern](' + APP + '#' + parts.join('&') + ')';\n}",
+            "data": "(code, shape, colours, background, positive, negative, appLink) => {\n  // the app's own public address when it has one; otherwise the published example.\n  // Change APP if you share a copy that is not public.\n  const APP = String(appLink ?? '').trim().split('#')[0] || 'https://tailrmade.app/?loadGraph=publicUser;;Tixy;;Default';\n  // percent-encode everything but letters and digits, so the link survives chat apps\n  const enc = (s) => Array.from(String(s)).map((ch) => /[A-Za-z0-9_.~-]/.test(ch) ? ch\n    : encodeURIComponent(ch).replace(/[!'()*]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase())).join('');\n  const hex = (c) => [c?.r, c?.g, c?.b].map((v) => Math.round(Number(v) || 0).toString(16).padStart(2, '0')).join('');\n  const text = String(code ?? '').trim();\n  if (!text) return '';\n  const parts = ['code=' + enc(text)];\n  if (shape && shape !== 'Circle') parts.push('shape=' + enc(shape));\n  if (colours && colours !== 'Theme') parts.push('colours=' + enc(colours));\n  if (colours === 'Custom') parts.push('palette=' + [background, positive, negative].map(hex).join('-'));\n  return APP + '#' + parts.join('&');\n}",
             "visible": false
           },
           {
@@ -3427,8 +3432,7 @@
           {
             "socketType": "in",
             "name": "appLink",
-            "dataType": "{\"class\":\"StringType\"}",
-            "data": ""
+            "dataType": "{\"class\":\"StringType\"}"
           },
           {
             "socketType": "out",
@@ -3449,65 +3453,6 @@
         },
         "version": 3,
         "comment": "The code, shape and colours go after # in the link; section 1 reads them back when someone opens it."
-      },
-      {
-        "id": "ai-node-33",
-        "name": "Share link",
-        "type": "text",
-        "x": 6100,
-        "y": 6589,
-        "width": 240,
-        "height": 80,
-        "socketArray": [
-          {
-            "socketType": "in",
-            "name": "Content",
-            "dataType": "{\"class\":\"StringType\"}"
-          },
-          {
-            "socketType": "in",
-            "name": "Variant",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
-            "data": "body",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Tone",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
-            "data": "default",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Alignment",
-            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
-            "data": "left",
-            "visible": false
-          },
-          {
-            "socketType": "in",
-            "name": "Custom styles",
-            "dataType": "{\"class\":\"JSONType\"}",
-            "data": {},
-            "visible": false
-          },
-          {
-            "socketType": "out",
-            "name": "Output",
-            "dataType": "{\"class\":\"StringType\"}"
-          },
-          {
-            "socketType": "out",
-            "name": "ReactUI",
-            "dataType": "{\"class\":\"DeferredReactType\"}"
-          }
-        ],
-        "updateBehaviour": {
-          "load": true,
-          "update": true,
-          "interval": false
-        }
       },
       {
         "id": "ai-node-10",
@@ -3796,8 +3741,8 @@
         "id": "ai-node-12",
         "name": "Main page",
         "type": "uisurfacenode",
-        "x": 14004.377777777778,
-        "y": 5323.0,
+        "x": 14004,
+        "y": 5323,
         "width": 300,
         "height": 328,
         "socketArray": [
@@ -3985,7 +3930,7 @@
                     "evj4BQDPN8",
                     "nup27qgGQV",
                     "8cwKOJ6UyM",
-                    "Krt7HKZ9R3"
+                    "aC8xKG88qB"
                   ],
                   "linkedNodes": {}
                 },
@@ -4413,7 +4358,50 @@
                   "nodes": [],
                   "linkedNodes": {}
                 },
-                "Krt7HKZ9R3": {
+                "aC8xKG88qB": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 0,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "GPKHYZuJ3S",
+                  "nodes": [
+                    "P65nW2kPGj"
+                  ],
+                  "linkedNodes": {}
+                },
+                "P65nW2kPGj": {
                   "type": {
                     "resolvedName": "DynamicWidget"
                   },
@@ -4430,27 +4418,28 @@
                       0
                     ],
                     "background": {
-                      "r": 0,
-                      "g": 0,
-                      "b": 0,
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
                       "a": 0
                     },
                     "color": "inherit",
-                    "width": "100%",
+                    "width": "auto",
                     "height": "auto",
-                    "minWidth": "48px",
-                    "minHeight": "24px",
+                    "minWidth": "200px",
+                    "minHeight": "unset",
                     "maxWidth": "unset",
                     "maxHeight": "unset",
                     "showLabel": false,
                     "collapsible": false,
                     "collapsedByDefault": false,
-                    "id": "NODE_ai-node-33",
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-42",
                     "index": 0
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "GPKHYZuJ3S",
+                  "parent": "aC8xKG88qB",
                   "nodes": [],
                   "linkedNodes": {}
                 },
@@ -4944,20 +4933,20 @@
           },
           {
             "socketType": "in",
-            "name": "Text 2",
+            "name": "Share Button",
             "dataType": "{\"class\":\"DeferredReactType\"}"
           },
           {
             "socketType": "in",
-            "name": "Text 2 visible",
+            "name": "Share Button visible",
             "dataType": "{\"class\":\"BooleanType\"}",
             "data": true,
             "visible": false,
-            "dependentSocketName": "Text 2"
+            "dependentSocketName": "Share Button"
           },
           {
             "socketType": "in",
-            "name": "Text 2 layout",
+            "name": "Share Button layout",
             "dataType": "{\"class\":\"WidgetLayoutType\"}",
             "data": {
               "flexDirection": "column",
@@ -4987,7 +4976,7 @@
               "customStyles": {}
             },
             "visible": false,
-            "dependentSocketName": "Text 2"
+            "dependentSocketName": "Share Button"
           },
           {
             "socketType": "out",
@@ -5002,6 +4991,98 @@
           "interval": false
         },
         "comment": "This is the page you see. The dot grid, the comment line, the code field and the examples plug in here."
+      },
+      {
+        "id": "ai-node-42",
+        "name": "Share this pattern",
+        "type": "widgetsharebutton",
+        "x": 6100,
+        "y": 6589,
+        "width": 200,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Text",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "16×16 dots driven by one line of JavaScript:"
+          },
+          {
+            "socketType": "in",
+            "name": "URL",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Files",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": ""
+          },
+          {
+            "socketType": "in",
+            "name": "Title",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Tixy",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "File name",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "shared",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Share this pattern",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Result",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
       }
     ],
     "links": [
@@ -5348,10 +5429,10 @@
         "targetSocketName": "negative"
       },
       {
-        "sourceNodeId": "ai-node-32",
-        "sourceSocketName": "OutData",
-        "targetNodeId": "ai-node-33",
-        "targetSocketName": "Content"
+        "sourceNodeId": "ai-node-23",
+        "sourceSocketName": "App link",
+        "targetNodeId": "ai-node-32",
+        "targetSocketName": "appLink"
       },
       {
         "sourceNodeId": "ai-node-9",
@@ -5450,10 +5531,16 @@
         "targetSocketName": "UI surface 2 visible"
       },
       {
-        "sourceNodeId": "ai-node-33",
+        "sourceNodeId": "ai-node-42",
         "sourceSocketName": "ReactUI",
         "targetNodeId": "ai-node-12",
-        "targetSocketName": "Text 2"
+        "targetSocketName": "Share Button"
+      },
+      {
+        "sourceNodeId": "ai-node-32",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-42",
+        "targetSocketName": "URL"
       }
     ],
     "groups": [
@@ -5531,7 +5618,7 @@
         "color": "#F4D35E",
         "nodeIds": [
           "ai-node-32",
-          "ai-node-33"
+          "ai-node-42"
         ]
       },
       {
@@ -5577,7 +5664,7 @@
       }
     ]
   },
-  "date": "2026-11-11T06:32:51.824Z",
+  "date": "2026-11-16T17:54:41.720Z",
   "owner": "unknown",
   "isRemote": false
 }

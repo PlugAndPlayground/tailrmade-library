@@ -4,7 +4,7 @@
   "name": "Generate a UV mapping texture",
   "access": "public",
   "graphData": {
-    "version": 7,
+    "version": 12,
     "graphSettings": {
       "showExecutionVisualisation": true,
       "viewportCenterPosition": {
@@ -766,8 +766,8 @@
         "id": "ai-node-12",
         "name": "Main page",
         "type": "uisurfacenode",
-        "x": 4682.422222222222,
-        "y": 1834.0,
+        "x": 4682,
+        "y": 1834,
         "width": 300,
         "height": 300,
         "socketArray": [
@@ -998,7 +998,7 @@
                     "GzV7G14Rw9",
                     "wqc8dFeeB8",
                     "beJNvNGlGA",
-                    "73DXCEEEM1",
+                    "PiTTKgkcau",
                     "soAZMDGX6p"
                   ],
                   "linkedNodes": {}
@@ -1167,6 +1167,50 @@
                   "nodes": [],
                   "linkedNodes": {}
                 },
+                "PiTTKgkcau": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "flex-start",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "uZrVMiOOw2",
+                  "nodes": [
+                    "73DXCEEEM1",
+                    "QouCltsQWF"
+                  ],
+                  "linkedNodes": {}
+                },
                 "73DXCEEEM1": {
                   "type": {
                     "resolvedName": "DynamicWidget"
@@ -1190,7 +1234,7 @@
                       "a": 0
                     },
                     "color": "inherit",
-                    "width": "100%",
+                    "width": "50%",
                     "height": "auto",
                     "minWidth": "48px",
                     "minHeight": "unset",
@@ -1205,7 +1249,49 @@
                   },
                   "custom": {},
                   "hidden": false,
-                  "parent": "uZrVMiOOw2",
+                  "parent": "PiTTKgkcau",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "QouCltsQWF": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "50%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-13",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "PiTTKgkcau",
                   "nodes": [],
                   "linkedNodes": {}
                 },
@@ -1926,6 +2012,53 @@
             "dependentSocketName": "Image"
           },
           {
+            "socketType": "in",
+            "name": "Share Button",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Share Button visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Share Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Share Button layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Share Button"
+          },
+          {
             "socketType": "out",
             "name": "ReactUI",
             "dataType": "{\"class\":\"DeferredReactType\"}",
@@ -1938,6 +2071,98 @@
           "interval": false
         },
         "comment": "This is the page you see on the left."
+      },
+      {
+        "id": "ai-node-13",
+        "name": "Share button",
+        "type": "widgetsharebutton",
+        "x": 640,
+        "y": 2220,
+        "width": 200,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Text",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": ""
+          },
+          {
+            "socketType": "in",
+            "name": "URL",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": ""
+          },
+          {
+            "socketType": "in",
+            "name": "Files",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Title",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "UV texture",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "File name",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "uv-texture",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Share texture",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Result",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
       }
     ],
     "links": [
@@ -2036,6 +2261,18 @@
         "sourceSocketName": "ReactUI",
         "targetNodeId": "ai-node-12",
         "targetSocketName": "Image"
+      },
+      {
+        "sourceNodeId": "ai-node-13",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "Share Button"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "Files"
       }
     ],
     "groups": [
@@ -2064,7 +2301,8 @@
         "nodeIds": [
           "ai-node-5",
           "ai-node-6",
-          "ai-node-7"
+          "ai-node-7",
+          "ai-node-13"
         ]
       },
       {
@@ -2088,7 +2326,7 @@
       }
     ]
   },
-  "date": "2026-11-02T08:00:00.000Z",
+  "date": "2026-11-16T18:51:41.105Z",
   "owner": "publicUser",
   "isRemote": true
 }

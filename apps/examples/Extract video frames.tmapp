@@ -4,7 +4,7 @@
   "name": "Extract video frames",
   "access": "public",
   "graphData": {
-    "version": 7,
+    "version": 12,
     "graphSettings": {
       "showExecutionVisualisation": true,
       "viewportCenterPosition": {
@@ -141,6 +141,7 @@
       },
       {
         "id": "clever-bobcat-50",
+        "name": "Frame grid",
         "type": "draw_combine_array",
         "x": 640,
         "y": 2186,
@@ -262,11 +263,11 @@
           "update": true,
           "interval": false
         },
-        "version": 2,
-        "name": "Frame grid"
+        "version": 2
       },
       {
         "id": "friendly-goat-11",
+        "name": "Draw frames",
         "type": "mapexecutemacro",
         "x": 0,
         "y": 2186,
@@ -300,11 +301,11 @@
           "load": true,
           "update": true,
           "interval": false
-        },
-        "name": "Draw frames"
+        }
       },
       {
         "id": "cowardly-rat-4",
+        "name": "Frame positions",
         "type": "rangearray",
         "x": 960,
         "y": 840,
@@ -359,8 +360,7 @@
           "load": true,
           "update": true,
           "interval": false
-        },
-        "name": "Frame positions"
+        }
       },
       {
         "id": "old-cheetah-48",
@@ -390,6 +390,7 @@
       },
       {
         "id": "bitter-horse-44",
+        "name": "MoviePrint layout",
         "type": "draw_combine",
         "x": 1540,
         "y": 2186,
@@ -546,8 +547,7 @@
           "update": true,
           "interval": false
         },
-        "version": 2,
-        "name": "MoviePrint layout"
+        "version": 2
       },
       {
         "id": "loud-mouse-3",
@@ -666,6 +666,7 @@
       },
       {
         "id": "ordinary-husky-83",
+        "name": "Title",
         "type": "draw_text",
         "x": 940,
         "y": 2186,
@@ -748,11 +749,11 @@
           "update": true,
           "interval": false
         },
-        "version": 2,
-        "name": "Title"
+        "version": 2
       },
       {
         "id": "lovely-jellyfish-58",
+        "name": "Video details",
         "type": "break",
         "x": 0,
         "y": 2586,
@@ -792,8 +793,7 @@
           "load": true,
           "update": true,
           "interval": false
-        },
-        "name": "Video details"
+        }
       },
       {
         "id": "funny-falcon-90",
@@ -972,6 +972,7 @@
       },
       {
         "id": "cuddly-warthog-75",
+        "name": "Title band",
         "type": "draw_combine",
         "x": 1240,
         "y": 2186,
@@ -1122,8 +1123,7 @@
           "update": true,
           "interval": false
         },
-        "version": 2,
-        "name": "Title band"
+        "version": 2
       },
       {
         "id": "cuddly-vampirebat-50",
@@ -1131,7 +1131,7 @@
         "x": 1640,
         "y": 840,
         "width": 414,
-        "height": 30,
+        "height": 150,
         "socketArray": [
           {
             "socketType": "in",
@@ -1247,6 +1247,7 @@
       },
       {
         "id": "mighty-dog-86",
+        "name": "Take screenshots button",
         "type": "widgetbutton",
         "x": 1300,
         "y": 840,
@@ -1316,11 +1317,11 @@
           "update": true,
           "interval": false
         },
-        "version": 3,
-        "name": "Take screenshots button"
+        "version": 3
       },
       {
         "id": "cowardly-gecko-12",
+        "name": "Save button",
         "type": "widgetbutton",
         "x": 0,
         "y": 2986,
@@ -1392,11 +1393,11 @@
           "update": true,
           "interval": false
         },
-        "version": 3,
-        "name": "Save button"
+        "version": 3
       },
       {
         "id": "little-turtle-49",
+        "name": "Spacing slider",
         "type": "widgetslider",
         "x": 0,
         "y": 2402,
@@ -1475,11 +1476,11 @@
           "update": true,
           "interval": false
         },
-        "version": 3,
-        "name": "Spacing slider"
+        "version": 3
       },
       {
         "id": "wise-monkey-72",
+        "name": "Background picker",
         "type": "widgetcolorpicker",
         "x": 0,
         "y": 2802,
@@ -1528,11 +1529,11 @@
           "update": true,
           "interval": false
         },
-        "name": "Background picker",
         "comment": "Part of the saved image, not the page, so it does not follow the theme."
       },
       {
         "id": "pretty-rat-82",
+        "name": "Rows slider",
         "type": "widgetslider",
         "x": 0,
         "y": 1032,
@@ -1611,11 +1612,11 @@
           "update": true,
           "interval": false
         },
-        "version": 3,
-        "name": "Rows slider"
+        "version": 3
       },
       {
         "id": "bad-emu-51",
+        "name": "Columns slider",
         "type": "widgetslider",
         "x": 0,
         "y": 1216,
@@ -1694,11 +1695,11 @@
           "update": true,
           "interval": false
         },
-        "version": 3,
-        "name": "Columns slider"
+        "version": 3
       },
       {
         "id": "serious-cow-54",
+        "name": "Drop movie",
         "type": "filedropzone",
         "x": 0,
         "y": 840,
@@ -1805,11 +1806,11 @@
           "update": true,
           "interval": false
         },
-        "version": 2,
-        "name": "Drop movie"
+        "version": 2
       },
       {
         "id": "curly-chicken-0",
+        "name": "First file",
         "type": "arrayget",
         "x": 360,
         "y": 840,
@@ -1838,11 +1839,11 @@
           "update": true,
           "interval": false
         },
-        "version": 4,
-        "name": "First file"
+        "version": 4
       },
       {
         "id": "black-jellyfish-33",
+        "name": "Button text",
         "type": "concatenate",
         "x": 960,
         "y": 1056,
@@ -1874,16 +1875,16 @@
           "load": true,
           "update": true,
           "interval": false
-        },
-        "name": "Button text"
+        }
       },
       {
         "id": "swift-dingo-77",
+        "name": "Button text start",
         "type": "constant_string",
         "x": 0,
         "y": 1400,
         "width": 122,
-        "height": 53,
+        "height": 55,
         "socketArray": [
           {
             "socketType": "in",
@@ -1901,16 +1902,16 @@
           "load": true,
           "update": true,
           "interval": false
-        },
-        "name": "Button text start"
+        }
       },
       {
         "id": "short-cougar-3",
+        "name": "Button text end",
         "type": "constant_string",
         "x": 0,
         "y": 1533,
         "width": 220,
-        "height": 53,
+        "height": 55,
         "socketArray": [
           {
             "socketType": "in",
@@ -1928,14 +1929,14 @@
           "load": true,
           "update": true,
           "interval": false
-        },
-        "name": "Button text end"
+        }
       },
       {
         "id": "pretty-dolphin-32",
+        "name": "Main page",
         "type": "uisurfacenode",
         "x": 3800,
-        "y": 2267.0,
+        "y": 2267,
         "width": 400,
         "height": 600,
         "socketArray": [
@@ -2323,7 +2324,6 @@
           "update": true,
           "interval": false
         },
-        "name": "Main page",
         "comment": "This is the page you see on the left. Every numbered section plugs in here, in page order."
       },
       {
@@ -2334,11 +2334,6 @@
         "y": 840,
         "width": 320,
         "height": 300,
-        "updateBehaviour": {
-          "load": true,
-          "update": true,
-          "interval": false
-        },
         "socketArray": [
           {
             "socketType": "in",
@@ -3189,7 +3184,12 @@
             "name": "ReactUI",
             "dataType": "{\"class\":\"DeferredReactType\"}"
           }
-        ]
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
       },
       {
         "id": "print-section",
@@ -3199,11 +3199,6 @@
         "y": 2186,
         "width": 320,
         "height": 300,
-        "updateBehaviour": {
-          "load": true,
-          "update": true,
-          "interval": false
-        },
         "socketArray": [
           {
             "socketType": "in",
@@ -3424,7 +3419,7 @@
                     "p-bg",
                     "p-size",
                     "p-type",
-                    "p-save"
+                    "p-sharerow"
                   ],
                   "linkedNodes": {},
                   "parent": "print-row0"
@@ -3653,7 +3648,7 @@
                   },
                   "displayName": "DynamicWidget",
                   "custom": {},
-                  "parent": "print-row0-card0",
+                  "parent": "p-sharerow",
                   "hidden": false,
                   "nodes": [],
                   "linkedNodes": {}
@@ -3759,6 +3754,92 @@
                   "displayName": "DynamicWidget",
                   "custom": {},
                   "parent": "print-row0-card1",
+                  "hidden": false,
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "p-sharerow": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "column",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "print-row0-card0",
+                  "nodes": [
+                    "p-save",
+                    "p-share"
+                  ],
+                  "linkedNodes": {}
+                },
+                "p-share": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "a": 0,
+                      "b": 0,
+                      "g": 0,
+                      "r": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "customStyles": {},
+                    "id": "NODE_ai-node-1",
+                    "index": 0
+                  },
+                  "displayName": "DynamicWidget",
+                  "custom": {},
+                  "parent": "p-sharerow",
                   "hidden": false,
                   "nodes": [],
                   "linkedNodes": {}
@@ -4003,11 +4084,379 @@
             "dependentSocketName": "MoviePrint"
           },
           {
+            "socketType": "in",
+            "name": "Share Button",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Share Button visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Share Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Share Button layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Share Button"
+          },
+          {
             "socketType": "out",
             "name": "ReactUI",
             "dataType": "{\"class\":\"DeferredReactType\"}"
           }
-        ]
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-1",
+        "name": "Share button",
+        "type": "widgetsharebutton",
+        "x": 2880,
+        "y": 3166,
+        "width": 200,
+        "height": 208,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Text",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "URL",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": ""
+          },
+          {
+            "socketType": "in",
+            "name": "Files",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Title",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "File name",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Share MoviePrint",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Result",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-2",
+        "name": "Nothing to share yet?",
+        "type": "customfunction",
+        "x": 2880,
+        "y": 2960,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(picture) => {\n  // Share stays off until there is a MoviePrint picture to send.\n  return !(typeof picture === 'string' && picture.length > 1000);\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "picture",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-3",
+        "name": "Picture to share",
+        "type": "extract_image_from_graphics",
+        "x": 2620,
+        "y": 3166,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Graphics",
+            "dataType": "{\"class\":\"DeferredPixiType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Output Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Quarter\",\"value\":0.25},{\"text\":\"Half\",\"value\":0.5},{\"text\":\"Full\",\"value\":1}],\"showAsButtons\":true}}",
+            "data": "Half",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Type",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"jpg\",\"value\":\"image/jpeg\"},{\"text\":\"png\",\"value\":\"image/png\"}],\"showAsButtons\":true}}",
+            "data": "png",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Quality",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":false,\"minValue\":0,\"maxValue\":1,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 0.92,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Save image",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"saveImage\",\"showDetails\":false}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "trigger",
+            "name": "Trigger 1",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"change\",\"customFunctionString\":\"\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "out",
+            "name": "Image",
+            "dataType": "{\"class\":\"ImageType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": false,
+          "update": false,
+          "interval": false
+        },
+        "comment": "Makes the picture Share sends, ahead of the click: the share sheet only opens straight from one. It runs only on its trigger, because rendering on load stalls the app on desktop."
+      },
+      {
+        "id": "ai-node-4",
+        "name": "When the print changes",
+        "type": "customfunction",
+        "x": 2100,
+        "y": 3166,
+        "width": 160,
+        "height": 160,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(frames, spacing, background, columns) => {\n  // Changes whenever the MoviePrint would look different, and stays null until\n  // every screenshot is in, so the picture is never made on load.\n  if (!Array.isArray(frames) || frames.length === 0 || frames.filter(Boolean).length !== frames.length) return null;\n  const sum = frames.reduce((total, f) => total + f.length, 0);\n  return [frames.length, sum, frames[frames.length - 1].slice(-40), spacing, JSON.stringify(background), columns].join('|');\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "frames",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "spacing",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "background",
+            "dataType": "{\"class\":\"ColorType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "columns",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-5",
+        "name": "Let the print settle",
+        "type": "throttledebounce",
+        "x": 2360,
+        "y": 3166,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "In",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Update",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"updateDebounceFunction\",\"showDetails\":false}}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Wait",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 800,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Max Wait",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Leading",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Trailing",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Waits until the frames and settings have redrawn the MoviePrint before the picture is made."
       },
       {
         "id": "start-here",
@@ -4015,8 +4464,8 @@
         "type": "label",
         "x": 0,
         "y": 0,
-        "width": 1760,
-        "height": 280,
+        "width": 1893,
+        "height": 285,
         "socketArray": [
           {
             "socketType": "in",
@@ -4093,6 +4542,120 @@
           "update": true,
           "interval": false
         }
+      },
+      {
+        "id": "ai-node-6",
+        "name": "Share line",
+        "type": "customfunction",
+        "x": 2620,
+        "y": 2960,
+        "width": 160,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(name, frames, columns) => {\n  // Title and text for the share sheet. Chat apps often drop the title, so the text repeats it.\n  const n = Array.isArray(frames) ? frames.length : 0;\n  const cols = Math.max(1, Math.round(Number(columns) || 1));\n  // the grid as drawn: Columns sets the width, the captured frames fill the rows\n  const grid = n ? cols + '×' + Math.ceil(n / cols) : '';\n  const movie = String(name ?? '').trim();\n  return ['MoviePrint', movie, grid].filter(Boolean).join(' · ');\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "name",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "frames",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "columns",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-7",
+        "name": "Share file name",
+        "type": "customfunction",
+        "x": 2620,
+        "y": 2800,
+        "width": 160,
+        "height": 136,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(name, frames, columns) => {\n  // The shared file's name, without extension: movie name, then the grid.\n  const n = Array.isArray(frames) ? frames.length : 0;\n  const cols = Math.max(1, Math.round(Number(columns) || 1));\n  // the grid as drawn: Columns sets the width, the captured frames fill the rows\n  const grid = n ? cols + '×' + Math.ceil(n / cols) : '';\n  const movie = String(name ?? '').trim();\n  const base = movie.replace(/\\.[^.]+$/, '').replace(/[\\\\/:*?\"<>|#%]+/g, '-').replace(/\\s+/g, ' ').replace(/^[-\\s]+|[-\\s]+$/g, '');\n  return [base, 'movieprint', grid.replace('×', 'x')].filter(Boolean).join('-');\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "name",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "frames",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "columns",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
       }
     ],
     "links": [
@@ -4319,6 +4882,18 @@
         "targetSocketName": "String 2"
       },
       {
+        "sourceNodeId": "movie-section",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "pretty-dolphin-32",
+        "targetSocketName": "Take the screenshots"
+      },
+      {
+        "sourceNodeId": "print-section",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "pretty-dolphin-32",
+        "targetSocketName": "Save the MoviePrint"
+      },
+      {
         "sourceNodeId": "serious-cow-54",
         "sourceSocketName": "ReactUI",
         "targetNodeId": "movie-section",
@@ -4373,16 +4948,124 @@
         "targetSocketName": "MoviePrint"
       },
       {
-        "sourceNodeId": "movie-section",
+        "sourceNodeId": "ai-node-1",
         "sourceSocketName": "ReactUI",
-        "targetNodeId": "pretty-dolphin-32",
-        "targetSocketName": "Take the screenshots"
+        "targetNodeId": "print-section",
+        "targetSocketName": "Share Button"
       },
       {
-        "sourceNodeId": "print-section",
-        "sourceSocketName": "ReactUI",
-        "targetNodeId": "pretty-dolphin-32",
-        "targetSocketName": "Save the MoviePrint"
+        "sourceNodeId": "ai-node-6",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-1",
+        "targetSocketName": "Text"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "Image",
+        "targetNodeId": "ai-node-1",
+        "targetSocketName": "Files"
+      },
+      {
+        "sourceNodeId": "ai-node-6",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-1",
+        "targetSocketName": "Title"
+      },
+      {
+        "sourceNodeId": "ai-node-7",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-1",
+        "targetSocketName": "File name"
+      },
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-1",
+        "targetSocketName": "Disabled"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "Image",
+        "targetNodeId": "ai-node-2",
+        "targetSocketName": "picture"
+      },
+      {
+        "sourceNodeId": "bitter-horse-44",
+        "sourceSocketName": "Graphics",
+        "targetNodeId": "ai-node-3",
+        "targetSocketName": "Graphics"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-3",
+        "targetSocketName": "Trigger 1"
+      },
+      {
+        "sourceNodeId": "cuddly-vampirebat-50",
+        "sourceSocketName": "FrameArray",
+        "targetNodeId": "ai-node-4",
+        "targetSocketName": "frames"
+      },
+      {
+        "sourceNodeId": "little-turtle-49",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-4",
+        "targetSocketName": "spacing"
+      },
+      {
+        "sourceNodeId": "wise-monkey-72",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-4",
+        "targetSocketName": "background"
+      },
+      {
+        "sourceNodeId": "bad-emu-51",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-4",
+        "targetSocketName": "columns"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-5",
+        "targetSocketName": "In"
+      },
+      {
+        "sourceNodeId": "lovely-jellyfish-58",
+        "sourceSocketName": "name",
+        "targetNodeId": "ai-node-6",
+        "targetSocketName": "name"
+      },
+      {
+        "sourceNodeId": "cuddly-vampirebat-50",
+        "sourceSocketName": "FrameArray",
+        "targetNodeId": "ai-node-6",
+        "targetSocketName": "frames"
+      },
+      {
+        "sourceNodeId": "foolish-crab-89",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-6",
+        "targetSocketName": "columns"
+      },
+      {
+        "sourceNodeId": "lovely-jellyfish-58",
+        "sourceSocketName": "name",
+        "targetNodeId": "ai-node-7",
+        "targetSocketName": "name"
+      },
+      {
+        "sourceNodeId": "cuddly-vampirebat-50",
+        "sourceSocketName": "FrameArray",
+        "targetNodeId": "ai-node-7",
+        "targetSocketName": "frames"
+      },
+      {
+        "sourceNodeId": "foolish-crab-89",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-7",
+        "targetSocketName": "columns"
       }
     ],
     "groups": [
@@ -4435,7 +5118,14 @@
           "spotty-parrot-32",
           "good-stingray-99",
           "cowardly-gecko-12",
-          "print-section"
+          "print-section",
+          "ai-node-1",
+          "ai-node-2",
+          "ai-node-3",
+          "ai-node-4",
+          "ai-node-5",
+          "ai-node-6",
+          "ai-node-7"
         ]
       },
       {
@@ -4457,7 +5147,7 @@
       }
     ]
   },
-  "date": "2026-11-02T08:00:00.000Z",
+  "date": "2026-11-16T21:52:21.614Z",
   "owner": "publicUser",
   "isRemote": true
 }
