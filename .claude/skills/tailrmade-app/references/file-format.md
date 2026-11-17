@@ -45,6 +45,6 @@ Prefer `inspect_surface` and `set_layout_value`, which hide all this.
 ## What changes when the app saves
 Measured on a current file:
 - Saving twice is stable: export, reload and export again gives the same app apart from `date`.
-- First export of a hand-edited file may change: `date`, link order, rounding of `x` and `y`, a Label's `width` and `height` (measured from its text).
+- First export of a hand-edited file may change: `date`, link order, rounding of `x` and `y`, a Constant's `width` and `height` (measured from its text). Old files' Label nodes come back as a Constant String, or as Dynamic text when linked or on a page.
 - A custom function's input `dataType` is inferred from the wired value at run time and can flip between saves. `tmapp.py diff` ignores it.
 - Any field the app does not know about is dropped. See `update` in [build.md](build.md).

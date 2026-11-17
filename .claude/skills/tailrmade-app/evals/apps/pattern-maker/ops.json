@@ -2,7 +2,7 @@
  {
   "tool": "add_node",
   "input": {
-   "node_type": "Label",
+   "node_type": "CONSTANT_String",
    "node_id": "ai-node-1"
   }
  },
@@ -17,29 +17,8 @@
   "tool": "set_socket_value",
   "input": {
    "node_id": "ai-node-1",
-   "socket_name": "Input",
+   "socket_name": "String",
    "value": "This page is a Tailrmade app.\nFollow the numbers: the sliders and the theme become shader settings, and the shader paints the picture.\nMain page on the right shows the result."
-  }
- },
- {
-  "tool": "set_socket_value",
-  "input": {
-   "node_id": "ai-node-1",
-   "socket_name": "Font size",
-   "value": 64
-  }
- },
- {
-  "tool": "set_socket_value",
-  "input": {
-   "node_id": "ai-node-1",
-   "socket_name": "Background color",
-   "value": {
-    "r": 255,
-    "g": 255,
-    "b": 255,
-    "a": 1
-   }
   }
  },
  {

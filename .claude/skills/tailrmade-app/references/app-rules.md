@@ -51,7 +51,7 @@ Opening, loading, empty, not found and failed requests.
 ## Graph readability
 - Numbered groups in a hierarchical layout: a parent to the left of its children and centred on them, other sections in one column, generous vertical space. Don't put unrelated sections side by side.
 - Group headers keep their screen size at any zoom, about 150-215px by 32px, so they grow in world units as you zoom out. Check for collisions in a screenshot at the opening zoom.
-- A "Start here" label, real names on every node, and a short comment only where a choice isn't obvious. Say why, not what.
+- A "Start here" note: a Constant String (`CONSTANT_String`, text in its `String` socket) named "Start here". There is no Label node any more, and the note has no font size or colour. Real names on every node, and a short comment only where a choice isn't obvious. Say why, not what.
 - Text and comments are for someone new to the app. New nodes placed at 0,0 can fall inside a macro's bounds and move with it.
 
 ## Updating an app

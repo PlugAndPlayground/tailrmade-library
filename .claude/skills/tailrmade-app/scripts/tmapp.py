@@ -164,8 +164,9 @@ def check(data):
             errors.append('no default page: graphSettings.defaultUISurfaceNodeId is empty')
         elif default not in by_id:
             errors.append(f'default page {default} does not exist')
-    if not any(n.get('type') == 'label' and 'start here' in (n.get('name') or '').lower() for n in nodes):
-        warnings.append('no "Start here" label')
+    # Labels are gone (Tailrmade #100); old files still carry them until the app migrates them.
+    if not any(str(n.get('type')).lower() in ('constant_string', 'label') and 'start here' in (n.get('name') or '').lower() for n in nodes):
+        warnings.append('no "Start here" note (a Constant String named "Start here")')
     return errors, warnings
 
 
@@ -305,7 +306,8 @@ def explain(data):
             lines.append(f'  function {label(n["id"])} (main thread: {socket_data(n, "Main Thread", False)}): {short(socket_data(n, "Code", ""), 150)}')
         elif t in HTML_TYPES:
             lines.append(f'  HTML {label(n["id"])} [{t}]: {short(socket_data(n, "Html", socket_data(n, "Input", "")), 150)}')
-    constants = [(n, socket_data(n, 'Input')) for n in nodes if n.get('type') == 'label']
+    constants = [(n, socket_data(n, 'String')) for n in nodes if str(n.get('type')).lower() == 'constant_string']
+    constants += [(n, socket_data(n, 'Input')) for n in nodes if n.get('type') == 'label']
     constants = [(n, v) for n, v in constants if isinstance(v, str) and v and any(l['sourceNodeId'] == n['id'] for l in links)]
     if constants:
         lines.append('\n## Constant text used as values')
