@@ -1,0 +1,2731 @@
+{
+  "id": "Default/Hacker typer",
+  "location": "Default",
+  "name": "Hacker typer",
+  "access": "private",
+  "graphData": {
+    "version": 12,
+    "graphSettings": {
+      "showExecutionVisualisation": true,
+      "viewportCenterPosition": {
+        "x": -875,
+        "y": 4918
+      },
+      "viewportScale": 0.072,
+      "defaultUISurfaceNodeId": "ai-node-22",
+      "theme": {
+        "mode": "system"
+      }
+    },
+    "overlay": {
+      "dashboard": {
+        "visible": true,
+        "fullscreen": false,
+        "maximized": false,
+        "widthPercentage": 52,
+        "locked": false
+      }
+    },
+    "nodes": [
+      {
+        "id": "ai-node-1",
+        "name": "Start here",
+        "type": "constant_string",
+        "x": 0,
+        "y": 0,
+        "width": 1841,
+        "height": 193,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "String",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Hacker typer: press any key and code pours onto the screen, like in the movies.\n1. The Any key node hears every key on the page. On a phone, the Hack button does the same job.\n2. Each key adds to Keys pressed. Times Characters per key, that says how much code to show.\n3. Show the typed code cuts Code to type at that point and keeps the last lines for the terminal. Paste your own code into Code to type.\n4. Secret keys: Alt three times opens Access granted, Caps Lock three times opens Access denied. Any other key closes it."
+          },
+          {
+            "socketType": "out",
+            "name": "String",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-2",
+        "name": "Any key",
+        "type": "keyboard",
+        "x": 0,
+        "y": 713,
+        "width": 160,
+        "height": 208,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "keep last",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "key",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "code",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "shiftKey",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ctrlKey",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "altKey",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "metaKey",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "repeat",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Key goes back to empty when the key is let go, so every press is a new value. The state nodes add on that rise only."
+      },
+      {
+        "id": "ai-node-4",
+        "name": "Hack",
+        "type": "widgetbutton",
+        "x": 0,
+        "y": 1001,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Hack",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "L",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-3",
+        "name": "Keys pressed",
+        "type": "storagenumberstate",
+        "x": 500,
+        "y": 1705,
+        "width": 160,
+        "height": 184,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Add Amount",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 1
+          },
+          {
+            "socketType": "in",
+            "name": "Remove Amount",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 1
+          },
+          {
+            "socketType": "in",
+            "name": "Location",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "nervous-tiger-51",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "State key",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "hacker-typer-keys",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "State",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "trigger",
+            "name": "Add",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"add\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "trigger",
+            "name": "Remove",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"remove\",\"showDetails\":false}}",
+            "data": 0
+          },
+          {
+            "socketType": "trigger",
+            "name": "Clear",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"clear\",\"showDetails\":false}}",
+            "data": 0
+          },
+          {
+            "socketType": "out",
+            "name": "State",
+            "dataType": "{\"class\":\"NumberType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-5",
+        "name": "Taps",
+        "type": "storagenumberstate",
+        "x": 500,
+        "y": 1969,
+        "width": 160,
+        "height": 184,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Add Amount",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 5
+          },
+          {
+            "socketType": "in",
+            "name": "Remove Amount",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 1
+          },
+          {
+            "socketType": "in",
+            "name": "Location",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "nervous-tiger-51",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "State key",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "hacker-typer-taps",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "State",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "trigger",
+            "name": "Add",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"add\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "trigger",
+            "name": "Remove",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"remove\",\"showDetails\":false}}",
+            "data": 0
+          },
+          {
+            "socketType": "trigger",
+            "name": "Clear",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"clear\",\"showDetails\":false}}",
+            "data": 0
+          },
+          {
+            "socketType": "out",
+            "name": "State",
+            "dataType": "{\"class\":\"NumberType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "A tap counts as five keys, because tapping is slower than mashing a keyboard."
+      },
+      {
+        "id": "ai-node-6",
+        "name": "Keys and taps",
+        "type": "add",
+        "x": 800,
+        "y": 1705,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Addend",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Addend 2",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Added",
+            "dataType": "{\"class\":\"NumberType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-7",
+        "name": "Characters per key",
+        "type": "constant_number",
+        "x": 500,
+        "y": 2233,
+        "width": 67,
+        "height": 55,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Number",
+            "dataType": "{\"class\":\"NumberType\"}",
+            "data": 4
+          },
+          {
+            "socketType": "out",
+            "name": "Number",
+            "dataType": "{\"class\":\"NumberType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-8",
+        "name": "Characters to show",
+        "type": "multiply",
+        "x": 1100,
+        "y": 1705,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Factor",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Factor 2",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Multiplied",
+            "dataType": "{\"class\":\"NumberType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-9",
+        "name": "Code to type",
+        "type": "constant_string",
+        "x": 1560,
+        "y": 2888,
+        "width": 1142,
+        "height": 4436,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "String",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "/*\n * breach.c - mainframe access toolkit v4.2\n * \"if you can read this, you are already in\"\n */\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <stdint.h>\n#include \"firewall.h\"\n#include \"quantum_tunnel.h\"\n\n#define MAX_HOPS        7\n#define KEY_BITS        4096\n#define PAYLOAD_SIZE    0x2000\n#define MAGIC_COOKIE    0xDEADBEEF\n\ntypedef struct proxy_node {\n    uint32_t addr;\n    uint16_t port;\n    uint8_t  latency_ms;\n    struct proxy_node *next;\n} proxy_node_t;\n\nstatic proxy_node_t *chain_head = NULL;\nstatic uint8_t session_key[KEY_BITS / 8];\n\nstatic int bounce_signal(proxy_node_t *node, const uint8_t *buf, size_t len)\n{\n    int hops = 0;\n    while (node && hops < MAX_HOPS) {\n        if (firewall_probe(node->addr, node->port) != FW_OPEN) {\n            node = node->next;\n            continue;\n        }\n        tunnel_send(node->addr, node->port, buf, len);\n        node = node->next;\n        hops++;\n    }\n    return hops;\n}\n\nstatic void scramble_key(uint8_t *key, size_t len, uint32_t seed)\n{\n    for (size_t i = 0; i < len; i++) {\n        seed ^= seed << 13;\n        seed ^= seed >> 17;\n        seed ^= seed << 5;\n        key[i] ^= (uint8_t)(seed & 0xFF);\n    }\n}\n\nint crack_password_hash(const char *hash, char *out, size_t out_len)\n{\n    static const char alphabet[] =\n        \"abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*\";\n    size_t n = strlen(alphabet);\n    char guess[16] = \"\";\n\n    for (size_t len = 1; len < sizeof(guess); len++) {\n        for (uint64_t i = 0; i < ipow(n, len); i++) {\n            make_guess(guess, len, i, alphabet, n);\n            if (strcmp(sha256_hex(guess), hash) == 0) {\n                strncpy(out, guess, out_len);\n                return 1;\n            }\n        }\n    }\n    return 0;\n}\n\nstatic int download_the_internet(const char *target)\n{\n    uint8_t *payload = malloc(PAYLOAD_SIZE);\n    if (!payload)\n        return -1;\n\n    memset(payload, 0x90, PAYLOAD_SIZE);\n    *(uint32_t *)payload = MAGIC_COOKIE;\n    scramble_key(session_key, sizeof(session_key), MAGIC_COOKIE);\n\n    printf(\"[*] uploading payload to %s\\n\", target);\n    int hops = bounce_signal(chain_head, payload, PAYLOAD_SIZE);\n    printf(\"[+] signal bounced through %d proxies\\n\", hops);\n\n    free(payload);\n    return hops > 0 ? 0 : -1;\n}\n\nint enhance(image_t *img, int factor)\n{\n    /* zoom. enhance. zoom. enhance. */\n    for (int pass = 0; pass < factor; pass++) {\n        img = upscale(img, 2);\n        img = sharpen(img, 0.8f);\n    }\n    return img->width;\n}\n\nvoid reroute_mainframe(mainframe_t *mf)\n{\n    mf->gibson.firewall = FW_DISABLED;\n    mf->gibson.trace_level = 0;\n    for (int core = 0; core < mf->cores; core++) {\n        mf->core[core].owner = getuid();\n        mf->core[core].mode = MODE_GOD;\n    }\n    log_erase(mf->audit_log, LOG_ALL);\n}\n\nint main(int argc, char **argv)\n{\n    const char *target = argc > 1 ? argv[1] : \"mainframe.local\";\n    char password[32];\n\n    chain_head = proxy_chain_build(MAX_HOPS);\n    if (!crack_password_hash(fetch_shadow(target), password, sizeof(password))) {\n        fprintf(stderr, \"[-] hash resisted. trying harder\\n\");\n        return EXIT_FAILURE;\n    }\n\n    printf(\"[+] password: %s\\n\", password);\n    reroute_mainframe(mainframe_connect(target, password));\n    download_the_internet(target);\n    printf(\"[+] I'm in.\\n\");\n    return EXIT_SUCCESS;\n}\n\n"
+          },
+          {
+            "socketType": "out",
+            "name": "String",
+            "dataType": "{\"class\":\"StringType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-10",
+        "name": "Show the typed code",
+        "type": "customfunction",
+        "x": 2842,
+        "y": 2888,
+        "width": 160,
+        "height": 112,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(code, chars) => {\n  const banner = [\n    'tailrmade@mainframe:~$ ./breach',\n    '[ok] loading exploit kit',\n    '[ok] spoofing MAC address',\n    '[ok] proxy chain: 7 hops',\n    '[ok] firewall: asleep',\n    '[..] waiting for the operator',\n    '',\n    'Press any key to hack.',\n    'On a phone, tap Hack.',\n    '',\n    '',\n  ].join('\\n');\n  const source = code && code.length ? code : '// Code to type is empty\\n';\n  const typed = Math.max(0, Math.floor(Number(chars) || 0));\n  const loops = Math.floor(typed / source.length);\n  // after two passes the banner is long gone, so two copies are enough\n  const text =\n    (loops > 1 ? '' : banner) +\n    source.repeat(Math.min(loops, 2)) +\n    source.slice(0, typed % source.length);\n  const lines = text.split('\\n').slice(-40).join('\\n');\n  return '```\\n' + lines + '█\\n```';\n}",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "code",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "chars",
+            "dataType": "{\"class\":\"NumberType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3,
+        "comment": "Starts again from the top when the code runs out, and keeps only the last lines so the newest code is always at the bottom."
+      },
+      {
+        "id": "ai-node-11",
+        "name": "Terminal",
+        "type": "text",
+        "x": 3142,
+        "y": 2888,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "body",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "backgroundColor": "#050805",
+              "color": "#33ff66",
+              "fontFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+              "fontSize": "13px",
+              "lineHeight": 1.4,
+              "padding": "16px",
+              "borderRadius": "8px",
+              "height": "62vh",
+              "overflow": "hidden",
+              "display": "grid",
+              "alignContent": "end",
+              "& *": {
+                "backgroundColor": "transparent",
+                "color": "inherit",
+                "fontFamily": "inherit",
+                "fontSize": "inherit",
+                "lineHeight": "inherit",
+                "border": "none",
+                "textShadow": "0 0 3px rgba(51, 255, 102, 0.35)"
+              },
+              "& .editor-code": {
+                "margin": 0,
+                "padding": 0,
+                "whiteSpace": "pre-wrap",
+                "overflowWrap": "anywhere"
+              },
+              "& .editor-code::before": {
+                "display": "none"
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Green on black on purpose: the terminal look is the point of this app, so it ignores the theme."
+      },
+      {
+        "id": "ai-node-12",
+        "name": "Last three keys",
+        "type": "storagearraystate",
+        "x": 3682,
+        "y": 7924,
+        "width": 160,
+        "height": 184,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Input",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "MaxSize",
+            "dataType": "{\"class\":\"NumberType\",\"type\":{\"round\":true,\"minValue\":0,\"maxValue\":100,\"stepSize\":0.01,\"showDetails\":false,\"presetValues\":[]}}",
+            "data": 3
+          },
+          {
+            "socketType": "in",
+            "name": "Location",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "nervous-tiger-51",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "State key",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "hacker-typer-last-keys",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "State",
+            "dataType": "{\"class\":\"ArrayType\"}",
+            "data": [],
+            "visible": false
+          },
+          {
+            "socketType": "trigger",
+            "name": "Add",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"add\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "trigger",
+            "name": "Remove",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"remove\",\"showDetails\":false}}",
+            "data": 0
+          },
+          {
+            "socketType": "trigger",
+            "name": "Clear",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"clear\",\"showDetails\":false}}",
+            "data": 0
+          },
+          {
+            "socketType": "out",
+            "name": "State",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-13",
+        "name": "Three Alts?",
+        "type": "customfunction",
+        "x": 4022,
+        "y": 7924,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(lastKeys) => Array.isArray(lastKeys) && lastKeys.length === 3 && lastKeys.every((key) => key === 'Alt')",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "lastKeys",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-14",
+        "name": "Three Caps Locks?",
+        "type": "customfunction",
+        "x": 4022,
+        "y": 8092,
+        "width": 160,
+        "height": 88,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "data": "(lastKeys) => Array.isArray(lastKeys) && lastKeys.length === 3 && lastKeys.every((key) => key === 'CapsLock')",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Main Thread",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "lastKeys",
+            "dataType": "{\"class\":\"ArrayType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "OutData",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "Code",
+            "dataType": "{\"class\":\"CodeType\"}",
+            "visible": false
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-19",
+        "name": "Grant",
+        "type": "widgetbutton",
+        "x": 3682,
+        "y": 8188,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Granted",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-20",
+        "name": "Deny",
+        "type": "widgetbutton",
+        "x": 3682,
+        "y": 8372,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Denied",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-15",
+        "name": "Granted message",
+        "type": "text",
+        "x": 4482,
+        "y": 9076,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "ACCESS GRANTED",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "display",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "fontFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+              "fontWeight": 700,
+              "letterSpacing": "0.12em",
+              "textAlign": "center",
+              "padding": "24px 8px",
+              "lineHeight": 1.1,
+              "color": "#33ff66",
+              "textShadow": "0 0 12px #33ff66"
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-16",
+        "name": "Denied message",
+        "type": "text",
+        "x": 4482,
+        "y": 9236,
+        "width": 240,
+        "height": 80,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Content",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "ACCESS DENIED",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"display\",\"value\":\"display\"},{\"text\":\"h1\",\"value\":\"h1\"},{\"text\":\"h2\",\"value\":\"h2\"},{\"text\":\"h3\",\"value\":\"h3\"},{\"text\":\"body\",\"value\":\"body\"},{\"text\":\"caption\",\"value\":\"caption\"},{\"text\":\"label\",\"value\":\"label\"},{\"text\":\"stat\",\"value\":\"stat\"}],\"showAsButtons\":false}}",
+            "data": "display",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Tone",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"default\",\"value\":\"default\"},{\"text\":\"muted\",\"value\":\"muted\"},{\"text\":\"primary\",\"value\":\"primary\"},{\"text\":\"secondary\",\"value\":\"secondary\"},{\"text\":\"success\",\"value\":\"success\"},{\"text\":\"warning\",\"value\":\"warning\"},{\"text\":\"error\",\"value\":\"error\"}],\"showAsButtons\":false}}",
+            "data": "default",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Alignment",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"left\",\"value\":\"left\"},{\"text\":\"center\",\"value\":\"center\"},{\"text\":\"right\",\"value\":\"right\"},{\"text\":\"justify\",\"value\":\"justify\"}],\"showAsButtons\":false}}",
+            "data": "left",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Custom styles",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "fontFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+              "fontWeight": 700,
+              "letterSpacing": "0.12em",
+              "textAlign": "center",
+              "padding": "24px 8px",
+              "lineHeight": 1.1,
+              "color": "#ff4040",
+              "textShadow": "0 0 12px #ff4040"
+            },
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Output",
+            "dataType": "{\"class\":\"StringType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      },
+      {
+        "id": "ai-node-17",
+        "name": "Access granted",
+        "type": "uimodalnode",
+        "x": 4862,
+        "y": 9076,
+        "width": 300,
+        "height": 300,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Open",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Title",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Security alert: mainframe.exe",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Dismiss on Backdrop",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Dismiss on Escape",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            }
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      24,
+                      24,
+                      24
+                    ],
+                    "minWidth": "280px",
+                    "minHeight": "80px",
+                    "maxWidth": "lg",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "@media (min-width: 601px) and (max-width: 900px)": {
+                        "padding": "0px 16px"
+                      },
+                      "@media (max-width: 600px)": {
+                        "padding": "0px 8px"
+                      }
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "uZFNu1VejG",
+                    "xmvUZtu1Jr"
+                  ],
+                  "linkedNodes": {}
+                },
+                "uZFNu1VejG": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-15",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "xmvUZtu1Jr": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 0,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "7a7cmqcYzp"
+                  ],
+                  "linkedNodes": {}
+                },
+                "7a7cmqcYzp": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "160px",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-23",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "xmvUZtu1Jr",
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Dynamic text",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Dynamic text visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Dynamic text"
+          },
+          {
+            "socketType": "in",
+            "name": "Dynamic text layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Dynamic text"
+          },
+          {
+            "socketType": "in",
+            "name": "Button",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Button visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Button layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Button"
+          },
+          {
+            "socketType": "trigger",
+            "name": "Open Dialog",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"openDialog\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "trigger",
+            "name": "Close Dialog",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"closeDialog\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "out",
+            "name": "Is Open",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Open follows Three Alts?, so the next key that is not Alt closes it. Dismiss on Escape is off so Esc reaches the keyboard too."
+      },
+      {
+        "id": "ai-node-18",
+        "name": "Access denied",
+        "type": "uimodalnode",
+        "x": 4862,
+        "y": 9456,
+        "width": 300,
+        "height": 300,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Open",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Title",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Security alert: mainframe.exe",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Dismiss on Backdrop",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Dismiss on Escape",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Background color",
+            "dataType": "{\"class\":\"ColorType\"}",
+            "data": {
+              "r": 12,
+              "g": 12,
+              "b": 12,
+              "a": 1
+            }
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      24,
+                      24,
+                      24,
+                      24
+                    ],
+                    "minWidth": "280px",
+                    "minHeight": "80px",
+                    "maxWidth": "lg",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "@media (min-width: 601px) and (max-width: 900px)": {
+                        "padding": "0px 16px"
+                      },
+                      "@media (max-width: 600px)": {
+                        "padding": "0px 8px"
+                      }
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "0S8bEZk434",
+                    "evEGnR0mHU"
+                  ],
+                  "linkedNodes": {}
+                },
+                "0S8bEZk434": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-16",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "evEGnR0mHU": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "flex-start",
+                    "justifyContent": "center",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 0,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "3apIpISc0y"
+                  ],
+                  "linkedNodes": {}
+                },
+                "3apIpISc0y": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "160px",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-24",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "evEGnR0mHU",
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Dynamic text",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Dynamic text visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Dynamic text"
+          },
+          {
+            "socketType": "in",
+            "name": "Dynamic text layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Dynamic text"
+          },
+          {
+            "socketType": "in",
+            "name": "Button",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Button visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Button layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Button"
+          },
+          {
+            "socketType": "trigger",
+            "name": "Open Dialog",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"openDialog\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "trigger",
+            "name": "Close Dialog",
+            "dataType": "{\"class\":\"TriggerType\",\"type\":{\"triggerType\":\"positiveFlank\",\"customFunctionString\":\"closeDialog\",\"showDetails\":false}}"
+          },
+          {
+            "socketType": "out",
+            "name": "Is Open",
+            "dataType": "{\"class\":\"BooleanType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "comment": "Open follows Three Caps Locks?, so the next other key closes it."
+      },
+      {
+        "id": "ai-node-23",
+        "name": "Carry on (granted)",
+        "type": "widgetbutton",
+        "x": 4482,
+        "y": 9396,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Carry on",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-24",
+        "name": "Carry on (denied)",
+        "type": "widgetbutton",
+        "x": 4482,
+        "y": 9580,
+        "width": 200,
+        "height": 104,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Off value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 0,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "On value",
+            "dataType": "{\"class\":\"AnyType\"}",
+            "data": 1,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Label",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "Carry on",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Variant",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"contained\"},{\"text\":\"outlined\"},{\"text\":\"text\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Color",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"primary\"},{\"text\":\"secondary\"},{\"text\":\"success\"},{\"text\":\"error\"},{\"text\":\"info\"},{\"text\":\"warning\"}],\"showAsButtons\":true}}",
+            "data": "primary",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Disabled",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": false,
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Size",
+            "dataType": "{\"class\":\"EnumType\",\"type\":{\"options\":[{\"text\":\"Inherit\"},{\"text\":\"XS\"},{\"text\":\"S\"},{\"text\":\"M\"},{\"text\":\"L\"},{\"text\":\"XL\"}],\"showAsButtons\":true}}",
+            "data": "Inherit",
+            "visible": false
+          },
+          {
+            "socketType": "out",
+            "name": "Out",
+            "dataType": "{\"class\":\"AnyType\"}"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        },
+        "version": 3
+      },
+      {
+        "id": "ai-node-22",
+        "name": "Hacker typer",
+        "type": "uisurfacenode",
+        "x": 8350.177777777779,
+        "y": 5124.5,
+        "width": 300,
+        "height": 300,
+        "socketArray": [
+          {
+            "socketType": "in",
+            "name": "Layout JSON",
+            "dataType": "{\"class\":\"JSONType\"}",
+            "data": {
+              "version": 1,
+              "tree": {
+                "ROOT": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      16,
+                      16,
+                      16,
+                      16
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "50dvh",
+                    "maxWidth": "lg",
+                    "maxHeight": "unset",
+                    "gap": 12,
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {
+                      "@media (min-width: 601px) and (max-width: 900px)": {
+                        "padding": "0px 16px"
+                      },
+                      "@media (max-width: 600px)": {
+                        "padding": "0px 8px"
+                      }
+                    }
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "nodes": [
+                    "9fl92mURdt",
+                    "KFsoIvkMAX",
+                    "kAGfw5YxnK"
+                  ],
+                  "linkedNodes": {}
+                },
+                "9fl92mURdt": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "100%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "24px",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "id": "NODE_ai-node-11",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "KFsoIvkMAX": {
+                  "type": {
+                    "resolvedName": "Container"
+                  },
+                  "displayName": "Container",
+                  "isCanvas": true,
+                  "props": {
+                    "flexDirection": "row",
+                    "alignItems": "center",
+                    "justifyContent": "flex-start",
+                    "width": "100%",
+                    "height": "auto",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "minWidth": "80px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "gap": 8,
+                    "background": {
+                      "r": 0,
+                      "g": 0,
+                      "b": 0,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "mobileBehavior": "row",
+                    "emphasis": "none",
+                    "tone": "neutral",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [
+                    "7xpTiVqe8q",
+                    "x3FH0XuTHF",
+                    "441v7RRtcf"
+                  ],
+                  "linkedNodes": {}
+                },
+                "7xpTiVqe8q": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "50%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-4",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "KFsoIvkMAX",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "x3FH0XuTHF": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "25%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-19",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "KFsoIvkMAX",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "441v7RRtcf": {
+                  "type": {
+                    "resolvedName": "DynamicWidget"
+                  },
+                  "displayName": "DynamicWidget",
+                  "isCanvas": false,
+                  "props": {
+                    "flexDirection": "column",
+                    "alignItems": "stretch",
+                    "justifyContent": "flex-start",
+                    "padding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "background": {
+                      "r": 9,
+                      "g": 13,
+                      "b": 26,
+                      "a": 0
+                    },
+                    "color": "inherit",
+                    "width": "25%",
+                    "height": "auto",
+                    "minWidth": "48px",
+                    "minHeight": "unset",
+                    "maxWidth": "unset",
+                    "maxHeight": "unset",
+                    "showLabel": false,
+                    "collapsible": false,
+                    "collapsedByDefault": false,
+                    "heightMode": "hug",
+                    "id": "NODE_ai-node-20",
+                    "index": 0
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "KFsoIvkMAX",
+                  "nodes": [],
+                  "linkedNodes": {}
+                },
+                "kAGfw5YxnK": {
+                  "type": {
+                    "resolvedName": "Text"
+                  },
+                  "displayName": "Text",
+                  "isCanvas": false,
+                  "props": {
+                    "content": "Type anything to hack. **Alt** three times: access granted. **Caps Lock** three times: access denied. Any other key carries on.",
+                    "variant": "caption",
+                    "tone": "muted",
+                    "alignment": "left",
+                    "customStyles": {}
+                  },
+                  "custom": {},
+                  "hidden": false,
+                  "parent": "ROOT",
+                  "nodes": [],
+                  "linkedNodes": {}
+                }
+              }
+            },
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Route",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Radio Group",
+            "dataType": "{\"class\":\"StringType\"}",
+            "data": "",
+            "visible": false
+          },
+          {
+            "socketType": "in",
+            "name": "Layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            }
+          },
+          {
+            "socketType": "in",
+            "name": "Dynamic text",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Dynamic text visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Dynamic text"
+          },
+          {
+            "socketType": "in",
+            "name": "Dynamic text layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Dynamic text"
+          },
+          {
+            "socketType": "in",
+            "name": "Button",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Button visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Button layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Button"
+          },
+          {
+            "socketType": "in",
+            "name": "Button 2",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Button 2 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Button 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Button 2 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Button 2"
+          },
+          {
+            "socketType": "in",
+            "name": "Button 3",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          },
+          {
+            "socketType": "in",
+            "name": "Button 3 visible",
+            "dataType": "{\"class\":\"BooleanType\"}",
+            "data": true,
+            "visible": false,
+            "dependentSocketName": "Button 3"
+          },
+          {
+            "socketType": "in",
+            "name": "Button 3 layout",
+            "dataType": "{\"class\":\"WidgetLayoutType\"}",
+            "data": {
+              "flexDirection": "column",
+              "alignItems": "flex-start",
+              "justifyContent": "flex-start",
+              "width": "100%",
+              "height": "auto",
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "minWidth": "80px",
+              "minHeight": "80px",
+              "maxWidth": "unset",
+              "maxHeight": "unset",
+              "gap": 0,
+              "background": {
+                "r": 35.999999999999986,
+                "g": 50.399999999999885,
+                "b": 102.6,
+                "a": 0.2
+              },
+              "color": "inherit",
+              "mobileBehavior": "row",
+              "customStyles": {}
+            },
+            "visible": false,
+            "dependentSocketName": "Button 3"
+          },
+          {
+            "socketType": "out",
+            "name": "ReactUI",
+            "dataType": "{\"class\":\"DeferredReactType\"}"
+          }
+        ],
+        "updateBehaviour": {
+          "load": true,
+          "update": true,
+          "interval": false
+        }
+      }
+    ],
+    "links": [
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "key",
+        "targetNodeId": "ai-node-3",
+        "targetSocketName": "Add"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-5",
+        "targetSocketName": "Add"
+      },
+      {
+        "sourceNodeId": "ai-node-3",
+        "sourceSocketName": "State",
+        "targetNodeId": "ai-node-6",
+        "targetSocketName": "Addend"
+      },
+      {
+        "sourceNodeId": "ai-node-5",
+        "sourceSocketName": "State",
+        "targetNodeId": "ai-node-6",
+        "targetSocketName": "Addend 2"
+      },
+      {
+        "sourceNodeId": "ai-node-6",
+        "sourceSocketName": "Added",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "Factor"
+      },
+      {
+        "sourceNodeId": "ai-node-7",
+        "sourceSocketName": "Number",
+        "targetNodeId": "ai-node-8",
+        "targetSocketName": "Factor 2"
+      },
+      {
+        "sourceNodeId": "ai-node-9",
+        "sourceSocketName": "String",
+        "targetNodeId": "ai-node-10",
+        "targetSocketName": "code"
+      },
+      {
+        "sourceNodeId": "ai-node-8",
+        "sourceSocketName": "Multiplied",
+        "targetNodeId": "ai-node-10",
+        "targetSocketName": "chars"
+      },
+      {
+        "sourceNodeId": "ai-node-10",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-11",
+        "targetSocketName": "Content"
+      },
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "key",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "Input"
+      },
+      {
+        "sourceNodeId": "ai-node-2",
+        "sourceSocketName": "key",
+        "targetNodeId": "ai-node-12",
+        "targetSocketName": "Add"
+      },
+      {
+        "sourceNodeId": "ai-node-12",
+        "sourceSocketName": "State",
+        "targetNodeId": "ai-node-13",
+        "targetSocketName": "lastKeys"
+      },
+      {
+        "sourceNodeId": "ai-node-12",
+        "sourceSocketName": "State",
+        "targetNodeId": "ai-node-14",
+        "targetSocketName": "lastKeys"
+      },
+      {
+        "sourceNodeId": "ai-node-13",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-17",
+        "targetSocketName": "Open"
+      },
+      {
+        "sourceNodeId": "ai-node-15",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-17",
+        "targetSocketName": "Dynamic text"
+      },
+      {
+        "sourceNodeId": "ai-node-23",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-17",
+        "targetSocketName": "Button"
+      },
+      {
+        "sourceNodeId": "ai-node-19",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-17",
+        "targetSocketName": "Open Dialog"
+      },
+      {
+        "sourceNodeId": "ai-node-23",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-17",
+        "targetSocketName": "Close Dialog"
+      },
+      {
+        "sourceNodeId": "ai-node-14",
+        "sourceSocketName": "OutData",
+        "targetNodeId": "ai-node-18",
+        "targetSocketName": "Open"
+      },
+      {
+        "sourceNodeId": "ai-node-16",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-18",
+        "targetSocketName": "Dynamic text"
+      },
+      {
+        "sourceNodeId": "ai-node-24",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-18",
+        "targetSocketName": "Button"
+      },
+      {
+        "sourceNodeId": "ai-node-20",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-18",
+        "targetSocketName": "Open Dialog"
+      },
+      {
+        "sourceNodeId": "ai-node-24",
+        "sourceSocketName": "Out",
+        "targetNodeId": "ai-node-18",
+        "targetSocketName": "Close Dialog"
+      },
+      {
+        "sourceNodeId": "ai-node-11",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-22",
+        "targetSocketName": "Dynamic text"
+      },
+      {
+        "sourceNodeId": "ai-node-4",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-22",
+        "targetSocketName": "Button"
+      },
+      {
+        "sourceNodeId": "ai-node-19",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-22",
+        "targetSocketName": "Button 2"
+      },
+      {
+        "sourceNodeId": "ai-node-20",
+        "sourceSocketName": "ReactUI",
+        "targetNodeId": "ai-node-22",
+        "targetSocketName": "Button 3"
+      }
+    ],
+    "groups": [
+      {
+        "id": "start-here",
+        "name": "Start here",
+        "color": "#BBC5D4",
+        "nodeIds": [
+          "ai-node-1"
+        ]
+      },
+      {
+        "id": "1-hear-the-keys",
+        "name": "1. Hear the keys",
+        "color": "#60D2FF",
+        "nodeIds": [
+          "ai-node-2",
+          "ai-node-4"
+        ]
+      },
+      {
+        "id": "2-count-the-keys",
+        "name": "2. Count the keys",
+        "color": "#E2ABFF",
+        "nodeIds": [
+          "ai-node-3",
+          "ai-node-5",
+          "ai-node-6",
+          "ai-node-7",
+          "ai-node-8"
+        ]
+      },
+      {
+        "id": "3-type-the-code",
+        "name": "3. Type the code",
+        "color": "#FFAE6B",
+        "nodeIds": [
+          "ai-node-9",
+          "ai-node-10",
+          "ai-node-11"
+        ]
+      },
+      {
+        "id": "4-secret-keys",
+        "name": "4. Secret keys",
+        "color": "#7DDD9C",
+        "nodeIds": [
+          "ai-node-12",
+          "ai-node-13",
+          "ai-node-14",
+          "ai-node-19",
+          "ai-node-20"
+        ]
+      },
+      {
+        "id": "5-popups",
+        "name": "5. Popups",
+        "color": "#FF9EC4",
+        "nodeIds": [
+          "ai-node-15",
+          "ai-node-16",
+          "ai-node-17",
+          "ai-node-18",
+          "ai-node-23",
+          "ai-node-24"
+        ]
+      },
+      {
+        "id": "main-page",
+        "name": "Main page",
+        "color": "#C0B6FF",
+        "nodeIds": [
+          "ai-node-22"
+        ]
+      }
+    ]
+  },
+  "date": "2026-11-19T22:55:07.575Z",
+  "owner": "unknown",
+  "isRemote": false
+}
