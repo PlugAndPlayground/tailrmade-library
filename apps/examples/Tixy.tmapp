@@ -3871,7 +3871,7 @@
                   "displayName": "Text",
                   "isCanvas": false,
                   "props": {
-                    "content": "Control 16×16 dots with one line of JavaScript. A dot's size is the value, and red means it is negative.",
+                    "content": "Control 16×16 dots with one line of JavaScript, after [tixy.land](https://tixy.land) by Martin Kleppe. A dot's size is the value, and red means it is negative.",
                     "variant": "body",
                     "tone": "muted",
                     "alignment": "center",
@@ -4450,7 +4450,7 @@
                   "displayName": "Text",
                   "isCanvas": false,
                   "props": {
-                    "content": "`t` time in seconds · `i` index, 0 to 255 · `x` column, 0 to 15 · `y` row, 0 to 15\nMath is built in: `sin`, `cos`, `hypot`, `PI`, `random` and the rest.\nAfter [tixy.land](https://tixy.land) by Martin Kleppe; examples by the tixy community.",
+                    "content": "`t` time in seconds · `i` index, 0 to 255 · `x` column, 0 to 15 · `y` row, 0 to 15\nMath is built in: `sin`, `cos`, `hypot`, `PI`, `random` and the rest.\nExamples by the tixy community.",
                     "variant": "caption",
                     "tone": "muted",
                     "alignment": "center",
