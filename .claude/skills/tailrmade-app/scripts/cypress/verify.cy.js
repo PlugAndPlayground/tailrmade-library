@@ -95,7 +95,9 @@ const measure = (win) => {
     // A 1px box is a visually hidden input, not content.
     return b.width > 1 && b.height > 1 && !e.closest(skip) && win.getComputedStyle(e).visibility !== 'hidden';
   });
-  r.overflowing = all.filter((e) => { const b = e.getBoundingClientRect(); return b.right > box.right + 1 || b.left < box.left - 1; }).slice(0, 6).map((e) => { const b = e.getBoundingClientRect(); return `${describeEl(e)} x=${Math.round(b.left)}..${Math.round(b.right)} page=${Math.round(box.left)}..${Math.round(box.right)}`; });
+  // An element inside a box that clips or scrolls sideways can't push the page wider; that box is checked itself.
+  const contained = (e) => { for (let p = e.parentElement; p && p !== dash; p = p.parentElement) if (win.getComputedStyle(p).overflowX !== 'visible') return true; return false; };
+  r.overflowing = all.filter((e) => { const b = e.getBoundingClientRect(); return (b.right > box.right + 1 || b.left < box.left - 1) && !contained(e); }).slice(0, 6).map((e) => { const b = e.getBoundingClientRect(); return `${describeEl(e)} x=${Math.round(b.left)}..${Math.round(b.right)} page=${Math.round(box.left)}..${Math.round(box.right)}`; });
   const texts = all.filter((e) => [...e.childNodes].some((c) => c.nodeType === 3 && c.textContent.replace(/ /g, ' ').trim()));
   r.clipped = [];
   r.tightLines = [];
@@ -114,7 +116,8 @@ const measure = (win) => {
       if (ratio < 3) r.lowContrast.push(`${describeEl(e)} ${ratio.toFixed(1)}:1`);
     }
   });
-  r.sidewaysScroll = all.filter((e) => /auto|scroll/.test(win.getComputedStyle(e).overflowX) && e.scrollWidth > e.clientWidth + 1).slice(0, 4).map(describeEl);
+  // `data-scroll-x` marks a box meant to scroll sideways, such as a wide diagram.
+  r.sidewaysScroll = all.filter((e) => /auto|scroll/.test(win.getComputedStyle(e).overflowX) && e.scrollWidth > e.clientWidth + 1 && !e.hasAttribute('data-scroll-x')).slice(0, 4).map(describeEl);
   const text = dash.textContent;
   r.placeholderPage = /No user interface yet|Create user interface/.test(text);
   r.literalMarkup = (text.match(/<\/?[a-z]+[ >]|\{\{[^}]*\}\}|\[[^\]]+\]\{\.[a-z]+\}/g) ?? []).slice(0, 5);

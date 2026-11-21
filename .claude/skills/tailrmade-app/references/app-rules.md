@@ -63,6 +63,7 @@ Each of these cost a session several rounds of reading the app's source. Check h
 - **On open, the engine skips nodes downstream of a button-only request** (`update: false`), so page text hanging off it shows its default until the press. Start text that must show on open from a node with no inputs, such as a Constant.
 - **Number Field always groups digits** (1985 shows "1,985"), and the Text Field has only text and password types. For a year, use a Dropdown.
 - **A Plotly chart behind the review** shows array errors until Run: linked sockets are saved as `null`, and a list input turns `null` into `[null]`. Nothing in the file avoids it yet; `verify` lists it as shown while paused.
+- **A wide diagram** (Pele, an SVG) is better scrolled than shrunk to dots: wrap it in `<div data-scroll-x style="overflow-x:auto">`, and `verify` accepts that sideways scroll.
 - **HTML and draw nodes also preview on the canvas**, so their output exists twice in the document. Query inside the page (`dash` in a verify `eval`).
 
 ## Updating an app
