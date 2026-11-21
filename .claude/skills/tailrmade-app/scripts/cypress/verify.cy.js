@@ -137,26 +137,60 @@ const openApp = (theme, width, height, wait, scenarioStubs, hash) => {
     return c.loadStringifiedGraph(JSON.stringify(graph));
   });
 };
+const GATE_MS = 45000;
+const passGate = (r) => cy.window().then({ timeout: GATE_MS + 5000 }, (win) => new Promise((resolve) => {
+  const started = Date.now();
+  let calmSince = null;
+  let lastBanner = 0;
+  const clicked = [];
+  const look = () => {
+    const c = win.testController;
+    const doc = win.document;
+    const gate = doc.querySelector('[data-cy="run-reviewed-app"]') ?? doc.querySelector('[data-cy="start-app"]');
+    // Paused behind the review: the graph is ready but the app isn't running. Still loading or
+    // running its first requests: the graph isn't ready. Only a paused app needs a gate.
+    let running = false;
+    let ready = false;
+    try { running = Boolean(c?.isLoadedAppRunning()); ready = Boolean(c?.getGraph().graphConfiguredAndReady); } catch (e) { /* not loaded */ }
+    if (gate) {
+      // The banner opens the sheet, which can take seconds on a big graph: don't click it again meanwhile.
+      const kind = gate.getAttribute('data-cy');
+      if (kind === 'run-reviewed-app' || Date.now() - lastBanner > 4000) {
+        clicked.push(kind);
+        if (kind === 'start-app') lastBanner = Date.now();
+        gate.click();
+      }
+      calmSince = null;
+    } else if (running || !ready) {
+      // Running or busy with no gate for 1.5 s: a late banner would have shown by then. A busy
+      // app is left alone, so a scenario can still see its loading state.
+      calmSince ??= Date.now();
+      if (Date.now() - calmSince > 1500) { r.gate = clicked; r.busyAfterGate = !running; return resolve(); }
+    } else {
+      calmSince = null;
+    }
+    if (Date.now() - started > GATE_MS) {
+      r.gate = clicked;
+      (r.failures ??= []).push(`app still paused after ${GATE_MS / 1000}s${clicked.length ? ` (clicked ${[...new Set(clicked)].join(', ')})` : ', and no Run button appeared'}`);
+      return resolve();
+    }
+    return win.setTimeout(look, 300);
+  };
+  look();
+}));
 const startApp = (r, wait) => {
   cy.wait(3000);
   ctl((c) => {
-    r.pausedOnLoad = !c.isLoadedAppRunning();
+    r.pausedOnLoad = !c.isLoadedAppRunning() && Boolean(c.getGraph().graphConfiguredAndReady);
     r.nodeCount = c.getNodes().length;
     r.risks = c.getNodes().flatMap((n) => n.getRisks().map((x) => ({ node: n.name, kind: x.kind, severity: x.severity, target: x.target })));
     r.problemsOnLoad = statuses(c);
   });
   // Files from outside open paused behind the risk review, as a user would meet them.
-  // The sheet can take several seconds to open on a big graph, so wait for Run app.
-  // The banner can also show up after the first check, so a paused app waits for it.
-  // It shows either the banner or the sheet itself.
-  const gate = '[data-cy="start-app"], [data-cy="run-reviewed-app"]';
-  cy.get('body').then(($b) => {
-    if (!r.pausedOnLoad && !$b.find(gate).length) return;
-    cy.get(gate, { timeout: 20000 }).first().then(($el) => {
-      if ($el.attr('data-cy') === 'start-app') cy.wrap($el).click({ force: true });
-      cy.get('[data-cy="run-reviewed-app"]', { timeout: 20000 }).click({ force: true });
-    });
-  });
+  // The banner (start-app) or the sheet (run-reviewed-app) can show up seconds after load, and
+  // checking once raced it: on desktop a paused app then waited a minute for a button that had
+  // come and gone. So poll until the app runs and no gate is left, clicking whatever gate shows.
+  passGate(r);
   cy.wait(wait ?? 6000);
   ctl((c) => { r.running = c.isLoadedAppRunning(); r.problems = statuses(c); });
 };
@@ -189,22 +223,40 @@ const controlFor = ($d, label) => {
   return $d.find(`input[aria-label="${label}"], input[placeholder="${label}"]`)[0];
 };
 const textElement = ($d, text) => $d.find('*').toArray().filter((e) => e.children.length === 0 && e.textContent.includes(text))[0];
+// Finds a control on the page, polling up to `ms`: a tab's content can render a moment after
+// the press, most of all on phones, and a person would just see it a beat later.
+const findOnPage = (find, ms = 5000) => cy.window().then({ timeout: ms + 2000 }, (win) => new Promise((resolve) => {
+  const started = Date.now();
+  const look = () => {
+    const dash = win.document.querySelector(D);
+    const found = dash ? find(Cypress.$(dash)) : null;
+    if (found || Date.now() - started > ms) return resolve(found ?? null);
+    return win.setTimeout(look, 200);
+  };
+  look();
+}));
 const STEPS = {
-  press: (r, s) => cy.get(D).then(($d) => {
-    const cyButton = $d.find(`[data-cy="button-${s.press}"]`);
-    if (cyButton.length) return cy.wrap(cyButton.first()).click({ force: true });
-    const b = $d.find('button, [role=button], [role=tab]').toArray().find((e) => e.textContent.trim() === s.press);
+  // Whitespace collapsed, as a person reads it: a button group's label can hold line breaks.
+  press: (r, s) => findOnPage(($d) => $d.find(`[data-cy="button-${s.press}"]`)[0] ?? $d.find('button, [role=button], [role=tab]').toArray().find((e) => textOf(e) === s.press)).then((b) => {
     if (!b) { r.failures.push(`no button "${s.press}"`); return null; }
     return cy.wrap(b).click({ force: true });
   }),
-  type: (r, s) => cy.get(D).then(($d) => {
-    const input = controlFor($d, s.type);
+  // A switch or checkbox by its label. With "on": true or false it sets that state, else it flips.
+  // Named the way the user-test screen names it: a Tailrmade switch has its text beside it, not in a <label>.
+  toggle: (r, s) => findOnPage(($d) => $d.find('input[type=checkbox], [role=switch]').toArray().find((e) => labelOf(e) === s.toggle)).then((input) => {
+    if (!input) { r.failures.push(`no switch labelled "${s.toggle}"`); return null; }
+    // Cypress yields a found element wrapped in jQuery; read its state from the element itself.
+    const el = input.jquery ? input[0] : input;
+    const on = el.checked ?? el.getAttribute('aria-checked') === 'true';
+    if (s.on !== undefined && on === s.on) return null;
+    return cy.wrap(input).click({ force: true });
+  }),
+  type: (r, s) => findOnPage(($d) => controlFor($d, s.type)).then((input) => {
     if (!input) { r.failures.push(`no input labelled "${s.type}"`); return null; }
     const typed = s.text === '' ? '{selectall}{backspace}' : `{selectall}{backspace}${s.text}`;
     return cy.wrap(input).click({ force: true }).type(typed, { force: true, delay: 10 });
   }),
-  choose: (r, s) => cy.get(D).then(($d) => {
-    const input = controlFor($d, s.choose);
+  choose: (r, s) => findOnPage(($d) => controlFor($d, s.choose)).then((input) => {
     if (!input) { r.failures.push(`no dropdown labelled "${s.choose}"`); return null; }
     cy.wrap(input).click({ force: true });
     cy.wait(300);
@@ -242,7 +294,9 @@ const STEPS = {
   }),
   check_page: (r, s) => cy.window().then((win) => { r.pages.push({ at: s.check_page, ...measure(win) }); }),
   shot: (r, s) => cy.screenshot(`${job.tag}-${r.name}-${s.shot}`, { capture: 'viewport', overwrite: true }),
-  eval: (r, s) => ctl((c) => new AsyncFunction('c', s.eval)(c)).then((value) => {
+  // `document` here is the Cypress runner's, not the app's: use `doc` (the app's document),
+  // `win` or `dash` (the page). HTML nodes also preview on the canvas, so query inside `dash`.
+  eval: (r, s) => cy.window().then((win) => ctl((c) => new AsyncFunction('c', 'doc', 'win', 'dash', s.eval)(c, win.document, win, win.document.querySelector(D)))).then((value) => {
     if (value !== true && s.expect === undefined) r.failures.push(`eval returned ${JSON.stringify(value)}: ${s.eval.slice(0, 100)}`);
     if (s.expect !== undefined && JSON.stringify(value) !== JSON.stringify(s.expect)) r.failures.push(`expected ${JSON.stringify(s.expect)}, got ${JSON.stringify(value)}: ${s.eval.slice(0, 100)}`);
   }),
@@ -293,7 +347,7 @@ if (!job.session && !job.quick) {
   });
 });
 
-if (!job.session) it('graph and reload', () => {
+if (!job.session && !job.skip_graph) it('graph and reload', () => {
   const r = { name: 'graph', kind: 'graph' };
   openApp(null, 1440, 900);
   startApp(r);

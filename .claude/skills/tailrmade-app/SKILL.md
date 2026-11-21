@@ -18,11 +18,14 @@ Scripts are in `scripts/`; run them from anywhere. Read a reference when its ste
 Worked examples are in `evals/apps/`.
 
 ## Create
-1. Read app-rules. Decide on sections and states, and pick native nodes.
+1. Read app-rules, including its known quirks. Decide on sections and states, and pick native nodes.
 2. Run `app.py catalog DIR` and read `prompt.md`. Describe unfamiliar nodes.
 3. Build with the app's tools (`app.py ops`), not by writing JSON, then run `tmapp.py layout`.
-4. Write `verify.json` with a scenario for every button and state, then run `app.py verify`.
-5. Read the screenshots. Fix and repeat until it passes and looks right.
+4. Write `verify.json` with a scenario for every button and state.
+5. Iterate in a `session` and with `verify --only`, then run the full `verify` once, in the background. See verify.md.
+6. Read the screenshots. Fix and repeat until it passes and looks right.
+
+Keep what you build from next to the app, not in the scratchpad, which a reboot or cleanup can clear: for `apps/drafts/App.tmapp`, put the ops (or the script that writes them), `plan.json` and `verify.json` in `apps/drafts/App.build/`. Then anyone can re-run `verify` or change the app later. Verify output (`OUTDIR`) is disposable and stays in the scratchpad.
 
 ## Explain
 `tmapp.py explain FILE`. For a file whose version isn't the app's current one (`GRAPH_DATA_VERSION` in the app repo; `tmapp.py` reads it), run `app.py export` first and explain the export. Lead with what the app does for its user.
@@ -35,8 +38,9 @@ After a PASS, offer one in a line: a fresh subagent uses the running app as a pe
 
 ## Reporting
 State the verdict from `verify`, in plain words:
-- **PASS**: say which themes and widths ran, which screenshots you looked at, and the risks the review will show.
+- **PASS**: from a full run only, not `--only` or `--quick`. Say which themes and widths ran, which screenshots you looked at, and the risks the review will show.
 - **FAIL**: give the failures as they are. Don't hide a failure as flaky, even if a re-run passed.
-- **UNVERIFIED**: no dev server, so only the static checks ran. Say so and give the command to finish: `yarn dev` in the app repo, then `verify`.
+- **STALLED**: Cypress stopped making progress. Run it again; if it keeps stalling, report the app as unverified, with what the finished cells showed.
+- **UNVERIFIED**: the dev server couldn't start, so only the static checks ran. Say so, with the reason `verify` printed and the command to finish.
 
 Never commit, and never change app source from this skill. If the tools or the in-app AI's rules get in the way, work around it and list the gap as a proposed app change for the user.

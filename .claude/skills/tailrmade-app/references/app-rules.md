@@ -54,6 +54,17 @@ Opening, loading, empty, not found and failed requests.
 - A "Start here" note: a Constant String (`CONSTANT_String`, text in its `String` socket) named "Start here". There is no Label node any more, and the note has no font size or colour. Real names on every node, and a short comment only where a choice isn't obvious. Say why, not what.
 - Text and comments are for someone new to the app. New nodes placed at 0,0 can fall inside a macro's bounds and move with it.
 
+## Known quirks
+Each of these cost a session several rounds of reading the app's source. Check here before you dig.
+- **HTML renderer** with sanitize on strips `<style>` tags but keeps inline `style` attributes. Theme colours are CSS variables there and follow live preset switches: `var(--tm-foreground)`, `--tm-muted-foreground`, `--tm-paper`, `--tm-background`, `--tm-primary`, `--tm-divider`, `--tm-radius`, `--tm-font-family`. A library that takes CSS variables, such as Pele (`--pele-fg: var(--tm-foreground)`), can be themed this way.
+- **Sandbox globals persist** between runs of the same function, so a function can remember the last good answer (for "keep showing the previous result"). This isn't documented, so say so when the app depends on it.
+- **Big inputs stall the sandbox.** An 8.5 MB JSON took 90 seconds or more with no result and no error; the code itself ran in 12 ms. Shrink the data first, or turn on Main Thread for that one function, which adds a review risk.
+- **Main Thread functions treat parameters as constants**: reassigning one throws. Copy it into a new variable.
+- **On open, the engine skips nodes downstream of a button-only request** (`update: false`), so page text hanging off it shows its default until the press. Start text that must show on open from a node with no inputs, such as a Constant.
+- **Number Field always groups digits** (1985 shows "1,985"), and the Text Field has only text and password types. For a year, use a Dropdown.
+- **A Plotly chart behind the review** shows array errors until Run: linked sockets are saved as `null`, and a list input turns `null` into `[null]`. Nothing in the file avoids it yet; `verify` lists it as shown while paused.
+- **HTML and draw nodes also preview on the canvas**, so their output exists twice in the document. Query inside the page (`dash` in a verify `eval`).
+
 ## Updating an app
 - A round trip must preserve unknown fields, the user's text and positions.
 - Never overwrite: start from the user's latest copy and write a new file, because they edit between rounds.

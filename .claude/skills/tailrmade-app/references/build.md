@@ -1,6 +1,6 @@
 # Building and updating with the app's tools
 
-The app has a browser-local MCP server (`src/services/TailrmadeMCPServer.ts`), the same tools its in-app AI uses, and no external transport. `app.py` reaches it through Cypress and `window.testController`. A run takes about 15 to 35 seconds, so batch tool calls.
+The app has a browser-local MCP server (`src/services/TailrmadeMCPServer.ts`), the same tools its in-app AI uses, and no external transport. `app.py` reaches it through Cypress and `window.testController`, on this session's own dev server, which the first command starts (see verify.md). A run takes about 15 to 35 seconds, so batch tool calls.
 
 ```bash
 python3 scripts/app.py catalog DIR     # prompt.md (rules, node list), tools.json, nodes.json
@@ -22,7 +22,7 @@ The worked examples in `evals/apps/*/` show a full `ops.json`, `plan.json` and `
    ```bash
    python3 scripts/tmapp.py layout DIR/export.json "App.tmapp" plan.json
    ```
-4. Run `verify`, read the screenshots, and fix by changing the ops and running again.
+4. Run `verify`, read the screenshots, and fix by changing the ops and running again. Keep the ops, `plan.json` and `verify.json` in `apps/drafts/App.build/`, next to the app, not in the scratchpad.
 
 ## plan.json
 ```json
@@ -51,6 +51,11 @@ It numbers sections in order and replaces all groups. `chain` makes a staircase,
 | Parent and child layout | `finish_section` makes rows only | `tmapp.py layout` |
 | App name, saved theme, page open on load, opening view | no tool | `tmapp.py layout` plan |
 | Theme node | not in the catalogue, but `add_node` takes `theme` | works |
+| Other nodes missing from the catalogue | `add_node` takes `LoadNPM` (Load NPM package, from esm.run), `tailrmade` (the app's own graph: "Output graph JSON" and other triggers), `DRAW_Shape`, `TextEditor2`, `CodeEditor`, `JumpToNode` | `describe_node` works on them; read the class in the app repo's `src/nodes` only if that isn't enough |
+| Firing the `tailrmade` node's built-in triggers | `set_trigger_type` doesn't see them as trigger sockets | to fire on load and on every press, wire the button's `Out` into a function `(press) => Date.now()` and its output into the trigger: it runs on load too and always sends a bigger number |
+| Page visibility | sockets are named by widget type in connection order (`UI page 2 visible`, `Button 3 visible`), not by node name | read the names from `inspect_nodes` before linking |
+| Embedded page background | an embedded UI page gets a default blue tint | `"props": {"background": {"r": 0, "g": 0, "b": 0, "a": 0}}` on its layout item |
+| Slider range | setting `Initial Value` before `Max` clamps it to the old max | set `Min` and `Max` first |
 | Unwired Shader `Images` | never saved, warns on load | wire a function returning `{}` |
 | Add one item to a page | `set_layout_value` only edits | `inspect_surface`, add the item, send it back to `set_surface_layout`: ids are kept |
 
